@@ -716,11 +716,16 @@ def main():
         " founded: ": "░основан┼░",
         "Total Score: ": "Общий балл: ",
         "Bonus Score: ": "",
-        " Weekly": "░Сверху",
-        " Today": "░Вчера",
-        " Times": "░Сбоку",
-        " Tribune": "░Вечером",
-        " News": "░Днем",
+        # fake newspaper mastheads.  The pack's slots hold mistranslated
+        # time/place words ('░Сверху' @0x31a6b, '░Вчера', '░Сбоку', '░Вечером',
+        # '░Днем') - 'Weekly' rendered as "from above" etc.  Replaced with the
+        # matching news names in the pack's ░ banner style (policy 2026-10:
+        # fix wrong words, keep pack style).
+        " Weekly": "░Неделя",
+        " Today": "░Сегодня",
+        " Times": "░Время",
+        " Tribune": "░Трибуна",
+        " News": "░Новости",
         "EXTRA!": "╜╛┐",
         "FLASH": "",
         r"The war between\nthe ": "Война народов\n",
@@ -836,14 +841,31 @@ def main():
         ("CAPTURE.C", 276): "Нет",
         ("NEWGAME.C", 471): "НЕТ",
         ("SPACESHP.C", 52): "Пусто",
-        ("CITYMGT.C", 1376): "Конц",
+        # the city-management «Конц» button (box 284..316, 33px): «Конец» is
+        # 29px in font 1 (measured with the FONTS.CV width table) - the full
+        # word fits the button, so the abbreviation is expanded.
+        ("CITYMGT.C", 1376): "Конец",
+        # the end-of-turn panel drew the instruction twice: the English
+        # "Press Enter" (line 1386, its pack slot is blanked - see drop) and
+        # the RU «Нажмите Entr» here.  Merge into one «Нажми Enter»: 66px in
+        # font 1 (FONTS.CV width table), panel is 80px wide.  The line-1386
+        # removal is a CODE_FIX in apply-translation.py.
+        ("CONTROL.C", 1387): "Нажми Enter",
+        # the W menu item «Кос.Корабль» (pack 194596): the menu box is sized by
+        # the longest row «Уровень цивилизации (F9)» = 137px; «Космический
+        # корабль» is 105px (FONTS.CV font 1 table), so the full words fit.
+        # The sidebar blurb «К.Корабль: (» (CITY.C:597) stays short - no room.
+        ("MENUS.C", 289): " Карта Мира (F10)\n Демография\n Космический корабль\n",
         ("NEWS.C", 63): "    ",
         ("NEWS.C", 68): "    ",
-        # format_year's BC era in the pack is the standalone "░днэ" at 0x2fe77
-        # (verified in the DOSBox sidebar and founding-banner pixels: д-н-э with
-        # a д tail).  The gap method paired it with a "░дэ" news slot instead.
-        # The three-key form avoids clobbering the " AD" row on the same line.
-        ("TURN.C", 670, " BC"): "░днэ",
+        # format_year's eras are the pack slots "░днэ" at 0x2fe77 (verified in the
+        # DOSBox sidebar pixels; the gap method mispaired it with a "░дэ" news
+        # slot).  User decision 2026-10-26: write the normal "░до н.э." / "░н.э."
+        # for every caller; the only width-tight one is the status line, whose
+        # blurb tiles moved (CODE_FIX in apply-translation.py).  The three-key
+        # form avoids clobbering the " AD" row on the same line.
+        ("TURN.C", 670, " BC"): "░до н.э.",
+        ("TURN.C", 670, " AD"): "░н.э.",
         # 75) save/load drive dialog (SAVE.C 229/230/251): the slot chain
         # shifted these by one, doubling the Russian.  Hex-verified pack slots:
         # 0x30c74 drive-letter line, 0x30cb1 escape line, 0x30cce no-disk line.
@@ -857,12 +879,100 @@ def main():
         # EN table 0x28a8a..0x28a9f: The / of / in / . ( / ) / (Destroyed)
         # vs pack blank / blank / ' в: ' / '. (' / ')' / ' (Разрушено)').
         ("REPORTS.C", 289): "    ",
+        # 76) the pack left some EN slots blanked, but the RU sentence it built
+        # there is complete without the English head; rows keyed here so the
+        # garbage interp estimate is never applied.  Wording from civ/CIV.EXE
+        # byte dumps (offsets noted).
+        # emissary intro: pack starts with the civ name; tail ' желают
+        # поговоритьс вами└' @0x302bf (applied at 702); split that typo.
+        ("AUDIENCE.C", 700): "",
+        ("AUDIENCE.C", 702): " желают поговорить с вами└\n",
+        # leader greeting case 2: pack 'давший смертным\nсчастье: ' @0x30392;
+        # drop the trailing ': ' because line 766 already adds ': ' + title.
+        ("AUDIENCE.C", 764): "давший смертным\nсчастье\n",
+        # custom world creation menus (GAME.C 774/788/800): the pack did
+        # translate these prompts; the DP chain paired them with blank slots.
+        # Pack slots: 'Температура:...' @0x2e51f, 'Климат:...' @0x2e550,
+        # 'Эра:...' @0x2e575.  The 'Эра' third option reads '5 миллиардов   '
+        # in the pack - it cut its own 'лет' because '5 billion years' already
+        # runs the menu box to the screen edge; keep the pack form.
+        ("GAME.C", 774): "Температура:\n Холодно\n Тепло\n Жарко\n",
+        ("GAME.C", 788): "Климат:\n Сухой\n Норм.\n Вода\n",
+        ("GAME.C", 800): "Эра:\n 3 миллиарда лет\n 4 миллиарда лет\n 5 миллиардов   \n",
+        # 78) clear language errors in the pack's own text (policy: fix them).
+        # 'Новых технологие нет.' (DIPLOMAT.C 153) - the pack stores the wrong
+        # case; the correct Russian genitive plural is 'технологий'.
+        ("DIPLOMAT.C", 153): "Новых технологий нет.\n",
+        # 79) the pack stores 'MORE'/'AUTO.'/'CHANGE' buttons with a Latin
+        # first letter ('Mеще' @0x30eeb, 'Aвто.', 'Cтроим' - hex-verified
+        # bytes 4d/41/43).  Same word length and width, only the initial
+        # letter is Cyrillic now.  CP866 has no Ё, so 'Еще' stays without one.
+        ("CITYMGT.C", 1253): "Еще",
+        ("PEDIA.C", 99): "Еще",
+        ("CITYMGT.C", 1265, "AUTO."): "Авто.",
+        ("CITYMGT.C", 1265, "CHANGE"): "Строим",
+        # 'of the <nation>' tail: pack chain ' ' @0x303b1 before '...\n' @0x303bb.
+        ("AUDIENCE.C", 777): " ",
+        # revolution news / gov-change announcement: pack tails ('░Правительство
+        # \nбыло░свергнуто' @0x2f351) attach straight to the civ name.
+        ("CONTROL.C", 1130): "",
+        ("DIPLOMAC.C", 186): "",
+        # peace/ceasefire messages: pack ' and\n' slots are '░и\n'
+        # @0x2f373 (заключили @0x2f379) and @0x2f390 (прервали @0x2f396).
+        ("DIPLOMAC.C", 239, " and\\n"): "░и\n",
+        ("DIPLOMAC.C", 253, " and\\n"): "░и\n",
+        # science query: pack has only the 'wise men' slot 'нами' @0x2ed43
+        # ('В каком направлении надо\nработать' @0x2ed1c); the scientists slot
+        # is blanked, so the pack shows nothing there.
+        ("ECONOMY.C", 710, "scientists"): "",
+        # landform intro: pack merged the story heads into 'долина реки и '
+        # /'луга на ' @0x2ffc4/0x2ffd7 (mapped to 422); its 'river valley/
+        # grasslands on a ' slots are blanked.
+        ("NEWGAME.C", 424, "river valley on a "): "",
+        ("NEWGAME.C", 427, "grasslands on a "): "",
+        # civopedia page titles: the pack keeps one literal per page
+        # ('Развитие цивилизации' @0x30652, 'Развитие городов' @0x3067d,
+        # 'Чудеса Света' @0x3068e, 'Войска' @0x306ba, 'Территории' @0x306df);
+        # gap pairing had dumped three EN titles on the one slot 0x3067d.
+        ("PEDIA.C", 295): "Развитие цивилизации",
+        ("PEDIA.C", 310, "City Improvement"): "Развитие городов",
+        ("PEDIA.C", 310, "Wonder of the World"): "Чудеса Света",
+        ("PEDIA.C", 322, "Military Unit"): "Войска",
+        # advisor panel titles: pack titles already end in ':' (0x2f8b0
+        # 'Министр Обороны:'); no ' report:' slot exists.
+        ("DIALOG.C", 237): "",
+        # historian quote: pack categories are uppercase ('БОГАТЕЙШИЕ' etc.
+        # @0x30daa table); only the opening quote of 'The <cat> Civilizations'
+        # survives.
+        ("REPORTS.C", 351): "'",
+        # spaceship parts dialog: pack blanked the head slot; tail
+        # ' не надо.\n' is already applied at 473.
+        ("SPACESHP.C", 471): "",
+        # prerequisites connectors: ' и ' fits trivially between advance names
+        # ('Требуется: ' @371 is pack wording).
+        ("PEDIA.C", 375, " and "): " и ",
+        ("QUIZ.C", 116, " and "): " и ",
     }
-    drop = {("AUDIENCE.C", 931), ("CITYMGT.C", 1377), ("REPORTS.C", 293)}
-    rows = [r for r in rows if (r[0], r[1]) not in drop]
+    # 77) rows the pack has no counterpart for: drop them so apply-translation
+    # leaves the English literal (user decision 2026-10).  Entries may be
+    # (file, line) or (file, line, english) when only one row on a line is
+    # meant (NEWS.C 85: keep the EXTRA! pack row, revert FLASH to English).
+    drop = {("AUDIENCE.C", 931), ("CITYMGT.C", 1377), ("REPORTS.C", 293),
+            ("CITY.C", 645), ("CONTROL.C", 1386),
+            # show_help() keys below stay EN: the pack stores the *help.txt
+            # keys ('Land' @0x2e51a ... 'Age' @0x2e5ae) untranslated.
+            ("GAME.C", 779), ("GAME.C", 793), ("NEWS.C", 85, "FLASH"),
+            # show_help keys stay English: the pack help.txt keys are Latin
+            # (*LAND/*TEMPERATURE/*CLIMATE/*AGE), a RU key finds no section.
+            ("GAME.C", 804)}
+    rows = [r for r in rows if (r[0], r[1]) not in drop
+            and (r[0], r[1], r[2]) not in drop]
     seen = {(r[0], r[1], r[2]) for r in rows}
     for r in rows:
-        v = row_over.get((r[0], r[1], r[2])) or row_over.get((r[0], r[1]))
+        # 'or' would skip an intentional "" override - look the keys up by None.
+        v = row_over.get((r[0], r[1], r[2]))
+        if v is None:
+            v = row_over.get((r[0], r[1]))
         if v is not None:
             r[3], r[4], r[5] = v, "table", "exact"
             r[6] = v.encode("cp866").hex()

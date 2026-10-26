@@ -697,9 +697,9 @@ int audience_open(int civ, int x, int y)
             reveal(civnow, x - 8, y - 2);
         }
 reload_text:
-        strcpy(msgtext, "An emissary from the\n");
+        strcpy(msgtext, ""); /* reciv-ru */
         strcat(msgtext, civ_names[civ]);
-        strcat(msgtext, " \xA6\xA5\xAB\xA0\xEE\xE2 \xAF\xAE\xA3\xAE\xA2\xAE\xE0\xA8\xE2\xEC\xE1 \xA2\xA0\xAC\xA8\xC0\n"); /* reciv-ru */
+        strcat(msgtext, " \xA6\xA5\xAB\xA0\xEE\xE2 \xAF\xAE\xA3\xAE\xA2\xAE\xE0\xA8\xE2\xEC \xE1 \xA2\xA0\xAC\xA8\xC0\n"); /* reciv-ru */
         strcat(msgtext, "\x8F\xE0\xA8\xAC\xA8\xE2\xA5 \xAB\xA8 \xA2\xEB \xA8\xE5 ?\n \x84\xA0\xC0\n \x8D\xA5\xE2\xC0\n"); /* reciv-ru */
         if (treaties[civnow][civ] & 0x40) {
             strcat(msgtext, " \x8F\xE0\xAE\xA2\xA5\xE0\xA8\xE2\xEC \xA5\xA3\xAE \xE3\xE0\xAE\xA2\xA5\xAD\xEC\n"); /* reciv-ru */
@@ -761,7 +761,7 @@ void leader_greeting(int civ)
         strcat(msgtext, " ");
         break;
     case 2:
-        strcat(msgtext, "our most wise\n");
+        strcat(msgtext, "\xA4\xA0\xA2\xE8\xA8\xA9 \xE1\xAC\xA5\xE0\xE2\xAD\xEB\xAC\n\xE1\xE7\xA0\xE1\xE2\xEC\xA5\n"); /* reciv-ru */
         strcat(msgtext, leader_titles[civ_gov[civ]]);
         strcat(msgtext, ": ");
         strcat(msgtext, leader_names[civ]);
@@ -774,7 +774,7 @@ void leader_greeting(int civ)
         break;
     }
 
-    strcat(msgtext, "of the ");
+    strcat(msgtext, " "); /* reciv-ru */
     strcat(msgtext, civ_names[civ]);
     strcat(msgtext, "...\n");
     if (forces_present[civ][25] != 0) {

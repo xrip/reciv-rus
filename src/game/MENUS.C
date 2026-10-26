@@ -285,8 +285,16 @@ void world_menu(void)
 
     if (!(game_flags & 0xfe00))
         dialog_dim = 0x20;
+    /* reciv-ru: dim the wonders item (bit 0) while no wonder exists;
+     * dimmed menu rows are drawn dark and cannot be chosen (menu_core),
+     * the same rule the ship item above uses */
+    for (unused_word_c = 1; unused_word_c <= 21; unused_word_c++)
+        if (marvel_site[unused_word_c] != -1)
+            break;
+    if (unused_word_c > 21)
+        dialog_dim |= 0x01;
     strcpy(msgtext, " \x97\xE3\xA4\xA5\xE1\xA0 \x91\xA2\xA5\xE2\xA0 (F7)\n \x8B\xE3\xE7\xE8\xA8\xA5 5 \xA3\xAE\xE0\xAE\xA4\xAE\xA2 (F8)\n \x93\xE0\xAE\xA2\xA5\xAD\xEC \xE6\xA8\xA2\xA8\xAB\xA8\xA7\xA0\xE6\xA8\xA8 (F9)\n"); /* reciv-ru */
-    strcat(msgtext, " \x8A\xA0\xE0\xE2\xA0 \x8C\xA8\xE0\xA0 (F10)\n \x84\xA5\xAC\xAE\xA3\xE0\xA0\xE4\xA8\xEF\n \x8A\xAE\xE1.\x8A\xAE\xE0\xA0\xA1\xAB\xEC\n"); /* reciv-ru */
+    strcat(msgtext, " \x8A\xA0\xE0\xE2\xA0 \x8C\xA8\xE0\xA0 (F10)\n \x84\xA5\xAC\xAE\xA3\xE0\xA0\xE4\xA8\xEF\n \x8A\xAE\xE1\xAC\xA8\xE7\xA5\xE1\xAA\xA8\xA9 \xAA\xAE\xE0\xA0\xA1\xAB\xEC\n"); /* reciv-ru */
     choice_h = menu_choose(msgtext, 0x90, 8);
     mouse_off();
     menu_end();

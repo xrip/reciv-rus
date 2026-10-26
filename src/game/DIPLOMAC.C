@@ -183,7 +183,7 @@ again:
                 strcat(msgtext, "!\n");
                 treaties[civ][0] &= ~4;
             } else {
-                strcat(msgtext, "The ");
+                strcat(msgtext, ""); /* reciv-ru */
                 strcat(msgtext, civ_adjectives[civ]);
                 strcat(msgtext, "\xB0\x8F\xE0\xA0\xA2\xA8\xE2\xA5\xAB\xEC\xE1\xE2\xA2\xAE\n\xA1\xEB\xAB\xAE\xB0\xE1\xA2\xA5\xE0\xA3\xAD\xE3\xE2\xAE\xC2\n"); /* reciv-ru */
                 treaties[civ][0] |= 4;
@@ -236,7 +236,7 @@ void diplomacy_event(int a, int b, int c, int d)
             if ((treaties[civnow][a] & 0x40)
                 || (treaties[civnow][b] & 0x40)) {
                 strcpy(msgtext, civ_names[a]);
-                strcat(msgtext, " and\n");
+                strcat(msgtext, "\xB0\xA8\n"); /* reciv-ru */
                 strcat(msgtext, civ_names[b]);
                 strcat(msgtext, "\xB0\xA7\xA0\xAA\xAB\xEE\xE7\xA8\xAB\xA8\n\xA4\xAE\xA3\xAE\xA2\xAE\xE0.\n"); /* reciv-ru */
                 message_mode = 1;
@@ -250,7 +250,7 @@ void diplomacy_event(int a, int b, int c, int d)
         if ((treaties[civnow][a] & 0x40)
             || (treaties[civnow][b] & 0x40)) {
             strcpy(msgtext, civ_names[a]);
-            strcat(msgtext, " and\n");
+            strcat(msgtext, "\xB0\xA8\n"); /* reciv-ru */
             strcat(msgtext, civ_names[b]);
             strcat(msgtext, (treaties[a][b] & 2) ? " \xAF\xE0\xA5\xE0\xA2\xA0\xAB\xA8\n\xA4\xAE\xA3\xAE\xA2\xAE\xE0.\n" : " \xA2 \xE1\xAE\xE1\xE2\xAE\xEF\xAD\xA8\xA8\n\xA2\xAE\xA9\xAD\xEB.\n"); /* reciv-ru */
             message_mode = 1;

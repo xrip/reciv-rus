@@ -37,7 +37,8 @@ and unpack; the data segment is plaintext in the packed file.)
 - `pairs.csv` - all EXE offset pairs with kinds.
 - `unmatched-src.txt`, `unmatched-ru.txt`, `syncs.txt`, `stats.txt`.
 
-Current result: 1170/1198 mapped (621 table, 506 gap, 43 interp).
+Current result: 1164/1198 mapped (641 table, 497 gap, 26 interp); the `drop`
+set and `unmatched-src.txt` are the literals that stay English on purpose.
 
 ## Applying
 

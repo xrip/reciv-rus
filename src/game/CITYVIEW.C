@@ -334,7 +334,10 @@ again:
         sprite_draw(back_page, 0, 115, city_structure_glyphs[11]);
     }
     scrbuf->number = 1;
-    scrbuf->font = 6;
+    scrbuf->font = 7;   /* reciv-ru: same as the founding banner - the pack
+                         * draws this name/year header in the 20h..EFh serif
+                         * (entry 7, 278Ch); entry 6 (1a74h) is Cyrillic-only
+                         * and would swallow the ASCII year digits */
     if (title[0] == 0) {
         msgtext[0] = 0;
         append_place_name(city);

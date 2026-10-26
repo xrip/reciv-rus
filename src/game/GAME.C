@@ -771,12 +771,12 @@ start:
         editing = 1;
         for (;;) {
             set_text_pos(210, 61);
-            strcpy(msgtext, ""); /* reciv-ru */
+            strcpy(msgtext, "\x92\xA5\xAC\xAF\xA5\xE0\xA0\xE2\xE3\xE0\xA0:\n \x95\xAE\xAB\xAE\xA4\xAD\xAE\n \x92\xA5\xAF\xAB\xAE\n \x86\xA0\xE0\xAA\xAE\n"); /* reciv-ru */
             custom_params[1] = show_menu(msgtext, 200, 51);
             if (custom_params[1] == -1)
                 continue;
             if (edit_mode) {
-                show_help(""); /* reciv-ru */
+                show_help("Temperature");
                 editing = custom_params[1];
                 continue;
             }
@@ -785,23 +785,23 @@ start:
         editing = 1;
         for (;;) {
             set_text_pos(210, 111);
-            strcpy(msgtext, ""); /* reciv-ru */
+            strcpy(msgtext, "\x8A\xAB\xA8\xAC\xA0\xE2:\n \x91\xE3\xE5\xAE\xA9\n \x8D\xAE\xE0\xAC.\n \x82\xAE\xA4\xA0\n"); /* reciv-ru */
             custom_params[2] = show_menu(msgtext, 200, 101);
             if (custom_params[2] == -1)
                 continue;
             if (edit_mode) {
-                show_help(""); /* reciv-ru */
+                show_help("Climate");
                 editing = custom_params[2];
                 continue;
             }
             editing = 1;
             do {
                 set_text_pos(210, 161);
-                strcpy(msgtext, ""); /* reciv-ru */
+                strcpy(msgtext, "\x9D\xE0\xA0:\n 3 \xAC\xA8\xAB\xAB\xA8\xA0\xE0\xA4\xA0 \xAB\xA5\xE2\n 4 \xAC\xA8\xAB\xAB\xA8\xA0\xE0\xA4\xA0 \xAB\xA5\xE2\n 5 \xAC\xA8\xAB\xAB\xA8\xA0\xE0\xA4\xAE\xA2   \n"); /* reciv-ru */
                 custom_params[3] = show_menu(msgtext, 200, 151);
             } while (custom_params[3] == -1);
             if (edit_mode) {
-                show_help("\x80\xAD\xA3\xAB\xA8\xE7\xA0\xAD\xA5"); /* reciv-ru */
+                show_help("Age");
                 editing = custom_params[3];
                 continue;
             }

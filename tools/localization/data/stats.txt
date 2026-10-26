@@ -2,5 +2,5 @@ anchors EN=77 RU=77
 literals EN=1948 RU=2991
 syncs=1514 backbone=1503
 pairs=1543 gap=1140
-src literals=1198 mapped=1170 unmapped=44
+src literals=1198 mapped=1164 unmapped=44
 unmatched RU=1535

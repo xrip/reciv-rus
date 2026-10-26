@@ -421,10 +421,10 @@ int rate_starts(void)
         }
         strcpy(msgtext, oceans ? "\xA4\xAE\xAB\xA8\xAD\xA0 \xE0\xA5\xAA\xA8 \xA8 " : "\xAB\xE3\xA3\xA0 \xAD\xA0 "); /* reciv-ru */
         if (river > 1) {
-            strcat(msgtext, "river valley on a ");
+            strcat(msgtext, ""); /* reciv-ru */
             val += 2;
         } else if (grass >= 3) {
-            strcat(msgtext, "grasslands on a ");
+            strcat(msgtext, ""); /* reciv-ru */
             val++;
         } else
             strcat(msgtext, "\xE0\xA0\xA2\xAD\xA8\xAD\xEB \xAD\xA0 "); /* reciv-ru */

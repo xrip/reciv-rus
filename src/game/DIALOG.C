@@ -234,7 +234,7 @@ int menu_layout(char *text, int x, int y, int preset)
             else {
                 strcpy(buf, advisor_title[advisor]);
                 if (advisor <= 2)
-                    strcat(buf, " report:");
+                    strcat(buf, ""); /* reciv-ru */
                 title_width_or_gap_h = string_width(buf);
                 if (panel_frame_rim < x + title_width_or_gap_h + 8)
                     panel_frame_rim = x + title_width_or_gap_h + 8;

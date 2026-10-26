@@ -1127,7 +1127,7 @@ sc:                            /* scroll map */
                     if (show_msg(msgtext, 64, 80) != 1)
                         break;
                     civ_gov[civ] = 0;
-                    strcpy(msgtext, "The ");
+                    strcpy(msgtext, ""); /* reciv-ru */
                     strcat(msgtext, civ_names[civ]);
                     strcat(msgtext, "\xB0\xA1\xA0\xE1\xE2\xE3\xA5\xE2\xC0\xB0\x86\xA8\xE2\xA5\xAB\xA8\n\xE2\xE0\xA5\xA1\xE3\xEE\xE2\xB0\xAD\xAE\xA2\xEB\xA9\xB0\xA3\xAE\xE1\xC0\xE1\xE2\xE0\xAE\xA9\xC0\n"); /* reciv-ru */
                     news_box(-1);
@@ -1383,8 +1383,11 @@ void uinit(int player, int unit)
     panel_prep(0, 97, 80, 103);
     if (unit == 128) {
         draw_string("\x8A\xAE\xAD\xA5\xE6 \xE5\xAE\xA4\xA0", 4, 124, 0); /* reciv-ru */
-        draw_string("", 4, 136, 0); /* reciv-ru */
-        draw_string("\x8D\xA0\xA6\xAC\xA8\xE2\xA5 Entr", 4, 144, 0); /* reciv-ru */
+        /* reciv-ru: the pack blanks the English prompt here; its panel
+         * shows the RU prompt only.  The EN and RU prompts said the same
+         * thing, so the merged prompt (mapping row 1387) stays at the
+         * pack's prompt position (144) */
+        draw_string("\x8D\xA0\xA6\xAC\xA8 Enter", 4, 144, 0); /* reciv-ru */
     } else {
         y29 = 99;
         strcpy(msgtext, civ_adjectives[player]);

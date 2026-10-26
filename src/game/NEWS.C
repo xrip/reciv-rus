@@ -53,28 +53,28 @@ void news_box(int city)
     switch (rand_scaled(4)) {
     case 0:
         append_place_name(city);
-        strcat(msgtext, "\xB0\x91\xA2\xA5\xE0\xE5\xE3"); /* reciv-ru */
+        strcat(msgtext, "\xB0\x8D\xA5\xA4\xA5\xAB\xEF"); /* reciv-ru */
         break;
     case 1:
         append_place_name(city);
-        strcat(msgtext, "\xB0\x82\xE7\xA5\xE0\xA0"); /* reciv-ru */
+        strcat(msgtext, "\xB0\x91\xA5\xA3\xAE\xA4\xAD\xEF"); /* reciv-ru */
         break;
     case 2:
         strcpy(msgtext, "    "); /* reciv-ru */
         append_place_name(city);
-        strcat(msgtext, "\xB0\x91\xA1\xAE\xAA\xE3"); /* reciv-ru */
+        strcat(msgtext, "\xB0\x82\xE0\xA5\xAC\xEF"); /* reciv-ru */
         break;
     case 3:
         strcpy(msgtext, "    "); /* reciv-ru */
         append_place_name(city);
-        strcat(msgtext, "\xB0\x82\xA5\xE7\xA5\xE0\xAE\xAC"); /* reciv-ru */
+        strcat(msgtext, "\xB0\x92\xE0\xA8\xA1\xE3\xAD\xA0"); /* reciv-ru */
         break;
     }
     n = string_width(msgtext);
     if (n > 300) {
         msgtext[0] = 0;
         append_place_name(city);
-        strcat(msgtext, "\xB0\x84\xAD\xA5\xAC"); /* reciv-ru */
+        strcat(msgtext, "\xB0\x8D\xAE\xA2\xAE\xE1\xE2\xA8"); /* reciv-ru */
         n = string_width(msgtext);
     }
     if (n < 200) {
@@ -82,7 +82,7 @@ void news_box(int city)
         draw_string_dim(",-.", 268, 11, 0);
     }
     draw_text(msgtext, 160, 11, 0);
-    strcpy(msgtext, rand_scaled(2) ? "\xBD\xBE\xBF" : ""); /* reciv-ru */
+    strcpy(msgtext, rand_scaled(2) ? "\xBD\xBE\xBF" : "FLASH"); /* reciv-ru */
     scrbuf->font = 3;
     draw_string_dim(msgtext, 6, 3, 0);
     draw_string_dim(msgtext, 272, 3, 0);

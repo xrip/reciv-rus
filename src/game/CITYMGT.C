@@ -1250,7 +1250,7 @@ label_support_restart:
         draw_line(231, 0, 250, 0, 0);
         draw_line(231, 1, 250, 1, 1);
         if (bld_pages_p & 2)
-            draw_button(287, 88, 315, 96, "M\xA5\xE9\xA5", 9); /* reciv-ru */
+            draw_button(287, 88, 315, 96, "\x85\xE9\xA5", 9); /* reciv-ru */
         recolour_rect(scrbuf, 309, 2, 8, 96, 14, 12);
         if (townbuf[city].production >= 0)
             cost_h = utypes[townbuf[city].production].cost;
@@ -1262,7 +1262,7 @@ label_support_restart:
         draw_y_k = ((cost_h - 1) / scale_i) * 8 + 8;
         rect_fill(scrbuf, 230, 99, draw_x_l + 3, draw_y_k + 19, 1);
         if (selected_owner == civnow) {
-            draw_button(231, 106, 263, 114, (townbuf[city].status & 0x10) ? "A\xA2\xE2\xAE." : "C\xE2\xE0\xAE\xA8\xAC", 9); /* reciv-ru */
+            draw_button(231, 106, 263, 114, (townbuf[city].status & 0x10) ? "\x80\xA2\xE2\xAE." : "\x91\xE2\xE0\xAE\xA8\xAC", 9); /* reciv-ru */
             draw_button(294, 106, 311, 114, "\x8A\xE3\xAF", 9); /* reciv-ru */
         }
         if (townbuf[city].production >= 0) {
@@ -1373,7 +1373,7 @@ label_support_restart:
                 sprite_draw(scrbuf, index_i * draw_y_k + 98, (index_i & 1) + 161, village_icons);
         }
         if (selected_owner == civnow) {
-            draw_button(284, 190, 316, 198, "\x8A\xAE\xAD\xE6", 12); /* reciv-ru */
+            draw_button(284, 190, 316, 198, "\x8A\xAE\xAD\xA5\xE6", 12); /* reciv-ru */
             draw_button(231, 190, 272, 198, "RENAME", 9);
             flash_c = 0;
             if (townbuf[city].production < 0 && townbuf[city].production >= -21 && (townbuf[city].buildings & (1L << (-townbuf[city].production - 1))))

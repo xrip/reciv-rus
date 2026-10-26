@@ -96,7 +96,7 @@ int pedia_list(int start, int category)
     draw_text("\x9D\x8D\x96\x88\x8A\x8B\x8E\x8F\x85\x84\x88\x9F \x96\x88\x82\x88\x8B\x88\x87\x80\x96\x88\x88", 160, 3, 10); /* reciv-ru */
     draw_string("EXIT", 286, 4, 12);
     if (category == -1)
-        draw_string("M\xA5\xE9\xA5", 8, 4, 12); /* reciv-ru */
+        draw_string("\x85\xE9\xA5", 8, 4, 12); /* reciv-ru */
     rect_fill(scrbuf, 2, 14, 316, 184, 15);
     width = category <= 0 ? 100 : 150;
     x = 10;
@@ -292,7 +292,7 @@ void pedia_show(int index, int kind)
             blit_centred(pic % 3 * 111 + 1, pic % 9 / 3 * 69 + 1, 110, 68, 62, 42);
         }
         strcpy(msgtext, advances[index].name);
-        draw_text("Civilization Advance", title_x, 36, 7);
+        draw_text("\x90\xA0\xA7\xA2\xA8\xE2\xA8\xA5 \xE6\xA8\xA2\xA8\xAB\xA8\xA7\xA0\xE6\xA8\xA8", title_x, 36, 7); /* reciv-ru */
         break;
     case 1:
         if (!disk_insert(1, 0L))
@@ -307,7 +307,7 @@ void pedia_show(int index, int kind)
             free_block(sprite);
         }
         strcpy(msgtext, improvements[index].name);
-        draw_text(index <= 24 ? "City Improvement" : "\x90\xA0\xA7\xA2\xA8\xE2\xA8\xA5 \xE6\xA8\xA2\xA8\xAB\xA8\xA7\xA0\xE6\xA8\xA8", title_x, 36, 7); /* reciv-ru */
+        draw_text(index <= 24 ? "\x90\xA0\xA7\xA2\xA8\xE2\xA8\xA5 \xA3\xAE\xE0\xAE\xA4\xAE\xA2" : "\x97\xE3\xA4\xA5\xE1\xA0 \x91\xA2\xA5\xE2\xA0", title_x, 36, 7); /* reciv-ru */
         break;
     case 2:
         if (!no_pictures) {
@@ -319,7 +319,7 @@ void pedia_show(int index, int kind)
             blit_centred((pic & 1) * 160 + 1, pic % 6 / 2 * 61, 158, 61, 88, 42);
         }
         strcpy(msgtext, utypes[index].name);
-        draw_text("\x90\xA0\xA7\xA2\xA8\xE2\xA8\xA5 \xA3\xAE\xE0\xAE\xA4\xAE\xA2", title_x, 36, 7); /* reciv-ru */
+        draw_text("\x82\xAE\xA9\xE1\xAA\xA0", title_x, 36, 7); /* reciv-ru */
         sprite_draw(scrbuf, 216, 48, colour_unit_glyph[32 + index]);    /* civ colour 1 */
         break;
     case 3:
@@ -372,7 +372,7 @@ void pedia_show(int index, int kind)
             strcat(msgtext, advances[advances[index].prereq1].name);
         }
         if (advances[index].prereq2 != -1) {
-            strcat(msgtext, " and ");
+            strcat(msgtext, " \xA8 "); /* reciv-ru */
             strcat(msgtext, advances[advances[index].prereq2].name);
         }
         draw_string(msgtext, 32, y, 1);

@@ -828,6 +828,10 @@ static uint8_t *font_metrics(int16_t font)
 {
     if ((uint16_t) font > peek16(DRV(FONTS)) || !font)
         return NULL;
+    /* The assembly (RU MGRAPHIC.EXE 154Bh: cmp di,[630h], shl di,1,
+     * mov di,[di + 630h]) indexes the table at 630h + 2n.  The count word
+     * sits in slot 0 of that same indexing (font 0 is rejected before it),
+     * so entry n belongs to font n, not n - 1. */
     return DRV(FONTS + peek16(DRV(FONTS + font * 2)));
 }
 

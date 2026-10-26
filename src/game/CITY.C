@@ -642,7 +642,7 @@ restart_score:
         strcpy(msgtext, "\x8E\xA1\xE9\xA8\xA9 \xA1\xA0\xAB\xAB: "); /* reciv-ru */
         strcat(msgtext, itoa(civ_ratings[0], nstr, 10));
     } else {
-        strcpy(msgtext, ""); /* reciv-ru */
+        strcpy(msgtext, "Bonus Score: ");
         strcat(msgtext, itoa(bonus_score, nstr, 10));
         civ_ratings[0] = bonus_score;
     }

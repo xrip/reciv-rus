@@ -514,11 +514,13 @@ void rate_civs(void)
 void draw_banner(void)
 {
     rect_fill(scrbuf, 0, 0, 320, 8, 0);
+    /* reciv-ru: re-spaced for the proportional RU labels (widths
+     * 36/53/61/32/75 px): 8 52 113 182 222, last ends at 297 < 320 */
     draw_string("G)\x88\xA3\xE0\xA0", 8, 1, 15); /* reciv-ru */
-    draw_string("O)\x8A\xAE\xAC\xA0\xAD\xA4\xEB", 64, 1, 15); /* reciv-ru */
-    draw_string("A)\x91\xAE\xA2\xA5\xE2\xAD\xA8\xAA\xA8", 128, 1, 15); /* reciv-ru */
-    draw_string("W)\x8C\xA8\xE0", 192, 1, 15); /* reciv-ru */
-    draw_string("C)\x96\xA8\xA2\xA8\xAB\xAE\xAF\xA5\xA4\xA8\xEF", 240, 1, 15); /* reciv-ru */
+    draw_string("O)\x8A\xAE\xAC\xA0\xAD\xA4\xEB", 52, 1, 15); /* reciv-ru */
+    draw_string("A)\x91\xAE\xA2\xA5\xE2\xAD\xA8\xAA\xA8", 113, 1, 15); /* reciv-ru */
+    draw_string("W)\x8C\xA8\xE0", 182, 1, 15); /* reciv-ru */
+    draw_string("C)\x96\xA8\xA2\xA8\xAB\xAE\xAF\xA5\xA4\xA8\xEF", 222, 1, 15); /* reciv-ru */
 }
 
 void status_draw(void)
@@ -548,10 +550,13 @@ void status_draw(void)
     draw_string(msgtext, 2, 81, 0);
     unit = civnow * 2;
     a = *(int *) ((char *) civ_research_tally + unit) * 4 / ((cur_tier * 2 + cost_penalty + 6) * *(int *) ((char *) tech_count + unit) * (year < 0 ? 1 : 2) + 1);
-    blit(tile_page, clamp(a, 0, 3) * 8 + 160, 120, 8, 8, scrbuf, 48, 80);
+    /* reciv-ru: format_year now writes «░до н.э.» (62px max at x2), so the
+     * research/warmth blurb tiles move from 48/56 to 64/72 - still inside
+     * the 80px status panel */
+    blit(tile_page, clamp(a, 0, 3) * 8 + 160, 120, 8, 8, scrbuf, 64, 80);
     if (warm_levels) {
         a = clamp(warm_levels / 4, 0, 3);
-        blit(tile_page, a * 8 + 160, 128, 8, 8, scrbuf, 56, 80);
+        blit(tile_page, a * 8 + 160, 128, 8, 8, scrbuf, 72, 80);
     }
     msgtext[0] = 0;
     strcat(msgtext, itoa(money[civnow], nstr, 10));
@@ -667,7 +672,7 @@ int cost_sum(int n)
 void format_year(void)
 {
     strcat(msgtext, itoa(abs(year), nstr, 10));
-    strcat(msgtext, year < 0 ? "\xB0\xA4\xAD\xED" : "\xB0\xAD\xED"); /* reciv-ru */
+    strcat(msgtext, year < 0 ? "\xB0\xA4\xAE \xAD.\xED." : "\xB0\xAD.\xED."); /* reciv-ru */
 }
 
 /* Non-prototype ABI calls below; NOLINTBEGIN(clang-diagnostic-deprecated-non-prototype) */

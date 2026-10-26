@@ -113,7 +113,7 @@ int a;
                 adv2 = advances[next].prereq2;
                 if (adv2 != -1) {
                     strcat(msgtext, advances[adv1].name);
-                    strcat(msgtext, " and ");
+                    strcat(msgtext, " \xA8 "); /* reciv-ru */
                     strcat(msgtext, advances[adv2].name);
                     strcat(msgtext, "\n ");
                     n++;

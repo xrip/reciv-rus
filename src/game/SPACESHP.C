@@ -468,7 +468,7 @@ retry:
         spaceships[civ][ship_layout[k][0]][ship_layout[k][1]] = ship_layout[k][2];
     } else if (type) {
         ship_state[type] |= 1 << item;
-        strcpy(msgtext, "No further ");
+        strcpy(msgtext, ""); /* reciv-ru */
         strcat(msgtext, ship_parts[type * 3 + item].name);
         strcat(msgtext, " \xAD\xA5 \xAD\xA0\xA4\xAE.\n"); /* reciv-ru */
         show_msg(msgtext, 120, 80);

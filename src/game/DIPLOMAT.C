@@ -150,7 +150,7 @@ void dip_menu(int city_id, int player, int unit_id)
         }
         if (player != civnow) {
         } else {
-            show_msg("\x8D\xAE\xA2\xEB\xE5 \xE2\xA5\xE5\xAD\xAE\xAB\xAE\xA3\xA8\xA5 \xAD\xA5\xE2.\n", 80, 80); /* reciv-ru */
+            show_msg("\x8D\xAE\xA2\xEB\xE5 \xE2\xA5\xE5\xAD\xAE\xAB\xAE\xA3\xA8\xA9 \xAD\xA5\xE2.\n", 80, 80); /* reciv-ru */
             return;
         }
 
@@ -452,8 +452,13 @@ void city_founded(int city_id)
     append_place_name(city_id);
     strcat(msgtext, "\xB0\xAE\xE1\xAD\xAE\xA2\xA0\xAD\xC5\xB0"); /* reciv-ru */
     format_year();
-    strcat(msgtext, "\xC0"); /* reciv-ru */
-    scrbuf->font = 6;
+    /* reciv-ru: format_year now ends with «░до н.э.»; the pack's «└» period
+     * marker (drawn as a dot after «░днэ») is dropped - the expanded era
+     * already ends in a '.' (it printed «н.э..») */
+    scrbuf->font = 7;   /* reciv-ru: the pack banner draws in the 20h..EFh serif
+                         * font (Russian FONTS.CV entry 7 at 278Ch); entry 6 is
+                         * the Cyrillic-only 80h..EFh font at 1a74h, whose range
+                         * swallows the ASCII year digits */
     draw_text(msgtext, 160, 4, 0);
     scrbuf->font = 1;
     blit(back_page, 0, 120, 320, 40, back_page, 0, 0);

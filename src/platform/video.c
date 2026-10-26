@@ -5,10 +5,15 @@
  * (256 entries of 6-bit RGB). This file shows that memory through the DAC
  * in a window, at the 4:3 shape of the monitor it was drawn for, and turns
  * window events into keyboard and mouse input. */
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
 #include <SDL3/SDL.h>
+#if defined(_WIN32)
+#include <windows.h>
+#undef TEXT   /* windows.h and the VGA text-mode code both define this */
+#endif
 
 #include "reciv.h"
 #include "filters.h"
@@ -43,6 +48,8 @@ static uint64_t last_present;
 static SDL_FRect view;                   /* where the 320x200 picture is drawn */
 
 /* Presentation only: the VGA pixels stay original. */
+static void dump_shot(int force);
+
 int reciv_video_filter(const char *name)
 {
     static const char *names[] = {"nearest", "sharp", "bilinear", "hq4x"};
@@ -75,9 +82,16 @@ int reciv_video_text_filter(const char *name)
 
 void reciv_video_open(void)
 {
+    SDL_WindowFlags flags = SDL_WINDOW_RESIZABLE;
+#if defined(_WIN32)
+    /* Test mode (RECIV_SHOTS): create hidden and show without activating, so
+     * starting the game never steals the keyboard from the user. */
+    if (getenv("RECIV_SHOTS"))
+        flags |= SDL_WINDOW_HIDDEN;
+#endif
     if (!SDL_Init(SDL_INIT_VIDEO | SDL_INIT_EVENTS))
         reciv_fatal("SDL_Init: %s", SDL_GetError());
-    window = SDL_CreateWindow("Civilization", 960, 720, SDL_WINDOW_RESIZABLE);
+    window = SDL_CreateWindow("Civilization", 960, 720, flags);
     if (!window)
         reciv_fatal("SDL_CreateWindow: %s", SDL_GetError());
     renderer = SDL_CreateRenderer(window, NULL);
@@ -117,6 +131,15 @@ void reciv_video_open(void)
         }
     }
     SDL_HideCursor();
+#if defined(_WIN32)
+    if (flags & SDL_WINDOW_HIDDEN) {
+        HWND hwnd = (HWND) SDL_GetPointerProperty(SDL_GetWindowProperties(window),
+                                                  SDL_PROP_WINDOW_WIN32_HWND_POINTER, NULL);
+        if (hwnd)
+            SetWindowPos(hwnd, 0, 0, 0, 0, 0,
+                         SWP_SHOWWINDOW | SWP_NOACTIVATE | SWP_NOMOVE | SWP_NOSIZE | SWP_NOZORDER);
+    }
+#endif
 }
 
 void reciv_video_dirty(void)
@@ -381,12 +404,61 @@ static void present_graphics_text(void)
     SDL_RenderTexture(renderer, display, NULL, &view);
 }
 
+/* RECIV_SHOTS=<dir>: dump the exact pixels of each present as <dir>/reciv.ppm
+ * (written to a temp name and renamed, so a reader never sees a half file).
+ * This is a screenshot-harness aid for the test scripts: no window capture,
+ * no focus use, works with the window in the background.  With the variable
+ * unset (normal play) the function returns before touching anything. */
+static void dump_shot(int force)
+{
+    static const char *dir;
+    static uint64_t last;
+    static uint8_t rgb[320 * 200 * 3];
+    char path[1024];
+    FILE *f;
+
+    if (!dir) {
+        dir = getenv("RECIV_SHOTS");
+        if (!dir)
+            dir = "";
+    }
+    if (!*dir)
+        return;
+    uint64_t now = SDL_GetTicksNS();
+    if (!force && now - last < 200000000)   /* 200 ms */
+        return;
+    last = now;
+    for (int i = 0; i < 320 * 200; i++) {
+        uint32_t p = split_text && text_pixels[i] ? text_pixels[i] : frame_pixels[i];
+        rgb[i * 3] = (uint8_t) (p >> 16);
+        rgb[i * 3 + 1] = (uint8_t) (p >> 8);
+        rgb[i * 3 + 2] = (uint8_t) p;
+    }
+    SDL_snprintf(path, sizeof path, "%s/reciv.ppm.part", dir);
+    f = fopen(path, "wb");
+    if (!f) {
+        reciv_log("RECIV_SHOTS: cannot write %s", path);
+        dir = "";   /* one warning is enough */
+        return;
+    }
+    fprintf(f, "P6\n320 200\n255\n");
+    fwrite(rgb, 1, sizeof rgb, f);
+    fclose(f);
+    char final_path[1024];
+    SDL_snprintf(final_path, sizeof final_path, "%s/reciv.ppm", dir);
+    remove(final_path);   /* Windows rename() refuses an existing target */
+    rename(path, final_path);
+}
+
 /* Show the screen; at most once per video frame unless forced. */
 void reciv_video_present(int force)
 {
     uint64_t now = SDL_GetTicksNS();
     uint32_t palette[256];
 
+    /* The harness dump does not care about dirty/redraw: frame_pixels holds
+     * the last composed screen, so dump every call (throttled inside). */
+    dump_shot(0);
     if (!force && (!dirty || now - last_present < 14000000))
         return;
     last_present = now;

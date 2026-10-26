@@ -348,7 +348,7 @@ void historian_report(void)
     strcpy(msgtext, historians[rand_scaled(4)]);
     strcat(msgtext, " \xA7\xA0\xA2\xA5\xE0\xE8\xA8\xAB \xE1\xA2\xAE\xA9 \xAC\xA0\xAD\xE3\xE1\xAA\xE0\xA8\xAF\xE2:"); /* reciv-ru */
     draw_text(msgtext, 160, 4, 15);
-    strcpy(msgtext, "'The ");
+    strcpy(msgtext, "'"); /* reciv-ru */
     strcat(msgtext, categories[cat]);
     strcat(msgtext, " \xE6\xA8\xA2\xA8\xAB\xA8\xA7\xA0\xE6\xA8\xA8 \xA2 \xAC\xA8\xE0\xA5'"); /* reciv-ru */
     draw_text(msgtext, 160, 12, 15);
