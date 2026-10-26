@@ -1,13 +1,23 @@
 #!/usr/bin/env python3
 """Apply the EN -> RU mapping (mapping.csv) to the display literals in src/game/*.C.
 
-Replaces each mapped C string literal with the Russian bytes written as C escapes
-(\\xNN, \\n), so src/game stays plain ASCII and the period build sees the exact
-CP866 bytes. Changed lines get a /* reciv-ru */ marker. Files keep CRLF endings.
+Each mapped C string literal becomes  TRANSLATE("english", "RU")  - readable in
+the source.  The Russian text goes to data/ru.lang (tab-separated: FILE.C, line,
+english literal body, russian text; the russian column is plain UTF-8 text made
+of CP866 characters, with \\n \\t \\r \" \\\\ \\xNN escape texts where the text
+cannot show a byte).  The build tool tools/localization/langgen.c expands the
+calls back into escaped CP866 literals, so the period code itself stays plain
+ASCII.  Changed lines get a /* reciv-ru */ marker.  Files keep CRLF endings.
+
+ru.lang is regenerated from the FINAL wrapped tree (after the code fixes that
+add lines, so the recorded line numbers match what langgen will see).  Manual
+edits of the russian column are kept while their key (file, line, english)
+still exists; stale manual keys are reported and dropped.
 
 Usage:
   python tools/localization/apply-translation.py
       [--csv tools/localization/data/mapping.csv]
+      [--lang tools/localization/data/ru.lang]
       [--src src/game]
       [--methods table,gap]
       [--dry-run]
@@ -15,20 +25,25 @@ Usage:
 
 import argparse
 import csv
+import re
 import sys
 from collections import defaultdict
 from pathlib import Path
 
 COMMENT = b" /* reciv-ru */"
 
+TRANSLATE_RE = re.compile(rb'TRANSLATE\("((?:\\.|[^"\\])*)", "RU"\)')
+
 # One-off code-semantic fixes kept in sync with the literal mapping, so a
-# regenerated src/game gets them too. Each entry: file, old bytes, new bytes.
+# regenerated src/game gets them too.  Each entry: file, old bytes, new bytes.
+# They run after the TRANSLATE wrapping, so their old/new match the wrapped
+# text where a wrapped literal is involved.
 CODE_FIXES = [
     # SAVE.C choose_drive(): drive_choice is 'unsigned int' = unsigned short
     # with a 0xFFFF init; MSC (16-bit int) compared it with -1 as 0xFFFF.
     # Modern C promotes both sides to 32-bit int, making the sentinel test
     # always false, so _dos_getdrive() was skipped and the dialog's drive
-    # letter slot stayed blank. Force the 16-bit comparison MSC did.
+    # letter slot stayed blank.  Force the 16-bit comparison MSC did.
     ("SAVE.C", b"if (drive_choice == -1) {",
      b"if (drive_choice == (unsigned short)-1) { /* reciv: MSC 16-bit "
      b"compare: 0xFFFF sentinel equals -1 */"),
@@ -62,7 +77,7 @@ CODE_FIXES = [
     # the period marker is dropped (the expanded era ends in '.' already).
     ("DIPLOMAT.C",
      b"format_year();\r\n"
-     b"    strcat(msgtext, \"\\xC0\"); /* reciv-ru */\r\n"
+     b"    strcat(msgtext, \".\");\r\n"
      b"    scrbuf->font = 6;",
      b'format_year();\r\n    /* reciv-ru: format_year now'
      b" ends with \xc2\xab\xe2\x96\x91\xd0\xb4\xd0\xbe \xd0\xbd.\xd1\x8d.\xc2\xbb; the pack's \xc2\xab\xe2\x94\x94\xc2"
@@ -95,29 +110,29 @@ CODE_FIXES = [
     # row_over ("CONTROL.C", 1387) and draw it at the pack's prompt line.
     ("CONTROL.C",
      b"        draw_string(\"Press Enter\", 4, 136, 0);\r\n"
-     b"        draw_string(\"\\x8D\\xA0\\xA6\\xAC\\xA8 Enter\", 4, 144, 0); /* reciv-ru */",
+     b"        draw_string(TRANSLATE(\"to continue\", \"RU\"), 4, 144, 0); /* reciv-ru */",
      b"        /* reciv-ru: the pack blanks the English prompt here; its panel\r\n"
      b"         * shows the RU prompt only.  The EN and RU prompts said the same\r\n"
      b"         * thing, so the merged prompt (mapping row 1387) stays at the\r\n"
      b"         * pack's prompt position (144) */\r\n"
-     b"        draw_string(\"\\x8D\\xA0\\xA6\\xAC\\xA8 Enter\", 4, 144, 0); /* reciv-ru */"),
+     b"        draw_string(TRANSLATE(\"to continue\", \"RU\"), 4, 144, 0); /* reciv-ru */"),
 
     # TURN.C draw_banner(): the RU menu labels are wider than the English
     # 64px slots - "A)..." ran into "W)..." and "C)..." past the 320px edge.
     # Re-space x by the measured RU widths (36/53/61/32/75 px).
     ("TURN.C",
-     b"    draw_string(\"G)\\x88\\xA3\\xE0\\xA0\", 8, 1, 15); /* reciv-ru */\r\n"
-     b"    draw_string(\"O)\\x8A\\xAE\\xAC\\xA0\\xAD\\xA4\\xEB\", 64, 1, 15); /* reciv-ru */\r\n"
-     b"    draw_string(\"A)\\x91\\xAE\\xA2\\xA5\\xE2\\xAD\\xA8\\xAA\\xA8\", 128, 1, 15); /* reciv-ru */\r\n"
-     b"    draw_string(\"W)\\x8C\\xA8\\xE0\", 192, 1, 15); /* reciv-ru */\r\n"
-     b"    draw_string(\"C)\\x96\\xA8\\xA2\\xA8\\xAB\\xAE\\xAF\\xA5\\xA4\\xA8\\xEF\", 240, 1, 15); /* reciv-ru */",
+     b"    draw_string(TRANSLATE(\"G\\207AME\", \"RU\"), 8, 1, 15); /* reciv-ru */\r\n"
+     b"    draw_string(TRANSLATE(\"O\\207RDERS\", \"RU\"), 64, 1, 15); /* reciv-ru */\r\n"
+     b"    draw_string(TRANSLATE(\"A\\207DVISORS\", \"RU\"), 128, 1, 15); /* reciv-ru */\r\n"
+     b"    draw_string(TRANSLATE(\"W\\207ORLD\", \"RU\"), 192, 1, 15); /* reciv-ru */\r\n"
+     b"    draw_string(TRANSLATE(\"C\\207IVILOPEDIA\", \"RU\"), 240, 1, 15); /* reciv-ru */",
      b"    /* reciv-ru: re-spaced for the proportional RU labels (widths\r\n"
      b"     * 36/53/61/32/75 px): 8 52 113 182 222, last ends at 297 < 320 */\r\n"
-     b"    draw_string(\"G)\\x88\\xA3\\xE0\\xA0\", 8, 1, 15); /* reciv-ru */\r\n"
-     b"    draw_string(\"O)\\x8A\\xAE\\xAC\\xA0\\xAD\\xA4\\xEB\", 52, 1, 15); /* reciv-ru */\r\n"
-     b"    draw_string(\"A)\\x91\\xAE\\xA2\\xA5\\xE2\\xAD\\xA8\\xAA\\xA8\", 113, 1, 15); /* reciv-ru */\r\n"
-     b"    draw_string(\"W)\\x8C\\xA8\\xE0\", 182, 1, 15); /* reciv-ru */\r\n"
-     b"    draw_string(\"C)\\x96\\xA8\\xA2\\xA8\\xAB\\xAE\\xAF\\xA5\\xA4\\xA8\\xEF\", 222, 1, 15); /* reciv-ru */"),
+     b"    draw_string(TRANSLATE(\"G\\207AME\", \"RU\"), 8, 1, 15); /* reciv-ru */\r\n"
+     b"    draw_string(TRANSLATE(\"O\\207RDERS\", \"RU\"), 52, 1, 15); /* reciv-ru */\r\n"
+     b"    draw_string(TRANSLATE(\"A\\207DVISORS\", \"RU\"), 113, 1, 15); /* reciv-ru */\r\n"
+     b"    draw_string(TRANSLATE(\"W\\207ORLD\", \"RU\"), 182, 1, 15); /* reciv-ru */\r\n"
+     b"    draw_string(TRANSLATE(\"C\\207IVILOPEDIA\", \"RU\"), 222, 1, 15); /* reciv-ru */"),
 
     # MENUS.C world_menu(): gray out "Wonders of the World" (menu item 0)
     # until the first wonder exists - the menu_core() dialog_dim bits draw the
@@ -137,39 +152,49 @@ CODE_FIXES = [
 ]
 
 
-def c_escape(data):
-    """C string literal for raw bytes: printable ASCII as-is, else escapes.
-    Adjacent literals are split so a \\xNN cannot swallow a following hex digit."""
-    parts = []
-    seg = []
-    last_esc = False
+def lang_field(data):
+    """CP866 bytes -> the readable russian column of ru.lang (inverse of what
+    langgen.c's field decoder accepts)."""
+    out = []
     for b in data:
-        plain = None
-        if b == 0x0A:
-            plain = "\\n"
-        elif b == 0x22:
-            plain = '\\"'
-        elif b == 0x5C:
-            plain = "\\\\"
-        elif 0x20 <= b <= 0x7E:
-            plain = chr(b)
-        if plain is not None and len(plain) == 1 and last_esc and plain in "0123456789abcdefABCDEF":
-            parts.append('"' + "".join(seg) + '"')
-            seg = []
-        if plain is not None:
-            seg.append(plain)
-            last_esc = False
-        else:
-            seg.append("\\x%02X" % b)
-            last_esc = True
-    if seg or not parts:
-        parts.append('"' + "".join(seg) + '"')
-    return " ".join(parts)
+        if b == 0x0A: out.append("\\n")
+        elif b == 0x09: out.append("\\t")
+        elif b == 0x0D: out.append("\\r")
+        elif b == 0x22: out.append('\\"')
+        elif b == 0x5C: out.append("\\\\")
+        elif 0x20 <= b <= 0x7E: out.append(chr(b))
+        elif b >= 0x80: out.append(bytes([b]).decode("cp866"))
+        else: out.append("\\x%02X" % b)
+    return "".join(out)
+
+
+def load_lang(path):
+    manual = {}
+    if path.exists():
+        for ln in path.read_text(encoding="utf-8").splitlines():
+            if not ln or ln.startswith("#"):
+                continue
+            fld = ln.split("\t")
+            if len(fld) != 4:
+                sys.exit(f"{path}: not a 4-field tab line: {ln!r}")
+            manual[(fld[0], fld[1], fld[2])] = fld[3]
+    return manual
+
+
+def strip_slot(row):
+    """Slot-padding rules the old c_escape pass applied to table records."""
+    ru = bytes.fromhex(row["ru_hex"])
+    if row["method"] == "table":
+        ru = ru.rstrip(b"\x00")
+        if not row["english"].endswith(" "):
+            ru = ru.rstrip(b" ")
+    return ru
 
 
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--csv", default="tools/localization/data/mapping.csv")
+    ap.add_argument("--lang", default="tools/localization/data/ru.lang")
     ap.add_argument("--src", default="src/game")
     ap.add_argument("--methods", default="table,gap")
     ap.add_argument("--dry-run", action="store_true")
@@ -197,6 +222,7 @@ def main():
     skipped = []
     warnings = []
     dirty = set()
+    applied_rows = defaultdict(list)
     for fname, frows in sorted(by_file.items()):
         path = Path(args.src) / fname
         if not path.exists():
@@ -219,16 +245,8 @@ def main():
         for r in frows:
             lineno = int(r["line"])
             old = ('"' + r["english"] + '"').encode("latin1")
-            ru = bytes.fromhex(r["ru_hex"])
-            if r["method"] == "table":
-                # table records carry field padding; C arrays pad with NULs anyway.
-                # Keep trailing spaces when the English literal has them: the
-                # pack's slot really ends in a space (": ", "    ").
-                ru = ru.rstrip(b"\x00")
-                if not r["english"].endswith(" "):
-                    ru = ru.rstrip(b" ")
-            new = c_escape(ru).encode("latin1")
-            if len(ru) > len(old) - 2:
+            new = ('TRANSLATE("' + r["english"] + '", "RU")').encode("latin1")
+            if len(strip_slot(r)) > len(old) - 2:
                 warnings.append(f"{fname}:{lineno} longer than original: "
                                 f"{r['english']!r} -> {r['russian']!r}")
             n = 0
@@ -236,6 +254,7 @@ def main():
                 n = patch_line(lineno - 1, old, new)
             if n:
                 applied += n
+                applied_rows[fname].append(r)
                 dirty.add(path)
                 continue
             n = 0
@@ -245,6 +264,7 @@ def main():
                     break
             if n:
                 moved += 1
+                applied_rows[fname].append(r)
                 dirty.add(path)
             else:
                 skipped.append((fname, lineno, r["english"]))
@@ -264,11 +284,71 @@ def main():
             path.write_bytes(data.replace(old, new, 1))
         fixed += 1
 
+    # Pair every TRANSLATE in the final tree with the mapping row that created
+    # it (both walks are in document order; the english body must match), and
+    # write ru.lang with the FINAL physical line numbers - the ones langgen.c
+    # will look up.
+    manual = load_lang(Path(args.lang))
+    lang_entries = []
+    errors = []
+    used_keys = set()
+    for fname in sorted(by_file):
+        path = Path(args.src) / fname
+        if not path.exists():
+            continue
+        data = path.read_bytes()
+        remaining = sorted(applied_rows[fname], key=lambda r: int(r["line"]))
+        consumed = []
+        line = 1
+        prev = 0
+        for m in TRANSLATE_RE.finditer(data):
+            line += data.count(b"\n", prev, m.start())
+            prev = m.start()
+            en = m.group(1).decode("latin1")
+            row = None
+            for idx, r in enumerate(remaining):
+                if r["english"] == en:
+                    row = remaining.pop(idx)
+                    break
+            if row is None:
+                for r in consumed:  # a wrapped literal repeated on one line
+                    if r["english"] == en:
+                        row = r
+                        break
+            if row is None:
+                errors.append(f"{fname}:{line}: TRANSLATE({en!r}) matches no mapping row")
+                continue
+            consumed.append(row)
+            key = (fname, str(line), en.replace("\t", "\\t"))
+            ru = strip_slot(row)
+            field = manual[key] if key in manual else lang_field(ru)
+            used_keys.add(key)
+            lang_entries.append(key + (field,))
+        for r in remaining:
+            errors.append(f"{fname}: mapping row {r['line']} ({r['english']!r}) "
+                          "left no TRANSLATE in the tree")
+    stale = [k for k in manual if k not in used_keys]
+
+    if not args.dry_run:
+        with open(args.lang, "w", encoding="utf-8", newline="\n") as f:
+            f.write("# reciv RU language file - the russian column is editable text.\n"
+                    "# key: FILE.C <TAB> line <TAB> english literal body <TAB> russian text\n"
+                    "# apply-translation.py rewrites this file but keeps manual russian\n"
+                    "# edits while their key exists; interp estimates are deliberately absent.\n"
+                    "# line numbers refer to src/game AFTER wrapping and code fixes.\n")
+            for k in lang_entries:
+                f.write("\t".join(k) + "\n")
+
     out = [f"applied={applied} moved={moved} skipped={len(skipped)} "
-           f"warnings={len(warnings)} codefixes={fixed}"]
+           f"warnings={len(warnings)} codefixes={fixed} lang={len(lang_entries)}"]
     out += ["SKIP " + repr(s) for s in skipped]
     out += ["WARN " + w for w in warnings]
+    out += ["ERROR " + e for e in errors]
+    if stale:
+        out.append(f"NOTE dropped {len(stale)} stale manual ru.lang keys: {stale[:8]}")
     sys.stdout.buffer.write(("\n".join(out) + "\n").encode("utf-8", "replace"))
+    if errors:
+        sys.exit(1)
 
 
 if __name__ == "__main__":

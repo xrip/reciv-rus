@@ -753,9 +753,9 @@ mv:                            /* move unit */
                                     if (U.type == 27) {
                                         hh = map_dist(oq, townbuf[U.home_city].x, mc, townbuf[U.home_city].y);
                                         if (!(townbuf[uk].owner == civ && townbuf[uk].production >= -24 && hh < 10 && region_key(oq, mc) == region_key(townbuf[U.home_city].x, townbuf[U.home_city].y))) {
-                                            strcpy(msgtext, "\x82\xEB\xA1\xA5\xE0\xA8\xE2\xA5:\n \x84\xA2\xA8\xA3\xA0\xE2\xEC \xA4\xA0\xAB\xA5\xA5\n \x93\xE1\xE2\xA0\xAD\xAE\xA2\xA8\xE2\xEC \xE2\xAE\xE0\xA3\xAE\xA2\xAB\xEE\n"); /* reciv-ru */
+                                            strcpy(msgtext, TRANSLATE("Will you?\n Keep moving\n Establish trade route\n", "RU")); /* reciv-ru */
                                             if (townbuf[uk].owner == civ && townbuf[uk].production < -24) {
-                                                strcat(msgtext, " \x91\xE2\xE0\xAE\xA8\xE2\xEC \x97\xE3\xA4\xAE \x91\xA2\xA5\xE2\xA0\n"); /* reciv-ru */
+                                                strcat(msgtext, TRANSLATE(" Help build WONDER.\n", "RU")); /* reciv-ru */
                                                 if (hh < 10)
                                                     dialog_dim = 2;
                                             }
@@ -807,9 +807,9 @@ mv:                            /* move unit */
                                 }
                                 if (U.moves < 3) {
                                     if (civ == civnow) {
-                                        strcpy(msgtext, "\x80\xE2\xA0\xAA\xA0 \xE1\n"); /* reciv-ru */
+                                        strcpy(msgtext, TRANSLATE("Attack at\n", "RU")); /* reciv-ru */
                                         strcat(msgtext, itoa(U.moves, nstr, 10));
-                                        strcat(msgtext, "/3 \xE1\xA8\xAB\xEB?\n \x8D\xA5\xE2\n \x80\xE2\xE2\xA0\xAA\xAE\xA2\xA0\xE2\xEC!\n"); /* reciv-ru */
+                                        strcat(msgtext, TRANSLATE("/3 strength?\n Cancel\n Attack\n", "RU")); /* reciv-ru */
                                         if (show_msg(msgtext, 100, 16) != 1) {
                                             U.goto_x = -1;
                                             break;
@@ -1127,9 +1127,9 @@ sc:                            /* scroll map */
                     if (show_msg(msgtext, 64, 80) != 1)
                         break;
                     civ_gov[civ] = 0;
-                    strcpy(msgtext, ""); /* reciv-ru */
+                    strcpy(msgtext, TRANSLATE("The ", "RU")); /* reciv-ru */
                     strcat(msgtext, civ_names[civ]);
-                    strcat(msgtext, "\xB0\xA1\xA0\xE1\xE2\xE3\xA5\xE2\xC0\xB0\x86\xA8\xE2\xA5\xAB\xA8\n\xE2\xE0\xA5\xA1\xE3\xEE\xE2\xB0\xAD\xAE\xA2\xEB\xA9\xB0\xA3\xAE\xE1\xC0\xE1\xE2\xE0\xAE\xA9\xC0\n"); /* reciv-ru */
+                    strcat(msgtext, TRANSLATE(" are\nrevolting! Citizens\ndemand new govt.\n", "RU")); /* reciv-ru */
                     news_box(-1);
                     cabinet();
                     sel_player();
@@ -1139,12 +1139,12 @@ sc:                            /* scroll map */
                     break;
                 case '+':
                 case '=':
-                    strcpy(msgtext, "\x8D\xAE\xA2\xEB\xA5 \xAD\xA0\xAB\xAE\xA3\xA8:\n "); /* reciv-ru */
+                    strcpy(msgtext, TRANSLATE("Select new Tax rate:\n ", "RU")); /* reciv-ru */
                     for (hh = 0; hh <= civ_toll[civ] + sci[civ]; hh++) {
                         strcat(msgtext, itoa(10 * hh, nstr, 10));
-                        strcat(msgtext, "% \xAD\xA0\xAB, ("); /* reciv-ru */
+                        strcat(msgtext, TRANSLATE("% Tax, (", "RU")); /* reciv-ru */
                         strcat(msgtext, itoa(10 * (civ_toll[civ] + sci[civ] - hh), nstr, 10));
-                        strcat(msgtext, "% \xAD\xA0\xE3\xAA\xA0)\n "); /* reciv-ru */
+                        strcat(msgtext, TRANSLATE("% Science)\n ", "RU")); /* reciv-ru */
                     }
                     editing = civ_toll[civ];
                     hh = show_msg(msgtext, 100, 80);
@@ -1156,12 +1156,12 @@ sc:                            /* scroll map */
                     break;
                 case '-':
                 case '_':
-                    strcpy(msgtext, "\x93\xE0\xAE\xA2\xA5\xAD\xEC \xE0\xAE\xE1\xAA\xAE\xE8\xA8:\n "); /* reciv-ru */
+                    strcpy(msgtext, TRANSLATE("Select new Luxuries rate:\n ", "RU")); /* reciv-ru */
                     for (hh = 0; hh <= 10 - civ_toll[civ]; hh++) {
                         strcat(msgtext, itoa(10 * hh, nstr, 10));
-                        strcat(msgtext, "% \xE0\xAE\xE1\xAA\xAE\xE8\xEC, ("); /* reciv-ru */
+                        strcat(msgtext, TRANSLATE("% Luxuries, (", "RU")); /* reciv-ru */
                         strcat(msgtext, itoa(10 * (-(civ_toll[civ] + hh - 10)), nstr, 10));
-                        strcat(msgtext, "% \xAD\xA0\xE3\xAA\xA0)\n "); /* reciv-ru */
+                        strcat(msgtext, TRANSLATE("% Science)\n ", "RU")); /* reciv-ru */
                     }
                     editing = -(civ_toll[civ] + sci[civ] - 10);
                     hh = show_msg(msgtext, 100, 80);
@@ -1183,12 +1183,12 @@ sc:                            /* scroll map */
                         civt[hh].f1 = rand_scaled(3) - 1;
                         civt[hh].f2 = rand_scaled(3) - 1;
                     }
-                    show_msg("\x8F\xE0\xA0\xA2\xA8\xE2\xA5\xAB\xA8 \xA3\xAE\xE2\xAE\xA2\xEB.\n", 100, 80); /* reciv-ru */
+                    show_msg(TRANSLATE("Leaders randomized.\n", "RU"), 100, 80); /* reciv-ru */
                     break;
                 case 0x2f00:
                     debug ^= 16;
-                    strcpy(msgtext, "\x87\xA2\xE3\xAA\xA8 "); /* reciv-ru */
-                    strcat(msgtext, debug & 16 ? "\x84\xA0\n" : "\x8D\xA5\xE2\n"); /* reciv-ru */
+                    strcpy(msgtext, TRANSLATE("Sounds ", "RU")); /* reciv-ru */
+                    strcat(msgtext, debug & 16 ? TRANSLATE("ON\n", "RU") : TRANSLATE("OFF\n", "RU")); /* reciv-ru */
                     show_msg(msgtext, 100, 80);
                     break;
                 case 0x2300:
@@ -1196,7 +1196,7 @@ sc:                            /* scroll map */
                     notice_a("*HELP2");
                     break;
                 case 0x1000:
-                    strcpy(msgtext, "\x82\xEB \xAD\xA0 \xE1\xA0\xAC\xAE\xAC \xA4\xA5\xAB\xA5\n\xE5\xAE\xE2\xA8\xE2\xA5 \xA2\xEB\xA9\xE2\xA8?\n \x8D\xA5\xE2, \xAA\xAE\xAD\xA5\xE7\xAD\xAE\n \x84\xA0, \xAE\xE7\xA5\xAD\xEC\n"); /* reciv-ru */
+                    strcpy(msgtext, TRANSLATE("Are you sure you\nwant to Quit?\n Keep Playing\n Yes, Quit\n", "RU")); /* reciv-ru */
                     if (show_msg(msgtext, 100, 80) != 1) {
                         leave = 0;
                         break;
@@ -1382,12 +1382,12 @@ void uinit(int player, int unit)
     mouse_off();
     panel_prep(0, 97, 80, 103);
     if (unit == 128) {
-        draw_string("\x8A\xAE\xAD\xA5\xE6 \xE5\xAE\xA4\xA0", 4, 124, 0); /* reciv-ru */
+        draw_string(TRANSLATE("End of Turn", "RU"), 4, 124, 0); /* reciv-ru */
         /* reciv-ru: the pack blanks the English prompt here; its panel
          * shows the RU prompt only.  The EN and RU prompts said the same
          * thing, so the merged prompt (mapping row 1387) stays at the
          * pack's prompt position (144) */
-        draw_string("\x8D\xA0\xA6\xAC\xA8 Enter", 4, 144, 0); /* reciv-ru */
+        draw_string(TRANSLATE("to continue", "RU"), 4, 144, 0); /* reciv-ru */
     } else {
         y29 = 99;
         strcpy(msgtext, civ_adjectives[player]);
@@ -1397,11 +1397,11 @@ void uinit(int player, int unit)
         draw_string(msgtext, 4, y29, 0);
         y29 += 8;
         if (armydata[player][unit].status & 32) {
-            draw_string("\x82\xA5\xE2\xA5\xE0\xA0\xAD", 8, y29, 0); /* reciv-ru */
+            draw_string(TRANSLATE("Veteran", "RU"), 8, y29, 0); /* reciv-ru */
             y29 += 8;
         }
         moves_m = clamp(armydata[player][unit].moves / 3, 0, 99);
-        strcpy(msgtext, "\x95\xAE\xA4\xEB: "); /* reciv-ru */
+        strcpy(msgtext, TRANSLATE("Moves: ", "RU")); /* reciv-ru */
         strcat(msgtext, itoa(moves_m, nstr, 10));
         fraction_p = armydata[player][unit].moves % 3;
         if (fraction_p) {
@@ -1427,21 +1427,21 @@ void uinit(int player, int unit)
         y29 += 8;
         flags_k = map_flags(armydata[player][unit].x, armydata[player][unit].y);
         if (flags_k & 16) {
-            draw_string("(\x86\xA5\xAB.\xA4\xAE\xE0.)", 4, y29, 0); /* reciv-ru */
+            draw_string(TRANSLATE("(RailRoad)", "RU"), 4, y29, 0); /* reciv-ru */
             y29 += 8;
         } else if (flags_k & 8) {
-            draw_string("(\x84\xAE\xE0.)", 4, y29, 0); /* reciv-ru */
+            draw_string(TRANSLATE("(Road)", "RU"), 4, y29, 0); /* reciv-ru */
             y29 += 8;
         }
         if (flags_k & 2) {
-            draw_string("(\x8C\xA5\xAB\xA8\xAE\xE0\xA0\xE6\xA8\xEF)", 4, y29, 0); /* reciv-ru */
+            draw_string(TRANSLATE("(Irrigation)", "RU"), 4, y29, 0); /* reciv-ru */
             y29 += 8;
         } else if (flags_k & 4) {
-            draw_string("(\x98\xA0\xE5\xE2\xEB)", 4, y29, 0); /* reciv-ru */
+            draw_string(TRANSLATE("(Mining)", "RU"), 4, y29, 0); /* reciv-ru */
             y29 += 8;
         }
         if (flags_k & 64) {
-            draw_string("(\x82\xEB\xA1\xE0\xAE\xE1\xEB)", 4, y29, 0); /* reciv-ru */
+            draw_string(TRANSLATE("(Pollution)", "RU"), 4, y29, 0); /* reciv-ru */
             y29 += 8;
         }
         y29 += 4;

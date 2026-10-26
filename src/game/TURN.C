@@ -315,7 +315,7 @@ void game_turn(void)
         strcpy(msgtext, leader_titles[civ_gov[civnow]]);
         strcat(msgtext, " ");
         strcat(msgtext, leader_names[civnow]);
-        strcat(msgtext, "\n\xE1\xAE\xA1\xA8\xE0\xA0\xA5\xE2\xE1\xEF \xAA\xAE\xAD\xE7\xA0\xE2\xEC\xB0\xA2\xB0\xD2\xD0\xB0\xAB\xA5\xE2\xC0\xC0\n"); /* reciv-ru */
+        strcat(msgtext, TRANSLATE("\nplans retirement\nin 20 years.\n", "RU")); /* reciv-ru */
         news_box(-1);
     }
     if (winner == -1 && !complete_flag && -(20 * cur_tier - 0x834) != year)
@@ -323,7 +323,7 @@ void game_turn(void)
     mouse_off();
     strcpy(msgtext, "*** GAME OVER ***\n");
     if (complete_flag) {
-        strcpy(msgtext, "\x82\xA0\xE8\xA0\xB0\xE6\xA8\xA2\xA8\xAB\xA8\xA7\xA0\xE6\xA8\xEF\n\xA7\xA0\xE5\xA2\xA0\xE2\xA8\xAB\xA0\xB0\xA2\xE1\xEE\n\xAF\xAB\xA0\xAD\xA5\xE2\xE3\xC2\n"); /* reciv-ru */
+        strcpy(msgtext, TRANSLATE("Your civilization\nhas conquered\nthe entire planet!\n", "RU")); /* reciv-ru */
         winner = -1;
         news_box(-1);
         conquest_replay();
@@ -332,12 +332,12 @@ void game_turn(void)
         spaceship_arrival(winner);
         sel_player();
         strcpy(msgtext, civ_adjectives[winner]);
-        strcat(msgtext, "\xB0\xAA\xAE\xE0\xA0\xA1\xAB\xEC\n\xAF\xE0\xA8\xA1\xEB\xAB\xB0\xAD\xA0\xB0\x80\xAB\xEC\xE4\xA0\xB0\x96\xA5\xAD\xE2\xA0\xA2\xE0\xA0\xC0\n"); /* reciv-ru */
+        strcat(msgtext, TRANSLATE(" spaceship\narrives at Alpha Centauri.\n", "RU")); /* reciv-ru */
         news_box(-1);
     }
     if (-(20 * cur_tier - 0x834) == year) {
         strcpy(msgtext, leader_names[civnow]);
-        strcat(msgtext, "\xB0\xA4\xA8\xAD\xA0\xE1\xE2\xA8\xEF\n\xA7\xA0\xA2\xA5\xE0\xE8\xA8\xAB\xA0\xE1\xEC\xB0\xAF\xAE\xE1\xAB\xA5\n\xD6\xD0\xD0\xD0\xB0\xAB\xA5\xE2\xB0\xA2\xAB\xA0\xE1\xE2\xA8\xC2\n"); /* reciv-ru */
+        strcat(msgtext, TRANSLATE(" dynasty\nends after glorious\n6000 year reign!\n", "RU")); /* reciv-ru */
         sound(civt[civ_tribe_of[civnow]].f4, 3);
         news_box(-1);
         sound(1);
@@ -436,8 +436,8 @@ void uprising(void)
         return;
     if (units[i].owner == civnow && (map_visible_to[50 * x + y] & (1 << civnow))) {
         reveal(civnow, (unsigned char) units[i].x - 8, (unsigned char) units[i].y - 6);
-        strcpy(msgtext, "\x8E\xE7\xA5\xA2\xA8\xA4\xE6\xEB \xA3\xAE\xA2\xAE\xE0\xEF\xE2:\n"); /* reciv-ru */
-        strcat(msgtext, advance_owners[0x46] & 7 ? "\x8E\xA1\xAD\xA0\xE0\xE3\xA6\xA5\xAD\xEB \xA1\xA0\xAD\xA4\xA8\xE2\xEB\n\xAE\xAA.: " : advance_owners[0x44] & 7 ? "\x82\xAE\xAB\xAD\xA5\xAD\xA8\xEF \xAC\xA0\xE1\xE1\n\xAE\xAA.: " : "\x82\xA0\xE0\xA2\xA0\xE0\xEB \xA2\xEB\xE1\xA0\xA4\xA8\xAB\xA8\xE1\xEC\n\xAE\xAA.: "); /* reciv-ru */
+        strcpy(msgtext, TRANSLATE("Travellers report:\n", "RU")); /* reciv-ru */
+        strcat(msgtext, advance_owners[0x46] & 7 ? TRANSLATE("Guerrilla uprising\nnear ", "RU") : advance_owners[0x44] & 7 ? TRANSLATE("Native unrest\nnear ", "RU") : TRANSLATE("Barbarian uprising\nnear ", "RU")); /* reciv-ru */
         append_place_name(i);
         strcat(msgtext, "!\n");
         message_mode = 2;
@@ -516,11 +516,11 @@ void draw_banner(void)
     rect_fill(scrbuf, 0, 0, 320, 8, 0);
     /* reciv-ru: re-spaced for the proportional RU labels (widths
      * 36/53/61/32/75 px): 8 52 113 182 222, last ends at 297 < 320 */
-    draw_string("G)\x88\xA3\xE0\xA0", 8, 1, 15); /* reciv-ru */
-    draw_string("O)\x8A\xAE\xAC\xA0\xAD\xA4\xEB", 52, 1, 15); /* reciv-ru */
-    draw_string("A)\x91\xAE\xA2\xA5\xE2\xAD\xA8\xAA\xA8", 113, 1, 15); /* reciv-ru */
-    draw_string("W)\x8C\xA8\xE0", 182, 1, 15); /* reciv-ru */
-    draw_string("C)\x96\xA8\xA2\xA8\xAB\xAE\xAF\xA5\xA4\xA8\xEF", 222, 1, 15); /* reciv-ru */
+    draw_string(TRANSLATE("G\207AME", "RU"), 8, 1, 15); /* reciv-ru */
+    draw_string(TRANSLATE("O\207RDERS", "RU"), 52, 1, 15); /* reciv-ru */
+    draw_string(TRANSLATE("A\207DVISORS", "RU"), 113, 1, 15); /* reciv-ru */
+    draw_string(TRANSLATE("W\207ORLD", "RU"), 182, 1, 15); /* reciv-ru */
+    draw_string(TRANSLATE("C\207IVILOPEDIA", "RU"), 222, 1, 15); /* reciv-ru */
 }
 
 void status_draw(void)
@@ -572,9 +572,9 @@ void status_draw(void)
     if (player_screen_flag)
         return;
     last = pop_milestone;
-    strcpy(msgtext, "\x8D\xA0\xE1\xA5\xAB\xA5\xAD\xA8\xA5\n\xA2\xE1\xA5\xA9 "); /* reciv-ru */
+    strcpy(msgtext, TRANSLATE("The population of the\nfertile ", "RU")); /* reciv-ru */
     strcat(msgtext, civ_adjectives[civnow]);
-    strcat(msgtext, " \xA8\xAC\xAF\xA5\xE0\xA8\xA8\n\xAF\xE0\xA5\xA2\xEB\xE1\xA8\xAB\xAE "); /* reciv-ru */
+    strcat(msgtext, TRANSLATE(" empire now\nexceeds ", "RU")); /* reciv-ru */
     if (pop < 100) {
         if (10 * pop_milestone < pop) {
             unit = pop / 10;
@@ -591,7 +591,7 @@ void status_draw(void)
         }
     }
     if (last < pop_milestone && load_state >= -1) {
-        strcat(msgtext, "00,000 \xA6\xA8\xE2\xA5\xAB\xA5\xA9..\n"); /* reciv-ru */
+        strcat(msgtext, TRANSLATE("00,000 citizens.\n", "RU")); /* reciv-ru */
         message_mode = 4;
         show_msg(msgtext, 100, 80);
     }
@@ -672,7 +672,7 @@ int cost_sum(int n)
 void format_year(void)
 {
     strcat(msgtext, itoa(abs(year), nstr, 10));
-    strcat(msgtext, year < 0 ? "\xB0\xA4\xAE \xAD.\xED." : "\xB0\xAD.\xED."); /* reciv-ru */
+    strcat(msgtext, year < 0 ? TRANSLATE(" BC", "RU") : TRANSLATE(" AD", "RU")); /* reciv-ru */
 }
 
 /* Non-prototype ABI calls below; NOLINTBEGIN(clang-diagnostic-deprecated-non-prototype) */
@@ -682,7 +682,7 @@ void ai_event(void)
 
     warm_levels = clamp(map_random(polluted * 2 - warming * 4 - warm_levels) + warm_levels, 0, 99);
     if (warm_levels == 12 && polluted > 6) {
-        strcpy(msgtext, "\x93\xE7\xA5\xAD\xEB\xA5 \xA2\xE1\xE2\xE0\xA5\xA2\xAE\xA6\xA5\xAD\xEB\n\xE3\xA2\xA5\xAB\xA8\xE7\xA5\xAD\xA8\xA5\xAC \xE2\xA5\xAC\xAF\xA5\xE0\xA0\xE2\xE3\xE0.\n\x81\xE3\xA4\xA5\xE2 \xAE\xA1\xE9. \xAF\xAE\xE2\xA5\xAF\xAB\xA5\xAD\xA8\xA5!\n"); /* reciv-ru */
+        strcpy(msgtext, TRANSLATE("Scientists alarmed by\nrising temperatures.\nGlobal Warming feared!\n", "RU")); /* reciv-ru */
         news_box(-1);
     }
     if (warm_levels > 16) {
@@ -722,7 +722,7 @@ void ai_event(void)
             append_place_name(unit);
             strcat(msgtext, " (");
             strcat(msgtext, civ_adjectives[enemy]);
-            strcat(msgtext, ")\n\xE1\xAE\xA7\xA4.: "); /* reciv-ru */
+            strcat(msgtext, TRANSLATE(")\nbuilds ", "RU")); /* reciv-ru */
             strcat(msgtext, wonders[leader].name);
             strcat(msgtext, ".\n");
             money[enemy] -= clamp(money[enemy] / 3, 0, 10 * wonders[leader].cost - units[unit].progress);

@@ -1508,7 +1508,6 @@ WORLDGEN.C,826,Global temperature\nrises! Icecaps melt.\nSevere Drought.\n,"Гл
 Айсберги тают└└└
 Сильная засуха└
 ",gap,exact,83abaea1a0abecadaea5b0afaee2a5afaba5ada8a5c00a80a9e1a1a5e0a3a8b0e2a0eee2c0c0c00a91a8abecada0efb0a7a0e1e3e5a0c00a
-DIPLOMAT.C,455,.,└,table,exact,c0
 DIPLOMAT.C,181,in ,г. ,table,exact,a32e20
 ADVISORS.C,661,\x87 (, (,table,exact,2028
 ADVISORS.C,670,\x87 (, (,table,exact,2028

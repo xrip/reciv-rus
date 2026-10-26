@@ -37,7 +37,8 @@ Windows, MSVC (from PowerShell; the script downloads and checks SDL3):
 
 The main idea of the build (`CMakeLists.txt`) is that there are two kinds of code with different type sizes.
 
-**Period code** is the `period` object library: every `src/game/*.C` (globbed, so new files are picked up), plus `src/platform/resident_names.c`, `stubs.c` and `layout_check.c`.
+**Period code** is the `period` object library: `src/game/*.C` (globbed, so new files are picked up) through the langgen step, plus `src/platform/resident_names.c`, `stubs.c` and `layout_check.c`.
+`src/game` carries the readable language layer `TRANSLATE("english", "RU")`; `reciv-langgen` (`tools/localization/langgen.c`) expands each call to the escaped CP866 literal from `tools/localization/data/ru.lang` into `<build>/period-gen`, and that generated tree is what gets compiled (see `tools/localization/README.md`).
 - `src/period/prelude.h` is force-included. It does `#define int short` and makes `long` 32 bits (`_BitInt(32)` on GCC), and it removes `far`/`near`/`huge`. `main` becomes `game_main`.
 - It sees only `src/period/include` (the MSC 5.1 headers), never host headers (`-nostdinc`). `src/period/crtnames.h` maps each C library name (`strcpy`, `rand`, `int86`, ...) to `crt_*` in `src/crt/crt.c`. If the game needs a new library function, add the `#define` there and the function in `crt.c`.
 - Flags: `-fwrapv` (MSC arithmetic wraps), `-fsigned-char`, `-fpermissive`, warnings off. MSVC builds it with `/Od`, so wrapping is not optimized away.

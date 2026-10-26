@@ -202,7 +202,7 @@ int find_slot(int civ, int city)
     for (;;) {
         ncand = 1;
         cand[0] = townbuf[city].production;
-        strcpy(msgtext, "\x97\xE2\xAE \xA1\xE3\xA4\xA5\xAC \xE1\xE2\xE0\xAE\xA8\xE2\xEC \xE2\xE3\xE2: "); /* reciv-ru */
+        strcpy(msgtext, TRANSLATE("What shall we build in ", "RU")); /* reciv-ru */
         append_place_name(city);
         strcat(msgtext, "?\n ");
         if (menu_page_o != 2) {
@@ -212,7 +212,7 @@ int find_slot(int civ, int city)
                 if (has_tech(civ, utypes[i].prereq) && !has_tech(civ, utypes[i].obsolete_by) && ((townbuf[city].status & 2) || utypes[i].domain != 2)) {
                     strcat(msgtext, utypes[i].name);
                     turns_text(city, utypes[i].cost);
-                    strcat(msgtext, ", \x93\x87\x95:"); /* reciv-ru */
+                    strcat(msgtext, TRANSLATE(", ADM:", "RU")); /* reciv-ru */
                     strcat(msgtext, itoa(utypes[i].attack, nstr, 10));
                     strcat(msgtext, "/");
                     strcat(msgtext, itoa(utypes[i].defense, nstr, 10));
@@ -262,11 +262,11 @@ int find_slot(int civ, int city)
                 menu_page_o = 1;
                 continue;
             }
-            strcpy(msgtext + len, "\xA5\xE9\xA5...\n"); /* reciv-ru */
+            strcpy(msgtext + len, TRANSLATE("more...\n", "RU")); /* reciv-ru */
             cand[save_n] = 99;
         }
         if (menu_page_o == 2) {
-            strcat(msgtext, "\xA5\xE9\xA5...\n"); /* reciv-ru */
+            strcat(msgtext, TRANSLATE("more...\n", "RU")); /* reciv-ru */
             cand[ncand++] = 98;
         }
         land = region_key(townbuf[city].x, townbuf[city].y);
@@ -509,7 +509,7 @@ int find_slot(int civ, int city)
                     strcpy(choice_text_l + 1, utypes[rank].name);
                 else
                     strcpy(choice_text_l + 1, improvements[-rank].name);
-                strcpy(msgtext, "\x82\xAE\xA5\xAD\xAD\xEB\xA9 \xE1\xAE\xA2\xA5\xE2\xAD\xA8\xAA:\n"); /* reciv-ru */
+                strcpy(msgtext, TRANSLATE("Military Advisor:\n", "RU")); /* reciv-ru */
                 news_name("produce.txt", choice_text_l);
                 strcpy(message_slot, choice_text_l + 1);
                 help_open();
@@ -523,7 +523,7 @@ int find_slot(int civ, int city)
                     strcpy(choice_text_l + 1, utypes[rank].name);
                 else
                     strcpy(choice_text_l + 1, improvements[-rank].name);
-                strcpy(msgtext, "\x83\xAE\xE0\xAE\xA4\xE1\xAA\xA8\xA5 \xA2\xAB\xA0\xE1\xE2\xA8:\n"); /* reciv-ru */
+                strcpy(msgtext, TRANSLATE("Domestic Advisor:\n", "RU")); /* reciv-ru */
                 news_name("produce.txt", choice_text_l);
                 strcpy(message_slot, choice_text_l + 1);
                 help_open();
@@ -574,7 +574,7 @@ void turns_text(int a, int b)
     n = clamp((10 * b - CITY_SCI(a) - 1) / clamp(town_res_sums[1] - city_keep, 1, 99) + 1, 1, 999);
     strcat(msgtext, " (");
     strcat(msgtext, itoa(n, nstr, 10));
-    strcat(msgtext, n != 1 ? " \xE5\xAE\xA4\xAE\xA2" : " \xE5\xAE\xA4"); /* reciv-ru */
+    strcat(msgtext, n != 1 ? TRANSLATE(" turns", "RU") : TRANSLATE(" turn", "RU")); /* reciv-ru */
 }
 
 /* Non-prototype ABI calls below; NOLINTBEGIN(clang-diagnostic-deprecated-non-prototype) */
@@ -636,8 +636,8 @@ retry:
             blit(back_page, 0, 0, 320, 200, scrbuf, 0, 0);
         }
         strcpy(msgtext, civ_adjectives[civ]);
-        strcat(msgtext, has_tech(civnow, 20) ? "\xC1\xB0\xAF\xAE\xA4\xE3\xAC\xA0\xA2\xC1" : "\xB0\xAD\xA0\xAA\xAE\xAD\xA5\xE6"); /* reciv-ru */
-        strcat(msgtext, "\n\xAE\xE2\xAA\xE0\xEB\xAB\xA8\xB0\xAD\xAE\xA2\xEB\xA9\xB0\xE1\xA5\xAA\xE0\xA5\xE2\xC5\n\xB0"); /* reciv-ru */
+        strcat(msgtext, has_tech(civnow, 20) ? TRANSLATE(" scientists", "RU") : TRANSLATE(" wise men", "RU")); /* reciv-ru */
+        strcat(msgtext, TRANSLATE("\ndiscover the secret\nof ", "RU")); /* reciv-ru */
         strcat(msgtext, advances[selected_index].name);
         if (selected_index == 71) {
             strcat(msgtext, " ");
@@ -679,12 +679,12 @@ retry:
     menu_begin();
     mouse_on();
     if ((debug & 1) && top != -1 && !cur_tier) {
-        strcpy(msgtext, "\x93\xE7\xA5\xAD\xEB\xA9 \x91\xAE\xA2\xA5\xE2\xC5\n\x8D\xA0\xAC \xAD\xA0\xA4\xAE \xE3\xA7\xAD\xA0\xE2\xEC\n\xE1\xA5\xAA\xE0\xA5\xE2: "); /* reciv-ru */
+        strcpy(msgtext, TRANSLATE("Science Advisor:\nI recommend we\ndevelop ", "RU")); /* reciv-ru */
         strcat(msgtext, advances[top].name);
         strcat(msgtext, ".\n");
         rating = strlen(msgtext);
         nopt = 0;
-        strcat(msgtext, "\x91\xAC\xAE\xA6\xA5\xAC \xE1\xE2\xE0\xAE\xA8\xE2\xEC:\n-"); /* reciv-ru */
+        strcat(msgtext, TRANSLATE("So we can build:\n-", "RU")); /* reciv-ru */
         for (jj = 0; jj < 28; jj++) {
             if (utypes[jj].prereq == top) {
                 strcat(msgtext, utypes[jj].name);
@@ -706,9 +706,9 @@ retry:
         show_menu(msgtext, 8, -(nopt * 8 - 168));
         scrbuf->font = 1;
     }
-    strcpy(msgtext, "\x82 \xAA\xA0\xAA\xAE\xAC \xAD\xA0\xAF\xE0\xA0\xA2\xAB\xA5\xAD\xA8\xA8 \xAD\xA0\xA4\xAE\n\xE0\xA0\xA1\xAE\xE2\xA0\xE2\xEC"); /* reciv-ru */
-    strcat(msgtext, has_tech(civnow, 20) ? "" : "\xAD\xA0\xE8\xA8\xAC"); /* reciv-ru */
-    strcat(msgtext, " \xE3\xE7\xA5\xAD\xEB\xAC, \xA3\xAE\xE1\xAF\xAE\xA4\xA8\xAD?\n\x82\xEB\xA1\xA5\xE0\xA8\xE2\xA5...\n "); /* reciv-ru */
+    strcpy(msgtext, TRANSLATE("Which discovery should our\n", "RU")); /* reciv-ru */
+    strcat(msgtext, has_tech(civnow, 20) ? TRANSLATE("scientists", "RU") : TRANSLATE("wise men", "RU")); /* reciv-ru */
+    strcat(msgtext, TRANSLATE(" be pursuing, sire?\nPick one...\n ", "RU")); /* reciv-ru */
     nopt = 0;
     for (i = 0; i < 72; i++) {
         if (!has_tech(civ, i) && has_tech(civ, advances[i].prereq1) && has_tech(civ, advances[i].prereq2)) {
@@ -737,7 +737,7 @@ retry:
         }
         selected_index = i;
     } else {
-        strcat(msgtext, " \x8D\xAE\xA2\xEB\xA5 \xE2\xA5\xE5\xAD\xAE\xAB\xAE\xA3\xA8\xA8\xB0"); /* reciv-ru */
+        strcat(msgtext, TRANSLATE(" Future Technology ", "RU")); /* reciv-ru */
         strcat(msgtext, itoa(advances_future + 1, nstr, 10));
         strcat(msgtext, "\n");
         show_msg(msgtext, 100, 80);
@@ -766,12 +766,12 @@ void give_advance(int civ, int adv, int src)
     if (civ == civnow || (treaties[civnow][civ] & 0x40)) {
         msgtext[0] = 0;
         strcat(msgtext, civ_names[civ]);
-        strcat(msgtext, (civ == src || src == 0) ? "\xB0\xAE\xE2\xAA\xE0\xEB\xAB\xA8\n" : "\xB0\xE3\xAA\xE0\xA0\xAB\xA8\n"); /* reciv-ru */
+        strcat(msgtext, (civ == src || src == 0) ? TRANSLATE(" develop\n", "RU") : TRANSLATE(" acquire\n", "RU")); /* reciv-ru */
         strcat(msgtext, advances[adv].name);
         if (civ != src && src != 0) {
-            strcat(msgtext, "\xB0\xA8\xA7\n"); /* reciv-ru */
+            strcat(msgtext, TRANSLATE(" from\nthe ", "RU")); /* reciv-ru */
             if (src == -2)
-                strcat(msgtext, "\x82\xA5\xAB\xA8\xAA\xA0\xEF\xB0\x81\xA8\xA1\xAB\xA8\xAE\xE2\xA5\xAA\xA0"); /* reciv-ru */
+                strcat(msgtext, TRANSLATE("Great Library", "RU")); /* reciv-ru */
             else
                 strcat(msgtext, civ_names[src]);
         }
@@ -839,7 +839,7 @@ void give_advance(int civ, int adv, int src)
                && mouse_mode == -1) {
         treaties[civnow][civ] |= 0x40;
         strcpy(msgtext, civ_names[civ]);
-        strcat(msgtext, "\xB0\xE1\xAE\xA3\xAB\xA0\xE1\xAD\xEB\n\xE1\xB0\xAE\xA1\xAC\xA5\xAD\xAE\xAC\xB0\xAF\xAE\xE1\xAB\xAE\xA2.\n"); /* reciv-ru */
+        strcat(msgtext, TRANSLATE(" agree to\nan exchange of ambassadors.\n", "RU")); /* reciv-ru */
         message_mode = 1;
         show_msg(msgtext, 80, 100);
         spy_rpt();
@@ -850,9 +850,9 @@ void give_advance(int civ, int adv, int src)
                 townbuf[k].buildings &= ~2L;
         }
         if (civ == civnow && mouse_mode == -1) {
-            strcpy(msgtext, "\x87\xAD\xA0\xAD\xA8\xA5\xB0\xE1\xA5\xAA\xE0\xA5\xE2\xA0\xC5"); /* reciv-ru */
+            strcpy(msgtext, TRANSLATE("Development of ", "RU")); /* reciv-ru */
             strcat(msgtext, advances[adv].name);
-            strcat(msgtext, "\n\xA4\xA5\xAB\xA0\xA5\xE2\xB0\x8A\xA0\xA7\xA0\xE0\xAC\xEB\n\xE1\xAE\xA2\xE1\xA5\xAC\xB0\xAD\xA5\xAD\xE3\xA6\xAD\xEB\xAC\xA8\xC0\xC0\n"); /* reciv-ru */
+            strcat(msgtext, TRANSLATE("\nmakes existing Barracks\nobsolete.\n", "RU")); /* reciv-ru */
             message_mode = 3;
             show_msg(msgtext, 80, 100);
         }
@@ -863,7 +863,7 @@ void give_advance(int civ, int adv, int src)
         for (k = 1; k <= 21; k++) {
             if (improvement_words[k] == adv && townbuf[marvel_site[k]].owner == civnow) {
                 strcpy(msgtext, advances[adv].name);
-                strcat(msgtext, " \xAF\xE0\xA5\xAA\xE0\xA0\xE9\xA0\xA5\xE2\n\xA4\xA5\xA9\xE1\xE2\xA2\xA8\xA5\xC5\n"); /* reciv-ru */
+                strcat(msgtext, TRANSLATE(" cancels\nthe effect of\n", "RU")); /* reciv-ru */
                 strcat(msgtext, (improvements + 24)[k].name);
                 strcat(msgtext, ".\n");
                 news_box(-1);

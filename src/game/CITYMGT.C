@@ -342,7 +342,7 @@ label_render_restart:
         msgtext[0] = 0;
         append_place_name(city);
         strupr(msgtext);
-        strcat(msgtext, " (\x8D\xA0\xE1:"); /* reciv-ru */
+        strcat(msgtext, TRANSLATE(" (Pop:", "RU")); /* reciv-ru */
         format_total(scratch_i);
         strcat(msgtext, ")");
         draw_text(msgtext, 104, 2, 15);
@@ -384,9 +384,9 @@ label_render_restart:
                 }
             }
             if (selected_owner == civnow) {
-                strcpy(msgtext, "\x87\xA0\xAF\xA0\xE1\xEB\xB0\xA5\xA4\xEB\xB0\xA8\xE1\xE7\xA5\xA7\xAB\xA8\xB0\xA2\n\xA3\xAE\xE0\xC0\xC5"); /* reciv-ru */
+                strcpy(msgtext, TRANSLATE("Food storage exhausted\nin ", "RU")); /* reciv-ru */
                 append_place_name(city);
-                strcat(msgtext, (scratch_i != -1) ? "\xC2\n\x8D\xA5\xE2 \xAA\xAE\xAB\xAE\xAD\xA8\xE1\xE2\xAE\xA2\n" : "\xC3\n\x93\xA3\xE0\xAE\xA7\xA0\xB0\xA3\xAE\xAB\xAE\xA4\xA0\xC0\n"); /* reciv-ru */
+                strcat(msgtext, (scratch_i != -1) ? TRANSLATE("!\nSettlers lost.\n", "RU") : TRANSLATE("!\nFamine feared.\n", "RU")); /* reciv-ru */
                 sound(36);
                 news_box(city);
                 sound(1);
@@ -414,7 +414,7 @@ label_render_restart:
                         advisor = 4;
                         msgtext[0] = 0;
                         append_place_name(city);
-                        strcat(msgtext, "\xB0\xAD\xE3\xA6\xA5\xAD\xB0\x82\xAE\xA4\xAE\xAF\xE0\xAE\xA2\xAE\xA4\xB0\xA4\xAB\xEF\xB0\xA4\xA0\xAB\xEC\xAD\xA5\xA9\xE8\xA5\xA3\xAE\xB0\xE0\xAE\xE1\xE2\xA0\n"); /* reciv-ru */
+                        strcat(msgtext, TRANSLATE(" requires an AQUEDUCT\nfor further growth.\n", "RU")); /* reciv-ru */
                         show_msg(msgtext, 100, 80);
                     }
                 }
@@ -507,7 +507,7 @@ label_render_restart:
             }
         } else {
             if (mode == 0L && selected_owner == civnow) {
-                strcpy(msgtext, "\x93\xAC\xA5\xAD\xEC\xE8\xA8\xAB\xAE\xE1\xEC\xB0\xAD\xA0\xE1\xA5\xAB\xA5\xAD\xA8\xA5\xC5\n"); /* reciv-ru */
+                strcpy(msgtext, TRANSLATE("Population decrease\nin ", "RU")); /* reciv-ru */
                 append_place_name(city);
                 strcat(msgtext, ".\n");
                 advisor = 4;
@@ -747,7 +747,7 @@ label_governor_done:
                         show_city_display = 1;
                         msgtext[0] = 0;
                         append_place_name(city);
-                        strcat(msgtext, "\xB0\xE1\xAE\xA7\xA4\xC0\xC5\xB0"); /* reciv-ru */
+                        strcat(msgtext, TRANSLATE(" builds ", "RU")); /* reciv-ru */
                         strcat(msgtext, utypes[townbuf[city].production].name);
                         strcat(msgtext, ".\n");
                         advisor = 3;
@@ -771,7 +771,7 @@ label_governor_done:
                 }
                 if (scratch_i != -1) {
                     if (scratch_i == 41) {
-                        strcpy(msgtext, "\x91\xA5\xA9\xE1\xAC\xAE\xAB\xAE\xA3\xA8\xC5\n\xA8\xE1\xAF\xEB\xE2\xA0\xAD\xA8\xEF\xB0\xEF\xA4\xA5\xE0\xAD\xAE\xA3\xAE\xB0\xAE\xE0\xE3\xA6\xA8\xEF\n\xA2\xB0\xA3\xC0\xB0"); /* reciv-ru */
+                        strcpy(msgtext, TRANSLATE("Sensors report a\nNUCLEAR WEAPONS test\nnear ", "RU")); /* reciv-ru */
                         append_place_name(city);
                         strcat(msgtext, "!\n");
                         sound(36);
@@ -788,7 +788,7 @@ label_governor_done:
                             map_visible_to[townbuf[city].x * 50 + townbuf[city].y] = -1;
                         msgtext[0] = 0;
                         append_place_name(city);
-                        strcat(msgtext, "\xB0\xE1\xAE\xA7\xA4\xC0\xC5\n"); /* reciv-ru */
+                        strcat(msgtext, TRANSLATE(" builds\n", "RU")); /* reciv-ru */
                         strcat(msgtext, improvements[scratch_i].name);
                         strcat(msgtext, ".\n");
                         if (selected_owner == civnow && (debug & 8) && (scratch_i <= 21 || scratch_i > 24) && !(townbuf[city].status & 0x10) && scratch_i != 1 && disk_insert(1, 0L)) {
@@ -832,11 +832,11 @@ label_governor_done:
                         if (selected_owner == civnow || (treaties[civnow][selected_owner] & 0x40)) {
                             msgtext[0] = 0;
                             if (selected_owner != civnow) {
-                                strcpy(msgtext, "\x84\xA8\xAF\xAB\xAE\xAC\xA0\xE2\xEB\xB0\xE1\xAE\xAE\xA1\xE9\xC0\xC5\n"); /* reciv-ru */
+                                strcpy(msgtext, TRANSLATE("Diplomats report:\n", "RU")); /* reciv-ru */
                                 advisor = 1;
                             }
                             strcat(msgtext, civ_adjectives[selected_owner]);
-                            strcat(msgtext, "\xB0\xE1\xE2\xAE\xAB\xA8\xE6\xA0\n\xA2 \xA3\xAE\xE0\xAE\xA4\xA5:"); /* reciv-ru */
+                            strcat(msgtext, TRANSLATE(" capital\nmoved to ", "RU")); /* reciv-ru */
                             append_place_name(city);
                             strcat(msgtext, ".\n");
                             advisor = 5;
@@ -911,10 +911,10 @@ label_draw:
     if (mode == 1L) {
         framed_panel(2, 67, 124, 104);
         framed_panel(95, 106, 227, 197);
-        draw_button(95, 106, 128, 114, "\x88\xAD\xE4\xAE", 9); /* reciv-ru */
-        draw_button(129, 106, 160, 114, "\x86\xA8\xA7\xAD\xEC", 9); /* reciv-ru */
-        draw_button(161, 106, 193, 114, "\x8A\xE0\xE2", 9); /* reciv-ru */
-        draw_button(194, 106, 226, 114, "\x8E\xA1\xA7.", 9); /* reciv-ru */
+        draw_button(95, 106, 128, 114, TRANSLATE("INFO", "RU"), 9); /* reciv-ru */
+        draw_button(129, 106, 160, 114, TRANSLATE("HAPPY", "RU"), 9); /* reciv-ru */
+        draw_button(161, 106, 193, 114, TRANSLATE("MAP", "RU"), 9); /* reciv-ru */
+        draw_button(194, 106, 226, 114, TRANSLATE("VIEW", "RU"), 9); /* reciv-ru */
         recolour_rect(scrbuf, city_view_mode * 33 + 96, 107, 32, 7, 9, 15);
         switch (city_view_mode) {
         case 2:
@@ -1097,7 +1097,7 @@ label_draw:
     fit_citizens(city, experts_f);
     if (mode == 1L && city_view_mode == 1 && scratch_i != town_happy_ones_num - town_unhappy_counts) {
         draw_city_view(city, 100, happy_y_g, experts_f, 92);
-        draw_string("\x97\xE3\xA4\xA5\xE1\xA0", 190, happy_y_g + 5, 15); /* reciv-ru */
+        draw_string(TRANSLATE("WONDERS", "RU"), 190, happy_y_g + 5, 15); /* reciv-ru */
         happy_y_g += 16;
         draw_line(100, happy_y_g - 2, 222, happy_y_g - 2, 1);
     }
@@ -1145,9 +1145,9 @@ label_support_restart:
                         if (selected_owner == civnow) {
                             msgtext[0] = 0;
                             append_place_name(city);
-                            strcat(msgtext, " \xAD\xA5 \xAF\xAE\xA4\xA4\xA5\xE0\xA6\xA8\xE2\n"); /* reciv-ru */
+                            strcat(msgtext, TRANSLATE(" can't support\n", "RU")); /* reciv-ru */
                             strcat(msgtext, utypes[armydata[selected_owner][best_idx_o].type].name);
-                            strcat(msgtext, ".\n \x8E\xE2\xE0\xEF\xA4 \xE0\xA0\xE1\xAF\xE3\xE9\xA5\xAD.\n"); /* reciv-ru */
+                            strcat(msgtext, TRANSLATE(".\n Unit Disbanded.\n", "RU")); /* reciv-ru */
                             advisor = 3;
                             show_msg(msgtext, 100, 80);
                         }
@@ -1250,7 +1250,7 @@ label_support_restart:
         draw_line(231, 0, 250, 0, 0);
         draw_line(231, 1, 250, 1, 1);
         if (bld_pages_p & 2)
-            draw_button(287, 88, 315, 96, "\x85\xE9\xA5", 9); /* reciv-ru */
+            draw_button(287, 88, 315, 96, TRANSLATE("MORE", "RU"), 9); /* reciv-ru */
         recolour_rect(scrbuf, 309, 2, 8, 96, 14, 12);
         if (townbuf[city].production >= 0)
             cost_h = utypes[townbuf[city].production].cost;
@@ -1262,8 +1262,8 @@ label_support_restart:
         draw_y_k = ((cost_h - 1) / scale_i) * 8 + 8;
         rect_fill(scrbuf, 230, 99, draw_x_l + 3, draw_y_k + 19, 1);
         if (selected_owner == civnow) {
-            draw_button(231, 106, 263, 114, (townbuf[city].status & 0x10) ? "\x80\xA2\xE2\xAE." : "\x91\xE2\xE0\xAE\xA8\xAC", 9); /* reciv-ru */
-            draw_button(294, 106, 311, 114, "\x8A\xE3\xAF", 9); /* reciv-ru */
+            draw_button(231, 106, 263, 114, (townbuf[city].status & 0x10) ? TRANSLATE("AUTO.", "RU") : TRANSLATE("CHANGE", "RU"), 9); /* reciv-ru */
+            draw_button(294, 106, 311, 114, TRANSLATE("BUY", "RU"), 9); /* reciv-ru */
         }
         if (townbuf[city].production >= 0) {
             label_with_style(townbuf[city].production + selected_owner * 32 + 64, 264, 100);
@@ -1279,7 +1279,7 @@ label_support_restart:
         scratch_i = clamp(80 / townbuf[city].size, 1, 8);
         draw_y_k = 80 / cost_scale;
         rect_fill(scrbuf, 2, 106, 91, cost_scale * draw_y_k + 12, 1);
-        draw_string("\x87\xA0\xAF\xA0\xE1\xEB \xAF\xA8\xE9\xA8", 8, 108, 15); /* reciv-ru */
+        draw_string(TRANSLATE("Food Storage", "RU"), 8, 108, 15); /* reciv-ru */
         tile_panel(3, 115, townbuf[city].size * scratch_i + 9, cost_scale * draw_y_k + 2);
         if (townbuf[city].buildings & 4)
             draw_line(5, 155, townbuf[city].size * scratch_i + 9, 155, 1);
@@ -1289,7 +1289,7 @@ label_support_restart:
         framed_panel(2, 23, 124, 65);
         draw_y_k = 25;
         rect_fill(scrbuf, 2, 23, 122, 9, 1);
-        draw_string("\x90\xA5\xE1\xE3\xE0\xE1\xEB \xA3\xAE\xE0\xAE\xA4\xA0", 8, draw_y_k, 15); /* reciv-ru */
+        draw_string(TRANSLATE("City Resources", "RU"), 8, draw_y_k, 15); /* reciv-ru */
         draw_y_k += 8;
         for (item_b = 0; item_b < 3; item_b++) {
             city_x = 4;
@@ -1373,7 +1373,7 @@ label_support_restart:
                 sprite_draw(scrbuf, index_i * draw_y_k + 98, (index_i & 1) + 161, village_icons);
         }
         if (selected_owner == civnow) {
-            draw_button(284, 190, 316, 198, "\x8A\xAE\xAD\xA5\xE6", 12); /* reciv-ru */
+            draw_button(284, 190, 316, 198, TRANSLATE("EXIT", "RU"), 12); /* reciv-ru */
             draw_button(231, 190, 272, 198, "RENAME", 9);
             flash_c = 0;
             if (townbuf[city].production < 0 && townbuf[city].production >= -21 && (townbuf[city].buildings & (1L << (-townbuf[city].production - 1))))
@@ -1444,20 +1444,20 @@ label_input:
                     }
                     if (*(int *) &townbuf[city].rest[2] == 0)
                         scratch_i *= 2;
-                    strcpy(msgtext, "\x91\xE2\xAE\xA8\xAC\xAE\xE1\xE2\xEC \xE0\xA0\xA1\xAE\xE2\xEB\n"); /* reciv-ru */
+                    strcpy(msgtext, TRANSLATE("Cost to complete\n", "RU")); /* reciv-ru */
                     if (townbuf[city].production >= 0)
                         strcat(msgtext, utypes[townbuf[city].production].name);
                     else
                         strcat(msgtext, improvements[-townbuf[city].production].name);
                     strcat(msgtext, ": $");
                     strcat(msgtext, itoa(scratch_i, nstr, 10));
-                    strcat(msgtext, "\n\x8A\xA0\xAF\xA8\xE2\xA0\xAB: $"); /* reciv-ru */
+                    strcat(msgtext, TRANSLATE("\nTreasury: $", "RU")); /* reciv-ru */
                     strcat(msgtext, itoa(money[selected_owner], nstr, 10));
                     strcat(msgtext, "\n");
                     if (townbuf[city].production >= 0 && (townbuf[city].status & 1))
-                        strcat(msgtext, "\x81\xA5\xE1\xAF\xAE\xE0\xEF\xA4\xAA\xA8!\n"); /* reciv-ru */
+                        strcat(msgtext, TRANSLATE("CIVIL DISORDER\n", "RU")); /* reciv-ru */
                     else if (money[selected_owner] >= scratch_i)
-                        strcat(msgtext, " \x84\xA0\n \x8D\xA5\xE2\n"); /* reciv-ru */
+                        strcat(msgtext, TRANSLATE(" Yes\n No\n", "RU")); /* reciv-ru */
                     mouse_on();
                     *(int *) ((char *) scrbuf + 0x10) = 1;
                     if (show_menu(msgtext, 100, 80) == 0 && money[selected_owner] >= scratch_i) {
@@ -1684,11 +1684,11 @@ label_after_tabs:;
 label_sell:
                     for (item_b = first_bld_h; item_b < 24; item_b++) {
                         if ((townbuf[city].buildings & (1L << item_b)) && choice_f-- == 0 && !(townbuf[city].status & 0x80)) {
-                            strcpy(msgtext, "\x82\xEB \xE5\xAE\xE2\xA8\xE2\xA5 \xAF\xE0\xAE\xA4\xA0\xE2\xEC\n\xA2\xA0\xE8 "); /* reciv-ru */
+                            strcpy(msgtext, TRANSLATE("Do you want to sell\nyour ", "RU")); /* reciv-ru */
                             strcat(msgtext, improvements[item_b + 1].name);
-                            strcat(msgtext, " \xA7\xA0 "); /* reciv-ru */
+                            strcat(msgtext, TRANSLATE(" for ", "RU")); /* reciv-ru */
                             strcat(msgtext, itoa(improvements[item_b + 1].cost * 10, nstr, 10));
-                            strcat(msgtext, "$?\n \x8D\xA5\xE2.\n \x84\xA0.\n"); /* reciv-ru */
+                            strcat(msgtext, TRANSLATE("$?\n No.\n Yes.\n", "RU")); /* reciv-ru */
                             *(int *) ((char *) scrbuf + 0x10) = 1;
                             mouse_on();
                             if (menu_dialog(msgtext, 128, 80) == 1) {
@@ -1786,9 +1786,9 @@ label_tile_toggle:
             scratch_i = town_happy_ones_num - town_unhappy_counts;
             if (scratch_i < 0) {
                 if (human_set & (1 << selected_owner)) {
-                    strcpy(msgtext, "\x81\xA5\xE1\xAF\xAE\xE0\xEF\xA4\xAA\xA8\xC5\xB0\x83\xAE\xE0\xC0\xC5\n"); /* reciv-ru */
+                    strcpy(msgtext, TRANSLATE("Civil Disorder in\n", "RU")); /* reciv-ru */
                     append_place_name(city);
-                    strcat(msgtext, "\xC2\xB0\x8C\xED\xE0\n\xA2\xB0\xAF\xA0\xAD\xA8\xAA\xA5\xC0\n"); /* reciv-ru */
+                    strcat(msgtext, TRANSLATE("! Mayor\nflees in panic.\n", "RU")); /* reciv-ru */
                     sound(36);
                     if ((debug & 8) && !(townbuf[city].status & 1) && human_counts == 0) {
                         city_scene(city, -2);
@@ -1819,9 +1819,9 @@ label_tile_toggle:
                     note_map(city_x, city_y_p);
                 } else if (civ_gov[selected_owner] == 5) {
                     sound(36);
-                    strcpy(msgtext, "\x8D\xA5\xA4\xAE\xA2\xAE\xAB\xEC\xAD\xEB\xA5\xB0\xA6\xA8\xE2\xA5\xAB\xA8\xB0\xA2\xB0\xA3\xC0:\n"); /* reciv-ru */
+                    strcpy(msgtext, TRANSLATE("Discontented citizens of\n", "RU")); /* reciv-ru */
                     append_place_name(city);
-                    strcat(msgtext, "\xB0\xE2\xE0\xA5\xA1\xE3\xEE\xE2\n\xAD\xAE\xA2\xAE\xA5\xB0\xAF\xE0\xA0\xA2\xA8\xE2\xA5\xAB\xEC\xE1\xE2\xA2\xAE\xB0\xC2\n"); /* reciv-ru */
+                    strcat(msgtext, TRANSLATE(" revolt:\nGovernment Collapses!\n", "RU")); /* reciv-ru */
                     if (selected_owner == civnow) {
                         news_box(city);
                         treaties[selected_owner][0] |= 4;
@@ -1834,7 +1834,7 @@ label_tile_toggle:
                     townbuf[city].status &= 0xfe;
                     if (human_set & (1 << selected_owner)) {
                         advisor = 4;
-                        strcpy(msgtext, "\x91\xAD\xAE\xA2\xA0\xB0\xAF\xAE\xE0\xEF\xA4\xAE\xAA\n\xA2\xB0\xC5\xB0"); /* reciv-ru */
+                        strcpy(msgtext, TRANSLATE("Order restored\nin ", "RU")); /* reciv-ru */
                         append_place_name(city);
                         strcat(msgtext, ".\n");
                         show_msg(msgtext, 100, 80);
@@ -1854,9 +1854,9 @@ label_tile_toggle:
             if (town_unhappy_counts == 0 && townbuf[city].size > 2 && (townbuf[city].size + 1) / 2 <= town_happy_ones_num && civ_gov[selected_owner] != 0) {
                 if (!(townbuf[city].status & 0x40)) {
                     if ((human_set & (1 << selected_owner)) && civ_gov[selected_owner] != 0) {
-                        strcpy(msgtext, "\xC4\x8D\xA0\xE8 \xAB\xEE\xA1\xA8\xAC\xEB\xA9\xB0"); /* reciv-ru */
+                        strcpy(msgtext, TRANSLATE("'We love the ", "RU")); /* reciv-ru */
                         strcat(msgtext, leader_titles[civ_gov[selected_owner]]);
-                        strcat(msgtext, "\xC4\n\xAE\xE2\xAC\xA5\xE7\xA0\xA5\xE2\xE1\xEF \xA2 \xA3\xAE\xE0\xC0\n"); /* reciv-ru */
+                        strcat(msgtext, TRANSLATE("'\nday celebrated in\n", "RU")); /* reciv-ru */
                         append_place_name(city);
                         strcat(msgtext, "!\n");
                         sound(34);
@@ -1877,9 +1877,9 @@ label_tile_toggle:
             } else if (scratch_i >= 0 && (townbuf[city].status & 0x40)) {
                 if ((human_set & (1 << selected_owner)) && civ_gov[selected_owner] != 0) {
                     sound(35);
-                    strcpy(msgtext, "\xC4\x8D\xA0\xE8 \xAB\xEE\xA1\xA8\xAC\xEB\xA9\xB0"); /* reciv-ru */
+                    strcpy(msgtext, TRANSLATE("'We love the ", "RU")); /* reciv-ru */
                     strcat(msgtext, leader_titles[civ_gov[selected_owner]]);
-                    strcat(msgtext, "\xC4\n\xE3\xA6\xA5 \xAD\xA5 \xAE\xE2\xAC\xA5\xE7\xA0\xA5\xE2\xE1\xEF\n\xA2 \xA3\xC0\xC5\xB0"); /* reciv-ru */
+                    strcat(msgtext, TRANSLATE("'\ncelebration canceled\nin ", "RU")); /* reciv-ru */
                     append_place_name(city);
                     strcat(msgtext, ".\n");
                     news_box(city);
@@ -1940,7 +1940,7 @@ label_tile_toggle:
                     reveal(civnow, tile_x_l - 8, radius_y - 6);
                     map_note(tile_x_l, radius_y);
                     advisor = 6;
-                    strcpy(msgtext, "\x87\xA0\xA3\xE0\xEF\xA7\xAD\xA5\xAD\xA8\xA5\xC2\xB0"); /* reciv-ru */
+                    strcpy(msgtext, TRANSLATE("Pollution near ", "RU")); /* reciv-ru */
                     append_place_name(city);
                     strcat(msgtext, ".\n");
                     show_msg(msgtext, 80, 64);
@@ -1953,9 +1953,9 @@ label_tile_toggle:
                 nuke_fallout(city_x, city_y_p);
                 townbuf[city].buildings &= ~0x100000L;
                 sound(36);
-                strcpy(msgtext, "\x9F\xA4\xA5\xE0\xAD\xA0\xEF\xB0\xAA\xA0\xE2\xA0\xE1\xE2\xE0\xAE\xE4\xA0\xC2\n"); /* reciv-ru */
+                strcpy(msgtext, TRANSLATE("Nuclear Catastrophe\nin ", "RU")); /* reciv-ru */
                 append_place_name(city);
-                strcat(msgtext, "\xC2\n\x81\xAE\xEF\xA7\xAD\xEC\xB0\xA7\xA0\xA3\xE0\xEF\xA7\xAD\xA5\xAD\xA8\xA9\xB0\xB0\xC5\n"); /* reciv-ru */
+                strcat(msgtext, TRANSLATE("!\nContamination feared!\n", "RU")); /* reciv-ru */
                 news_box(city);
                 sound(1);
             }
@@ -1977,7 +1977,7 @@ label_tile_toggle:
                         townbuf[city].buildings &= ~(1L << item_b);
                         msgtext[0] = 0;
                         append_place_name(city);
-                        strcat(msgtext, "\n\xAD\xA5\xB0\xE1\xAE\xA4\xA5\xE0\xA6\xA8\xE2\xB0\n"); /* reciv-ru */
+                        strcat(msgtext, TRANSLATE("\ncan't maintain\n", "RU")); /* reciv-ru */
                         strcat(msgtext, improvements[item_b + 1].name);
                         strcat(msgtext, ".\n");
                         advisor = 4;

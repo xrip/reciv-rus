@@ -79,9 +79,9 @@ void dip_menu(int city_id, int player, int unit_id)
     armydata[player][unit_id].goto_x = -1;
 
     strcpy(msgtext, civ_adjectives[player]);
-    strcat(msgtext, " \x84\xA8\xAF\xAB\xAE\xAC\xA0\xE2 \xAF\xE0\xA8\xA1\xEB\xAB \n\xA2: "); /* reciv-ru */
+    strcat(msgtext, TRANSLATE(" diplomat arrives\nin ", "RU")); /* reciv-ru */
     append_place_name(city_id);
-    strcat(msgtext, "...\n \x91\xAE\xA7\xA4\xA0\xE2\xEC \xAF\xAE\xE1\xAE\xAB\xEC\xE1\xE2\xA2\xAE\n \x88\xE1\xE1\xAB\xA5\xA4. \xA3\xAE\xE0\xAE\xA4\n \x93\xAA\xE0\xA0\xE1\xE2\xEC \xE2\xA5\xE5\xAD\xAE\xAB\xAE\xA3\xA8\xEE\n \x88\xAD\xA4\xE3\xE1\xE2\xE0. \xE1\xA0\xA1\xAE\xE2\xA0\xA6\n \x93\xE1\xE2\xE0\xAE\xA8\xE2\xEC \xE0\xA5\xA2\xAE\xAB\xEE\xE6\xA8\xEE\n \x82\xE1\xE2\xA5\xE2\xA8\xE2\xEC \xA3\xAB\xA0\xA2\xE3\n"); /* reciv-ru */
+    strcat(msgtext, TRANSLATE("...\n Establish Embassy\n Investigate City\n Steal Technology\n Industrial Sabotage\n Incite a Revolt\n Meet with King\n", "RU")); /* reciv-ru */
 
     if (player == civnow) {
         if ((treaties[civnow][target_civ].a & 0x40) || target_civ == 0)
@@ -136,7 +136,7 @@ void dip_menu(int city_id, int player, int unit_id)
                 continue;
             give_advance(player, tech, target_civ);
             strcpy(msgtext, civ_names[player]);
-            strcat(msgtext, "\xB0\xA2\xA7\xEF\xAB\xA8\n"); /* reciv-ru */
+            strcat(msgtext, TRANSLATE(" steal\n", "RU")); /* reciv-ru */
             strcat(msgtext, advances[tech].name);
             strcat(msgtext, ".\n");
             message_mode = 0;
@@ -150,7 +150,7 @@ void dip_menu(int city_id, int player, int unit_id)
         }
         if (player != civnow) {
         } else {
-            show_msg("\x8D\xAE\xA2\xEB\xE5 \xE2\xA5\xE5\xAD\xAE\xAB\xAE\xA3\xA8\xA9 \xAD\xA5\xE2.\n", 80, 80); /* reciv-ru */
+            show_msg(TRANSLATE("No new technology found.\n", "RU"), 80, 80); /* reciv-ru */
             return;
         }
 
@@ -165,7 +165,7 @@ sabotage:
             if (rand_tech < 99) {
                 townbuf[city_id].buildings &= ~(1 << i);
                 strcpy(msgtext, diplomat_improvements[i].name);
-                strcat(msgtext, " \xE3\xAD\xA8\xE7\xE2\xAE\xA6\xA5\xAD\n"); /* reciv-ru */
+                strcat(msgtext, TRANSLATE(" destroyed\n", "RU")); /* reciv-ru */
             } else {
                 rand_tech = 0;
             }
@@ -176,9 +176,9 @@ sabotage:
                 strcpy(msgtext, utypes[townbuf[city_id].production].name);
             else
                 strcpy(msgtext, diplomat_improvements[-townbuf[city_id].production - 1].name);
-            strcat(msgtext, " \xAC\xA0\xE1\xE1\xAE\xA2\xEB\xA9 \xE1\xA0\xA1\xAE\xE2\xA0\xA6 \xA2\n"); /* reciv-ru */
+            strcat(msgtext, TRANSLATE(" production sabotaged\n", "RU")); /* reciv-ru */
         }
-        strcat(msgtext, "\xA3. "); /* reciv-ru */
+        strcat(msgtext, TRANSLATE("in ", "RU")); /* reciv-ru */
         append_place_name(city_id);
         strcat(msgtext, ".\n");
         message_mode = 0;
@@ -193,15 +193,15 @@ sabotage:
         cost = (money[target_civ] + 1000) / (dist + 3) * townbuf[city_id].size;
         if (townbuf[city_id].status & 1)
             cost /= 2;
-        strcpy(msgtext, "\x84\xA8\xE1\xE1\xA8\xA4\xA5\xAD\xE2\xEB: \xA3."); /* reciv-ru */
+        strcpy(msgtext, TRANSLATE("Dissidents in ", "RU")); /* reciv-ru */
         append_place_name(city_id);
-        strcat(msgtext, "\n\xA2\xEB\xE1\xE2\xE3\xAF\xEF\xE2 \xA7\xA0 $"); /* reciv-ru */
+        strcat(msgtext, TRANSLATE("\nwill revolt for $", "RU")); /* reciv-ru */
         strcat(msgtext, itoa(cost, nstr, 10));
         strcat(msgtext, ".\n");
         if (cost <= money[player]) {
-            strcat(msgtext, " \x8E\xE2\xAA\xA0\xA7.\n \x8E\xE0\xA3\xA0\xAD\xA8\xA7\xAE\xA2\xA0\xE2\xEC \xAF\xE3\xE2\xE7\n"); /* reciv-ru */
+            strcat(msgtext, TRANSLATE(" Forget it.\n Incite revolt\n", "RU")); /* reciv-ru */
             if (cost * 2 <= money[player] && (treaties[player][target_civ].a & 2)) {
-                strcat(msgtext, " \x8E\xA1\xE0\xA0\xE2\xA8\xE2\xEC \xA3\xAE\xE0.($x2)\n"); /* reciv-ru */
+                strcat(msgtext, TRANSLATE(" Subvert city ($x2)\n", "RU")); /* reciv-ru */
             }
         }
         message_mode = 0;
@@ -268,13 +268,13 @@ void buy_u(int player, int unit_id, int bribing_player)
     strcpy(msgtext, civ_adjectives[player]);
     strcat(msgtext, " ");
     strcat(msgtext, utypes[armydata[player][unit_id].type].name);
-    strcat(msgtext, "\n\xAE\xAF\xE3\xE1\xE2\xAE\xE8\xA0\xE2 \xA7\xA0"); /* reciv-ru */
+    strcat(msgtext, TRANSLATE("\nwill desert for ", "RU")); /* reciv-ru */
     strcat(msgtext, itoa(cost, nstr, 10));
-    strcat(msgtext, "$.\n\x8A\xA0\xAF\xA8\xE2\xA0\xAB: "); /* reciv-ru */
+    strcat(msgtext, TRANSLATE("$.\nTreasury: ", "RU")); /* reciv-ru */
     strcat(msgtext, itoa(money[bribing_player], nstr, 10));
     strcat(msgtext, "$\n");
     if (cost <= money[bribing_player])
-        strcat(msgtext, " \x8E\xE2\xAA\xA0\xA7.\n \x8F\xAB\xA0\xE2\xA8\xE2\xEC\n"); /* reciv-ru */
+        strcat(msgtext, TRANSLATE(" Forget it.\n Pay\n", "RU")); /* reciv-ru */
 
     if (bribing_player == civnow) {
         if (show_msg(msgtext, 100, 80) != 1)
@@ -286,7 +286,7 @@ void buy_u(int player, int unit_id, int bribing_player)
         strcpy(msgtext, civ_adjectives[player]);
         strcat(msgtext, " ");
         strcat(msgtext, utypes[armydata[player][unit_id].type].name);
-        strcat(msgtext, " \xAE\xE2\xE0.\n\xA2\xA7\xEF\xE2\xAA\xA0 \xAE\xE2:"); /* reciv-ru */
+        strcat(msgtext, TRANSLATE(" unit\nbribed by ", "RU")); /* reciv-ru */
         strcat(msgtext, civ_names[bribing_player]);
         strcat(msgtext, "!\n");
         message_mode = 0;
@@ -385,12 +385,12 @@ void city_revolt(int city_id, int new_owner)
         if (map_visible_to[townbuf[city_id].x * 50 + townbuf[city_id].y] & (1 << civnow))
             reveal(civnow, townbuf[city_id].x - 8, townbuf[city_id].y - 5);
         strcpy(msgtext, civ_names[civ]);
-        strcat(msgtext, new_owner == 0 ? " \xE1\xE2\xA0\xAB\xA8\n\xAD\xA5\xA7\xA0\xA2\xA8\xE1\xA8\xAC\xEB\xAC\xA8 \xA2 \xA3.\n" : " \xA2\xAE\xE1\xE1\xE2!\n\x83\xE0\xA0\xA6\xA4\xC0\xA2\xAE\xA9\xAD\xA0\xC5\n"); /* reciv-ru */
+        strcat(msgtext, new_owner == 0 ? TRANSLATE(" declare\nindependence in\n", "RU") : TRANSLATE(" rebel!\nCivil War in\n", "RU")); /* reciv-ru */
         append_place_name(city_id);
         if (new_owner != 0) {
             strcat(msgtext, ".\n");
             strcat(msgtext, civ_adjectives[new_owner]);
-            strcat(msgtext, "\xB0\xED\xAF\xA8\xA4\xA5\xAC\xA8\xEF\n\xA3\xE0\xA8\xAF\xAF\xA0\xC0\n"); /* reciv-ru */
+            strcat(msgtext, TRANSLATE(" influence\nsuspected.\n", "RU")); /* reciv-ru */
         } else {
             strcat(msgtext, "\n");
         }
@@ -450,7 +450,7 @@ void city_founded(int city_id)
     blit(back_page, 0, 0, 320, 200, scrbuf, 0, 0);
     msgtext[0] = 0;
     append_place_name(city_id);
-    strcat(msgtext, "\xB0\xAE\xE1\xAD\xAE\xA2\xA0\xAD\xC5\xB0"); /* reciv-ru */
+    strcat(msgtext, TRANSLATE(" founded: ", "RU")); /* reciv-ru */
     format_year();
     /* reciv-ru: format_year now ends with «░до н.э.»; the pack's «└» period
      * marker (drawn as a dot after «░днэ») is dropped - the expanded era

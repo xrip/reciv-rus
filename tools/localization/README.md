@@ -37,20 +37,40 @@ and unpack; the data segment is plaintext in the packed file.)
 - `pairs.csv` - all EXE offset pairs with kinds.
 - `unmatched-src.txt`, `unmatched-ru.txt`, `syncs.txt`, `stats.txt`.
 
-Current result: 1164/1198 mapped (641 table, 497 gap, 26 interp); the `drop`
+Current result: 1163/1198 mapped (642 table, 495 gap, 26 interp); the `drop`
 set and `unmatched-src.txt` are the literals that stay English on purpose.
 
-## Applying
+## Applying: the language layer
 
     git checkout c6ea308 -- src/game      # the English civd base
     python tools/localization/make-mapping.py --en <EN EXE> --ru civ/CIV.EXE
     python tools/localization/apply-translation.py
 
-`apply-translation.py` rewrites the `table` and `gap` rows as escaped CP866
-bytes in the source literals (1127 rows), marks each changed line with
-`/* reciv-ru */`, keeps CRLF endings, and re-applies the `CODE_FIXES` list
-(SAVE.C drive-sentinel comparisons - code semantics, not literals).
-`interp` rows are never applied automatically; review them first.
+`apply-translation.py` wraps every mapped `table`/`gap` literal in the source
+(1137 lines): `"G\207AME"` -> `TRANSLATE("G\207AME", "RU")`, marks the line
+with `/* reciv-ru */`, keeps CRLF endings, re-applies the `CODE_FIXES` list
+(SAVE.C drive-sentinel comparisons, font picks, layout re-spacing), and then
+writes `data/ru.lang` from the final wrapped tree - tab-separated
+
+    FILE.C <TAB> line <TAB> english literal body <TAB> russian text
+
+where the russian column is readable UTF-8 text made of the CP866 characters
+themselves; `\n \t \r \" \\ \xNN` escape texts cover the bytes text cannot
+show, and an empty russian column is the empty string (the pack really blanks
+such slots).  Line numbers refer to the wrapped tree - after the code fixes -
+the numbers `langgen.c` will look up.  Manual russian edits in `ru.lang` are
+kept across regenerations while their key (file, line, english) exists.
+`interp` rows are never applied; review them first.
+
+At build time CMake compiles `reciv-langgen` (`tools/localization/langgen.c`)
+and expands every `TRANSLATE` call into the escaped CP866 literal from
+`ru.lang`; the period library is built from those copies in
+`<build>/period-gen`, so the period code still sees only plain-ASCII
+literals and no compiler charset options are needed (MSVC and clang cannot
+convert execution charsets to CP866 - measured).  A direct compile of
+`src/game` without the langgen step keeps English (prelude fallback macro).
+Migration check 2026-10: the langgen output was byte-identical to the old
+committed escaped tree, 43/43 files.
 
 ## Known version differences (retail vs 474.05)
 

@@ -1007,8 +1007,9 @@ def main():
     # 'demand' (315) is left English: the pack has no 'demand'/'требуют' anywhere
     # (slot blanked at 0x300ec) because the RU *CANCEL blurb hard-codes 'Мы
     # требуем...' without $RPLC1, so the slot value is never shown.
-    for row in [("DIPLOMAT.C", 455, ".", "└"),
-                ("DIPLOMAT.C", 181, "in ", "г. ")] + \
+    # no row for the "." period marker on DIPLOMAT.C 455: the city-founded
+    # CODE_FIX in apply-translation.py deletes that whole strcat line.
+    for row in [("DIPLOMAT.C", 181, "in ", "г. ")] + \
                [("ADVISORS.C", ln, r"\x87 (", " (") for ln in (661, 670)] + \
                [("REPORTS.C", 323, "Great", "Стойкие"),
                 ("REPORTS.C", 324, "Fine", "Красивые"),

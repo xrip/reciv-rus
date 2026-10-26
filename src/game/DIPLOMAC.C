@@ -71,11 +71,11 @@ void city_phase(int civ)
                 && ((treaties[civnow][civ] & 0x40)
                     || (treaties[civnow][i] & 0x40))
                 && civ != civnow && i != civnow) {
-                strcpy(msgtext, "\x82\xAE\xA9\xAD\xA0 \xAD\xA0\xE0\xAE\xA4\xAE\xA2\n"); /* reciv-ru */
+                strcpy(msgtext, TRANSLATE("The war between\nthe ", "RU")); /* reciv-ru */
                 strcat(msgtext, civ_names[civ]);
-                strcat(msgtext, "\x82\xAE\xA9\xAD\xA0 \xAD\xA0\xE0\xAE\xA4\xAE\xA2\n"); /* reciv-ru */
+                strcat(msgtext, TRANSLATE(" and the\n", "RU")); /* reciv-ru */
                 strcat(msgtext, civ_names[i]);
-                strcat(msgtext, "\n\xA7\xA0\xAA\xAE\xAD\xE7\xA5\xAD\xA0.\n"); /* reciv-ru */
+                strcat(msgtext, TRANSLATE(" has ended.\n", "RU")); /* reciv-ru */
                 message_mode = 1;
                 show_msg(msgtext, 100, 80);
             }
@@ -117,7 +117,7 @@ void city_phase(int civ)
                             msgtext[0] = 0;
                             strcpy(message_slot_a, civ_names[i]);
                             strcpy(message_slot, (treaties[civ][civnow] & 2)
-                                   ? "extend our" : "\x8C\xEB \xE1\xAE\xA3\xAB\xA0\xE1\xAD\xEB \xAD\xA0:"); /* reciv-ru */
+                                   ? "extend our" : TRANSLATE("agree to a", "RU")); /* reciv-ru */
                             named_msg("*CRUSADE");
                             style = 1;
                             setting_value = 12;
@@ -145,7 +145,7 @@ void set_government(int civ, int gov)
     og = civ_gov[civ];
     if (human_set & (1 << civ)) {
 again:
-        strcpy(msgtext, "\x82\xEB\xA1\xA5\xE0\xA8\xE2\xA5 \xE2\xA8\xAF\n\xAF\xE0\xA0\xA2\xA8\xE2\xA5\xAB\xEC\xE1\xE2\xA2\xA0..\n "); /* reciv-ru */
+        strcpy(msgtext, TRANSLATE("Select type of\nGovernment...\n ", "RU")); /* reciv-ru */
         nopt = pick = 0;
         for (t = 1; t < 6; t++) {
             if (!civ_wonder(civ, 1)) {
@@ -178,14 +178,14 @@ again:
             msgtext[0] = 0;
             if (treaties[civ][0] & 4) {
                 strcat(msgtext, civ_adjectives[civ]);
-                strcat(msgtext, "\xB0\xAE\xA1\xE9\xC0\xB0\xE1\xE2\xE0\xAE\xA9\n\xA8\xA7\xAC\xA5\xAD\xA5\xAD\xB0\xAD\xA0\xC5"); /* reciv-ru */
+                strcat(msgtext, TRANSLATE(" government\nchanged to ", "RU")); /* reciv-ru */
                 strcat(msgtext, government_names[gov]);
                 strcat(msgtext, "!\n");
                 treaties[civ][0] &= ~4;
             } else {
-                strcat(msgtext, ""); /* reciv-ru */
+                strcat(msgtext, TRANSLATE("The ", "RU")); /* reciv-ru */
                 strcat(msgtext, civ_adjectives[civ]);
-                strcat(msgtext, "\xB0\x8F\xE0\xA0\xA2\xA8\xE2\xA5\xAB\xEC\xE1\xE2\xA2\xAE\n\xA1\xEB\xAB\xAE\xB0\xE1\xA2\xA5\xE0\xA3\xAD\xE3\xE2\xAE\xC2\n"); /* reciv-ru */
+                strcat(msgtext, TRANSLATE(" government\nhas been overthrown!\n", "RU")); /* reciv-ru */
                 treaties[civ][0] |= 4;
             }
             message_mode = 1;
@@ -236,9 +236,9 @@ void diplomacy_event(int a, int b, int c, int d)
             if ((treaties[civnow][a] & 0x40)
                 || (treaties[civnow][b] & 0x40)) {
                 strcpy(msgtext, civ_names[a]);
-                strcat(msgtext, "\xB0\xA8\n"); /* reciv-ru */
+                strcat(msgtext, TRANSLATE(" and\n", "RU")); /* reciv-ru */
                 strcat(msgtext, civ_names[b]);
-                strcat(msgtext, "\xB0\xA7\xA0\xAA\xAB\xEE\xE7\xA8\xAB\xA8\n\xA4\xAE\xA3\xAE\xA2\xAE\xE0.\n"); /* reciv-ru */
+                strcat(msgtext, TRANSLATE(" sign\na peace treaty.\n", "RU")); /* reciv-ru */
                 message_mode = 1;
                 show_msg(msgtext, 100, 80);
             }
@@ -250,9 +250,9 @@ void diplomacy_event(int a, int b, int c, int d)
         if ((treaties[civnow][a] & 0x40)
             || (treaties[civnow][b] & 0x40)) {
             strcpy(msgtext, civ_names[a]);
-            strcat(msgtext, "\xB0\xA8\n"); /* reciv-ru */
+            strcat(msgtext, TRANSLATE(" and\n", "RU")); /* reciv-ru */
             strcat(msgtext, civ_names[b]);
-            strcat(msgtext, (treaties[a][b] & 2) ? " \xAF\xE0\xA5\xE0\xA2\xA0\xAB\xA8\n\xA4\xAE\xA3\xAE\xA2\xAE\xE0.\n" : " \xA2 \xE1\xAE\xE1\xE2\xAE\xEF\xAD\xA8\xA8\n\xA2\xAE\xA9\xAD\xEB.\n"); /* reciv-ru */
+            strcat(msgtext, (treaties[a][b] & 2) ? TRANSLATE(" cancel\npeace treaty.\n", "RU") : TRANSLATE(" declare\nwar on each other.\n", "RU")); /* reciv-ru */
             message_mode = 1;
             show_msg(msgtext, 100, 80);
         }

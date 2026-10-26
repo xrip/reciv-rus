@@ -53,28 +53,28 @@ void news_box(int city)
     switch (rand_scaled(4)) {
     case 0:
         append_place_name(city);
-        strcat(msgtext, "\xB0\x8D\xA5\xA4\xA5\xAB\xEF"); /* reciv-ru */
+        strcat(msgtext, TRANSLATE(" Weekly", "RU")); /* reciv-ru */
         break;
     case 1:
         append_place_name(city);
-        strcat(msgtext, "\xB0\x91\xA5\xA3\xAE\xA4\xAD\xEF"); /* reciv-ru */
+        strcat(msgtext, TRANSLATE(" Today", "RU")); /* reciv-ru */
         break;
     case 2:
-        strcpy(msgtext, "    "); /* reciv-ru */
+        strcpy(msgtext, TRANSLATE("The ", "RU")); /* reciv-ru */
         append_place_name(city);
-        strcat(msgtext, "\xB0\x82\xE0\xA5\xAC\xEF"); /* reciv-ru */
+        strcat(msgtext, TRANSLATE(" Times", "RU")); /* reciv-ru */
         break;
     case 3:
-        strcpy(msgtext, "    "); /* reciv-ru */
+        strcpy(msgtext, TRANSLATE("The ", "RU")); /* reciv-ru */
         append_place_name(city);
-        strcat(msgtext, "\xB0\x92\xE0\xA8\xA1\xE3\xAD\xA0"); /* reciv-ru */
+        strcat(msgtext, TRANSLATE(" Tribune", "RU")); /* reciv-ru */
         break;
     }
     n = string_width(msgtext);
     if (n > 300) {
         msgtext[0] = 0;
         append_place_name(city);
-        strcat(msgtext, "\xB0\x8D\xAE\xA2\xAE\xE1\xE2\xA8"); /* reciv-ru */
+        strcat(msgtext, TRANSLATE(" News", "RU")); /* reciv-ru */
         n = string_width(msgtext);
     }
     if (n < 200) {
@@ -82,15 +82,15 @@ void news_box(int city)
         draw_string_dim(",-.", 268, 11, 0);
     }
     draw_text(msgtext, 160, 11, 0);
-    strcpy(msgtext, rand_scaled(2) ? "\xBD\xBE\xBF" : "FLASH"); /* reciv-ru */
+    strcpy(msgtext, rand_scaled(2) ? TRANSLATE("EXTRA!", "RU") : "FLASH"); /* reciv-ru */
     scrbuf->font = 3;
     draw_string_dim(msgtext, 6, 3, 0);
     draw_string_dim(msgtext, 272, 3, 0);
     scrbuf->font = 1;
     msgtext[0] = 0;
-    strcat(msgtext, "10 \xE0\xE3\xA1."); /* reciv-ru */
+    strcat(msgtext, TRANSLATE("10 cents", "RU")); /* reciv-ru */
     draw_string(msgtext, 272, 28, 0);
-    strcpy(msgtext, "1 \xEF\xAD\xA2\xA0\xE0\xEF, "); /* reciv-ru */
+    strcpy(msgtext, TRANSLATE("January 1, ", "RU")); /* reciv-ru */
     format_year();
     draw_string(msgtext, 8, 28, 0);
     scrbuf->font = 2;
@@ -101,7 +101,7 @@ void news_box(int city)
     draw_text(msgtext, 160, 3, 0);
     scrbuf->font = 1;
     if (first != -2) {
-        menu_dialog("\x8D\xA0\xA6\xAC\xA8\xE2\xA5 \xAB\xEE\xA1\xE3\xEE \xAA\xAB\xA0\xA2\xA8\xE8\xE3.\n", 80, 128); /* reciv-ru */
+        menu_dialog(TRANSLATE("Press any key to continue.\n", "RU"), 80, 128); /* reciv-ru */
         blit(back_page, 0, 0, 320, 200, scrbuf, 0, 0);
     }
     mouse_on();

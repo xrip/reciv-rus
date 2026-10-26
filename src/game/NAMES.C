@@ -40,7 +40,7 @@ int rename_city(int city)
     do {
         rect_fill(scrbuf, 80, 80, 160, 32, 15);
         draw_box(80, 80, 160, 32, 11);
-        draw_string("\x88\xAC\xEF \xA3\xAE\xE0\xAE\xA4\xA0..", 88, 82, 0); /* reciv-ru */
+        draw_string(TRANSLATE("City Name...", "RU"), 88, 82, 0); /* reciv-ru */
         msgtext[0] = 0;
         append_place_name(city);
         ret = edit_line(88, 96, 12);
@@ -60,7 +60,7 @@ void rename_leader(void)
     mouse_off();
     rect_fill(scrbuf, 158, 88, 160, 32, 15);
     draw_box(158, 88, 160, 32, 11);
-    draw_string("\x82\xA0\xE8\xA5 \x88\xAC\xEF...", 166, 90, 0); /* reciv-ru */
+    draw_string(TRANSLATE("Your Name...", "RU"), 166, 90, 0); /* reciv-ru */
     strcpy(msgtext, leader_names[civnow]);
     edit_line(166, 104, 13);
     strcpy(leader_names[civnow], msgtext);
@@ -77,7 +77,7 @@ void rename_tribe(void)
     mouse_off();
     rect_fill(scrbuf, 158, 88, 160, 32, 15);
     draw_box(158, 88, 160, 32, 11);
-    draw_string("\x88\xAC\xEF \xA2\xA0\xE8\xA5\xA3\xAE \xAF\xAB\xA5\xAC\xA5\xAD\xA8...", 166, 90, 0); /* reciv-ru */
+    draw_string(TRANSLATE("Name of your Tribe...", "RU"), 166, 90, 0); /* reciv-ru */
     strcpy(msgtext, civ_names[civnow]);
     edit_line(166, 104, 11);
     strcpy(civ_names[civnow], msgtext);
@@ -98,12 +98,12 @@ void goto_city(void)
 
     mouse_off();
     menu_begin();
-    city = find_city("\x93\xAA\xA0\xA6\xA8\xE2\xA5 \xAD\xA0\xE7\xA0\xAB\xAE \xA8\xAC\xA5\xAD\xA8 ...(\xA8\xAC\xEF \xA3\xAE\xE0\xAE\xA4\xA0)"); /* reciv-ru */
+    city = find_city(TRANSLATE("Where in the heck is ... (city name)", "RU")); /* reciv-ru */
     if (city != -1 && (map_visible_to[50 * townbuf[city].x + townbuf[city].y] & (1 << civnow))) {
         reveal(civnow, townbuf[city].x - 7, townbuf[city].y - 6);
     } else {
         rect_fill(scrbuf, 64, 78, 224, 10, 15);
-        draw_string("\x83\xAE\xE0\xAE\xA4 \xAD\xA5 \xAD\xA0\xA9\xA4\xA5\xAD", 82, 80, 0); /* reciv-ru */
+        draw_string(TRANSLATE("Unknown city.", "RU"), 82, 80, 0); /* reciv-ru */
         ad_wait();
         menu_end();
     }

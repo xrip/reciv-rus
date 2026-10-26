@@ -509,7 +509,7 @@ void civ_destroyed(void)
     strcpy(msgtext, leader_names[civnow]);
     strupr(msgtext);
     strcpy(news_values[0], msgtext);
-    strcpy(msgtext, "\x8C\xA5\xAB\xA8\xAE\xE0\xA0\xE6\xA8\xEF"); /* reciv-ru */
+    strcpy(msgtext, TRANSLATE("Irrigation", "RU")); /* reciv-ru */
     for (i = 0; i < 72; i++)
         if (has_tech(civnow, i))
             strcpy(msgtext, advances[i].name);
@@ -570,14 +570,14 @@ void show_start(void)
         if (patterned_cell(code, x, y))
             strcpy(msgtext, terrains[code + 12].name);
         if (has_hut(code, x, y))
-            strcpy(msgtext, "\x8F\xAE\xE1\xA5\xAB\xAE\xAA"); /* reciv-ru */
+            strcpy(msgtext, TRANSLATE("Village", "RU")); /* reciv-ru */
         show_label(spiral_x[i] * 16 + 200, spiral_y[i] * 16 + 112, spiral_x[i] * 64 + 170, spiral_y[i] * 48 + 100);
     }
-    strcpy(msgtext, "\x8C\xA5\xAD\xEE"); /* reciv-ru */
+    strcpy(msgtext, TRANSLATE("Menu Bar", "RU")); /* reciv-ru */
     show_label(160, 6, 200, 16);
-    strcpy(msgtext, "\x8E\xAA\xAD\xAE \xE1 \xAA\xA0\xE0\xE2\xAE\xA9"); /* reciv-ru */
+    strcpy(msgtext, TRANSLATE("Map Window", "RU")); /* reciv-ru */
     show_label(48, 32, 88, 24);
-    strcpy(msgtext, "\x92\xA5\xAA\xE3\xE9. \xAE\xE2\xE0\xEF\xA4"); /* reciv-ru */
+    strcpy(msgtext, TRANSLATE("Active Unit", "RU")); /* reciv-ru */
     show_label(40, 128, 88, 170);
     mouse_on();
     ad_wait();
@@ -596,4 +596,4 @@ static void next_credit(char *buffer)
     fscanf(credits_stream, "%[^\n]\n", buffer);
 }
 
-char *rank_title[5] = { "\x82\xAE\xA6\xA4\xEC", "\x90\xEB\xE6.", "\x8F\xE0\xA8\xAD\xE6", "\x96\xA0\xE0\xEC", "\x82\xAB\xA0\xA4\xEB\xAA\xA0" }; /* reciv-ru */
+char *rank_title[5] = { TRANSLATE("Chief", "RU"), TRANSLATE("Lord", "RU"), TRANSLATE("Prince", "RU"), TRANSLATE("King", "RU"), TRANSLATE("Emperor", "RU") }; /* reciv-ru */

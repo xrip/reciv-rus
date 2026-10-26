@@ -1,0 +1,1142 @@
+# reciv RU language file - the russian column is editable text.
+# key: FILE.C <TAB> line <TAB> english literal body <TAB> russian text
+# apply-translation.py rewrites this file but keeps manual russian
+# edits while their key exists; interp estimates are deliberately absent.
+# line numbers refer to src/game AFTER wrapping and code fixes.
+ADVISORS.C	38	Empire	Гос-во
+ADVISORS.C	41	Kingdom	Царство
+ADVISORS.C	44	Republic	Республика
+ADVISORS.C	47	 of the 	: 
+ADVISORS.C	70	SCIENCE REPORT	Отчет о науке
+ADVISORS.C	92	Researching 	Исследуется 
+ADVISORS.C	123	MILITARY STATUS	Состояние войск
+ADVISORS.C	143	 active	 актив.
+ADVISORS.C	149	 in production	 формируется
+ADVISORS.C	163	MILITARY LOSSES	Потери войск
+ADVISORS.C	214	TRADE REPORT	Торговля
+ADVISORS.C	216	City Trade	Торговля
+ADVISORS.C	228	TRADE REPORT	Торговля
+ADVISORS.C	242	 \x8c(Disorder)	(Волнения)
+ADVISORS.C	270	Total Income: 	Общ. прибыль: 
+ADVISORS.C	280	Discoveries: 	Открытия: 
+ADVISORS.C	282	 turns	 ходов
+ADVISORS.C	286	Maintenance Costs	стоим. содержания
+ADVISORS.C	309	Total Cost: 	Общ.расход: 
+ADVISORS.C	334	INTELLIGENCE REPORT	Цивилизации мира
+ADVISORS.C	344	No embassy established.	Посольство отсутствует.
+ADVISORS.C	363	 Units.	 Армий.
+ADVISORS.C	378	:\x8f ALLIED	 СОЮЗ
+ADVISORS.C	380	:\x8f PEACE	 МИР
+ADVISORS.C	386	:\x8c WAR	:Война
+ADVISORS.C	393	INFO	Инфо
+ADVISORS.C	449	INTELLIGENCE REPORT	Цивилизации мира
+ADVISORS.C	452	Subject: the 	Тема: 
+ADVISORS.C	457	Leader:\x8f 	Тема: 
+ADVISORS.C	465	Aggressive	Воинствен.
+ADVISORS.C	469	Friendly	Дружест.
+ADVISORS.C	473	Expansionistic	Захватническая
+ADVISORS.C	477	Perfectionist	Совершенная
+ADVISORS.C	481	Civilized	Цивилиз.
+ADVISORS.C	485	Militaristic	Милитаризов.
+ADVISORS.C	497	Capital:\x8f 	Столица:\x0F 
+ADVISORS.C	502	Government:\x8f 	Гос. строй:\x0F 
+ADVISORS.C	507	Treasury:\x8f 	Капитал: \x0F 
+ADVISORS.C	514	Military:\x8f 	Войска:  \x0F 
+ADVISORS.C	516	 Units.	 Армий.
+ADVISORS.C	521	Foreign Affairs:	Отношения с др.:
+ADVISORS.C	526	At\x8f PEACE	 МИР  
+ADVISORS.C	529	At\x8c WAR	 ВОЙНА
+ADVISORS.C	532	\x87 with the 	 с гос.:  
+ADVISORS.C	541	Technologies:	Технологии:
+ADVISORS.C	561	ATTITUDE SURVEY	Общий обзор
+ADVISORS.C	569	ATTITUDE SURVEY	Общий обзор
+ADVISORS.C	604	Population: 	Население: 
+ADVISORS.C	606	 Happy:	 Довол:
+ADVISORS.C	608	% Content:	% Колебл.:
+ADVISORS.C	610	% Unhappy:	% Недовол:
+ADVISORS.C	631	CITY STATUS	Города
+ADVISORS.C	638	CITY STATUS	Города
+ADVISORS.C	661	\x87 (	 (
+ADVISORS.C	670	\x87 (	 (
+AUDIENCE.C	99	Empress	Владыка
+AUDIENCE.C	100	Queen	Мисс
+AUDIENCE.C	315	request	спрашивают
+AUDIENCE.C	433	You are overruled by the Senate.\nTreaty signed.\n	Сенат не утвердил этот проект.\nМир подтвержден.\n
+AUDIENCE.C	544	We welcome the friendship of the\n	Мы рады дружбе с вами,\n
+AUDIENCE.C	546	 people and their most\nwise and munificent leader:\n	. Нет руководителя\nмудрее и честнее, чем ваш\n
+AUDIENCE.C	591	We ignore your feeble threats.\n	Нам наплевать на ваши угрозы.\n
+AUDIENCE.C	598	You must attack the evil:\n 	Надо атаковать врага:\n 
+AUDIENCE.C	634	 declare war\non the 	 объявили войну\nс: 
+AUDIENCE.C	700	An emissary from the\n	
+AUDIENCE.C	702	 wishes to\nspeak with you.\n	 желают поговорить с вами└\n
+AUDIENCE.C	703	Will you receive him?\n Yes.\n No.\n	Примите ли вы их ?\n Да└\n Нет└\n
+AUDIENCE.C	705	 Check Intelligence\n	 Проверить его уровень\n
+AUDIENCE.C	744	O most untrustworthy leader of the\ninfidels, hear now 	О мудрейший из мудрейших, живших\nна свете, великий 
+AUDIENCE.C	746	Greetings from 	Приветстуют 
+AUDIENCE.C	751	the most exalted\n	, наш царь\nи  
+AUDIENCE.C	759	, ruler\nand 	мудрейшие\n
+AUDIENCE.C	764	our most wise\n	давший смертным\nсчастье\n
+AUDIENCE.C	771	he who makes mortals\ntremble: 	давший смертным\nсчастье: 
+AUDIENCE.C	777	of the 	 
+AUDIENCE.C	781	Our words are backed\nwith NUCLEAR WEAPONS!\n	Наши слова подкреплены\nЯДЕРНЫМ ОРУЖИЕМ!\n
+BATTLE.C	162	Sneak attack by\n	Внезапная атака\n
+BATTLE.C	164	 forces!\n	 идут!\n
+BATTLE.C	172	 cancel\npeace treaty\nwith 	 разрыв\nсоглашения\nМы - 
+BATTLE.C	204	 units destroyed.\n	 армий уничтожено\n
+BATTLE.C	271	We have signed a\npeace treaty with\nthe 	У нас пакт о\nненападении с народом:\n
+BATTLE.C	273	!\n Cancel action.\n Break treaty.\n	!\n Отказаться.\n Порвать договор.\n
+BATTLE.C	278	Overruled by\nthe Senate.\nAction canceled.\n	Не одобрено\nСенатом.\nПоход отменен.\n
+BATTLE.C	296	 use\nnuclear weapons!\n	 исп\nядерное░оружие└\n
+BATTLE.C	307	SDI protects 	СОИ░защитила 
+CAPTURE.C	141	 capture\n	 к.корабль\n
+CAPTURE.C	145	 gold\npieces plundered.\n	вернулся назад.\n
+CAPTURE.C	162	Spies report:\n	строительство прервано.\n
+CAPTURE.C	164	 capture\nthe 	░взяли\n
+CAPTURE.C	164	 destroy\nthe 	░кг└\nзолота░украдено░└\n
+CAPTURE.C	166	 city\nof 	Сообщ└░шпион┼\n
+CAPTURE.C	202	 spaceship\n	░взяли\nгор└░
+CAPTURE.C	204	returns to Earth.\n	░уничтожили\n░
+CAPTURE.C	204	construction cancelled.\n	░город\n░
+CAPTURE.C	232	Select one...\n 	Выберите└└└\n 
+CAPTURE.C	260	 take\n	░узн└\n
+CAPTURE.C	276	NONE	Нет
+CAPTURE.C	326	 caravan from 	░караван░из░
+CAPTURE.C	328	\narrives in 	\nприбыл░в░г░
+CAPTURE.C	330	\nTrade route established\nRevenue: $	\nОснован торговый путь\nПрибыль: $
+CAPTURE.C	364	Rome        	Рим         
+CAPTURE.C	364	Caesarea    	Цезария     
+CAPTURE.C	364	Carthage    	Картаген    
+CAPTURE.C	364	Nicopolis   	Никополис   
+CAPTURE.C	365	Byzantium   	Византия    
+CAPTURE.C	365	Brundisium  	Брандизиум  
+CAPTURE.C	365	Syracuse    	Сиракузы    
+CAPTURE.C	365	Antioch     	Антиох      
+CAPTURE.C	366	Palmyra     	Пальмира    
+CAPTURE.C	366	Cyrene      	Сирены      
+CAPTURE.C	366	Gordion     	Гордион     
+CAPTURE.C	366	Tyrus       	Тир         
+CAPTURE.C	367	Jerusalem   	Иерусалим   
+CAPTURE.C	367	Seleucia    	Селеция     
+CAPTURE.C	367	Ravenna     	Равенна     
+CAPTURE.C	367	Artaxata    	Игорьград   
+CAPTURE.C	368	Babylon     	Вавилон     
+CAPTURE.C	368	Sumer       	Шумер       
+CAPTURE.C	368	Uruk        	Урюк        
+CAPTURE.C	368	Nineveh     	Ниневех     
+CAPTURE.C	369	Ashur       	Ашур        
+CAPTURE.C	369	Ellipi      	Эллипи      
+CAPTURE.C	369	Akkad       	Аккад       
+CAPTURE.C	369	Eridu       	Эриду       
+CAPTURE.C	370	Kish        	Киш         
+CAPTURE.C	370	Nippur      	Ниппур      
+CAPTURE.C	370	Shuruppak   	Шуруппак    
+CAPTURE.C	370	Zariqum     	Зарикум     
+CAPTURE.C	371	Izibia      	Изибия      
+CAPTURE.C	371	Nimrud      	Нимруд      
+CAPTURE.C	371	Arbela      	Арбела      
+CAPTURE.C	371	Zamua       	Замия       
+CAPTURE.C	372	Berlin      	Берлин      
+CAPTURE.C	372	Leipzig     	Лейпциг     
+CAPTURE.C	372	Hamburg     	Гамбург     
+CAPTURE.C	372	Bremen      	Бремен      
+CAPTURE.C	373	Frankfurt   	Франкфурт   
+CAPTURE.C	373	Bonn        	Бонн        
+CAPTURE.C	373	Nuremberg   	Нюрберг     
+CAPTURE.C	373	Cologne     	Кельн       
+CAPTURE.C	374	Hannover    	Ганновер    
+CAPTURE.C	374	Munich      	Мюнхен      
+CAPTURE.C	374	Stuttgart   	Штутгард    
+CAPTURE.C	374	Heidelburg  	Гедельбург  
+CAPTURE.C	375	Salzburg    	Сальзбург   
+CAPTURE.C	375	Konigsberg  	Кенигсберг  
+CAPTURE.C	375	Dortmund    	Дартмунд    
+CAPTURE.C	375	Brandenburg 	Бранденбург 
+CAPTURE.C	376	Thebes      	Ибис        
+CAPTURE.C	376	Memphis     	Мемфис      
+CAPTURE.C	376	Oryx        	Орикс       
+CAPTURE.C	376	Heliopolis  	Гелиополис  
+CAPTURE.C	377	Gaza        	Газа        
+CAPTURE.C	377	Alexandria  	Александрия 
+CAPTURE.C	377	Byblos      	Библос      
+CAPTURE.C	377	Cairo       	Каир        
+CAPTURE.C	378	Coptos      	Коптос      
+CAPTURE.C	378	Edfu        	Едфу        
+CAPTURE.C	378	Pithom      	Питон       
+CAPTURE.C	378	Busiris     	Вазирис     
+CAPTURE.C	379	Athribis    	Африбис     
+CAPTURE.C	379	Mendes      	Мендес      
+CAPTURE.C	379	Tanis       	Танис       
+CAPTURE.C	379	Abydos      	Абидос      
+CAPTURE.C	380	Washington  	Вашингтон   
+CAPTURE.C	380	New York    	Нью Йорк    
+CAPTURE.C	380	Boston      	Бостон      
+CAPTURE.C	380	Philadelphia	Филадельфия
+CAPTURE.C	381	Atlanta     	Атланта     
+CAPTURE.C	381	Chicago     	Чикаго      
+CAPTURE.C	381	Buffalo     	Буффало     
+CAPTURE.C	381	St.Louis    	СенЛус      
+CAPTURE.C	382	Detroit     	Детройт     
+CAPTURE.C	382	New Orleans 	Новый Орлеан
+CAPTURE.C	382	Baltimore   	Балтимор    
+CAPTURE.C	382	Denver      	Денвер      
+CAPTURE.C	383	Cincinnati  	Цинцинатти  
+CAPTURE.C	383	Dallas      	Даллас      
+CAPTURE.C	383	Los Angeles 	Лос Анжелес 
+CAPTURE.C	383	Las Vegas   	Лас Вегас   
+CAPTURE.C	384	Athens      	Афины       
+CAPTURE.C	384	Sparta      	Спарта      
+CAPTURE.C	384	Corinth     	Коринф      
+CAPTURE.C	384	Delphi      	Дельфы      
+CAPTURE.C	385	Eretria     	Эретрия     
+CAPTURE.C	385	Pharsalos   	Фарсалос    
+CAPTURE.C	385	Argos       	Аргос       
+CAPTURE.C	385	Mycenae     	Микения     
+CAPTURE.C	386	Herakleia   	Гераклея    
+CAPTURE.C	386	Antioch     	Антиох      
+CAPTURE.C	386	Ephesos     	Эфес        
+CAPTURE.C	386	Rhodes      	Родос       
+CAPTURE.C	387	Knossos     	Кносс       
+CAPTURE.C	387	Troy        	Троя        
+CAPTURE.C	387	Pergamon    	Пергамон    
+CAPTURE.C	387	Miletos     	Милетос     
+CAPTURE.C	388	Delhi       	Дели        
+CAPTURE.C	388	Bombay      	Бомбей      
+CAPTURE.C	388	Madras      	Мадрас      
+CAPTURE.C	388	Bangalore   	Бангалор    
+CAPTURE.C	389	Calcutta    	Калькутта   
+CAPTURE.C	389	Lahore      	Лахор       
+CAPTURE.C	389	Karachi     	Карачи      
+CAPTURE.C	389	Kolhapur    	Колхапур    
+CAPTURE.C	390	Jaipur      	Япур        
+CAPTURE.C	390	Hyderabad   	Хадарбад    
+CAPTURE.C	390	Bengal      	Бенгалез    
+CAPTURE.C	390	Chittagong  	Читтагон    
+CAPTURE.C	391	Punjab      	Пенджаб     
+CAPTURE.C	391	Dacca       	Томск       
+CAPTURE.C	391	Indus       	Индус       
+CAPTURE.C	391	Ganges      	Ганг        
+CAPTURE.C	392	Moscow      	Москва      
+CAPTURE.C	392	Leningrad   	Петербург   
+CAPTURE.C	392	Kiev        	Ярославль   
+CAPTURE.C	392	Minsk       	Владимир    
+CAPTURE.C	393	Smolensk    	Смоленск    
+CAPTURE.C	393	Odessa      	Рязань      
+CAPTURE.C	393	Sevastopol  	Севастополь 
+CAPTURE.C	393	Tblisi      	Симбирск    
+CAPTURE.C	394	Sverdlovsk  	Свердловск  
+CAPTURE.C	394	Yakutsk     	Мурманск    
+CAPTURE.C	394	Vladivostok 	Владивосток 
+CAPTURE.C	394	Novograd    	Новгород    
+CAPTURE.C	395	Krasnoyarsk 	Красноярск  
+CAPTURE.C	395	Riga        	Тверь       
+CAPTURE.C	395	Rostov      	Ставрополь  
+CAPTURE.C	395	Astrakhan   	Архангельск 
+CAPTURE.C	396	Zimbabwe    	Кемерово    
+CAPTURE.C	396	Ulundi      	Улунди      
+CAPTURE.C	396	Bapedi      	Бапеди      
+CAPTURE.C	396	Hlobane     	Хлобан      
+CAPTURE.C	397	Isandhlwana 	Исандвана   
+CAPTURE.C	397	Intombe     	Интомба     
+CAPTURE.C	397	Mpondo      	Мпондо      
+CAPTURE.C	397	Ngome       	Нгом        
+CAPTURE.C	398	Swazi       	Свази       
+CAPTURE.C	398	Tugela      	Тугела      
+CAPTURE.C	398	Umtata      	Умтата      
+CAPTURE.C	398	Umfolozi    	Умфолози    
+CAPTURE.C	399	Ibabanago   	Ибабанаго   
+CAPTURE.C	399	Isipezi     	Изипези     
+CAPTURE.C	399	Amatikulu   	Аматикулу   
+CAPTURE.C	399	Zunguin     	Зангуин     
+CAPTURE.C	400	Paris       	Париж       
+CAPTURE.C	400	Orleans     	Орлеан      
+CAPTURE.C	400	Lyons       	Лион        
+CAPTURE.C	400	Tours       	Тур         
+CAPTURE.C	401	Chartres    	Шартрез     
+CAPTURE.C	401	Bordeaux    	Бордо       
+CAPTURE.C	401	Rouen       	Равен       
+CAPTURE.C	401	Avignon     	Авиньон     
+CAPTURE.C	402	Marseilles  	Марсель     
+CAPTURE.C	402	Grenoble    	Гренобль    
+CAPTURE.C	402	Dijon       	Дижон       
+CAPTURE.C	402	Amiens      	Амьен       
+CAPTURE.C	403	Cherbourg   	Шербург     
+CAPTURE.C	403	Poitiers    	Поти        
+CAPTURE.C	403	Toulouse    	Тулуза      
+CAPTURE.C	403	Bayonne     	Байон       
+CAPTURE.C	404	Tenochtitlan	Теночитлан
+CAPTURE.C	404	Chiauhtia   	Чаухтия     
+CAPTURE.C	404	Chapultepec 	Чапултепик  
+CAPTURE.C	404	Coatepec    	Коатепик    
+CAPTURE.C	405	Ayotzinco   	Айоцинко    
+CAPTURE.C	405	Itzapalapa  	Ицапалапа   
+CAPTURE.C	405	Iztapam     	Ицтапам     
+CAPTURE.C	405	Mitxcoac    	Мицоас      
+CAPTURE.C	406	Tacubaya    	Такубая     
+CAPTURE.C	406	Tecamac     	Токамак     
+CAPTURE.C	406	Tepezinco   	Тепезино    
+CAPTURE.C	406	Ticoman     	Тикоман     
+CAPTURE.C	407	Tlaxcala    	Тласкала    
+CAPTURE.C	407	Xaltocan    	Ксальтокан  
+CAPTURE.C	407	Xicalango   	Ксикаланго  
+CAPTURE.C	407	Zumpanco    	Зумпанко    
+CAPTURE.C	408	Peking      	Пекин       
+CAPTURE.C	408	Shanghai    	Шанхай      
+CAPTURE.C	408	Canton      	Кантон      
+CAPTURE.C	408	Nanking     	Нанкин      
+CAPTURE.C	409	Tsingtao    	Цзиньтао    
+CAPTURE.C	409	Hangchow    	Хангхоу     
+CAPTURE.C	409	Tientsin    	Тенцзинь    
+CAPTURE.C	409	Tatung      	Татунг      
+CAPTURE.C	410	Macao       	Макао       
+CAPTURE.C	410	Anyang      	Аньянг      
+CAPTURE.C	410	Shantung    	Шантунг     
+CAPTURE.C	410	Chinan      	Чинан       
+CAPTURE.C	411	Kaifeng     	Кайфен      
+CAPTURE.C	411	Ningpo      	Нингпо      
+CAPTURE.C	411	Paoting     	Паотинг     
+CAPTURE.C	411	Yangchow    	Янчоу       
+CAPTURE.C	412	London      	Лондон      
+CAPTURE.C	412	Coventry    	Ковентри    
+CAPTURE.C	412	Birmingham  	Бирмингем   
+CAPTURE.C	412	Dover       	Дувр        
+CAPTURE.C	413	Nottingham  	Нотингем    
+CAPTURE.C	413	York        	Йорк        
+CAPTURE.C	413	Liverpool   	Ливерпуль   
+CAPTURE.C	413	Brighton    	Брайтон     
+CAPTURE.C	414	Oxford      	Оксфорд     
+CAPTURE.C	414	Reading     	Глазго      
+CAPTURE.C	414	Exeter      	Эксетер     
+CAPTURE.C	414	Cambridge   	Кембридж    
+CAPTURE.C	415	Hastings    	Гастингс    
+CAPTURE.C	415	Canterbury  	Кантерби    
+CAPTURE.C	415	Banbury     	Банбури     
+CAPTURE.C	415	Newcastle   	Ньюкасл     
+CAPTURE.C	416	Samarkand   	Самарканд   
+CAPTURE.C	416	Bokhara     	Бухара      
+CAPTURE.C	416	Nishapur    	Нишапур     
+CAPTURE.C	416	Karakorum   	Каракум     
+CAPTURE.C	417	Kashgar     	Кашгар      
+CAPTURE.C	417	Tabriz      	Табриз      
+CAPTURE.C	417	Aleppo      	Алеппо      
+CAPTURE.C	417	Kabul       	Кабул       
+CAPTURE.C	418	Ormuz       	Ормуз       
+CAPTURE.C	418	Basra       	Басра       
+CAPTURE.C	418	Khanbalyk   	Ханбалык    
+CAPTURE.C	418	Khorasan    	Хоразан     
+CAPTURE.C	419	Shangtu     	Шанту       
+CAPTURE.C	419	Kazan       	Казань      
+CAPTURE.C	419	Quinsay     	Кинсей      
+CAPTURE.C	419	Kerman      	Керман      
+CAPTURE.C	420	Mecca       	Мекка       
+CAPTURE.C	420	Naples      	Напль       
+CAPTURE.C	420	Sidon       	Сидон       
+CAPTURE.C	420	Tyre        	Тир         
+CAPTURE.C	421	Tarsus      	Тарсус      
+CAPTURE.C	421	Issus       	Иссус       
+CAPTURE.C	421	Cunaxa      	Кунакса     
+CAPTURE.C	421	Cremona     	Кремона     
+CAPTURE.C	422	Cannae      	Канн        
+CAPTURE.C	422	Capua       	Капуя       
+CAPTURE.C	422	Turin       	Турин       
+CAPTURE.C	422	Genoa       	Генуя       
+CAPTURE.C	423	Utica       	Утика       
+CAPTURE.C	423	Crete       	Крит        
+CAPTURE.C	423	Damascus    	Дамасск     
+CAPTURE.C	423	Verona      	Верона      
+CAPTURE.C	424	Salamis     	Салямис     
+CAPTURE.C	424	Lisbon      	Лиссабон    
+CAPTURE.C	424	Hamburg     	Гамбург     
+CAPTURE.C	424	Prague      	Прага       
+CAPTURE.C	425	Salzburg    	Сальзбург   
+CAPTURE.C	425	Bergen      	Берген      
+CAPTURE.C	425	Venice      	Венеция     
+CAPTURE.C	425	Milan       	Милан       
+CAPTURE.C	426	Ghent       	Кент        
+CAPTURE.C	426	Pisa        	Пиза        
+CAPTURE.C	426	Cordoba     	Кордоба     
+CAPTURE.C	426	Seville     	Севилья     
+CAPTURE.C	427	Dublin      	Дублин      
+CAPTURE.C	427	Toronto     	Торонто     
+CAPTURE.C	427	Melbourne   	Мельбурн    
+CAPTURE.C	427	Sydney      	Сидней      
+CITY.C	279	Earthquake in 	Землетрясение░
+CITY.C	283	 destroyed.\n	░разрушено└\n
+CITY.C	334	Citizens demand GRANARY.\n	Жители░требуют░АМБАР└\n
+CITY.C	373	Rioting in 	Буйство┼░
+CITY.C	376	Corruption in 	Коррупция┼░
+CITY.C	379	Scandal in 	Скандал░в:┬
+CITY.C	383	!\nCitizens demand 	└\nЖители░требуют░
+CITY.C	385	TEMPLE\n	ХРАМ\n
+CITY.C	387	COURTHOUSE\n	СУД\n
+CITY.C	389	MARKETPLACE\n	БАЗАР\n
+CITY.C	391	CATHEDRAL\n	СОБОР\n
+CITY.C	393	lower taxes.\n	сбить░налог└\n
+CITY.C	423	Residents of 	Шпионы (
+CITY.C	425	 admire\nthe prosperity of 	) восхищены\nжизнью в гор. 
+CITY.C	509	CIVILIZATION SCORE	Балл развития
+CITY.C	512	SCORING COMPLETED	Подсчитано...
+CITY.C	550	 Citizens (	 Граждане (
+CITY.C	582	 Achievements (	 Достижения (
+CITY.C	597	SpaceShip: (	К.Корабль: (
+CITY.C	602	 possible	 максимум
+CITY.C	613	Pollution: (	Выбросы: (
+CITY.C	620	Peace: (+	Мир: (+
+CITY.C	626	Future Tech: (+	Технологии:  (+
+CITY.C	642	Total Score: 	Общий балл: 
+CITYMGT.C	345	 (Pop:	 (Нас:
+CITYMGT.C	387	Food storage exhausted\nin 	Запасы░еды░исчезли░в\nгор└┼
+CITYMGT.C	389	!\nSettlers lost.\n	┬\nНет колонистов\n
+CITYMGT.C	389	!\nFamine feared.\n	├\nУгроза░голода└\n
+CITYMGT.C	417	 requires an AQUEDUCT\nfor further growth.\n	░нужен░Водопровод░для░дальнейшего░роста\n
+CITYMGT.C	510	Population decrease\nin 	Уменьшилось░население┼\n
+CITYMGT.C	750	 builds 	░созд└┼░
+CITYMGT.C	774	Sensors report a\nNUCLEAR WEAPONS test\nnear 	Сейсмологи┼\nиспытания░ядерного░оружия\nв░г└░
+CITYMGT.C	791	 builds\n	░созд└┼\n
+CITYMGT.C	835	Diplomats report:\n	Дипломаты░сообщ└┼\n
+CITYMGT.C	839	 capital\nmoved to 	░столица\nв городе:
+CITYMGT.C	914	INFO	Инфо
+CITYMGT.C	915	HAPPY	Жизнь
+CITYMGT.C	916	MAP	Крт
+CITYMGT.C	917	VIEW	Обз.
+CITYMGT.C	1100	WONDERS	Чудеса
+CITYMGT.C	1148	 can't support\n	 не поддержит\n
+CITYMGT.C	1150	.\n Unit Disbanded.\n	.\n Отряд распущен.\n
+CITYMGT.C	1253	MORE	Еще
+CITYMGT.C	1265	AUTO.	Авто.
+CITYMGT.C	1265	CHANGE	Строим
+CITYMGT.C	1266	BUY	Куп
+CITYMGT.C	1282	Food Storage	Запасы пищи
+CITYMGT.C	1292	City Resources	Ресурсы города
+CITYMGT.C	1376	EXIT	Конец
+CITYMGT.C	1447	Cost to complete\n	Стоимость работы\n
+CITYMGT.C	1454	\nTreasury: $	\nКапитал: $
+CITYMGT.C	1458	CIVIL DISORDER\n	Беспорядки!\n
+CITYMGT.C	1460	 Yes\n No\n	 Да\n Нет\n
+CITYMGT.C	1687	Do you want to sell\nyour 	Вы хотите продать\nваш 
+CITYMGT.C	1689	 for 	 за 
+CITYMGT.C	1691	$?\n No.\n Yes.\n	$?\n Нет.\n Да.\n
+CITYMGT.C	1789	Civil Disorder in\n	Беспорядки┼░Гор└┼\n
+CITYMGT.C	1791	! Mayor\nflees in panic.\n	┬░Мэр\nв░панике└\n
+CITYMGT.C	1822	Discontented citizens of\n	Недовольные░жители░в░г└:\n
+CITYMGT.C	1824	 revolt:\nGovernment Collapses!\n	░требуют\nновое░правительство░┬\n
+CITYMGT.C	1837	Order restored\nin 	Снова░порядок\nв░┼░
+CITYMGT.C	1857	'We love the 	─Наш любимый░
+CITYMGT.C	1859	'\nday celebrated in\n	─\nотмечается в гор└\n
+CITYMGT.C	1880	'We love the 	─Наш любимый░
+CITYMGT.C	1882	'\ncelebration canceled\nin 	─\nуже не отмечается\nв г└┼░
+CITYMGT.C	1943	Pollution near 	Загрязнение┬░
+CITYMGT.C	1956	Nuclear Catastrophe\nin 	Ядерная░катастрофа┬\n
+CITYMGT.C	1958	!\nContamination feared!\n	┬\nБоязнь░загрязнений░░┼\n
+CITYMGT.C	1980	\ncan't maintain\n	\nне░содержит░\n
+CONTROL.C	756	Will you?\n Keep moving\n Establish trade route\n	Выберите:\n Двигать далее\n Установить торговлю\n
+CONTROL.C	758	 Help build WONDER.\n	 Строить Чудо Света\n
+CONTROL.C	810	Attack at\n	Атака с\n
+CONTROL.C	812	/3 strength?\n Cancel\n Attack\n	/3 силы?\n Нет\n Аттаковать!\n
+CONTROL.C	1130	The 	
+CONTROL.C	1132	 are\nrevolting! Citizens\ndemand new govt.\n	░бастует└░Жители\nтребуют░новый░гос└строй└\n
+CONTROL.C	1142	Select new Tax rate:\n 	Новые налоги:\n 
+CONTROL.C	1145	% Tax, (	% нал, (
+CONTROL.C	1147	% Science)\n 	% наука)\n 
+CONTROL.C	1159	Select new Luxuries rate:\n 	Уровень роскоши:\n 
+CONTROL.C	1162	% Luxuries, (	% роскошь, (
+CONTROL.C	1164	% Science)\n 	% наука)\n 
+CONTROL.C	1186	Leaders randomized.\n	Правители готовы.\n
+CONTROL.C	1190	Sounds 	Звуки 
+CONTROL.C	1191	ON\n	Да\n
+CONTROL.C	1191	OFF\n	Нет\n
+CONTROL.C	1199	Are you sure you\nwant to Quit?\n Keep Playing\n Yes, Quit\n	Вы на самом деле\nхотите выйти?\n Нет, конечно\n Да, очень\n
+CONTROL.C	1385	End of Turn	Конец хода
+CONTROL.C	1390	to continue	Нажми Enter
+CONTROL.C	1400	Veteran	Ветеран
+CONTROL.C	1404	Moves: 	Ходы: 
+CONTROL.C	1430	(RailRoad)	(Жел.дор.)
+CONTROL.C	1433	(Road)	(Дор.)
+CONTROL.C	1437	(Irrigation)	(Мелиорация)
+CONTROL.C	1440	(Mining)	(Шахты)
+CONTROL.C	1444	(Pollution)	(Выбросы)
+DIALOG.C	37	Spies	Шпион
+DIALOG.C	37	Diplomats	Дипломаты
+DIALOG.C	37	Travelers	Очевидцы
+DIALOG.C	37	Defense Minister:	Министр Обороны:
+DIALOG.C	38	Domestic Advisor:	Городской Совет:
+DIALOG.C	38	Foreign Minister:	Министр Обороны:
+DIALOG.C	38	Science Advisor:	Ученый Совет:
+DIALOG.C	237	 report:	
+DIPLOMAC.C	74	The war between\nthe 	Война народов\n
+DIPLOMAC.C	76	 and the\n	Война народов\n
+DIPLOMAC.C	78	 has ended.\n	\nзакончена.\n
+DIPLOMAC.C	120	agree to a	Мы согласны на:
+DIPLOMAC.C	148	Select type of\nGovernment...\n 	Выберите тип\nправительства..\n 
+DIPLOMAC.C	181	 government\nchanged to 	░общ└░строй\nизменен░на┼
+DIPLOMAC.C	186	The 	
+DIPLOMAC.C	188	 government\nhas been overthrown!\n	░Правительство\nбыло░свергнуто┬\n
+DIPLOMAC.C	239	 and\n	░и\n
+DIPLOMAC.C	241	 sign\na peace treaty.\n	░заключили\nдоговор.\n
+DIPLOMAC.C	253	 and\n	░и\n
+DIPLOMAC.C	255	 cancel\npeace treaty.\n	 прервали\nдоговор.\n
+DIPLOMAC.C	255	 declare\nwar on each other.\n	 в состоянии\nвойны.\n
+DIPLOMAT.C	82	 diplomat arrives\nin 	 Дипломат прибыл \nв: 
+DIPLOMAT.C	84	...\n Establish Embassy\n Investigate City\n Steal Technology\n Industrial Sabotage\n Incite a Revolt\n Meet with King\n	...\n Создать посольство\n Исслед. город\n Украсть технологию\n Индустр. саботаж\n Устроить революцию\n Встетить главу\n
+DIPLOMAT.C	139	 steal\n	░взяли\n
+DIPLOMAT.C	153	No new technology found.\n	Новых технологий нет.\n
+DIPLOMAT.C	168	 destroyed\n	 уничтожен\n
+DIPLOMAT.C	179	 production sabotaged\n	 массовый саботаж в\n
+DIPLOMAT.C	181	in 	г. 
+DIPLOMAT.C	196	Dissidents in 	Диссиденты: г.
+DIPLOMAT.C	198	\nwill revolt for $	\nвыступят за $
+DIPLOMAT.C	202	 Forget it.\n Incite revolt\n	 Отказ.\n Организовать путч\n
+DIPLOMAT.C	204	 Subvert city ($x2)\n	 Обратить гор.($x2)\n
+DIPLOMAT.C	271	\nwill desert for 	\nопустошат за
+DIPLOMAT.C	273	$.\nTreasury: 	$.\nКапитал: 
+DIPLOMAT.C	277	 Forget it.\n Pay\n	 Отказ.\n Платить\n
+DIPLOMAT.C	289	 unit\nbribed by 	 отр.\nвзятка от:
+DIPLOMAT.C	388	 declare\nindependence in\n	 стали\nнезависимыми в г.\n
+DIPLOMAT.C	388	 rebel!\nCivil War in\n	 восст!\nГражд└война┼\n
+DIPLOMAT.C	393	 influence\nsuspected.\n	░эпидемия\nгриппа└\n
+DIPLOMAT.C	453	 founded: 	░основан┼░
+ECONOMY.C	205	What shall we build in 	Что будем строить тут: 
+ECONOMY.C	215	, ADM:	, УЗХ:
+ECONOMY.C	265	more...\n	еще...\n
+ECONOMY.C	269	more...\n	еще...\n
+ECONOMY.C	512	Military Advisor:\n	Военный советник:\n
+ECONOMY.C	526	Domestic Advisor:\n	Городские власти:\n
+ECONOMY.C	577	 turns	 ходов
+ECONOMY.C	577	 turn	 ход
+ECONOMY.C	639	 scientists	┴░подумав┴
+ECONOMY.C	639	 wise men	░наконец
+ECONOMY.C	640	\ndiscover the secret\nof 	\nоткрыли░новый░секрет┼\n░
+ECONOMY.C	682	Science Advisor:\nI recommend we\ndevelop 	Ученый Совет┼\nНам надо узнать\nсекрет: 
+ECONOMY.C	687	So we can build:\n-	Сможем строить:\n-
+ECONOMY.C	709	Which discovery should our\n	В каком направлении надо\nработать
+ECONOMY.C	710	scientists	
+ECONOMY.C	710	wise men	нашим
+ECONOMY.C	711	 be pursuing, sire?\nPick one...\n 	 ученым, господин?\nВыберите...\n 
+ECONOMY.C	740	 Future Technology 	 Новые технологии░
+ECONOMY.C	769	 develop\n	░открыли\n
+ECONOMY.C	769	 acquire\n	░украли\n
+ECONOMY.C	772	 from\nthe 	░из\n
+ECONOMY.C	774	Great Library	Великая░Библиотека
+ECONOMY.C	842	 agree to\nan exchange of ambassadors.\n	░согласны\nс░обменом░послов.\n
+ECONOMY.C	853	Development of 	Знание░секрета┼
+ECONOMY.C	855	\nmakes existing Barracks\nobsolete.\n	\nделает░Казармы\nсовсем░ненужными└└\n
+ECONOMY.C	866	 cancels\nthe effect of\n	 прекращает\nдействие┼\n
+FAME.C	104	 of the 	: 
+FAME.C	110	 BC.	░дэ└
+FAME.C	112	 AD.	░нэ└
+FAME.C	117	Population: 	Население: 
+FAME.C	119	, Score: 	, Очки: 
+FAME.C	123	 (Chieftan)	 (Вождь)
+FAME.C	126	 (Warlord)	 (Рыцарь)
+FAME.C	129	 (Prince)	 (Принц)
+FAME.C	132	 (King)	 (Царь)
+FAME.C	135	 (Emperor)	 (Владыка)
+FAME.C	140	    --- CIVILIZATION RATING: 	    --- Рейтинг ЦИВИЛИЗАЦИИ: 
+FAME.C	150	C\203lear	)Нов.!
+FAME.C	238	% exceeds even	%, больше, чем
+FAME.C	291	The Top Five Cities in the World	Пятерка лучших в мире городов
+FAME.C	326	Solomon the Wise	Мудрец Соломон
+FAME.C	327	Emperor Augustus	Император Август
+FAME.C	328	King Charlemagne	Царь Шарлемаг
+FAME.C	329	Thomas Jefferson	Томас Джефферсон
+FAME.C	330	Shogun Tokugawa	Шогун Токугава
+FAME.C	331	Franklin Roosevelt	Франклин Рузвельт
+FAME.C	332	Sulayman the Magnificent	Волшебник Сулейман
+FAME.C	333	Winston Churchill	Уинстон Черчиль
+FAME.C	334	Cleopatra	Клеопатра
+FAME.C	335	Charles De Gaulle	Шарль де Голль
+FAME.C	336	Vladimir Lenin	Владимир Ленин
+FAME.C	337	Simon Bolivar	Игорь Великий
+FAME.C	338	Otto von Bismarck	Отто фон Бисмарк
+FAME.C	339	Eric the Red	Эрик Красивый
+FAME.C	340	Kaiser Wilhelm	Кайзер Вильгельм
+FAME.C	341	Louis the XVI	Луи 16
+FAME.C	342	Neville Chamberlain	Невилль Чамберлен
+FAME.C	343	Ferdinand Marcos	Фердинанд Маркос
+FAME.C	344	Emperor Nero	Император Неро
+FAME.C	345	Dan Quayle	Индиана Джонс
+FAME.C	346	Sire, your fame now	Итак, Ваша известность
+FAME.C	347	exceeds even that of	стала больше, чем:
+FAME.C	348	Sire, your Civilization	Г-н, Ваш цивилизационный
+FAME.C	349	Rating of 	рейтинг: 
+GAME.C	64	Desert	Пустыня
+GAME.C	65	Plains	Равнина
+GAME.C	66	Grassland	Луга
+GAME.C	67	Forest	Лес
+GAME.C	68	Hills	Холмы
+GAME.C	69	Mountains	Горы
+GAME.C	70	Tundra	Тундра
+GAME.C	71	Arctic	Льды
+GAME.C	72	Swamp	Болота
+GAME.C	73	Jungle	Джунгли
+GAME.C	74	Ocean	Океан
+GAME.C	75	River	Река
+GAME.C	76	Oasis	Оазис
+GAME.C	77	Horses	Лошади
+GAME.C	78	Grassland	Луга
+GAME.C	79	Game	Дичь
+GAME.C	80	Coal	Уголь
+GAME.C	81	Gold	Золото
+GAME.C	82	Game	Дичь
+GAME.C	83	Seals	Тюлени
+GAME.C	84	Oil	Нефть
+GAME.C	85	Gems	Алмазы
+GAME.C	86	Fish	Рыба
+GAME.C	87	River	Река
+GAME.C	112	Alphabet	Алфавит
+GAME.C	113	Code of Laws	Свод░Законов
+GAME.C	114	Currency	Деньги
+GAME.C	115	Atomic Theory	Атомная░Теория
+GAME.C	116	Democracy	Демократия
+GAME.C	117	Monarchy	Монархия
+GAME.C	118	Astronomy	Астрономия
+GAME.C	119	MapMaking	Картография
+GAME.C	120	Navigation	Навигация
+GAME.C	121	Mathematics	Математика
+GAME.C	122	Medicine	Медицина
+GAME.C	123	Physics	Физика
+GAME.C	124	Engineering	Техника
+GAME.C	125	University	Университет
+GAME.C	126	Magnetism	Магнетизм
+GAME.C	127	Electronics	Электроника
+GAME.C	128	Masonry	Строительство
+GAME.C	129	Bronze Working	Обработка░Бронзы
+GAME.C	130	Iron Working	Обработка░Железа
+GAME.C	131	Bridge Building	Мостостроение
+GAME.C	132	Invention	Изобретения
+GAME.C	133	Computers	Компьютеры
+GAME.C	134	Writing	Письменность
+GAME.C	135	Steam Engine	Паровой░Двигатель
+GAME.C	136	Trade	Торговля
+GAME.C	137	Ceremonial Burial	Церемон└░Сожжение
+GAME.C	138	Mysticism	Мистицизм
+GAME.C	139	Nuclear Fission	Расщепление░Атома
+GAME.C	140	Philosophy	Философия
+GAME.C	141	Religion	Религия
+GAME.C	142	Literacy	Литература
+GAME.C	143	Horseback Riding	Езда░Верхом
+GAME.C	144	Feudalism	Феодализм
+GAME.C	145	The Wheel	Колесо
+GAME.C	146	Gunpowder	Порох
+GAME.C	147	Industrialization	Индустриализация
+GAME.C	148	Chemistry	Химия
+GAME.C	149	Combustion	Внутреннее░Сгорание
+GAME.C	150	Flight	Полеты
+GAME.C	151	Advanced Flight	Реактивные░Полеты
+GAME.C	152	Space Flight	Космические░Полеты
+GAME.C	153	Mass Production	Производство
+GAME.C	154	Pottery	Глиноделие
+GAME.C	155	Communism	Коммунизм
+GAME.C	156	The Republic	Республика
+GAME.C	157	Construction	Конструирование
+GAME.C	158	Rocketry	Ракетостроение
+GAME.C	159	The Corporation	Корпорации
+GAME.C	160	Metallurgy	Металлургия
+GAME.C	161	RailRoad	Железная░Дорога
+GAME.C	162	Nuclear Power	Ядерная░Энергия
+GAME.C	163	Theory of Gravity	Теория░Гравитации
+GAME.C	164	Steel	Сталь
+GAME.C	165	Banking	Банковское░Дело
+GAME.C	166	Electricity	Электричество
+GAME.C	167	Refining	Очистка
+GAME.C	168	Explosives	Взрывчатые░Вещества
+GAME.C	169	SuperConductor	Сверхпроводимость
+GAME.C	170	Automobile	Автомобиль
+GAME.C	171	Genetic Engineering	Генетика
+GAME.C	172	Plastics	Пластмассы
+GAME.C	173	Recycling	Переработка
+GAME.C	174	Chivalry	Рыцарство
+GAME.C	175	Robotics	Роботы
+GAME.C	176	Conscription	Воинская░Повинность
+GAME.C	177	Labor Union	Профсоюзы
+GAME.C	178	Fusion Power	Энергия░Распада
+GAME.C	183	Future Tech.	Амбар
+GAME.C	262	NONE	Без прописки
+GAME.C	263	Palace	Дворец
+GAME.C	264	Barracks	Казармы
+GAME.C	265	Granary	Амбар
+GAME.C	266	Temple	Храм
+GAME.C	267	MarketPlace	Базар
+GAME.C	268	Library	Библиотека
+GAME.C	269	Courthouse	Суд
+GAME.C	270	City Walls	Стены
+GAME.C	271	Aqueduct	Водопровод
+GAME.C	272	Bank	Банк
+GAME.C	273	Cathedral	Собор
+GAME.C	274	University	Университет
+GAME.C	275	Mass Transit	Общественный░Транспорт
+GAME.C	276	Colosseum	Стадион
+GAME.C	277	Factory	Фабрика
+GAME.C	278	Mfg. Plant	Завод
+GAME.C	279	SDI Defense	СОИ
+GAME.C	280	Recycling Cntr.	Центр░Переработки
+GAME.C	281	Power Plant	Электростанция
+GAME.C	282	Hydro Plant	Гидростанция
+GAME.C	283	Nuclear Plant	Атомная░Станция
+GAME.C	284	SS Structural	Конструкции░Ракеты
+GAME.C	285	SS Component	Компоненты░Ракеты
+GAME.C	286	SS Module	Модуль░Ракеты
+GAME.C	287	Pyramids	Пирамиды
+GAME.C	288	Hanging Gardens	Висячие░Сады
+GAME.C	289	Colossus	Колосс
+GAME.C	290	Lighthouse	Маяк
+GAME.C	291	Great Library	Великая░Библиотека
+GAME.C	292	Oracle	Оракул
+GAME.C	293	Great Wall	Великая░Стена
+GAME.C	294	Magellan's Expedition	Экспедиция░Магеллана
+GAME.C	295	Michelangelo's Chapel	Капелла░Микеланджело
+GAME.C	296	Copernicus' Observatory	Обсерватория░Коперника
+GAME.C	297	Shakespeare's Theatre	Театр░Шекспира
+GAME.C	298	Isaac Newton's College	Колледж░Ньютона
+GAME.C	299	J.S.Bach's Cathedral	Собор░И└С└░Баха
+GAME.C	300	Darwin's Voyage	Путешествие░Дарвина
+GAME.C	301	Hoover Dam	Дамба░Гувера
+GAME.C	302	Women's Suffrage	Феминизм
+GAME.C	303	Manhattan Project	Проект░Курчатова
+GAME.C	304	United Nations	ООН
+GAME.C	305	Apollo Program	Программа░Восток
+GAME.C	306	SETI Program	Внеземные░Цивилизации
+GAME.C	307	Cure for Cancer	Лекарство░От░Рака
+GAME.C	331	Settlers	Колонисты
+GAME.C	332	Militia	Милиция
+GAME.C	333	Phalanx	Фаланга
+GAME.C	334	Legion	Легион
+GAME.C	335	Musketeers	Мушкетеры
+GAME.C	336	Riflemen	Стрелки
+GAME.C	337	Cavalry	Кавалерия
+GAME.C	338	Knights	Рыцари
+GAME.C	339	Catapult	Катапульта
+GAME.C	340	Cannon	Пушка
+GAME.C	341	Chariot	Колесница
+GAME.C	342	Armor	Танк
+GAME.C	343	Mech. Inf.	БМП
+GAME.C	344	Artillery	Артиллерия
+GAME.C	345	Fighter	Истребитель
+GAME.C	346	Bomber	Штурмовик
+GAME.C	347	Trireme	Галера
+GAME.C	348	Sail	Парусник
+GAME.C	349	Frigate	Фрегат
+GAME.C	350	Ironclad	Пароход
+GAME.C	351	Cruiser	Крейсер
+GAME.C	352	Battleship	Линкор
+GAME.C	353	Submarine	Подлодка
+GAME.C	354	Carrier	Авианосец
+GAME.C	355	Transport	Транспорт
+GAME.C	356	Nuclear	Атом. бомба
+GAME.C	357	Diplomat	Дипломат
+GAME.C	358	Caravan	Караван
+GAME.C	363	Caesar	Цезарь
+GAME.C	363		Римляне
+GAME.C	363	Roman	Римляне
+GAME.C	364	Hammurabi	Хаммураби
+GAME.C	364		Вавилоняне
+GAME.C	364	Babylonian	Вавилоняне
+GAME.C	365	Frederick	Фридрих II
+GAME.C	365	Germans	Немцы
+GAME.C	365	German	Немцы
+GAME.C	366	Ramesses	Рамзес
+GAME.C	366		Египтяне
+GAME.C	366	Egyptian	Египтяне
+GAME.C	367	Abe Lincoln	Авраам Линкольн
+GAME.C	367		Американцы
+GAME.C	367	American	Американцы
+GAME.C	368	Alexander	Александр
+GAME.C	368		Греки
+GAME.C	368	Greek	Греки
+GAME.C	369	M.Gandhi	М.Ганди
+GAME.C	369		Индийцы
+GAME.C	369	Indian	Индийцы
+GAME.C	371	Stalin	Сталин
+GAME.C	371		Русские
+GAME.C	371	Russian	Русские
+GAME.C	372	Shaka	Лумумба
+GAME.C	372		Негры
+GAME.C	372	Zulu	Негры
+GAME.C	373	Napoleon	Наполеон
+GAME.C	373	French	Французы
+GAME.C	373	French	Французы
+GAME.C	374	Montezuma	Монтезума
+GAME.C	374		Ацтеки
+GAME.C	374	Aztec	Ацтеки
+GAME.C	375	Mao Tse Tung	Мао Дзе Дун
+GAME.C	375	Chinese	Китайцы
+GAME.C	375	Chinese	Китайцы
+GAME.C	376	Elizabeth I	Елизавета I
+GAME.C	376	English	Англичане
+GAME.C	376	English	Англичане
+GAME.C	377	Genghis Khan	Чингиз  Хан
+GAME.C	377		Монголы
+GAME.C	377	Mongol	Монголы
+GAME.C	403	Anarchy	Анархия
+GAME.C	404	Despotism	Деспотизм
+GAME.C	405	Monarchy	Монархия
+GAME.C	406	Communist	Коммунизм
+GAME.C	407	Republic	Республ.
+GAME.C	408	Democratic	Демократия
+GAME.C	412	Silk	Шелк
+GAME.C	413	Silver	Алмазы
+GAME.C	414	Wine	Вино
+GAME.C	415	Copper	Медь
+GAME.C	416	Gems	Алмазы
+GAME.C	417	Dye	Чай
+GAME.C	418	Salt	Соль
+GAME.C	419	Spice	Перец
+GAME.C	425	Barbarian 	tXЛv\x06▒\x05╙цЛ^
+GAME.C	426	Roman     	Римляне
+GAME.C	427	Zulu      	Негры
+GAME.C	428	Mongol    	Монголы
+GAME.C	429	Aztec     	Ацтеки
+GAME.C	430	Persian   	Ё╕\x0C\x00ўnм\x03ЁА╝
+GAME.C	431	Muslim    	ўР t▄ЎДЇР\x10u
+GAME.C	432	Hittite   	╒А╝ўР\x19t\x03щ╕■
+GAME.C	449	Barbarians 	Римляне    
+GAME.C	450	Romans     	Вавилоняне 
+GAME.C	451	Babylonians	Немцы      
+GAME.C	452	Germans    	Немцы
+GAME.C	453	Egyptians  	Американцы 
+GAME.C	454	Americans  	Греки      
+GAME.C	455	Greeks     	Монголы    
+GAME.C	456	Mongols    	Атилла       
+GAME.C	473	Attila       	Цезарь       
+GAME.C	474	Caesar       	Цезарь
+GAME.C	475	Shaka        	Лумумба
+GAME.C	476	Genghis Khan 	Чингиз  Хан
+GAME.C	477	Montezuma    	Монтезума
+GAME.C	478	Xerxes       	Ксеркс       
+GAME.C	479	Saladin      	Саладин      
+GAME.C	480	Suppiluliumas	Суппилулиумас
+GAME.C	495	Mr.	Г-н
+GAME.C	496	Emperor	Владыка
+GAME.C	497	King 	Царь 
+GAME.C	498	Comrade	Тов└
+GAME.C	499	President	Президент
+GAME.C	500	President	Президент
+GAME.C	673	Please insert Disk 	Вставьте диск 
+GAME.C	675	.\n \n    Press Return\n    to continue.\n	.\n \n  Нажмите Enter\n для продолжения.\n
+GAME.C	726	 Start a New Game\n Load a Saved Game\n EARTH\n Customize World\n View Hall of Fame\n	 Новая игра\n Восстановить прежнюю\n ЗЕМЛЯ\n Создать новый мир\n Книга рекордов CIV\n
+GAME.C	760	LAND MASS:\n Small\n Normal\n Large\n	Суша:\n мало\n средне\n много\n
+GAME.C	774	TEMPERATURE:\n Cool\n Temperate\n Warm\n	Температура:\n Холодно\n Тепло\n Жарко\n
+GAME.C	788	CLIMATE:\n Arid\n Normal\n Wet\n	Климат:\n Сухой\n Норм.\n Вода\n
+GAME.C	800	AGE:\n 3 billion years\n 4 billion years\n 5 billion years\n	Эра:\n 3 миллиарда лет\n 4 миллиарда лет\n 5 миллиардов   \n
+INTRO.C	512	Irrigation	Мелиорация
+INTRO.C	573	Village	Поселок
+INTRO.C	576	Menu Bar	Меню
+INTRO.C	578	Map Window	Окно с картой
+INTRO.C	580	Active Unit	Текущ. отряд
+INTRO.C	599	Chief	Вождь
+INTRO.C	599	Lord	Рыц.
+INTRO.C	599	Prince	Принц
+INTRO.C	599	King	Царь
+INTRO.C	599	Emperor	Владыка
+MAPVIEW.C	32	Which army?\n 	Какой отряд\n 
+MAPVIEW.C	161	To:	Из:
+MENUS.C	96	 Tax Rate\n Luxuries Rate\n FindCity\n Options\n Save Game\n REVOLUTION!\n \n Retire\n QUIT to DOS\n	 Налоги\n Роскошь\n Найти город\n Параметры\n Сохраниться\n РЕВОЛЮЦИЯ\n \n На пенсию\n Выход в DOS\n
+MENUS.C	98	 View Replay\n	 Просмотреть\n
+MENUS.C	115	Options:\n Instant Advice\n AutoSave\n End of Turn\n Animations\n Sound\n Enemy Moves\n Civilopedia Text\n Palace\n	Параметры:\n Дать совет\n АвтоСохр. \n Конец Хода\n Анимация  \n Звуки\n Ходы врагов\n Текст цивилопедии\n Дворец\n
+MENUS.C	155	 No Orders \217space\n	 Пропустить space\n
+MENUS.C	159	 Add to City \217b\n	 Обосноваться b\n
+MENUS.C	159	 Found New City \217b\n	 Основать город  b\n
+MENUS.C	162	 Build Road \217r\n	 Дорога  r\n
+MENUS.C	166	 Build RailRoad \217r\n	 Железн. дорога  r\n
+MENUS.C	172	 Build Irrigation	 Мелиорация земли
+MENUS.C	177	 Change to 	 Изменить
+MENUS.C	188	 Build Mines	 Шахты 
+MENUS.C	191	 Change to 	 Изменить
+MENUS.C	201	 Clean up Pollution \217p\n	 Убрать загрязнение  p\n
+MENUS.C	206	 Build Fortress \217f\n	 Строить Форт  f\n
+MENUS.C	210	 Fortify \217f\n	 Окопать  f\n
+MENUS.C	214	 Wait \217w\n Sentry \217s\n GoTo\n	 Ждать w\n Страж   s\n Идти\n
+MENUS.C	221	 Pillage \217P\n	 Разбой P\n
+MENUS.C	226	 Home City \217h\n	 Прописать h\n
+MENUS.C	232	 Unload \217u\n	 Разгрузить u\n
+MENUS.C	236	 \n Disband Unit \217D\n	 \n Распустить  D\n
+MENUS.C	250	 City Status (F1)\n Military Advisor (F2)\n Intelligence Advisor (F3)\n Attitude Advisor (F4)\n	 Состояние (F1)\n Военный советник (F2)\n Советник по ин. делам (F3)\n Общее положение (F4)\n
+MENUS.C	251	 Trade Advisor (F5)\n Science Advisor (F6)\n	 Торг.Советник (F5)\n Ученый Совет (F6)\n
+MENUS.C	296	 Wonders of the World (F7)\n Top 5 Cities (F8)\n Civilization Score (F9)\n	 Чудеса Света (F7)\n Лучшие 5 городов (F8)\n Уровень цивилизации (F9)\n
+MENUS.C	297	 World Map (F10)\n Demographics\n SpaceShips\n	 Карта Мира (F10)\n Демография\n Космический корабль\n
+MENUS.C	329	 Complete\n Civilization Advances\n City Improvements\n Military Units\n Terrain Types\n	 Полная\n Достижения цивилизации\n Развитие городов\n Войска\n Типы территорий\n
+MENUS.C	330	 Miscellaneous\n	 Прочее\n
+NAMES.C	43	City Name...	Имя города..
+NAMES.C	63	Your Name...	Ваше Имя...
+NAMES.C	80	Name of your Tribe...	Имя вашего племени...
+NAMES.C	101	Where in the heck is ... (city name)	Укажите начало имени ...(имя города)
+NAMES.C	106	Unknown city.	Город не найден
+NEWGAME.C	71	Difficulty Level...\n Chieftain (easiest)\n Warlord\n Prince\n King\n Emperor (toughest)\n	Сложность игры...\n Вождь (простой)      \n Рыцарь \n Принц \n Царь\n Владыка (сложный)\n
+NEWGAME.C	85	Level of Competition...\n 	Уровень сложности...\n 
+NEWGAME.C	88	 Civilizations\n 	 цивилизации\n 
+NEWGAME.C	118	Pick your tribe...\n 	Национальность...\n 
+NEWGAME.C	202	and Roads.\n	и дороги..\n
+NEWGAME.C	349	\ncivilization\ndestroyed\nby 	\nцивилизация\nуничтожена:\n 
+NEWGAME.C	399	Nearest civilization: 	Ближайшие страны: 
+NEWGAME.C	401	close	почти рядом
+NEWGAME.C	403	moderate	изолирована
+NEWGAME.C	406	far away	У моря 
+NEWGAME.C	409	isolated	Внутр. 
+NEWGAME.C	422	Coastal 	долина реки и 
+NEWGAME.C	422	Inland 	луга на 
+NEWGAME.C	424	river valley on a 	
+NEWGAME.C	427	grasslands on a 	
+NEWGAME.C	430	plains on a 	равнины на 
+NEWGAME.C	433	small island.	островке.
+NEWGAME.C	436	large island.	острове.
+NEWGAME.C	439	small continent.	малом материке.
+NEWGAME.C	443	medium continent.	среднем материке.
+NEWGAME.C	447	large continent.	большом материке
+NEWGAME.C	459	Skills: 	Умение: 
+NEWGAME.C	463	Settlers+	Колонисты░+
+NEWGAME.C	471	NONE	НЕТ
+NEWGAME.C	595	 government\nchanged to 	░общ└░строй\nизменен░на┼
+NEWGAME.C	602	New Cabinet:	Правительство
+NEWS.C	56	 Weekly	░Неделя
+NEWS.C	60	 Today	░Сегодня
+NEWS.C	63	The 	    
+NEWS.C	65	 Times	░Время
+NEWS.C	68	The 	    
+NEWS.C	70	 Tribune	░Трибуна
+NEWS.C	77	 News	░Новости
+NEWS.C	85	EXTRA!	╜╛┐
+NEWS.C	91	10 cents	10 руб.
+NEWS.C	93	January 1, 	1 января, 
+NEWS.C	104	Press any key to continue.\n	Нажмите любую клавишу.\n
+NOTES.C	113	--- Civilization Note ---	- Подсказка Цивилизации -
+NOTES.C	138	--- Civilization Note ---	A)Советники
+PALACE.C	78	Which section shall we improve?\n	Какую часть будем улучшать?\n
+PALACE.C	151	Select new section.	Выберите часть.
+PEDIA.C	52	Veteran Units	Ветераны
+PEDIA.C	52	Fortify	Укрепл└
+PEDIA.C	52	Irrigation	Мелиорация
+PEDIA.C	52	Mining	Шахты
+PEDIA.C	52	Roads	Пути
+PEDIA.C	53	RailRoads	Жел└░Дор└
+PEDIA.C	53	Anarchy	Анархия
+PEDIA.C	53	Despotism	Деспотизм
+PEDIA.C	53	Monarchy	Монархия
+PEDIA.C	53	Communism	Коммунизм
+PEDIA.C	54	Republic	Республ.
+PEDIA.C	54	Democracy	Демократия
+PEDIA.C	54	Fortress	Форт
+PEDIA.C	54	Pillage	Разбой
+PEDIA.C	54	Disband	Роспуск
+PEDIA.C	55	Pollution	Выбросы
+PEDIA.C	55	Sentry	Стражи
+PEDIA.C	55	Luxuries	Роскошь
+PEDIA.C	55	Taxes	Налог
+PEDIA.C	55	Science	Наука
+PEDIA.C	55	Trade Routes	Торговые░Пути
+PEDIA.C	95	ENCYCLOPAEDIA of CIVILIZATION	ЭНЦИКЛОПЕДИЯ ЦИВИЛИЗАЦИИ
+PEDIA.C	96	ENCYCLOPAEDIA of CIVILIZATION	ЭНЦИКЛОПЕДИЯ ЦИВИЛИЗАЦИИ
+PEDIA.C	99	MORE	Еще
+PEDIA.C	106	zzz	Стр. 
+PEDIA.C	295	Civilization Advance	Развитие цивилизации
+PEDIA.C	310	City Improvement	Развитие городов
+PEDIA.C	310	Wonder of the World	Чудеса Света
+PEDIA.C	322	Military Unit	Войска
+PEDIA.C	339	Terrain Type	Территории
+PEDIA.C	343	Game Concept	Принцип игры
+PEDIA.C	371	Requires 	Требует: 
+PEDIA.C	375	 and 	 и 
+PEDIA.C	380	Allows: 	Дает: 
+PEDIA.C	387	 (with 	 (надо░
+PEDIA.C	397	 (with 	 (надо░
+PEDIA.C	419	 improvement	 (строение)
+PEDIA.C	419	 Wonder	 (Чудо)
+PEDIA.C	425	Allows: 	Дает: 
+PEDIA.C	428	(from Great Library)	(из Вел. Библиотеки)
+PEDIA.C	434	(Discovered)	(Открыто)
+PEDIA.C	437	(Taken from 	(Постарались
+PEDIA.C	445	Requires 	Требует: 
+PEDIA.C	449	Cost: 	Цена: 
+PEDIA.C	451	 shields.	 щитов.
+PEDIA.C	454	Maintenance: $	Содержание: $
+PEDIA.C	460	Requires 	Требует: 
+PEDIA.C	463	 and Nuclear Fission	 и Распад атома
+PEDIA.C	466	Cost: 	Цена: 
+PEDIA.C	468	 resources.	 ресурсов.
+PEDIA.C	471	Attack Strength: 	Ударная сила: 
+PEDIA.C	475	Defense Strength: 	Сила защиты: 
+PEDIA.C	479	Movement Rate: 	Перемещение: 
+PEDIA.C	491	Food: 	Пища: 
+PEDIA.C	500	 with Irrigation)	 с мелиорацией)
+PEDIA.C	502	 units.	 ед.
+PEDIA.C	507	Production: 	Продукция: 
+PEDIA.C	516	 with Mining)	 с шахтами)
+PEDIA.C	518	 units.	 ед.
+PEDIA.C	523	Trade: 	Торги: 
+PEDIA.C	532	% with Roads)	% с дорогами)
+PEDIA.C	538	nothing	пусто
+PEDIA.C	545	%  +1 if government is Republic/Democracy.	%  +1 при республике/демократии.
+PEDIA.C	547	Movement cost: 	Передвижение: 
+PEDIA.C	549	 MP	 ед
+PEDIA.C	552	Defense bonus: +	Сила защиты: +
+QUIZ.C	75	CIVILIZATION QUIZ	Купили ли вы игру
+QUIZ.C	79	Which civilization advances are required to learn	Какое достижение цивилизации нужно для:
+QUIZ.C	81	the advance pictured below.	показанного ниже.
+QUIZ.C	85	Pages 	показанного ниже.
+QUIZ.C	96	zzz	Стр. 
+QUIZ.C	116	 and 	 и 
+REPLAY.C	70	See Replay?\n No replay\n Quick Replay\n Complete Replay\n Write Replay to Disk\n	Повторить?\n Не надо\n Краткий повтор\n Полный повтор\n Записать повтор на диск\n
+REPLAY.C	110	 BC	░дэ
+REPLAY.C	110	 AD	░нэ
+REPLAY.C	122	 found the city of 	░основали░город░
+REPLAY.C	125	 capture 	░взяли░
+REPLAY.C	132	 destroyed	░уничтожен
+REPLAY.C	144	 declare war on 	░объявили░войну┼
+REPLAY.C	152	 make peace with 	░заключили░мир░с┼
+REPLAY.C	160	 discover 	░открыли░
+REPLAY.C	168	 produce first 	░сделали░перв└░
+REPLAY.C	184	 build 	░сдел░
+REPLAY.C	186	the 	░постр░
+REPLAY.C	198	 cities; 	░города┴░
+REPLAY.C	200	 population	░население
+REPLAY.C	227	 civilization destroyed by 	░цивилизация уничтожена: 
+REPLAY.C	435	The entire world hails	Он░захватил░весь░мир┼░
+REPLAY.C	439	 the CONQUEROR!	░завоеватель├
+REPLAY.C	536	 BC	░дэ
+REPLAY.C	536	 AD	░нэ
+REPLAY.C	539	 destroy	░уничт└┼
+REPLAY.C	542	the 	░постр░
+REPLAY.C	544	 civilization!	░как░нацию└
+REPORTS.C	231	CIVILIZATION POWERGraph	Уровень цивилизации
+REPORTS.C	282	The Wonders of the World	Чудеса Света
+REPORTS.C	289	The 	    
+REPORTS.C	293	 of 	    
+REPORTS.C	293	 in 	 в: 
+REPORTS.C	299	 (Destroyed)	 (Разрушено)
+REPORTS.C	315	Herodotus	Геродот
+REPORTS.C	316	Pliny	Ленин
+REPORTS.C	317	Toynbee	Тойнби
+REPORTS.C	318	Gibbon	Гиббон
+REPORTS.C	323	Great	Стойкие
+REPORTS.C	324	Fine	Красивые
+REPORTS.C	325	Mediocre	Посредственные
+REPORTS.C	326	Puny	Бедные
+REPORTS.C	327	Pathetic	Несчастные
+REPORTS.C	332	WEALTHIEST	БОГАТЕЙШИЕ
+REPORTS.C	333	MOST POWERFUL	СИЛЬНЕЙШИЕ
+REPORTS.C	334	MOST ADVANCED	САМЫЕ РАЗВИТЫЕ
+REPORTS.C	335	HAPPIEST	СЧАСТЛИВЫЕ
+REPORTS.C	336	LARGEST	БОЛЬШИЕ
+REPORTS.C	349	 completes his epic history:	 завершил свой манускрипт:
+REPORTS.C	351	'The 	'
+REPORTS.C	353	 Civilizations in the World'	 цивилизации в мире'
+REPORTS.C	413	. The 	Великие
+REPORTS.C	415	 Civilization of the 	 Цивилизации: 
+REPORTS.C	527	Approval Rating:	Поддерживают:
+REPORTS.C	540	Population:	Население:
+REPORTS.C	551	GNP:	ВНП:
+REPORTS.C	557	 million $	 млн. $
+REPORTS.C	565	Mfg. Goods:	Товары:
+REPORTS.C	571	 Mtons	 Mтонн
+REPORTS.C	575	 Mtons	 Mтонн
+REPORTS.C	578	Land Area:	Площадь:
+REPORTS.C	584	,000 sq.miles	,000 кв.миль
+REPORTS.C	592	Literacy:	Культура:
+REPORTS.C	618	Disease:	Бедствия
+REPORTS.C	635	Pollution:	Выбросы:
+REPORTS.C	642	0 tons/year	0 тонн/год
+REPORTS.C	646	0 tons	0 тонн
+REPORTS.C	649	Life Expectancy:	Срок жизни (ср):
+REPORTS.C	655	 years	 лет
+REPORTS.C	659	 yrs	 лет
+REPORTS.C	662	Family Size:	Семьи (ср):
+REPORTS.C	670	 children	 детей
+REPORTS.C	678	Military Service:	Служба в армии:
+REPORTS.C	684	 years	 лет
+REPORTS.C	688	 yrs	 лет
+REPORTS.C	691	Annual Income:	Годовой доход:
+REPORTS.C	701	$ per capita	$ на столицу
+REPORTS.C	708	Productivity:	Производство:
+SAVE.C	59	\214Select Load File...\n	Выберите имя игры..\n
+SAVE.C	116	 BC\n	 дэ\n
+SAVE.C	116	 AD\n	 нэ\n
+SAVE.C	118	 (EMPTY)\n	 (ПУСТО)\n
+SAVE.C	145	\214Select Save File...\n	Выберите имя игры..\n
+SAVE.C	161	 Game has been saved.\n	 Игра сохранена\n
+SAVE.C	163	 Game NOT saved.\n	 Сохранения НЕТ.\n
+SAVE.C	167	 Write access denied.\n	 Ошибка записи.\n
+SAVE.C	169	 Disk Full.\n	 Нет места.\n
+SAVE.C	170	 Press key to continue.\n	 Нажмите любую клавишу.\n
+SAVE.C	197	\n ... save in progress.\n	\n ... идет сохранение..\n
+SAVE.C	227	  Which drive contains your\n    saved game files?\n\n            	  На каком диску находятся\nваши сохраненный игры?\n\n            
+SAVE.C	227	  Which drive contains your\n     Save Game disk?\n\n            	  На каком диске находятся\n сохраненные игры?\n\n            
+SAVE.C	229	:\n\n    Press drive letter and\nReturn when disk is inserted.\n	:\n\n    Укажите имя дисковода\nи затем нажмите Enter.\n
+SAVE.C	230	    Press Escape to cancel.\n	    Esc - прерваться.\n
+SAVE.C	251	No Disk in Drive A.\n	Нет диска: Drive A.\n
+SAVE.C	311	Error writing map file.\n	Нет диска: Drive A.\n
+SPACESHP.C	47	Structure1	Структура1
+SPACESHP.C	48	Structure2	Структура2
+SPACESHP.C	49	Structure3	Структура3
+SPACESHP.C	50	Propulsion	Двигатель
+SPACESHP.C	51	Fuel	Горючее
+SPACESHP.C	52	NONE	Пусто
+SPACESHP.C	53	Habitation	Каюты
+SPACESHP.C	54	Life Support	Жизнеобеспеч└
+SPACESHP.C	55	Solar Panel	Солн. батареи
+SPACESHP.C	56	Support	Поддержка
+SPACESHP.C	147	 SpaceShip: X.S.S. 	 Корабль:   X.S.S. 
+SPACESHP.C	192	Population:	Население:
+SPACESHP.C	201	Support: 	Поддерж: 
+SPACESHP.C	209	Energy: 	Питание 
+SPACESHP.C	217	Mass:	Вес:
+SPACESHP.C	223	00 tons	00 тонн
+SPACESHP.C	228	Fuel: 	Топл: 
+SPACESHP.C	235	Flight Time:	Время полета
+SPACESHP.C	244	 Years	 лет
+SPACESHP.C	250	Prob. of Success	Вероятн. успеха
+SPACESHP.C	262	Landed!	Прибыл!
+SPACESHP.C	262	Launched!	Запущен!
+SPACESHP.C	268	LAUNCH	Запуск
+SPACESHP.C	287	Confirm spaceship launch.\n(	Подтвердите пуск корабля.\n(
+SPACESHP.C	289	% chance of success)\n No Launch\n Launch CONFIRMED!\n	% шансы на успех)\n Отменить\n Пуск ПОДТВЕРЖДЕН!\n
+SPACESHP.C	384	 build space ship.\n	 делают ракету.\n
+SPACESHP.C	424	Type?\n Propulsion\n Fuel\n	Тип?\n Двигатель\n Горюч.\n
+SPACESHP.C	430	Type?\n Habitation\n Life Support\n Solar Panel\n	Тип?\n Каюты\n Жизнеобеспечение\n Солн. батареи\n
+SPACESHP.C	471	No further 	
+SPACESHP.C	473	 required.\n	 не надо.\n
+SPACESHP.C	554	Which nation?\n 	Какая нация ?\n 
+SPACESHP.C	576	 LAUNCH space ship!	 Корабль░стартовал├
+SPACESHP.C	578	Estimate arrival in 	 Корабль░стартовал├
+STATUS.C	37	Government: 	Правители: 
+STATUS.C	40	Population: 	Население: 
+STATUS.C	43	Treasury: $	Капитал: $
+STATUS.C	45	, Taxes/Science: 	, Налог/Наука: 
+STATUS.C	50	/Units/Cities/Settlers/Land	/Армии/Города/Колонисты/Тер
+STATUS.C	65	Settle	Посел.
+STATUS.C	67	Defend	Защита
+STATUS.C	69	Attack	Атака
+STATUS.C	71	Transport	Транспорт
+STATUS.C	83	: Contact	: Контакт
+STATUS.C	86	: Allied	: Союзы
+STATUS.C	86	: Peace	: Мир
+STATUS.C	88	: Vendetta	: Вендетта
+STATUS.C	96	Civilization:	Цивилизация:
+TURN.C	318	\nplans retirement\nin 20 years.\n	\nсобирается кончать░в░╥╨░лет└└\n
+TURN.C	326	Your civilization\nhas conquered\nthe entire planet!\n	Ваша░цивилизация\nзахватила░всю\nпланету┬\n
+TURN.C	335	 spaceship\narrives at Alpha Centauri.\n	░корабль\nприбыл░на░Альфа░Центавра└\n
+TURN.C	340	 dynasty\nends after glorious\n6000 year reign!\n	░династия\nзавершилась░после\n╓╨╨╨░лет░власти┬\n
+TURN.C	439	Travellers report:\n	Очевидцы говорят:\n
+TURN.C	440	Guerrilla uprising\nnear 	Обнаружены бандиты\nок.: 
+TURN.C	440	Native unrest\nnear 	Волнения масс\nок.: 
+TURN.C	440	Barbarian uprising\nnear 	Варвары высадились\nок.: 
+TURN.C	519	G\207AME	G)Игра
+TURN.C	520	O\207RDERS	O)Команды
+TURN.C	521	A\207DVISORS	A)Советники
+TURN.C	522	W\207ORLD	W)Мир
+TURN.C	523	C\207IVILOPEDIA	C)Цивилопедия
+TURN.C	575	The population of the\nfertile 	Население\nвсей 
+TURN.C	577	 empire now\nexceeds 	 империи\nпревысило 
+TURN.C	594	00,000 citizens.\n	00,000 жителей..\n
+TURN.C	675	 BC	░до н.э.
+TURN.C	675	 AD	░н.э.
+TURN.C	685	Scientists alarmed by\nrising temperatures.\nGlobal Warming feared!\n	Ученые встревожены\nувеличением температур.\nБудет общ. потепление!\n
+TURN.C	725	)\nbuilds 	)\nсозд.: 
+UNITAI.C	1228	Barbarian raiding party\nlands near 	Варвары░грабят░селения\nоколо░гор└┼░
+UNITAI.C	1231	!\nCitizens are alarmed.\n	┬\nЖители░встревожены└\n
+UNITS.C	272	End of Turn	Конец хода
+UNITS.C	283	End of Turn	Конец хода
+UNITS.C	721	You have discovered\nan advanced tribe.\n	Вы нашли свободное\nплемя и основались.\n
+UNITS.C	731	You have discovered\nscrolls of ancient wisdom.\n	Вы нашли древние\nсвитки с новыми знаниями.\n
+UNITS.C	749	You have discovered\nvaluable metal deposits\nworth 50$\n	Вы нашли золото\nобщей стоимостью 50$\n
+UNITS.C	757	You have unleashed\na horde of barbarians!\n	На ваш отряд напали\nорды дикарей!\n
+UNITS.C	773	You have discovered\na friendly tribe of\nskilled mercenaries.\n	Вы встретили поселок\nс дружелюбными\nжителями.\n
+WORLDGEN.C	730	BUILDING NEW WORLD...	Создается новый мир..
+WORLDGEN.C	826	Global temperature\nrises! Icecaps melt.\nSevere Drought.\n	Глобальное░потепление└\nАйсберги░тают└└└\nСильная░засуха└\n

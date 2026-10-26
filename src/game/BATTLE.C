@@ -159,9 +159,9 @@ int attacker_civ_b, attacker_unit_m, defender_civ_e, defender_unit_p, flag;
         player_peace_run = 0;
     if ((defender_civ_e == civnow && (treaties[defender_civ_e][attacker_civ_b] & 2)) || (treaties[attacker_civ_b][defender_civ_e] & 0x200)) {
         message_mode = 3;
-        strcpy(msgtext, "\x82\xAD\xA5\xA7\xA0\xAF\xAD\xA0\xEF \xA0\xE2\xA0\xAA\xA0\n"); /* reciv-ru */
+        strcpy(msgtext, TRANSLATE("Sneak attack by\n", "RU")); /* reciv-ru */
         strcat(msgtext, civ_adjectives[attacker_civ_b]);
-        strcat(msgtext, " \xA8\xA4\xE3\xE2!\n"); /* reciv-ru */
+        strcat(msgtext, TRANSLATE(" forces!\n", "RU")); /* reciv-ru */
         show_msg(msgtext, 0x64, 0x50);
         treaties[attacker_civ_b][defender_civ_e] &= ~0x200;
     }
@@ -169,7 +169,7 @@ int attacker_civ_b, attacker_unit_m, defender_civ_e, defender_unit_p, flag;
         if (attacker_civ_b == civnow || defender_civ_e == civnow) {
             message_mode = 5;
             strcpy(msgtext, civ_names[defender_civ_e]);
-            strcat(msgtext, " \xE0\xA0\xA7\xE0\xEB\xA2\n\xE1\xAE\xA3\xAB\xA0\xE8\xA5\xAD\xA8\xEF\n\x8C\xEB - "); /* reciv-ru */
+            strcat(msgtext, TRANSLATE(" cancel\npeace treaty\nwith ", "RU")); /* reciv-ru */
             strcat(msgtext, civ_names[attacker_civ_b]);
             strcat(msgtext, ".\n");
             show_msg(msgtext, 0x64, 0x50);
@@ -201,7 +201,7 @@ int attacker_civ_b, attacker_unit_m, defender_civ_e, defender_unit_p, flag;
             if (stack_losses_b > 1 && (attacker_civ_b == civnow || defender_civ_e == civnow)) {
                 msgtext[0] = 0;
                 strcat(msgtext, itoa(stack_losses_b, nstr, 10));
-                strcat(msgtext, " \xA0\xE0\xAC\xA8\xA9 \xE3\xAD\xA8\xE7\xE2\xAE\xA6\xA5\xAD\xAE\n"); /* reciv-ru */
+                strcat(msgtext, TRANSLATE(" units destroyed.\n", "RU")); /* reciv-ru */
                 show_msg(msgtext, 0x50, 0x50);
             }
         } else {
@@ -268,14 +268,14 @@ int stack_remove(int p, int i)
 int attack_ok(int pl)
 {
     if (treaties[civnow][pl] & 2) {
-        strcpy(msgtext, "\x93 \xAD\xA0\xE1 \xAF\xA0\xAA\xE2 \xAE\n\xAD\xA5\xAD\xA0\xAF\xA0\xA4\xA5\xAD\xA8\xA8 \xE1 \xAD\xA0\xE0\xAE\xA4\xAE\xAC:\n"); /* reciv-ru */
+        strcpy(msgtext, TRANSLATE("We have signed a\npeace treaty with\nthe ", "RU")); /* reciv-ru */
         strcat(msgtext, civ_names[pl]);
-        strcat(msgtext, "!\n \x8E\xE2\xAA\xA0\xA7\xA0\xE2\xEC\xE1\xEF.\n \x8F\xAE\xE0\xA2\xA0\xE2\xEC \xA4\xAE\xA3\xAE\xA2\xAE\xE0.\n"); /* reciv-ru */
+        strcat(msgtext, TRANSLATE("!\n Cancel action.\n Break treaty.\n", "RU")); /* reciv-ru */
         message_mode = 5;
         if (show_msg(msgtext, 0x50, 0x50) != 1)
             return -1;
         if (civ_gov[civnow] >= 4) {
-            strcpy(msgtext, "\x8D\xA5 \xAE\xA4\xAE\xA1\xE0\xA5\xAD\xAE\n\x91\xA5\xAD\xA0\xE2\xAE\xAC.\n\x8F\xAE\xE5\xAE\xA4 \xAE\xE2\xAC\xA5\xAD\xA5\xAD.\n"); /* reciv-ru */
+            strcpy(msgtext, TRANSLATE("Overruled by\nthe Senate.\nAction canceled.\n", "RU")); /* reciv-ru */
             message_mode = 4;
             show_msg(msgtext, 0x64, 0x50);
             return -1;
@@ -293,7 +293,7 @@ int atom(int pl, int x, int y)
     if (pl != civnow) {
         message_mode = 3;
         strcpy(msgtext, civ_names[pl]);
-        strcat(msgtext, " \xA8\xE1\xAF\n\xEF\xA4\xA5\xE0\xAD\xAE\xA5\xB0\xAE\xE0\xE3\xA6\xA8\xA5\xC0\n"); /* reciv-ru */
+        strcat(msgtext, TRANSLATE(" use\nnuclear weapons!\n", "RU")); /* reciv-ru */
         show_msg(msgtext, 0x64, 0x50);
     }
     nuke_animation(x, y);
@@ -304,7 +304,7 @@ int atom(int pl, int x, int y)
         if (map_flags(nx, ny) & 1) {
             c = city_at(nx, ny);
             if (townbuf[c].buildings & HAS_SDI) {
-                strcpy(msgtext, "\x91\x8E\x88\xB0\xA7\xA0\xE9\xA8\xE2\xA8\xAB\xA0 "); /* reciv-ru */
+                strcpy(msgtext, TRANSLATE("SDI protects ", "RU")); /* reciv-ru */
                 append_place_name(c);
                 strcat(msgtext, ".\n");
                 show_msg(msgtext, 0x50, 0x64);

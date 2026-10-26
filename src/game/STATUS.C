@@ -34,20 +34,20 @@ void civ_info(int p)
     rect_fill(scrbuf, 0, 0, 320, 200, 1);
     draw_string(civ_adjectives[p], 128, 4, 15);
     label_with_style(p * 32 + 64, 16, 4);
-    strcpy(msgtext, "\x8F\xE0\xA0\xA2\xA8\xE2\xA5\xAB\xA8: "); /* reciv-ru */
+    strcpy(msgtext, TRANSLATE("Government: ", "RU")); /* reciv-ru */
     strcat(msgtext, government_names[civ_gov[p]]);
     draw_string(msgtext, 16, 24, 15);
-    strcpy(msgtext, "\x8D\xA0\xE1\xA5\xAB\xA5\xAD\xA8\xA5: "); /* reciv-ru */
+    strcpy(msgtext, TRANSLATE("Population: ", "RU")); /* reciv-ru */
     count_weighted_units(p);
     draw_string(msgtext, 16, 32, 15);
-    strcpy(msgtext, "\x8A\xA0\xAF\xA8\xE2\xA0\xAB: $"); /* reciv-ru */
+    strcpy(msgtext, TRANSLATE("Treasury: $", "RU")); /* reciv-ru */
     strcat(msgtext, itoa(money[p], nstr, 10));
-    strcat(msgtext, ", \x8D\xA0\xAB\xAE\xA3/\x8D\xA0\xE3\xAA\xA0: "); /* reciv-ru */
+    strcat(msgtext, TRANSLATE(", Taxes/Science: ", "RU")); /* reciv-ru */
     strcat(msgtext, itoa(civ_toll[p], nstr, 10));
     strcat(msgtext, "/");
     strcat(msgtext, itoa(sci[p], nstr, 10));
     draw_string(msgtext, 16, 40, 15);
-    draw_string("/\x80\xE0\xAC\xA8\xA8/\x83\xAE\xE0\xAE\xA4\xA0/\x8A\xAE\xAB\xAE\xAD\xA8\xE1\xE2\xEB/\x92\xA5\xE0", 16, 48, 15); /* reciv-ru */
+    draw_string(TRANSLATE("/Units/Cities/Settlers/Land", "RU"), 16, 48, 15); /* reciv-ru */
     msgtext[0] = 0;
     strcat(msgtext, itoa(troops_total[p], nstr, 10));
     strcat(msgtext, "/");
@@ -62,13 +62,13 @@ void civ_info(int p)
     for (i = 1; i < 15; i++) {
         if (!defenders_island[p][i])
             continue;
-        strcpy(msgtext, "\x8F\xAE\xE1\xA5\xAB."); /* reciv-ru */
+        strcpy(msgtext, TRANSLATE("Settle", "RU")); /* reciv-ru */
         if (civ_area_plan[p][i] == 2)
-            strcpy(msgtext, "\x87\xA0\xE9\xA8\xE2\xA0"); /* reciv-ru */
+            strcpy(msgtext, TRANSLATE("Defend", "RU")); /* reciv-ru */
         if (civ_area_plan[p][i] == 1)
-            strcpy(msgtext, "\x80\xE2\xA0\xAA\xA0"); /* reciv-ru */
+            strcpy(msgtext, TRANSLATE("Attack", "RU")); /* reciv-ru */
         if (civ_area_plan[p][i] == 5)
-            strcpy(msgtext, "\x92\xE0\xA0\xAD\xE1\xAF\xAE\xE0\xE2"); /* reciv-ru */
+            strcpy(msgtext, TRANSLATE("Transport", "RU")); /* reciv-ru */
         strcat(msgtext, "/");
         strcat(msgtext, itoa(i, nstr, 10));
         draw_string(msgtext, 256, y, 7);
@@ -80,12 +80,12 @@ void civ_info(int p)
             continue;
         strcpy(msgtext, civ_adjectives[i]);
         if ((treaties[p][i] & 0xb) == 1)
-            strcat(msgtext, ": \x8A\xAE\xAD\xE2\xA0\xAA\xE2"); /* reciv-ru */
+            strcat(msgtext, TRANSLATE(": Contact", "RU")); /* reciv-ru */
         flags = treaties[p][i];
         if (flags & 2)
-            strcat(msgtext, (flags & 4) ? ": \x91\xAE\xEE\xA7\xEB" : ": \x8C\xA8\xE0"); /* reciv-ru */
+            strcat(msgtext, (flags & 4) ? TRANSLATE(": Allied", "RU") : TRANSLATE(": Peace", "RU")); /* reciv-ru */
         if (treaties[p][i] & 8)
-            strcat(msgtext, ": \x82\xA5\xAD\xA4\xA5\xE2\xE2\xA0"); /* reciv-ru */
+            strcat(msgtext, TRANSLATE(": Vendetta", "RU")); /* reciv-ru */
         if (treaties[p][i] & 0xb) {
             draw_string(msgtext, 192, y, 7);
             y += 8;
@@ -93,7 +93,7 @@ void civ_info(int p)
     }
     y = 56;
     k = 0;
-    draw_string("\x96\xA8\xA2\xA8\xAB\xA8\xA7\xA0\xE6\xA8\xEF:", 16, y, 15); /* reciv-ru */
+    draw_string(TRANSLATE("Civilization:", "RU"), 16, y, 15); /* reciv-ru */
     y += 8;
     for (i = 0; i < 72; i++) {
         if (has_tech(p, i)) {

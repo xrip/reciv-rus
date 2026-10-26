@@ -44,4 +44,9 @@ extern short reciv_si;
 extern short reciv_stack;
 #define RECIV_STACK(value, site) (reciv_stack = (value))
 
+/* Language-layer fallback: the build compiles langgen-expanded copies of
+ * src/game, so the macro is gone before the compiler sees it.  A raw period
+ * compile (editor, clangd) then keeps the English literals. */
+#define TRANSLATE(literal, language) literal
+
 #endif

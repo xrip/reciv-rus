@@ -34,8 +34,8 @@ int help_flag = 0;
 int used_flag = 0;
 int line_height = 8;
 char *advisor_title[] = {
-    "\x98\xAF\xA8\xAE\xAD", "\x84\xA8\xAF\xAB\xAE\xAC\xA0\xE2\xEB", "\x8E\xE7\xA5\xA2\xA8\xA4\xE6\xEB", "\x8C\xA8\xAD\xA8\xE1\xE2\xE0 \x8E\xA1\xAE\xE0\xAE\xAD\xEB:", /* reciv-ru */
-    "\x83\xAE\xE0\xAE\xA4\xE1\xAA\xAE\xA9 \x91\xAE\xA2\xA5\xE2:", "\x8C\xA8\xAD\xA8\xE1\xE2\xE0 \x8E\xA1\xAE\xE0\xAE\xAD\xEB:", "\x93\xE7\xA5\xAD\xEB\xA9 \x91\xAE\xA2\xA5\xE2:" /* reciv-ru */
+    TRANSLATE("Spies", "RU"), TRANSLATE("Diplomats", "RU"), TRANSLATE("Travelers", "RU"), TRANSLATE("Defense Minister:", "RU"), /* reciv-ru */
+    TRANSLATE("Domestic Advisor:", "RU"), TRANSLATE("Foreign Minister:", "RU"), TRANSLATE("Science Advisor:", "RU") /* reciv-ru */
 };
 
 int menu_choose(char *text_m, int x_k, int y_k)
@@ -234,7 +234,7 @@ int menu_layout(char *text, int x, int y, int preset)
             else {
                 strcpy(buf, advisor_title[advisor]);
                 if (advisor <= 2)
-                    strcat(buf, ""); /* reciv-ru */
+                    strcat(buf, TRANSLATE(" report:", "RU")); /* reciv-ru */
                 title_width_or_gap_h = string_width(buf);
                 if (panel_frame_rim < x + title_width_or_gap_h + 8)
                     panel_frame_rim = x + title_width_or_gap_h + 8;

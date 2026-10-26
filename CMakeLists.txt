@@ -40,12 +40,37 @@ endif()
 # wraps. -fpermissive: the period code's pointer/integer mixing stays a
 # warning (GCC 14 made it an error).
 file(GLOB GAME_SOURCES CONFIGURE_DEPENDS src/game/*.C)
+
+# src/game carries the readable language layer TRANSLATE("english", "RU");
+# reciv-langgen (tools/localization/langgen.c) expands every call into the
+# escaped CP866 literal from tools/localization/data/ru.lang, and the period
+# library is built from those copies - still plain ASCII, still byte-identical
+# to the bytes the pack expects.  See tools/localization/README.md.
+add_executable(reciv-langgen tools/localization/langgen.c)
+set(PERIOD_GEN_DIR ${CMAKE_CURRENT_BINARY_DIR}/period-gen)
+set(GEN_SOURCES "")
+foreach(game_src ${GAME_SOURCES})
+    get_filename_component(gen_name ${game_src} NAME)
+    get_filename_component(game_abs ${game_src} ABSOLUTE)
+    set(gen_src ${PERIOD_GEN_DIR}/${gen_name})
+    add_custom_command(OUTPUT ${gen_src}
+        COMMAND reciv-langgen
+            ${CMAKE_CURRENT_SOURCE_DIR}/tools/localization/data/ru.lang
+            ${game_abs} ${gen_src}
+        DEPENDS ${game_abs} ${CMAKE_CURRENT_SOURCE_DIR}/tools/localization/data/ru.lang
+                reciv-langgen
+        COMMENT "langgen ${gen_name}")
+    list(APPEND GEN_SOURCES ${gen_src})
+endforeach()
+add_custom_target(period-gen DEPENDS ${GEN_SOURCES})
+set_source_files_properties(${GEN_SOURCES} PROPERTIES GENERATED TRUE LANGUAGE C)
+
 # src/platform/resident_names.c defines variables the resident layer exposed
 # only by address.
-set(PERIOD_SOURCES ${GAME_SOURCES} src/platform/resident_names.c src/platform/stubs.c
+set(PERIOD_SOURCES ${GEN_SOURCES} src/platform/resident_names.c src/platform/stubs.c
     src/platform/layout_check.c)
-set_source_files_properties(${GAME_SOURCES} PROPERTIES LANGUAGE C)
 add_library(period OBJECT ${PERIOD_SOURCES})
+add_dependencies(period period-gen)
 if(MSVC)
     # The original code assumes wrapping arithmetic, which MSVC does not
     # promise; build the period code unoptimized so it is not exploited.

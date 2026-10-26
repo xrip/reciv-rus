@@ -61,30 +61,30 @@ struct word_rec {
 
 /* 0-11 the terrain types, 12-23 the same with their special resource. */
 struct terrain_rec terrains[24] = {
-    { "\x8F\xE3\xE1\xE2\xEB\xAD\xEF", 1, 2, 0, 1, 0, 1, 14 }, /* reciv-ru */
-    { "\x90\xA0\xA2\xAD\xA8\xAD\xA0", 1, 2, 1, 1, 0, 1, 6 }, /* reciv-ru */
-    { "\x8B\xE3\xA3\xA0", 1, 2, 2, 1, 0, 1, 10 }, /* reciv-ru */
-    { "\x8B\xA5\xE1", 2, 3, 1, 2, 0, 2, 2 }, /* reciv-ru */
-    { "\x95\xAE\xAB\xAC\xEB", 2, 4, 1, 0, 0, 2, 12 }, /* reciv-ru */
-    { "\x83\xAE\xE0\xEB", 3, 6, 0, 1, 0, 3, 13 }, /* reciv-ru */
-    { "\x92\xE3\xAD\xA4\xE0\xA0", 1, 2, 1, 0, 0, 0, 7 }, /* reciv-ru */
-    { "\x8B\xEC\xA4\xEB", 2, 2, 0, 0, 0, 0, 15 }, /* reciv-ru */
-    { "\x81\xAE\xAB\xAE\xE2\xA0", 2, 3, 1, 0, 0, 0, 3 }, /* reciv-ru */
-    { "\x84\xA6\xE3\xAD\xA3\xAB\xA8", 2, 3, 1, 0, 0, 0, 11 }, /* reciv-ru */
-    { "\x8E\xAA\xA5\xA0\xAD", 1, 2, 1, 0, 2, 0, 1 }, /* reciv-ru */
-    { "\x90\xA5\xAA\xA0", 1, 3, 2, 1, 1, 2, 9 }, /* reciv-ru */
-    { "\x8E\xA0\xA7\xA8\xE1", 1, 2, 3, 1, 0, 1, 14 }, /* reciv-ru */
-    { "\x8B\xAE\xE8\xA0\xA4\xA8", 1, 2, 1, 3, 0, 1, 6 }, /* reciv-ru */
-    { "\x8B\xE3\xA3\xA0", 1, 2, 2, 1, 0, 1, 10 }, /* reciv-ru */
-    { "\x84\xA8\xE7\xEC", 2, 3, 3, 2, 0, 2, 2 }, /* reciv-ru */
-    { "\x93\xA3\xAE\xAB\xEC", 2, 4, 1, 2, 0, 2, 12 }, /* reciv-ru */
-    { "\x87\xAE\xAB\xAE\xE2\xAE", 3, 6, 0, 1, 6, 3, 13 }, /* reciv-ru */
-    { "\x84\xA8\xE7\xEC", 1, 2, 3, 0, 0, 0, 7 }, /* reciv-ru */
-    { "\x92\xEE\xAB\xA5\xAD\xA8", 2, 2, 2, 0, 0, 0, 15 }, /* reciv-ru */
-    { "\x8D\xA5\xE4\xE2\xEC", 2, 3, 1, 4, 0, 0, 3 }, /* reciv-ru */
-    { "\x80\xAB\xAC\xA0\xA7\xEB", 2, 3, 1, 0, 4, 0, 11 }, /* reciv-ru */
-    { "\x90\xEB\xA1\xA0", 1, 2, 3, 0, 2, 0, 1 }, /* reciv-ru */
-    { "\x90\xA5\xAA\xA0", 1, 3, 2, 1, 1, 2, 9 }, /* reciv-ru */
+    { TRANSLATE("Desert", "RU"), 1, 2, 0, 1, 0, 1, 14 }, /* reciv-ru */
+    { TRANSLATE("Plains", "RU"), 1, 2, 1, 1, 0, 1, 6 }, /* reciv-ru */
+    { TRANSLATE("Grassland", "RU"), 1, 2, 2, 1, 0, 1, 10 }, /* reciv-ru */
+    { TRANSLATE("Forest", "RU"), 2, 3, 1, 2, 0, 2, 2 }, /* reciv-ru */
+    { TRANSLATE("Hills", "RU"), 2, 4, 1, 0, 0, 2, 12 }, /* reciv-ru */
+    { TRANSLATE("Mountains", "RU"), 3, 6, 0, 1, 0, 3, 13 }, /* reciv-ru */
+    { TRANSLATE("Tundra", "RU"), 1, 2, 1, 0, 0, 0, 7 }, /* reciv-ru */
+    { TRANSLATE("Arctic", "RU"), 2, 2, 0, 0, 0, 0, 15 }, /* reciv-ru */
+    { TRANSLATE("Swamp", "RU"), 2, 3, 1, 0, 0, 0, 3 }, /* reciv-ru */
+    { TRANSLATE("Jungle", "RU"), 2, 3, 1, 0, 0, 0, 11 }, /* reciv-ru */
+    { TRANSLATE("Ocean", "RU"), 1, 2, 1, 0, 2, 0, 1 }, /* reciv-ru */
+    { TRANSLATE("River", "RU"), 1, 3, 2, 1, 1, 2, 9 }, /* reciv-ru */
+    { TRANSLATE("Oasis", "RU"), 1, 2, 3, 1, 0, 1, 14 }, /* reciv-ru */
+    { TRANSLATE("Horses", "RU"), 1, 2, 1, 3, 0, 1, 6 }, /* reciv-ru */
+    { TRANSLATE("Grassland", "RU"), 1, 2, 2, 1, 0, 1, 10 }, /* reciv-ru */
+    { TRANSLATE("Game", "RU"), 2, 3, 3, 2, 0, 2, 2 }, /* reciv-ru */
+    { TRANSLATE("Coal", "RU"), 2, 4, 1, 2, 0, 2, 12 }, /* reciv-ru */
+    { TRANSLATE("Gold", "RU"), 3, 6, 0, 1, 6, 3, 13 }, /* reciv-ru */
+    { TRANSLATE("Game", "RU"), 1, 2, 3, 0, 0, 0, 7 }, /* reciv-ru */
+    { TRANSLATE("Seals", "RU"), 2, 2, 2, 0, 0, 0, 15 }, /* reciv-ru */
+    { TRANSLATE("Oil", "RU"), 2, 3, 1, 4, 0, 0, 3 }, /* reciv-ru */
+    { TRANSLATE("Gems", "RU"), 2, 3, 1, 0, 4, 0, 11 }, /* reciv-ru */
+    { TRANSLATE("Fish", "RU"), 1, 2, 3, 0, 2, 0, 1 }, /* reciv-ru */
+    { TRANSLATE("River", "RU"), 1, 3, 2, 1, 1, 2, 9 }, /* reciv-ru */
 };
 
 struct word_rec work_rules[18] = {
@@ -109,78 +109,78 @@ struct word_rec work_rules[18] = {
 };
 
 struct advance advances[72] = {
-    { "\x80\xAB\xE4\xA0\xA2\xA8\xE2", -1, -1 }, /* reciv-ru */
-    { "\x91\xA2\xAE\xA4\xB0\x87\xA0\xAA\xAE\xAD\xAE\xA2", 0, -1 }, /* reciv-ru */
-    { "\x84\xA5\xAD\xEC\xA3\xA8", 17, -1 }, /* reciv-ru */
-    { "\x80\xE2\xAE\xAC\xAD\xA0\xEF\xB0\x92\xA5\xAE\xE0\xA8\xEF", 51, 11 }, /* reciv-ru */
-    { "\x84\xA5\xAC\xAE\xAA\xE0\xA0\xE2\xA8\xEF", 28, 30 }, /* reciv-ru */
-    { "\x8C\xAE\xAD\xA0\xE0\xE5\xA8\xEF", 25, 1 }, /* reciv-ru */
-    { "\x80\xE1\xE2\xE0\xAE\xAD\xAE\xAC\xA8\xEF", 26, 9 }, /* reciv-ru */
-    { "\x8A\xA0\xE0\xE2\xAE\xA3\xE0\xA0\xE4\xA8\xEF", 0, -1 }, /* reciv-ru */
-    { "\x8D\xA0\xA2\xA8\xA3\xA0\xE6\xA8\xEF", 7, 6 }, /* reciv-ru */
-    { "\x8C\xA0\xE2\xA5\xAC\xA0\xE2\xA8\xAA\xA0", 0, 16 }, /* reciv-ru */
-    { "\x8C\xA5\xA4\xA8\xE6\xA8\xAD\xA0", 28, 24 }, /* reciv-ru */
-    { "\x94\xA8\xA7\xA8\xAA\xA0", 9, 8 }, /* reciv-ru */
-    { "\x92\xA5\xE5\xAD\xA8\xAA\xA0", 33, 45 }, /* reciv-ru */
-    { "\x93\xAD\xA8\xA2\xA5\xE0\xE1\xA8\xE2\xA5\xE2", 9, 28 }, /* reciv-ru */
-    { "\x8C\xA0\xA3\xAD\xA5\xE2\xA8\xA7\xAC", 8, 11 }, /* reciv-ru */
-    { "\x9D\xAB\xA5\xAA\xE2\xE0\xAE\xAD\xA8\xAA\xA0", 12, 54 }, /* reciv-ru */
-    { "\x91\xE2\xE0\xAE\xA8\xE2\xA5\xAB\xEC\xE1\xE2\xA2\xAE", -1, -1 }, /* reciv-ru */
-    { "\x8E\xA1\xE0\xA0\xA1\xAE\xE2\xAA\xA0\xB0\x81\xE0\xAE\xAD\xA7\xEB", -1, -1 }, /* reciv-ru */
-    { "\x8E\xA1\xE0\xA0\xA1\xAE\xE2\xAA\xA0\xB0\x86\xA5\xAB\xA5\xA7\xA0", 17, -1 }, /* reciv-ru */
-    { "\x8C\xAE\xE1\xE2\xAE\xE1\xE2\xE0\xAE\xA5\xAD\xA8\xA5", 18, 45 }, /* reciv-ru */
-    { "\x88\xA7\xAE\xA1\xE0\xA5\xE2\xA5\xAD\xA8\xEF", 12, 30 }, /* reciv-ru */
-    { "\x8A\xAE\xAC\xAF\xEC\xEE\xE2\xA5\xE0\xEB", 9, 15 }, /* reciv-ru */
-    { "\x8F\xA8\xE1\xEC\xAC\xA5\xAD\xAD\xAE\xE1\xE2\xEC", 0, -1 }, /* reciv-ru */
-    { "\x8F\xA0\xE0\xAE\xA2\xAE\xA9\xB0\x84\xA2\xA8\xA3\xA0\xE2\xA5\xAB\xEC", 11, 20 }, /* reciv-ru */
-    { "\x92\xAE\xE0\xA3\xAE\xA2\xAB\xEF", 2, 1 }, /* reciv-ru */
-    { "\x96\xA5\xE0\xA5\xAC\xAE\xAD\xC0\xB0\x91\xAE\xA6\xA6\xA5\xAD\xA8\xA5", -1, -1 }, /* reciv-ru */
-    { "\x8C\xA8\xE1\xE2\xA8\xE6\xA8\xA7\xAC", 25, -1 }, /* reciv-ru */
-    { "\x90\xA0\xE1\xE9\xA5\xAF\xAB\xA5\xAD\xA8\xA5\xB0\x80\xE2\xAE\xAC\xA0", 41, 3 }, /* reciv-ru */
-    { "\x94\xA8\xAB\xAE\xE1\xAE\xE4\xA8\xEF", 26, 30 }, /* reciv-ru */
-    { "\x90\xA5\xAB\xA8\xA3\xA8\xEF", 28, 22 }, /* reciv-ru */
-    { "\x8B\xA8\xE2\xA5\xE0\xA0\xE2\xE3\xE0\xA0", 22, 1 }, /* reciv-ru */
-    { "\x85\xA7\xA4\xA0\xB0\x82\xA5\xE0\xE5\xAE\xAC", -1, -1 }, /* reciv-ru */
-    { "\x94\xA5\xAE\xA4\xA0\xAB\xA8\xA7\xAC", 16, 5 }, /* reciv-ru */
-    { "\x8A\xAE\xAB\xA5\xE1\xAE", -1, -1 }, /* reciv-ru */
-    { "\x8F\xAE\xE0\xAE\xE5", 20, 18 }, /* reciv-ru */
-    { "\x88\xAD\xA4\xE3\xE1\xE2\xE0\xA8\xA0\xAB\xA8\xA7\xA0\xE6\xA8\xEF", 49, 53 }, /* reciv-ru */
-    { "\x95\xA8\xAC\xA8\xEF", 13, 10 }, /* reciv-ru */
-    { "\x82\xAD\xE3\xE2\xE0\xA5\xAD\xAD\xA5\xA5\xB0\x91\xA3\xAE\xE0\xA0\xAD\xA8\xA5", 55, 56 }, /* reciv-ru */
-    { "\x8F\xAE\xAB\xA5\xE2\xEB", 37, 11 }, /* reciv-ru */
-    { "\x90\xA5\xA0\xAA\xE2\xA8\xA2\xAD\xEB\xA5\xB0\x8F\xAE\xAB\xA5\xE2\xEB", 38, 54 }, /* reciv-ru */
-    { "\x8A\xAE\xE1\xAC\xA8\xE7\xA5\xE1\xAA\xA8\xA5\xB0\x8F\xAE\xAB\xA5\xE2\xEB", 21, 46 }, /* reciv-ru */
-    { "\x8F\xE0\xAE\xA8\xA7\xA2\xAE\xA4\xE1\xE2\xA2\xAE", 58, 47 }, /* reciv-ru */
-    { "\x83\xAB\xA8\xAD\xAE\xA4\xA5\xAB\xA8\xA5", -1, -1 }, /* reciv-ru */
-    { "\x8A\xAE\xAC\xAC\xE3\xAD\xA8\xA7\xAC", 28, 35 }, /* reciv-ru */
-    { "\x90\xA5\xE1\xAF\xE3\xA1\xAB\xA8\xAA\xA0", 1, 30 }, /* reciv-ru */
-    { "\x8A\xAE\xAD\xE1\xE2\xE0\xE3\xA8\xE0\xAE\xA2\xA0\xAD\xA8\xA5", 16, 2 }, /* reciv-ru */
-    { "\x90\xA0\xAA\xA5\xE2\xAE\xE1\xE2\xE0\xAE\xA5\xAD\xA8\xA5", 39, 15 }, /* reciv-ru */
-    { "\x8A\xAE\xE0\xAF\xAE\xE0\xA0\xE6\xA8\xA8", 53, 35 }, /* reciv-ru */
-    { "\x8C\xA5\xE2\xA0\xAB\xAB\xE3\xE0\xA3\xA8\xEF", 34, 13 }, /* reciv-ru */
-    { "\x86\xA5\xAB\xA5\xA7\xAD\xA0\xEF\xB0\x84\xAE\xE0\xAE\xA3\xA0", 23, 19 }, /* reciv-ru */
-    { "\x9F\xA4\xA5\xE0\xAD\xA0\xEF\xB0\x9D\xAD\xA5\xE0\xA3\xA8\xEF", 27, 15 }, /* reciv-ru */
-    { "\x92\xA5\xAE\xE0\xA8\xEF\xB0\x83\xE0\xA0\xA2\xA8\xE2\xA0\xE6\xA8\xA8", 6, 13 }, /* reciv-ru */
-    { "\x91\xE2\xA0\xAB\xEC", 48, 35 }, /* reciv-ru */
-    { "\x81\xA0\xAD\xAA\xAE\xA2\xE1\xAA\xAE\xA5\xB0\x84\xA5\xAB\xAE", 24, 44 }, /* reciv-ru */
-    { "\x9D\xAB\xA5\xAA\xE2\xE0\xA8\xE7\xA5\xE1\xE2\xA2\xAE", 48, 14 }, /* reciv-ru */
-    { "\x8E\xE7\xA8\xE1\xE2\xAA\xA0", 36, 47 }, /* reciv-ru */
-    { "\x82\xA7\xE0\xEB\xA2\xE7\xA0\xE2\xEB\xA5\xB0\x82\xA5\xE9\xA5\xE1\xE2\xA2\xA0", 34, 36 }, /* reciv-ru */
-    { "\x91\xA2\xA5\xE0\xE5\xAF\xE0\xAE\xA2\xAE\xA4\xA8\xAC\xAE\xE1\xE2\xEC", 60, 41 }, /* reciv-ru */
-    { "\x80\xA2\xE2\xAE\xAC\xAE\xA1\xA8\xAB\xEC", 37, 52 }, /* reciv-ru */
-    { "\x83\xA5\xAD\xA5\xE2\xA8\xAA\xA0", 10, 47 }, /* reciv-ru */
-    { "\x8F\xAB\xA0\xE1\xE2\xAC\xA0\xE1\xE1\xEB", 55, 40 }, /* reciv-ru */
-    { "\x8F\xA5\xE0\xA5\xE0\xA0\xA1\xAE\xE2\xAA\xA0", 41, 4 }, /* reciv-ru */
-    { "\x90\xEB\xE6\xA0\xE0\xE1\xE2\xA2\xAE", 32, 31 }, /* reciv-ru */
-    { "\x90\xAE\xA1\xAE\xE2\xEB", 60, 21 }, /* reciv-ru */
-    { "\x82\xAE\xA8\xAD\xE1\xAA\xA0\xEF\xB0\x8F\xAE\xA2\xA8\xAD\xAD\xAE\xE1\xE2\xEC", 44, 56 }, /* reciv-ru */
-    { "\x8F\xE0\xAE\xE4\xE1\xAE\xEE\xA7\xEB", 41, 43 }, /* reciv-ru */
-    { "\x9D\xAD\xA5\xE0\xA3\xA8\xEF\xB0\x90\xA0\xE1\xAF\xA0\xA4\xA0", 50, 57 }, /* reciv-ru */
+    { TRANSLATE("Alphabet", "RU"), -1, -1 }, /* reciv-ru */
+    { TRANSLATE("Code of Laws", "RU"), 0, -1 }, /* reciv-ru */
+    { TRANSLATE("Currency", "RU"), 17, -1 }, /* reciv-ru */
+    { TRANSLATE("Atomic Theory", "RU"), 51, 11 }, /* reciv-ru */
+    { TRANSLATE("Democracy", "RU"), 28, 30 }, /* reciv-ru */
+    { TRANSLATE("Monarchy", "RU"), 25, 1 }, /* reciv-ru */
+    { TRANSLATE("Astronomy", "RU"), 26, 9 }, /* reciv-ru */
+    { TRANSLATE("MapMaking", "RU"), 0, -1 }, /* reciv-ru */
+    { TRANSLATE("Navigation", "RU"), 7, 6 }, /* reciv-ru */
+    { TRANSLATE("Mathematics", "RU"), 0, 16 }, /* reciv-ru */
+    { TRANSLATE("Medicine", "RU"), 28, 24 }, /* reciv-ru */
+    { TRANSLATE("Physics", "RU"), 9, 8 }, /* reciv-ru */
+    { TRANSLATE("Engineering", "RU"), 33, 45 }, /* reciv-ru */
+    { TRANSLATE("University", "RU"), 9, 28 }, /* reciv-ru */
+    { TRANSLATE("Magnetism", "RU"), 8, 11 }, /* reciv-ru */
+    { TRANSLATE("Electronics", "RU"), 12, 54 }, /* reciv-ru */
+    { TRANSLATE("Masonry", "RU"), -1, -1 }, /* reciv-ru */
+    { TRANSLATE("Bronze Working", "RU"), -1, -1 }, /* reciv-ru */
+    { TRANSLATE("Iron Working", "RU"), 17, -1 }, /* reciv-ru */
+    { TRANSLATE("Bridge Building", "RU"), 18, 45 }, /* reciv-ru */
+    { TRANSLATE("Invention", "RU"), 12, 30 }, /* reciv-ru */
+    { TRANSLATE("Computers", "RU"), 9, 15 }, /* reciv-ru */
+    { TRANSLATE("Writing", "RU"), 0, -1 }, /* reciv-ru */
+    { TRANSLATE("Steam Engine", "RU"), 11, 20 }, /* reciv-ru */
+    { TRANSLATE("Trade", "RU"), 2, 1 }, /* reciv-ru */
+    { TRANSLATE("Ceremonial Burial", "RU"), -1, -1 }, /* reciv-ru */
+    { TRANSLATE("Mysticism", "RU"), 25, -1 }, /* reciv-ru */
+    { TRANSLATE("Nuclear Fission", "RU"), 41, 3 }, /* reciv-ru */
+    { TRANSLATE("Philosophy", "RU"), 26, 30 }, /* reciv-ru */
+    { TRANSLATE("Religion", "RU"), 28, 22 }, /* reciv-ru */
+    { TRANSLATE("Literacy", "RU"), 22, 1 }, /* reciv-ru */
+    { TRANSLATE("Horseback Riding", "RU"), -1, -1 }, /* reciv-ru */
+    { TRANSLATE("Feudalism", "RU"), 16, 5 }, /* reciv-ru */
+    { TRANSLATE("The Wheel", "RU"), -1, -1 }, /* reciv-ru */
+    { TRANSLATE("Gunpowder", "RU"), 20, 18 }, /* reciv-ru */
+    { TRANSLATE("Industrialization", "RU"), 49, 53 }, /* reciv-ru */
+    { TRANSLATE("Chemistry", "RU"), 13, 10 }, /* reciv-ru */
+    { TRANSLATE("Combustion", "RU"), 55, 56 }, /* reciv-ru */
+    { TRANSLATE("Flight", "RU"), 37, 11 }, /* reciv-ru */
+    { TRANSLATE("Advanced Flight", "RU"), 38, 54 }, /* reciv-ru */
+    { TRANSLATE("Space Flight", "RU"), 21, 46 }, /* reciv-ru */
+    { TRANSLATE("Mass Production", "RU"), 58, 47 }, /* reciv-ru */
+    { TRANSLATE("Pottery", "RU"), -1, -1 }, /* reciv-ru */
+    { TRANSLATE("Communism", "RU"), 28, 35 }, /* reciv-ru */
+    { TRANSLATE("The Republic", "RU"), 1, 30 }, /* reciv-ru */
+    { TRANSLATE("Construction", "RU"), 16, 2 }, /* reciv-ru */
+    { TRANSLATE("Rocketry", "RU"), 39, 15 }, /* reciv-ru */
+    { TRANSLATE("The Corporation", "RU"), 53, 35 }, /* reciv-ru */
+    { TRANSLATE("Metallurgy", "RU"), 34, 13 }, /* reciv-ru */
+    { TRANSLATE("RailRoad", "RU"), 23, 19 }, /* reciv-ru */
+    { TRANSLATE("Nuclear Power", "RU"), 27, 15 }, /* reciv-ru */
+    { TRANSLATE("Theory of Gravity", "RU"), 6, 13 }, /* reciv-ru */
+    { TRANSLATE("Steel", "RU"), 48, 35 }, /* reciv-ru */
+    { TRANSLATE("Banking", "RU"), 24, 44 }, /* reciv-ru */
+    { TRANSLATE("Electricity", "RU"), 48, 14 }, /* reciv-ru */
+    { TRANSLATE("Refining", "RU"), 36, 47 }, /* reciv-ru */
+    { TRANSLATE("Explosives", "RU"), 34, 36 }, /* reciv-ru */
+    { TRANSLATE("SuperConductor", "RU"), 60, 41 }, /* reciv-ru */
+    { TRANSLATE("Automobile", "RU"), 37, 52 }, /* reciv-ru */
+    { TRANSLATE("Genetic Engineering", "RU"), 10, 47 }, /* reciv-ru */
+    { TRANSLATE("Plastics", "RU"), 55, 40 }, /* reciv-ru */
+    { TRANSLATE("Recycling", "RU"), 41, 4 }, /* reciv-ru */
+    { TRANSLATE("Chivalry", "RU"), 32, 31 }, /* reciv-ru */
+    { TRANSLATE("Robotics", "RU"), 60, 21 }, /* reciv-ru */
+    { TRANSLATE("Conscription", "RU"), 44, 56 }, /* reciv-ru */
+    { TRANSLATE("Labor Union", "RU"), 41, 43 }, /* reciv-ru */
+    { TRANSLATE("Fusion Power", "RU"), 50, 57 }, /* reciv-ru */
     { "1", 127, 127 },
     { "2", 127, 127 },
     { "3", 127, 127 },
     { "4", 127, 127 },
-    { "\x80\xAC\xA1\xA0\xE0", 127, 127 } /* reciv-ru */
+    { TRANSLATE("Future Tech.", "RU"), 127, 127 } /* reciv-ru */
 };
 
 struct advance_attr advance_attrs[72] = {
@@ -259,52 +259,52 @@ struct advance_attr advance_attrs[72] = {
 };
 
 struct improvement improvements[46] = {
-    { "\x81\xA5\xA7 \xAF\xE0\xAE\xAF\xA8\xE1\xAA\xA8", 8, 0, -1 }, /* reciv-ru */
-    { "\x84\xA2\xAE\xE0\xA5\xE6", 20, 5, 16 }, /* reciv-ru */
-    { "\x8A\xA0\xA7\xA0\xE0\xAC\xEB", 4, 0, -1 }, /* reciv-ru */
-    { "\x80\xAC\xA1\xA0\xE0", 6, 1, 42 }, /* reciv-ru */
-    { "\x95\xE0\xA0\xAC", 4, 1, 25 }, /* reciv-ru */
-    { "\x81\xA0\xA7\xA0\xE0", 8, 1, 2 }, /* reciv-ru */
-    { "\x81\xA8\xA1\xAB\xA8\xAE\xE2\xA5\xAA\xA0", 8, 1, 22 }, /* reciv-ru */
-    { "\x91\xE3\xA4", 8, 1, 1 }, /* reciv-ru */
-    { "\x91\xE2\xA5\xAD\xEB", 12, 2, 16 }, /* reciv-ru */
-    { "\x82\xAE\xA4\xAE\xAF\xE0\xAE\xA2\xAE\xA4", 12, 2, 45 }, /* reciv-ru */
-    { "\x81\xA0\xAD\xAA", 12, 3, 53 }, /* reciv-ru */
-    { "\x91\xAE\xA1\xAE\xE0", 16, 3, 29 }, /* reciv-ru */
-    { "\x93\xAD\xA8\xA2\xA5\xE0\xE1\xA8\xE2\xA5\xE2", 16, 3, 13 }, /* reciv-ru */
-    { "\x8E\xA1\xE9\xA5\xE1\xE2\xA2\xA5\xAD\xAD\xEB\xA9\xB0\x92\xE0\xA0\xAD\xE1\xAF\xAE\xE0\xE2", 16, 4, 41 }, /* reciv-ru */
-    { "\x91\xE2\xA0\xA4\xA8\xAE\xAD", 10, 4, 45 }, /* reciv-ru */
-    { "\x94\xA0\xA1\xE0\xA8\xAA\xA0", 20, 4, 35 }, /* reciv-ru */
-    { "\x87\xA0\xA2\xAE\xA4", 32, 6, 63 }, /* reciv-ru */
-    { "\x91\x8E\x88", 20, 4, 57 }, /* reciv-ru */
-    { "\x96\xA5\xAD\xE2\xE0\xB0\x8F\xA5\xE0\xA5\xE0\xA0\xA1\xAE\xE2\xAA\xA8", 20, 2, 61 }, /* reciv-ru */
-    { "\x9D\xAB\xA5\xAA\xE2\xE0\xAE\xE1\xE2\xA0\xAD\xE6\xA8\xEF", 16, 4, 55 }, /* reciv-ru */
-    { "\x83\xA8\xA4\xE0\xAE\xE1\xE2\xA0\xAD\xE6\xA8\xEF", 24, 4, 15 }, /* reciv-ru */
-    { "\x80\xE2\xAE\xAC\xAD\xA0\xEF\xB0\x91\xE2\xA0\xAD\xE6\xA8\xEF", 16, 2, 50 }, /* reciv-ru */
-    { "\x8A\xAE\xAD\xE1\xE2\xE0\xE3\xAA\xE6\xA8\xA8\xB0\x90\xA0\xAA\xA5\xE2\xEB", 8, 0, 40 }, /* reciv-ru */
-    { "\x8A\xAE\xAC\xAF\xAE\xAD\xA5\xAD\xE2\xEB\xB0\x90\xA0\xAA\xA5\xE2\xEB", 16, 0, 60 }, /* reciv-ru */
-    { "\x8C\xAE\xA4\xE3\xAB\xEC\xB0\x90\xA0\xAA\xA5\xE2\xEB", 32, 0, 63 }, /* reciv-ru */
-    { "\x8F\xA8\xE0\xA0\xAC\xA8\xA4\xEB", 30, 0, 16 }, /* reciv-ru */
-    { "\x82\xA8\xE1\xEF\xE7\xA8\xA5\xB0\x91\xA0\xA4\xEB", 30, 0, 42 }, /* reciv-ru */
-    { "\x8A\xAE\xAB\xAE\xE1\xE1", 20, 0, 17 }, /* reciv-ru */
-    { "\x8C\xA0\xEF\xAA", 20, 0, 7 }, /* reciv-ru */
-    { "\x82\xA5\xAB\xA8\xAA\xA0\xEF\xB0\x81\xA8\xA1\xAB\xA8\xAE\xE2\xA5\xAA\xA0", 30, 0, 30 }, /* reciv-ru */
-    { "\x8E\xE0\xA0\xAA\xE3\xAB", 30, 0, 26 }, /* reciv-ru */
-    { "\x82\xA5\xAB\xA8\xAA\xA0\xEF\xB0\x91\xE2\xA5\xAD\xA0", 30, 0, 16 }, /* reciv-ru */
-    { "\x9D\xAA\xE1\xAF\xA5\xA4\xA8\xE6\xA8\xEF\xB0\x8C\xA0\xA3\xA5\xAB\xAB\xA0\xAD\xA0", 40, 0, 8 }, /* reciv-ru */
-    { "\x8A\xA0\xAF\xA5\xAB\xAB\xA0\xB0\x8C\xA8\xAA\xA5\xAB\xA0\xAD\xA4\xA6\xA5\xAB\xAE", 30, 0, 29 }, /* reciv-ru */
-    { "\x8E\xA1\xE1\xA5\xE0\xA2\xA0\xE2\xAE\xE0\xA8\xEF\xB0\x8A\xAE\xAF\xA5\xE0\xAD\xA8\xAA\xA0", 30, 0, 6 }, /* reciv-ru */
-    { "\x92\xA5\xA0\xE2\xE0\xB0\x98\xA5\xAA\xE1\xAF\xA8\xE0\xA0", 40, 0, 10 }, /* reciv-ru */
-    { "\x8A\xAE\xAB\xAB\xA5\xA4\xA6\xB0\x8D\xEC\xEE\xE2\xAE\xAD\xA0", 40, 0, 51 }, /* reciv-ru */
-    { "\x91\xAE\xA1\xAE\xE0\xB0\x88\xC0\x91\xC0\xB0\x81\xA0\xE5\xA0", 40, 0, 29 }, /* reciv-ru */
-    { "\x8F\xE3\xE2\xA5\xE8\xA5\xE1\xE2\xA2\xA8\xA5\xB0\x84\xA0\xE0\xA2\xA8\xAD\xA0", 30, 0, 49 }, /* reciv-ru */
-    { "\x84\xA0\xAC\xA1\xA0\xB0\x83\xE3\xA2\xA5\xE0\xA0", 60, 0, 15 }, /* reciv-ru */
-    { "\x94\xA5\xAC\xA8\xAD\xA8\xA7\xAC", 60, 0, 35 }, /* reciv-ru */
-    { "\x8F\xE0\xAE\xA5\xAA\xE2\xB0\x8A\xE3\xE0\xE7\xA0\xE2\xAE\xA2\xA0", 60, 0, 27 }, /* reciv-ru */
-    { "\x8E\x8E\x8D", 60, 0, 43 }, /* reciv-ru */
-    { "\x8F\xE0\xAE\xA3\xE0\xA0\xAC\xAC\xA0\xB0\x82\xAE\xE1\xE2\xAE\xAA", 60, 0, 40 }, /* reciv-ru */
-    { "\x82\xAD\xA5\xA7\xA5\xAC\xAD\xEB\xA5\xB0\x96\xA8\xA2\xA8\xAB\xA8\xA7\xA0\xE6\xA8\xA8", 60, 0, 21 }, /* reciv-ru */
-    { "\x8B\xA5\xAA\xA0\xE0\xE1\xE2\xA2\xAE\xB0\x8E\xE2\xB0\x90\xA0\xAA\xA0", 60, 0, 59 } /* reciv-ru */
+    { TRANSLATE("NONE", "RU"), 8, 0, -1 }, /* reciv-ru */
+    { TRANSLATE("Palace", "RU"), 20, 5, 16 }, /* reciv-ru */
+    { TRANSLATE("Barracks", "RU"), 4, 0, -1 }, /* reciv-ru */
+    { TRANSLATE("Granary", "RU"), 6, 1, 42 }, /* reciv-ru */
+    { TRANSLATE("Temple", "RU"), 4, 1, 25 }, /* reciv-ru */
+    { TRANSLATE("MarketPlace", "RU"), 8, 1, 2 }, /* reciv-ru */
+    { TRANSLATE("Library", "RU"), 8, 1, 22 }, /* reciv-ru */
+    { TRANSLATE("Courthouse", "RU"), 8, 1, 1 }, /* reciv-ru */
+    { TRANSLATE("City Walls", "RU"), 12, 2, 16 }, /* reciv-ru */
+    { TRANSLATE("Aqueduct", "RU"), 12, 2, 45 }, /* reciv-ru */
+    { TRANSLATE("Bank", "RU"), 12, 3, 53 }, /* reciv-ru */
+    { TRANSLATE("Cathedral", "RU"), 16, 3, 29 }, /* reciv-ru */
+    { TRANSLATE("University", "RU"), 16, 3, 13 }, /* reciv-ru */
+    { TRANSLATE("Mass Transit", "RU"), 16, 4, 41 }, /* reciv-ru */
+    { TRANSLATE("Colosseum", "RU"), 10, 4, 45 }, /* reciv-ru */
+    { TRANSLATE("Factory", "RU"), 20, 4, 35 }, /* reciv-ru */
+    { TRANSLATE("Mfg. Plant", "RU"), 32, 6, 63 }, /* reciv-ru */
+    { TRANSLATE("SDI Defense", "RU"), 20, 4, 57 }, /* reciv-ru */
+    { TRANSLATE("Recycling Cntr.", "RU"), 20, 2, 61 }, /* reciv-ru */
+    { TRANSLATE("Power Plant", "RU"), 16, 4, 55 }, /* reciv-ru */
+    { TRANSLATE("Hydro Plant", "RU"), 24, 4, 15 }, /* reciv-ru */
+    { TRANSLATE("Nuclear Plant", "RU"), 16, 2, 50 }, /* reciv-ru */
+    { TRANSLATE("SS Structural", "RU"), 8, 0, 40 }, /* reciv-ru */
+    { TRANSLATE("SS Component", "RU"), 16, 0, 60 }, /* reciv-ru */
+    { TRANSLATE("SS Module", "RU"), 32, 0, 63 }, /* reciv-ru */
+    { TRANSLATE("Pyramids", "RU"), 30, 0, 16 }, /* reciv-ru */
+    { TRANSLATE("Hanging Gardens", "RU"), 30, 0, 42 }, /* reciv-ru */
+    { TRANSLATE("Colossus", "RU"), 20, 0, 17 }, /* reciv-ru */
+    { TRANSLATE("Lighthouse", "RU"), 20, 0, 7 }, /* reciv-ru */
+    { TRANSLATE("Great Library", "RU"), 30, 0, 30 }, /* reciv-ru */
+    { TRANSLATE("Oracle", "RU"), 30, 0, 26 }, /* reciv-ru */
+    { TRANSLATE("Great Wall", "RU"), 30, 0, 16 }, /* reciv-ru */
+    { TRANSLATE("Magellan's Expedition", "RU"), 40, 0, 8 }, /* reciv-ru */
+    { TRANSLATE("Michelangelo's Chapel", "RU"), 30, 0, 29 }, /* reciv-ru */
+    { TRANSLATE("Copernicus' Observatory", "RU"), 30, 0, 6 }, /* reciv-ru */
+    { TRANSLATE("Shakespeare's Theatre", "RU"), 40, 0, 10 }, /* reciv-ru */
+    { TRANSLATE("Isaac Newton's College", "RU"), 40, 0, 51 }, /* reciv-ru */
+    { TRANSLATE("J.S.Bach's Cathedral", "RU"), 40, 0, 29 }, /* reciv-ru */
+    { TRANSLATE("Darwin's Voyage", "RU"), 30, 0, 49 }, /* reciv-ru */
+    { TRANSLATE("Hoover Dam", "RU"), 60, 0, 15 }, /* reciv-ru */
+    { TRANSLATE("Women's Suffrage", "RU"), 60, 0, 35 }, /* reciv-ru */
+    { TRANSLATE("Manhattan Project", "RU"), 60, 0, 27 }, /* reciv-ru */
+    { TRANSLATE("United Nations", "RU"), 60, 0, 43 }, /* reciv-ru */
+    { TRANSLATE("Apollo Program", "RU"), 60, 0, 40 }, /* reciv-ru */
+    { TRANSLATE("SETI Program", "RU"), 60, 0, 21 }, /* reciv-ru */
+    { TRANSLATE("Cure for Cancer", "RU"), 60, 0, 59 } /* reciv-ru */
 };
 
 int improvement_words[22] = {
@@ -328,53 +328,53 @@ struct civ_type {
 };
 
 struct unit_type utypes[28] = {
-    { "\x8A\xAE\xAB\xAE\xAD\xA8\xE1\xE2\xEB", 127, 0, 1, 0, 0, 1, 4, 0, 0, 0, -1 }, /* reciv-ru */
-    { "\x8C\xA8\xAB\xA8\xE6\xA8\xEF", 34, 0, 1, 0, 1, 1, 1, 0, 0, 2, -1 }, /* reciv-ru */
-    { "\x94\xA0\xAB\xA0\xAD\xA3\xA0", 34, 0, 1, 0, 1, 2, 2, 0, 0, 2, 17 }, /* reciv-ru */
-    { "\x8B\xA5\xA3\xA8\xAE\xAD", 64, 0, 1, 0, 3, 1, 2, 0, 0, 1, 18 }, /* reciv-ru */
-    { "\x8C\xE3\xE8\xAA\xA5\xE2\xA5\xE0\xEB", 64, 0, 1, 0, 2, 3, 3, 0, 0, 2, 34 }, /* reciv-ru */
-    { "\x91\xE2\xE0\xA5\xAB\xAA\xA8", 127, 0, 1, 0, 3, 5, 3, 0, 0, 2, 64 }, /* reciv-ru */
-    { "\x8A\xA0\xA2\xA0\xAB\xA5\xE0\xA8\xEF", 64, 0, 2, 0, 2, 1, 2, 0, 0, 1, 31 }, /* reciv-ru */
-    { "\x90\xEB\xE6\xA0\xE0\xA8", 58, 0, 2, 0, 4, 2, 4, 0, 0, 1, 62 }, /* reciv-ru */
-    { "\x8A\xA0\xE2\xA0\xAF\xE3\xAB\xEC\xE2\xA0", 48, 0, 1, 0, 6, 1, 4, 0, 0, 1, 9 }, /* reciv-ru */
-    { "\x8F\xE3\xE8\xAA\xA0", 63, 0, 1, 0, 8, 1, 4, 0, 0, 1, 48 }, /* reciv-ru */
-    { "\x8A\xAE\xAB\xA5\xE1\xAD\xA8\xE6\xA0", 62, 0, 2, 0, 4, 1, 4, 0, 0, 1, 33 }, /* reciv-ru */
-    { "\x92\xA0\xAD\xAA", 127, 0, 3, 0, 10, 5, 8, 0, 0, 1, 58 }, /* reciv-ru */
-    { "\x81\x8C\x8F", 127, 0, 3, 0, 6, 6, 5, 0, 0, 2, 65 }, /* reciv-ru */
-    { "\x80\xE0\xE2\xA8\xAB\xAB\xA5\xE0\xA8\xEF", 127, 0, 2, 0, 12, 2, 6, 0, 0, 1, 63 }, /* reciv-ru */
-    { "\x88\xE1\xE2\xE0\xA5\xA1\xA8\xE2\xA5\xAB\xEC", 127, 1, 10, 1, 4, 2, 6, 2, 0, 4, 38 }, /* reciv-ru */
-    { "\x98\xE2\xE3\xE0\xAC\xAE\xA2\xA8\xAA", 127, 1, 8, 2, 12, 1, 12, 2, 0, 1, 39 }, /* reciv-ru */
-    { "\x83\xA0\xAB\xA5\xE0\xA0", 8, 2, 3, 0, 1, 0, 4, 0, 2, 5, 7 }, /* reciv-ru */
-    { "\x8F\xA0\xE0\xE3\xE1\xAD\xA8\xAA", 14, 2, 3, 0, 1, 1, 4, 0, 3, 5, 8 }, /* reciv-ru */
-    { "\x94\xE0\xA5\xA3\xA0\xE2", 35, 2, 3, 0, 2, 2, 4, 0, 4, 5, 14 }, /* reciv-ru */
-    { "\x8F\xA0\xE0\xAE\xE5\xAE\xA4", 37, 2, 4, 0, 4, 4, 6, 0, 0, 3, 23 }, /* reciv-ru */
-    { "\x8A\xE0\xA5\xA9\xE1\xA5\xE0", 127, 2, 6, 0, 6, 6, 8, 3, 0, 3, 37 }, /* reciv-ru */
-    { "\x8B\xA8\xAD\xAA\xAE\xE0", 127, 2, 4, 0, 18, 12, 16, 3, 0, 3, 52 }, /* reciv-ru */
-    { "\x8F\xAE\xA4\xAB\xAE\xA4\xAA\xA0", 127, 2, 3, 0, 8, 2, 5, 3, 0, 3, 41 }, /* reciv-ru */
-    { "\x80\xA2\xA8\xA0\xAD\xAE\xE1\xA5\xE6", 127, 2, 5, 0, 1, 12, 16, 3, 0, 3, 39 }, /* reciv-ru */
-    { "\x92\xE0\xA0\xAD\xE1\xAF\xAE\xE0\xE2", 127, 2, 4, 0, 0, 3, 5, 0, 8, 5, 35 }, /* reciv-ru */
-    { "\x80\xE2\xAE\xAC. \xA1\xAE\xAC\xA1\xA0", 127, 1, 16, 1, 99, 0, 16, 0, 0, 1, 46 }, /* reciv-ru */
-    { "\x84\xA8\xAF\xAB\xAE\xAC\xA0\xE2", 127, 0, 2, 0, 0, 0, 3, 0, 0, 6, 22 }, /* reciv-ru */
-    { "\x8A\xA0\xE0\xA0\xA2\xA0\xAD", 127, 0, 1, 0, 0, 1, 5, 0, 0, 6, 24 }, /* reciv-ru */
+    { TRANSLATE("Settlers", "RU"), 127, 0, 1, 0, 0, 1, 4, 0, 0, 0, -1 }, /* reciv-ru */
+    { TRANSLATE("Militia", "RU"), 34, 0, 1, 0, 1, 1, 1, 0, 0, 2, -1 }, /* reciv-ru */
+    { TRANSLATE("Phalanx", "RU"), 34, 0, 1, 0, 1, 2, 2, 0, 0, 2, 17 }, /* reciv-ru */
+    { TRANSLATE("Legion", "RU"), 64, 0, 1, 0, 3, 1, 2, 0, 0, 1, 18 }, /* reciv-ru */
+    { TRANSLATE("Musketeers", "RU"), 64, 0, 1, 0, 2, 3, 3, 0, 0, 2, 34 }, /* reciv-ru */
+    { TRANSLATE("Riflemen", "RU"), 127, 0, 1, 0, 3, 5, 3, 0, 0, 2, 64 }, /* reciv-ru */
+    { TRANSLATE("Cavalry", "RU"), 64, 0, 2, 0, 2, 1, 2, 0, 0, 1, 31 }, /* reciv-ru */
+    { TRANSLATE("Knights", "RU"), 58, 0, 2, 0, 4, 2, 4, 0, 0, 1, 62 }, /* reciv-ru */
+    { TRANSLATE("Catapult", "RU"), 48, 0, 1, 0, 6, 1, 4, 0, 0, 1, 9 }, /* reciv-ru */
+    { TRANSLATE("Cannon", "RU"), 63, 0, 1, 0, 8, 1, 4, 0, 0, 1, 48 }, /* reciv-ru */
+    { TRANSLATE("Chariot", "RU"), 62, 0, 2, 0, 4, 1, 4, 0, 0, 1, 33 }, /* reciv-ru */
+    { TRANSLATE("Armor", "RU"), 127, 0, 3, 0, 10, 5, 8, 0, 0, 1, 58 }, /* reciv-ru */
+    { TRANSLATE("Mech. Inf.", "RU"), 127, 0, 3, 0, 6, 6, 5, 0, 0, 2, 65 }, /* reciv-ru */
+    { TRANSLATE("Artillery", "RU"), 127, 0, 2, 0, 12, 2, 6, 0, 0, 1, 63 }, /* reciv-ru */
+    { TRANSLATE("Fighter", "RU"), 127, 1, 10, 1, 4, 2, 6, 2, 0, 4, 38 }, /* reciv-ru */
+    { TRANSLATE("Bomber", "RU"), 127, 1, 8, 2, 12, 1, 12, 2, 0, 1, 39 }, /* reciv-ru */
+    { TRANSLATE("Trireme", "RU"), 8, 2, 3, 0, 1, 0, 4, 0, 2, 5, 7 }, /* reciv-ru */
+    { TRANSLATE("Sail", "RU"), 14, 2, 3, 0, 1, 1, 4, 0, 3, 5, 8 }, /* reciv-ru */
+    { TRANSLATE("Frigate", "RU"), 35, 2, 3, 0, 2, 2, 4, 0, 4, 5, 14 }, /* reciv-ru */
+    { TRANSLATE("Ironclad", "RU"), 37, 2, 4, 0, 4, 4, 6, 0, 0, 3, 23 }, /* reciv-ru */
+    { TRANSLATE("Cruiser", "RU"), 127, 2, 6, 0, 6, 6, 8, 3, 0, 3, 37 }, /* reciv-ru */
+    { TRANSLATE("Battleship", "RU"), 127, 2, 4, 0, 18, 12, 16, 3, 0, 3, 52 }, /* reciv-ru */
+    { TRANSLATE("Submarine", "RU"), 127, 2, 3, 0, 8, 2, 5, 3, 0, 3, 41 }, /* reciv-ru */
+    { TRANSLATE("Carrier", "RU"), 127, 2, 5, 0, 1, 12, 16, 3, 0, 3, 39 }, /* reciv-ru */
+    { TRANSLATE("Transport", "RU"), 127, 2, 4, 0, 0, 3, 5, 0, 8, 5, 35 }, /* reciv-ru */
+    { TRANSLATE("Nuclear", "RU"), 127, 1, 16, 1, 99, 0, 16, 0, 0, 1, 46 }, /* reciv-ru */
+    { TRANSLATE("Diplomat", "RU"), 127, 0, 2, 0, 0, 0, 3, 0, 0, 6, 22 }, /* reciv-ru */
+    { TRANSLATE("Caravan", "RU"), 127, 0, 1, 0, 0, 1, 5, 0, 0, 6, 24 }, /* reciv-ru */
 };
 
 struct civ_type civt[16] = {
     { "", "", "", 0, 0, 0, 36, 36 },
-    { "\x96\xA5\xA7\xA0\xE0\xEC", "\x90\xA8\xAC\xAB\xEF\xAD\xA5", "\x90\xA8\xAC\xAB\xEF\xAD\xA5", 0, 1, 1, 24, 10 }, /* reciv-ru */
-    { "\x95\xA0\xAC\xAC\xE3\xE0\xA0\xA1\xA8", "\x82\xA0\xA2\xA8\xAB\xAE\xAD\xEF\xAD\xA5", "\x82\xA0\xA2\xA8\xAB\xAE\xAD\xEF\xAD\xA5", -1, -1, 1, 28, 14 }, /* reciv-ru */
-    { "\x94\xE0\xA8\xA4\xE0\xA8\xE5 II", "\x8D\xA5\xAC\xE6\xEB", "\x8D\xA5\xAC\xE6\xEB", 1, -1, 1, 32, 18 }, /* reciv-ru */
-    { "\x90\xA0\xAC\xA7\xA5\xE1", "\x85\xA3\xA8\xAF\xE2\xEF\xAD\xA5", "\x85\xA3\xA8\xAF\xE2\xEF\xAD\xA5", 0, 0, 1, 21, 7 }, /* reciv-ru */
-    { "\x80\xA2\xE0\xA0\xA0\xAC \x8B\xA8\xAD\xAA\xAE\xAB\xEC\xAD", "\x80\xAC\xA5\xE0\xA8\xAA\xA0\xAD\xE6\xEB", "\x80\xAC\xA5\xE0\xA8\xAA\xA0\xAD\xE6\xEB", -1, 0, 1, 19, 5 }, /* reciv-ru */
-    { "\x80\xAB\xA5\xAA\xE1\xA0\xAD\xA4\xE0", "\x83\xE0\xA5\xAA\xA8", "\x83\xE0\xA5\xAA\xA8", 0, 1, -1, 26, 12 }, /* reciv-ru */
-    { "\x8C.\x83\xA0\xAD\xA4\xA8", "\x88\xAD\xA4\xA8\xA9\xE6\xEB", "\x88\xAD\xA4\xA8\xA9\xE6\xEB", -1, -1, 0, 31, 17 }, /* reciv-ru */
+    { TRANSLATE("Caesar", "RU"), TRANSLATE("", "RU"), TRANSLATE("Roman", "RU"), 0, 1, 1, 24, 10 }, /* reciv-ru */
+    { TRANSLATE("Hammurabi", "RU"), TRANSLATE("", "RU"), TRANSLATE("Babylonian", "RU"), -1, -1, 1, 28, 14 }, /* reciv-ru */
+    { TRANSLATE("Frederick", "RU"), TRANSLATE("Germans", "RU"), TRANSLATE("German", "RU"), 1, -1, 1, 32, 18 }, /* reciv-ru */
+    { TRANSLATE("Ramesses", "RU"), TRANSLATE("", "RU"), TRANSLATE("Egyptian", "RU"), 0, 0, 1, 21, 7 }, /* reciv-ru */
+    { TRANSLATE("Abe Lincoln", "RU"), TRANSLATE("", "RU"), TRANSLATE("American", "RU"), -1, 0, 1, 19, 5 }, /* reciv-ru */
+    { TRANSLATE("Alexander", "RU"), TRANSLATE("", "RU"), TRANSLATE("Greek", "RU"), 0, 1, -1, 26, 12 }, /* reciv-ru */
+    { TRANSLATE("M.Gandhi", "RU"), TRANSLATE("", "RU"), TRANSLATE("Indian", "RU"), -1, -1, 0, 31, 17 }, /* reciv-ru */
     { "", "", "", 0, 0, 0, 36, 36 },
-    { "\x91\xE2\xA0\xAB\xA8\xAD", "\x90\xE3\xE1\xE1\xAA\xA8\xA5", "\x90\xE3\xE1\xE1\xAA\xA8\xA5", 1, 0, -1, 25, 11 }, /* reciv-ru */
-    { "\x8B\xE3\xAC\xE3\xAC\xA1\xA0", "\x8D\xA5\xA3\xE0\xEB", "\x8D\xA5\xA3\xE0\xEB", 1, 0, 0, 22, 8 }, /* reciv-ru */
-    { "\x8D\xA0\xAF\xAE\xAB\xA5\xAE\xAD", "\x94\xE0\xA0\xAD\xE6\xE3\xA7\xEB", "\x94\xE0\xA0\xAD\xE6\xE3\xA7\xEB", 1, 1, 1, 23, 9 }, /* reciv-ru */
-    { "\x8C\xAE\xAD\xE2\xA5\xA7\xE3\xAC\xA0", "\x80\xE6\xE2\xA5\xAA\xA8", "\x80\xE6\xE2\xA5\xAA\xA8", 0, -1, 1, 20, 6 }, /* reciv-ru */
-    { "\x8C\xA0\xAE \x84\xA7\xA5 \x84\xE3\xAD", "\x8A\xA8\xE2\xA0\xA9\xE6\xEB", "\x8A\xA8\xE2\xA0\xA9\xE6\xEB", 0, 0, 1, 29, 15 }, /* reciv-ru */
-    { "\x85\xAB\xA8\xA7\xA0\xA2\xA5\xE2\xA0 I", "\x80\xAD\xA3\xAB\xA8\xE7\xA0\xAD\xA5", "\x80\xAD\xA3\xAB\xA8\xE7\xA0\xAD\xA5", 0, 1, 0, 27, 13 }, /* reciv-ru */
-    { "\x97\xA8\xAD\xA3\xA8\xA7  \x95\xA0\xAD", "\x8C\xAE\xAD\xA3\xAE\xAB\xEB", "\x8C\xAE\xAD\xA3\xAE\xAB\xEB", 1, 1, -1, 30, 16 }, /* reciv-ru */
+    { TRANSLATE("Stalin", "RU"), TRANSLATE("", "RU"), TRANSLATE("Russian", "RU"), 1, 0, -1, 25, 11 }, /* reciv-ru */
+    { TRANSLATE("Shaka", "RU"), TRANSLATE("", "RU"), TRANSLATE("Zulu", "RU"), 1, 0, 0, 22, 8 }, /* reciv-ru */
+    { TRANSLATE("Napoleon", "RU"), TRANSLATE("French", "RU"), TRANSLATE("French", "RU"), 1, 1, 1, 23, 9 }, /* reciv-ru */
+    { TRANSLATE("Montezuma", "RU"), TRANSLATE("", "RU"), TRANSLATE("Aztec", "RU"), 0, -1, 1, 20, 6 }, /* reciv-ru */
+    { TRANSLATE("Mao Tse Tung", "RU"), TRANSLATE("Chinese", "RU"), TRANSLATE("Chinese", "RU"), 0, 0, 1, 29, 15 }, /* reciv-ru */
+    { TRANSLATE("Elizabeth I", "RU"), TRANSLATE("English", "RU"), TRANSLATE("English", "RU"), 0, 1, 0, 27, 13 }, /* reciv-ru */
+    { TRANSLATE("Genghis Khan", "RU"), TRANSLATE("", "RU"), TRANSLATE("Mongol", "RU"), 1, 1, -1, 30, 16 }, /* reciv-ru */
 };
 
 int spiral_x[49] = {
@@ -400,36 +400,36 @@ int civ_shadows[8] = {
 };
 
 char *government_names[6] = {
-    "\x80\xAD\xA0\xE0\xE5\xA8\xEF", /* reciv-ru */
-    "\x84\xA5\xE1\xAF\xAE\xE2\xA8\xA7\xAC", /* reciv-ru */
-    "\x8C\xAE\xAD\xA0\xE0\xE5\xA8\xEF", /* reciv-ru */
-    "\x8A\xAE\xAC\xAC\xE3\xAD\xA8\xA7\xAC", /* reciv-ru */
-    "\x90\xA5\xE1\xAF\xE3\xA1\xAB.", /* reciv-ru */
-    "\x84\xA5\xAC\xAE\xAA\xE0\xA0\xE2\xA8\xEF" /* reciv-ru */
+    TRANSLATE("Anarchy", "RU"), /* reciv-ru */
+    TRANSLATE("Despotism", "RU"), /* reciv-ru */
+    TRANSLATE("Monarchy", "RU"), /* reciv-ru */
+    TRANSLATE("Communist", "RU"), /* reciv-ru */
+    TRANSLATE("Republic", "RU"), /* reciv-ru */
+    TRANSLATE("Democratic", "RU") /* reciv-ru */
 };
 
 char *trade_goods[8] = {
-    "\x98\xA5\xAB\xAA", /* reciv-ru */
-    "\x80\xAB\xAC\xA0\xA7\xEB", /* reciv-ru */
-    "\x82\xA8\xAD\xAE", /* reciv-ru */
-    "\x8C\xA5\xA4\xEC", /* reciv-ru */
-    "\x80\xAB\xAC\xA0\xA7\xEB", /* reciv-ru */
-    "\x97\xA0\xA9", /* reciv-ru */
-    "\x91\xAE\xAB\xEC", /* reciv-ru */
-    "\x8F\xA5\xE0\xA5\xE6" /* reciv-ru */
+    TRANSLATE("Silk", "RU"), /* reciv-ru */
+    TRANSLATE("Silver", "RU"), /* reciv-ru */
+    TRANSLATE("Wine", "RU"), /* reciv-ru */
+    TRANSLATE("Copper", "RU"), /* reciv-ru */
+    TRANSLATE("Gems", "RU"), /* reciv-ru */
+    TRANSLATE("Dye", "RU"), /* reciv-ru */
+    TRANSLATE("Salt", "RU"), /* reciv-ru */
+    TRANSLATE("Spice", "RU") /* reciv-ru */
 };
 
 /* reciv: one block, as the original's literals were: the save file
  * transfers all 8 * 11 bytes through civ_adjectives[0]. */
 char civ_adjective_text[8][11] = {
-    "tX\x8Bv\x06\xB1\x05\xD3\xE6\x8B^", /* reciv-ru */
-    "\x90\xA8\xAC\xAB\xEF\xAD\xA5", /* reciv-ru */
-    "\x8D\xA5\xA3\xE0\xEB", /* reciv-ru */
-    "\x8C\xAE\xAD\xA3\xAE\xAB\xEB", /* reciv-ru */
-    "\x80\xE6\xE2\xA5\xAA\xA8", /* reciv-ru */
-    "\xF0\xB8\x0C\x00\xF7n\xAC\x03\xF0\x80\xBC", /* reciv-ru */
-    "\xF7\x90\xFFt\xDC\xF6\x84\xF4\x90\x10u", /* reciv-ru */
-    "\xD5\x80\xBC\xF7\x90\x19t\x03\xE9\xB8\xFE" /* reciv-ru */
+    TRANSLATE("Barbarian ", "RU"), /* reciv-ru */
+    TRANSLATE("Roman     ", "RU"), /* reciv-ru */
+    TRANSLATE("Zulu      ", "RU"), /* reciv-ru */
+    TRANSLATE("Mongol    ", "RU"), /* reciv-ru */
+    TRANSLATE("Aztec     ", "RU"), /* reciv-ru */
+    TRANSLATE("Persian   ", "RU"), /* reciv-ru */
+    TRANSLATE("Muslim    ", "RU"), /* reciv-ru */
+    TRANSLATE("Hittite   ", "RU") /* reciv-ru */
 };
 
 char *civ_adjectives[8] = {
@@ -446,14 +446,14 @@ char *civ_adjectives[8] = {
 /* reciv: one block, as the original's literals were: the save file
  * transfers all 8 * 12 bytes through civ_names[0]. */
 char civ_name_text[8][12] = {
-    "\x90\xA8\xAC\xAB\xEF\xAD\xA5    ", /* reciv-ru */
-    "\x82\xA0\xA2\xA8\xAB\xAE\xAD\xEF\xAD\xA5 ", /* reciv-ru */
-    "\x8D\xA5\xAC\xE6\xEB      ", /* reciv-ru */
-    "\x8D\xA5\xAC\xE6\xEB", /* reciv-ru */
-    "\x80\xAC\xA5\xE0\xA8\xAA\xA0\xAD\xE6\xEB ", /* reciv-ru */
-    "\x83\xE0\xA5\xAA\xA8      ", /* reciv-ru */
-    "\x8C\xAE\xAD\xA3\xAE\xAB\xEB    ", /* reciv-ru */
-    "\x80\xE2\xA8\xAB\xAB\xA0       " /* reciv-ru */
+    TRANSLATE("Barbarians ", "RU"), /* reciv-ru */
+    TRANSLATE("Romans     ", "RU"), /* reciv-ru */
+    TRANSLATE("Babylonians", "RU"), /* reciv-ru */
+    TRANSLATE("Germans    ", "RU"), /* reciv-ru */
+    TRANSLATE("Egyptians  ", "RU"), /* reciv-ru */
+    TRANSLATE("Americans  ", "RU"), /* reciv-ru */
+    TRANSLATE("Greeks     ", "RU"), /* reciv-ru */
+    TRANSLATE("Mongols    ", "RU") /* reciv-ru */
 };
 
 char *civ_names[8] = {
@@ -470,14 +470,14 @@ char *civ_names[8] = {
 /* reciv: one block, as the original's literals were: the save file
  * transfers all 8 * 14 bytes through leader_names[0]. */
 char leader_name_text[8][14] = {
-    "\x96\xA5\xA7\xA0\xE0\xEC       ", /* reciv-ru */
-    "\x96\xA5\xA7\xA0\xE0\xEC", /* reciv-ru */
-    "\x8B\xE3\xAC\xE3\xAC\xA1\xA0", /* reciv-ru */
-    "\x97\xA8\xAD\xA3\xA8\xA7  \x95\xA0\xAD", /* reciv-ru */
-    "\x8C\xAE\xAD\xE2\xA5\xA7\xE3\xAC\xA0", /* reciv-ru */
-    "\x8A\xE1\xA5\xE0\xAA\xE1       ", /* reciv-ru */
-    "\x91\xA0\xAB\xA0\xA4\xA8\xAD      ", /* reciv-ru */
-    "\x91\xE3\xAF\xAF\xA8\xAB\xE3\xAB\xA8\xE3\xAC\xA0\xE1" /* reciv-ru */
+    TRANSLATE("Attila       ", "RU"), /* reciv-ru */
+    TRANSLATE("Caesar       ", "RU"), /* reciv-ru */
+    TRANSLATE("Shaka        ", "RU"), /* reciv-ru */
+    TRANSLATE("Genghis Khan ", "RU"), /* reciv-ru */
+    TRANSLATE("Montezuma    ", "RU"), /* reciv-ru */
+    TRANSLATE("Xerxes       ", "RU"), /* reciv-ru */
+    TRANSLATE("Saladin      ", "RU"), /* reciv-ru */
+    TRANSLATE("Suppiluliumas", "RU") /* reciv-ru */
 };
 
 char *leader_names[8] = {
@@ -492,12 +492,12 @@ char *leader_names[8] = {
 };
 
 char *leader_titles[6] = {
-    "\x83-\xAD", /* reciv-ru */
-    "\x82\xAB\xA0\xA4\xEB\xAA\xA0", /* reciv-ru */
-    "\x96\xA0\xE0\xEC ", /* reciv-ru */
-    "\x92\xAE\xA2\xC0", /* reciv-ru */
-    "\x8F\xE0\xA5\xA7\xA8\xA4\xA5\xAD\xE2", /* reciv-ru */
-    "\x8F\xE0\xA5\xA7\xA8\xA4\xA5\xAD\xE2" /* reciv-ru */
+    TRANSLATE("Mr.", "RU"), /* reciv-ru */
+    TRANSLATE("Emperor", "RU"), /* reciv-ru */
+    TRANSLATE("King ", "RU"), /* reciv-ru */
+    TRANSLATE("Comrade", "RU"), /* reciv-ru */
+    TRANSLATE("President", "RU"), /* reciv-ru */
+    TRANSLATE("President", "RU") /* reciv-ru */
 };
 
 int selected_index = -1;
@@ -670,9 +670,9 @@ int file, mode;
         mouse_off();
         rect_fill(scrbuf, 0, 0, 320, 200, 15);
         disk_digit = file / found_floppy + '1';
-        strcpy(buffer, "\x82\xE1\xE2\xA0\xA2\xEC\xE2\xA5 \xA4\xA8\xE1\xAA "); /* reciv-ru */
+        strcpy(buffer, TRANSLATE("Please insert Disk ", "RU")); /* reciv-ru */
         strcat(buffer, &disk_digit);
-        strcat(buffer, ".\n \n  \x8D\xA0\xA6\xAC\xA8\xE2\xA5 Enter\n \xA4\xAB\xEF \xAF\xE0\xAE\xA4\xAE\xAB\xA6\xA5\xAD\xA8\xEF.\n"); /* reciv-ru */
+        strcat(buffer, TRANSLATE(".\n \n    Press Return\n    to continue.\n", "RU")); /* reciv-ru */
         old_style = style;
         style = -1;
         box_info_flags = 1;
@@ -723,7 +723,7 @@ void game_menu(void)
     beginner_help = 0;
     goto test;
     do {
-        strcpy(msgtext, " \x8D\xAE\xA2\xA0\xEF \xA8\xA3\xE0\xA0\n \x82\xAE\xE1\xE1\xE2\xA0\xAD\xAE\xA2\xA8\xE2\xEC \xAF\xE0\xA5\xA6\xAD\xEE\xEE\n \x87\x85\x8C\x8B\x9F\n \x91\xAE\xA7\xA4\xA0\xE2\xEC \xAD\xAE\xA2\xEB\xA9 \xAC\xA8\xE0\n \x8A\xAD\xA8\xA3\xA0 \xE0\xA5\xAA\xAE\xE0\xA4\xAE\xA2 CIV\n"); /* reciv-ru */
+        strcpy(msgtext, TRANSLATE(" Start a New Game\n Load a Saved Game\n EARTH\n Customize World\n View Hall of Fame\n", "RU")); /* reciv-ru */
         main_option_result = show_menu(msgtext, 100, 140);
 test:  ;
     } while (main_option_result == -1);
@@ -757,7 +757,7 @@ start:
         editing = 1;
         for (;;) {
             set_text_pos(210, 11);
-            strcpy(msgtext, "\x91\xE3\xE8\xA0:\n \xAC\xA0\xAB\xAE\n \xE1\xE0\xA5\xA4\xAD\xA5\n \xAC\xAD\xAE\xA3\xAE\n"); /* reciv-ru */
+            strcpy(msgtext, TRANSLATE("LAND MASS:\n Small\n Normal\n Large\n", "RU")); /* reciv-ru */
             custom_params[0] = show_menu(msgtext, 200, 1);
             if (custom_params[0] == -1)
                 continue;
@@ -771,7 +771,7 @@ start:
         editing = 1;
         for (;;) {
             set_text_pos(210, 61);
-            strcpy(msgtext, "\x92\xA5\xAC\xAF\xA5\xE0\xA0\xE2\xE3\xE0\xA0:\n \x95\xAE\xAB\xAE\xA4\xAD\xAE\n \x92\xA5\xAF\xAB\xAE\n \x86\xA0\xE0\xAA\xAE\n"); /* reciv-ru */
+            strcpy(msgtext, TRANSLATE("TEMPERATURE:\n Cool\n Temperate\n Warm\n", "RU")); /* reciv-ru */
             custom_params[1] = show_menu(msgtext, 200, 51);
             if (custom_params[1] == -1)
                 continue;
@@ -785,7 +785,7 @@ start:
         editing = 1;
         for (;;) {
             set_text_pos(210, 111);
-            strcpy(msgtext, "\x8A\xAB\xA8\xAC\xA0\xE2:\n \x91\xE3\xE5\xAE\xA9\n \x8D\xAE\xE0\xAC.\n \x82\xAE\xA4\xA0\n"); /* reciv-ru */
+            strcpy(msgtext, TRANSLATE("CLIMATE:\n Arid\n Normal\n Wet\n", "RU")); /* reciv-ru */
             custom_params[2] = show_menu(msgtext, 200, 101);
             if (custom_params[2] == -1)
                 continue;
@@ -797,7 +797,7 @@ start:
             editing = 1;
             do {
                 set_text_pos(210, 161);
-                strcpy(msgtext, "\x9D\xE0\xA0:\n 3 \xAC\xA8\xAB\xAB\xA8\xA0\xE0\xA4\xA0 \xAB\xA5\xE2\n 4 \xAC\xA8\xAB\xAB\xA8\xA0\xE0\xA4\xA0 \xAB\xA5\xE2\n 5 \xAC\xA8\xAB\xAB\xA8\xA0\xE0\xA4\xAE\xA2   \n"); /* reciv-ru */
+                strcpy(msgtext, TRANSLATE("AGE:\n 3 billion years\n 4 billion years\n 5 billion years\n", "RU")); /* reciv-ru */
                 custom_params[3] = show_menu(msgtext, 200, 151);
             } while (custom_params[3] == -1);
             if (edit_mode) {

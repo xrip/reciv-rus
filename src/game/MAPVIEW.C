@@ -29,7 +29,7 @@ void view_army(void)
     int i;
     int sel;
 
-    strcpy(msgtext, "\x8A\xA0\xAA\xAE\xA9 \xAE\xE2\xE0\xEF\xA4\n "); /* reciv-ru */
+    strcpy(msgtext, TRANSLATE("Which army?\n ", "RU")); /* reciv-ru */
     for (i = 1; i < 8; i++) {
         strcat(msgtext, civ_adjectives[i]);
         strcat(msgtext, "\n ");
@@ -158,7 +158,7 @@ int report_unit(int civ, int idx)
     strcat(msgtext, itoa(armydata[civ][idx].y, nstr, 10));
     strcat(msgtext, "\n");
     if ((unsigned char) armydata[civ][idx].goto_x != 0xff) {
-        strcat(msgtext, "\x88\xA7:"); /* reciv-ru */
+        strcat(msgtext, TRANSLATE("To:", "RU")); /* reciv-ru */
         strcat(msgtext, itoa((unsigned char) armydata[civ][idx].goto_x, nstr, 10));
         strcat(msgtext, ",");
         strcat(msgtext, itoa((unsigned char) armydata[civ][idx].goto_y, nstr, 10));

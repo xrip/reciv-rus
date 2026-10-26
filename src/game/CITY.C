@@ -276,11 +276,11 @@ void city_disaster(int city)
                     building = rand_scaled(24);
                 } while (building + 1 == 1 || !(townbuf[city].buildings & (long) (int) (1 << building)));
                 townbuf[city].buildings &= (long) (int) ~(1 << building); /* reciv: SHL/NOT AX, then CWD */
-                strcpy(msgtext, "\x87\xA5\xAC\xAB\xA5\xE2\xE0\xEF\xE1\xA5\xAD\xA8\xA5\xB0"); /* reciv-ru */
+                strcpy(msgtext, TRANSLATE("Earthquake in ", "RU")); /* reciv-ru */
                 append_place_name(city);
                 strcat(msgtext, "!\n");
                 strcat(msgtext, building_names[building].name);
-                strcat(msgtext, "\xB0\xE0\xA0\xA7\xE0\xE3\xE8\xA5\xAD\xAE\xC0\n"); /* reciv-ru */
+                strcat(msgtext, TRANSLATE(" destroyed.\n", "RU")); /* reciv-ru */
             }
         }
         break;
@@ -331,7 +331,7 @@ void city_disaster(int city)
                     named_msg("*D4");
                     city_food(city) = 0;
                     townbuf[city].size -= townbuf[city].size / 3;
-                    strcat(msgtext, "\x86\xA8\xE2\xA5\xAB\xA8\xB0\xE2\xE0\xA5\xA1\xE3\xEE\xE2\xB0\x80\x8C\x81\x80\x90\xC0\n"); /* reciv-ru */
+                    strcat(msgtext, TRANSLATE("Citizens demand GRANARY.\n", "RU")); /* reciv-ru */
                 }
             }
         }
@@ -370,27 +370,27 @@ void city_disaster(int city)
         if (town_happy_ones_num < town_unhappy_counts) {
             switch (rand_scaled(3)) {
             case 0:
-                strcpy(msgtext, "\x81\xE3\xA9\xE1\xE2\xA2\xAE\xC5\xB0"); /* reciv-ru */
+                strcpy(msgtext, TRANSLATE("Rioting in ", "RU")); /* reciv-ru */
                 break;
             case 1:
-                strcpy(msgtext, "\x8A\xAE\xE0\xE0\xE3\xAF\xE6\xA8\xEF\xC5\xB0"); /* reciv-ru */
+                strcpy(msgtext, TRANSLATE("Corruption in ", "RU")); /* reciv-ru */
                 break;
             case 2:
-                strcpy(msgtext, "\x91\xAA\xA0\xAD\xA4\xA0\xAB\xB0\xA2:\xC2"); /* reciv-ru */
+                strcpy(msgtext, TRANSLATE("Scandal in ", "RU")); /* reciv-ru */
                 break;
             }
             append_place_name(city);
-            strcat(msgtext, "\xC0\n\x86\xA8\xE2\xA5\xAB\xA8\xB0\xE2\xE0\xA5\xA1\xE3\xEE\xE2\xB0"); /* reciv-ru */
+            strcat(msgtext, TRANSLATE("!\nCitizens demand ", "RU")); /* reciv-ru */
             if (!(townbuf[city].buildings & 0x8)) {
-                strcat(msgtext, "\x95\x90\x80\x8C\n"); /* reciv-ru */
+                strcat(msgtext, TRANSLATE("TEMPLE\n", "RU")); /* reciv-ru */
             } else if (!(townbuf[city].buildings & 0x40)) {
-                strcat(msgtext, "\x91\x93\x84\n"); /* reciv-ru */
+                strcat(msgtext, TRANSLATE("COURTHOUSE\n", "RU")); /* reciv-ru */
             } else if (!(townbuf[city].buildings & 0x10)) {
-                strcat(msgtext, "\x81\x80\x87\x80\x90\n"); /* reciv-ru */
+                strcat(msgtext, TRANSLATE("MARKETPLACE\n", "RU")); /* reciv-ru */
             } else if (has_tech(townbuf[city].owner, 29) && !(townbuf[city].buildings & 0x400)) {
-                strcat(msgtext, "\x91\x8E\x81\x8E\x90\n"); /* reciv-ru */
+                strcat(msgtext, TRANSLATE("CATHEDRAL\n", "RU")); /* reciv-ru */
             } else {
-                strcat(msgtext, "\xE1\xA1\xA8\xE2\xEC\xB0\xAD\xA0\xAB\xAE\xA3\xC0\n"); /* reciv-ru */
+                strcat(msgtext, TRANSLATE("lower taxes.\n", "RU")); /* reciv-ru */
             }
             if (human_set & (1 << townbuf[city].owner)) {
                 show_msg(msgtext, 100, 80);
@@ -420,9 +420,9 @@ check_city:                ;
                         if (best_city != -1) {
                             if (townbuf[best_city].owner != townbuf[city].owner) {
                                 if (map_visible_to[townbuf[city].x * 50 + townbuf[city].y] & (1 << civnow)) {
-                                    strcpy(msgtext, "\x98\xAF\xA8\xAE\xAD\xEB ("); /* reciv-ru */
+                                    strcpy(msgtext, TRANSLATE("Residents of ", "RU")); /* reciv-ru */
                                     append_place_name(city);
-                                    strcat(msgtext, ") \xA2\xAE\xE1\xE5\xA8\xE9\xA5\xAD\xEB\n\xA6\xA8\xA7\xAD\xEC\xEE \xA2 \xA3\xAE\xE0. "); /* reciv-ru */
+                                    strcat(msgtext, TRANSLATE(" admire\nthe prosperity of ", "RU")); /* reciv-ru */
                                     append_place_name(best_city);
                                     strcat(msgtext, ".\n");
                                     show_msg(msgtext, 80, 80);
@@ -506,10 +506,10 @@ int display;
         scrbuf->number = 1;
 restart_score:
     if (display)
-        advisor_open("\x81\xA0\xAB\xAB \xE0\xA0\xA7\xA2\xA8\xE2\xA8\xEF", 3); /* reciv-ru */
+        advisor_open(TRANSLATE("CIVILIZATION SCORE", "RU"), 3); /* reciv-ru */
     civ_ratings[0] = 0;
     if (display && (game_flags & 0x100)) {
-        draw_text("\x8F\xAE\xA4\xE1\xE7\xA8\xE2\xA0\xAD\xAE...", 160, 100, 15); /* reciv-ru */
+        draw_text(TRANSLATE("SCORING COMPLETED", "RU"), 160, 100, 15); /* reciv-ru */
         scrbuf->number = 0;
         blit(back_page, 0, 0, 320, 200, scrbuf, 0, 0);
         ad_wait();
@@ -547,7 +547,7 @@ restart_score:
     civ_toll[player] = saved_state;
     merit_people = citizen_score;
     strcpy(msgtext, civ_adjectives[player]);
-    strcat(msgtext, " \x83\xE0\xA0\xA6\xA4\xA0\xAD\xA5 ("); /* reciv-ru */
+    strcat(msgtext, TRANSLATE(" Citizens (", "RU")); /* reciv-ru */
     strcat(msgtext, itoa(merit_people, nstr, 10));
     strcat(msgtext, ")");
     if (display)
@@ -579,7 +579,7 @@ restart_score:
         }
     }
     strcpy(msgtext, civ_adjectives[player]);
-    strcat(msgtext, " \x84\xAE\xE1\xE2\xA8\xA6\xA5\xAD\xA8\xEF ("); /* reciv-ru */
+    strcat(msgtext, TRANSLATE(" Achievements (", "RU")); /* reciv-ru */
     strcat(msgtext, itoa(marvel_points, nstr, 10));
     strcat(msgtext, ")");
     if (display)
@@ -594,12 +594,12 @@ restart_score:
             x = ship_success * ship / 2;
             if (x < 0)
                 x = 0;
-            strcpy(msgtext, "\x8A.\x8A\xAE\xE0\xA0\xA1\xAB\xEC: ("); /* reciv-ru */
+            strcpy(msgtext, TRANSLATE("SpaceShip: (", "RU")); /* reciv-ru */
             strcat(msgtext, itoa(x, nstr, 10));
             if (spaceship_arrive_dates[civnow] == year) {
                 civ_ratings[0] += x;
             } else {
-                strcat(msgtext, " \xAC\xA0\xAA\xE1\xA8\xAC\xE3\xAC"); /* reciv-ru */
+                strcat(msgtext, TRANSLATE(" possible", "RU")); /* reciv-ru */
             }
             strcat(msgtext, ")");
             if (display && line_y < 184)
@@ -610,20 +610,20 @@ restart_score:
 
     msgtext[0] = 0;
     if (polluted != 0) {
-        strcpy(msgtext, "\x82\xEB\xA1\xE0\xAE\xE1\xEB: ("); /* reciv-ru */
+        strcpy(msgtext, TRANSLATE("Pollution: (", "RU")); /* reciv-ru */
         strcat(msgtext, itoa(-10 * polluted, nstr, 10));
         strcat(msgtext, ")   ");
         civ_ratings[0] -= 10 * polluted;
     }
     if (year > 0 && player_peace_run != 0) {
         peace_score = clamp(3 * player_peace_run, 0, 100);
-        strcat(msgtext, "\x8C\xA8\xE0: (+"); /* reciv-ru */
+        strcat(msgtext, TRANSLATE("Peace: (+", "RU")); /* reciv-ru */
         strcat(msgtext, itoa(peace_score, nstr, 10));
         strcat(msgtext, ") ");
         civ_ratings[0] += peace_score;
     }
     if (advances_future != 0) {
-        strcat(msgtext, "\x92\xA5\xE5\xAD\xAE\xAB\xAE\xA3\xA8\xA8:  (+"); /* reciv-ru */
+        strcat(msgtext, TRANSLATE("Future Tech: (+", "RU")); /* reciv-ru */
         strcat(msgtext, itoa(5 * advances_future, nstr, 10));
         strcat(msgtext, ")");
         civ_ratings[0] += 5 * advances_future;
@@ -639,7 +639,7 @@ restart_score:
     if (civ_ratings[0] < 0)
         civ_ratings[0] = 0;
     if (bonus_score < civ_ratings[0]) {
-        strcpy(msgtext, "\x8E\xA1\xE9\xA8\xA9 \xA1\xA0\xAB\xAB: "); /* reciv-ru */
+        strcpy(msgtext, TRANSLATE("Total Score: ", "RU")); /* reciv-ru */
         strcat(msgtext, itoa(civ_ratings[0], nstr, 10));
     } else {
         strcpy(msgtext, "Bonus Score: ");
