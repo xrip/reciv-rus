@@ -1,0 +1,44 @@
+ADVISORS.C:580	city status report
+AUDIENCE.C:315	demand  [en@0x27e0b unpaired]
+AUDIENCE.C:974	king  [en@0x28179 unpaired]
+AUDIENCE.C:1047	pal  [en@0x2819c unpaired]
+CITYMGT.C:1347	city screen
+CITYMGT.C:1910	city_process: advance_owners[-1]
+CITYMGT.C:1991	city_process: adj_grp's third argument is the caller's SI
+CITYVIEW.C:3	We Love the King Day
+CITYVIEW.C:372	city  [en@0x29525 unpaired]
+CITYVIEW.C:383	cty  [en@0x2952a unpaired]
+CITYVIEW.C:483	pop  [en@0x29536 unpaired]
+CONTROL.C:162	ai_turn: adj_grp's third argument is the caller's SI
+DIPLOMAT.C:181	in   [en@0x298e0 unpaired]
+DIPLOMAT.C:475	set  [en@0x29a0c unpaired]
+ECONOMY.C:103	civ_economy: civt[-1].f2
+FAME.C:307	top cities
+GAME.C:765	Land  [en@0x26283 unpaired]
+MAP.C:168	world_draw: rect_fill's AX
+MAP.C:170	world_draw: rect_fill's AX
+MESSAGE.C:132	$US  [en@0x27731 unpaired]
+NEWGAME.C:221	init_civ: AX holds civnow
+PALACE.C:195	pal1  [en@0x291a8 unpaired]
+PALACE.C:342	pal2  [en@0x2921d unpaired]
+PATH.C:145	path_coarse: AX holds path_target_y
+REPLAY.C:509	pal  [en@0x2819c unpaired]
+REPORTS.C:322	Glorious  [en@0x28acb unpaired]
+REPORTS.C:323	Great  [en@0x28ad4 unpaired]
+REPORTS.C:324	Fine  [en@0x28ada unpaired]
+REPORTS.C:328	Hopeless  [en@0x28af6 unpaired]
+SAVE.C:94	SVE  [en@0x2885e unpaired]
+SAVE.C:227	  Which drive contains your\n    saved game files?\n\n            
+SAVE.C:227	  Which drive contains your\n     Save Game disk?\n\n            
+SAVE.C:285	SVE  [en@0x2885e unpaired]
+SAVE.C:298	map  [en@0x28a1a unpaired]
+SAVE.C:309	map  [en@0x28a1a unpaired]
+SAVE.C:316	SVE  [en@0x2885e unpaired]
+SETUP.C:19	) No audio
+SETUP.C:47	\xff\x1e
+SETUP.C:76	\xff\x0e
+SPACESHP.C:101	dock  [en@0x2934c unpaired]
+UNITAI.C:1207	unit_ai_move: AX left by drop_u_stack
+UNITS.C:326	create_unit: townbuf[-1].owner
+WORLDGEN.C:700	gen_terrain_at: terrain_map past its end
+WORLDGEN.C:785	pal  [en@0x2819c unpaired]
