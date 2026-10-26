@@ -41,7 +41,7 @@ Current result: 1170/1198 mapped (621 table, 506 gap, 43 interp).
 
 ## Applying
 
-    git checkout -- src/game
+    git checkout c6ea308 -- src/game      # the English civd base
     python tools/localization/make-mapping.py --en <EN EXE> --ru civ/CIV.EXE
     python tools/localization/apply-translation.py
 
