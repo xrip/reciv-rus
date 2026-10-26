@@ -1225,10 +1225,10 @@ int unit_ai_move(int player, int unit)
                     armydata[player][unit].visibility |= 1 << civnow;
                     map_center(civnow, tx1, ty1);
                     message_mode = 3;
-                    strcpy(msgtext, "Barbarian raiding party\nlands near ");
+                    strcpy(msgtext, "\x82\xA0\xE0\xA2\xA0\xE0\xEB\xB0\xA3\xE0\xA0\xA1\xEF\xE2\xB0\xE1\xA5\xAB\xA5\xAD\xA8\xEF\n\xAE\xAA\xAE\xAB\xAE\xB0\xA3\xAE\xE0\xC0\xC5\xB0"); /* reciv-ru */
                     home = near_city(tx1, ty1);
                     append_place_name(home);
-                    strcat(msgtext, "!\nCitizens are alarmed.\n");
+                    strcat(msgtext, "\xC2\n\x86\xA8\xE2\xA5\xAB\xA8\xB0\xA2\xE1\xE2\xE0\xA5\xA2\xAE\xA6\xA5\xAD\xEB\xC0\n"); /* reciv-ru */
                     show_msg(msgtext, 100, 32);
                 }
                 armydata[player][unit].visibility |= map_visible_to[tx1 * 50 + ty1];

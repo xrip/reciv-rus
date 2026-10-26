@@ -93,9 +93,9 @@ void game_menu_a(void)
 
     if (!turn_tick)
         dialog_dim = 0x10;
-    strcpy(msgtext, " Tax Rate\n Luxuries Rate\n FindCity\n Options\n Save Game\n REVOLUTION!\n \n Retire\n QUIT to DOS\n");
+    strcpy(msgtext, " \x8D\xA0\xAB\xAE\xA3\xA8\n \x90\xAE\xE1\xAA\xAE\xE8\xEC\n \x8D\xA0\xA9\xE2\xA8 \xA3\xAE\xE0\xAE\xA4\n \x8F\xA0\xE0\xA0\xAC\xA5\xE2\xE0\xEB\n \x91\xAE\xE5\xE0\xA0\xAD\xA8\xE2\xEC\xE1\xEF\n \x90\x85\x82\x8E\x8B\x9E\x96\x88\x9F\n \n \x8D\xA0 \xAF\xA5\xAD\xE1\xA8\xEE\n \x82\xEB\xE5\xAE\xA4 \xA2 DOS\n"); /* reciv-ru */
     if (game_flags & 0x100)
-        strcat(msgtext, " View Replay\n");
+        strcat(msgtext, " \x8F\xE0\xAE\xE1\xAC\xAE\xE2\xE0\xA5\xE2\xEC\n"); /* reciv-ru */
     choice_h = menu_choose(msgtext, 0x10, 8);
     repaint();
     switch (choice_h) {
@@ -112,7 +112,7 @@ void game_menu_a(void)
         cmd_code = 0x3f;
         break;
     case 3:
-        strcpy(msgtext, "Options:\n Instant Advice\n AutoSave\n End of Turn\n Animations\n Sound\n Enemy Moves\n Civilopedia Text\n Palace\n");
+        strcpy(msgtext, "\x8F\xA0\xE0\xA0\xAC\xA5\xE2\xE0\xEB:\n \x84\xA0\xE2\xEC \xE1\xAE\xA2\xA5\xE2\n \x80\xA2\xE2\xAE\x91\xAE\xE5\xE0. \n \x8A\xAE\xAD\xA5\xE6 \x95\xAE\xA4\xA0\n \x80\xAD\xA8\xAC\xA0\xE6\xA8\xEF  \n \x87\xA2\xE3\xAA\xA8\n \x95\xAE\xA4\xEB \xA2\xE0\xA0\xA3\xAE\xA2\n \x92\xA5\xAA\xE1\xE2 \xE6\xA8\xA2\xA8\xAB\xAE\xAF\xA5\xA4\xA8\xA8\n \x84\xA2\xAE\xE0\xA5\xE6\n"); /* reciv-ru */
         do {
             marked_mask = debug;
             choice_h = menu_choose(msgtext, 0x18, 0x10);
@@ -152,29 +152,29 @@ void unit_orders_menu(int p, int u)
     oy = unit_tab[p][u].y;
     tileflags = map_flags(ox, oy);
     ter = terrain_at(ox, oy);
-    strcat(msgtext, " No Orders \217space\n");
+    strcat(msgtext, " \x8F\xE0\xAE\xAF\xE3\xE1\xE2\xA8\xE2\xEC space\n"); /* reciv-ru */
     keybuf[pos++] = ' ';
     dialog_dim = 0;
     if (unit_tab[p][u].type == 0) {
-        strcat(msgtext, (tileflags & 1) ? " Add to City \217b\n" : " Found New City \217b\n");
+        strcat(msgtext, (tileflags & 1) ? " \x8E\xA1\xAE\xE1\xAD\xAE\xA2\xA0\xE2\xEC\xE1\xEF b\n" : " \x8E\xE1\xAD\xAE\xA2\xA0\xE2\xEC \xA3\xAE\xE0\xAE\xA4  b\n"); /* reciv-ru */
         keybuf[pos++] = 'b';
         if (!(tileflags & 8)) {
-            strcat(msgtext, " Build Road \217r\n");
+            strcat(msgtext, " \x84\xAE\xE0\xAE\xA3\xA0  r\n"); /* reciv-ru */
             keybuf[pos++] = 'r';
         } else if (!(tileflags & 0x10)) {
             if (has_tech(p, 0x31)) {
-                strcat(msgtext, " Build RailRoad \217r\n");
+                strcat(msgtext, " \x86\xA5\xAB\xA5\xA7\xAD. \xA4\xAE\xE0\xAE\xA3\xA0  r\n"); /* reciv-ru */
                 keybuf[pos++] = 'r';
             }
         }
         if (!(tileflags & 2)) {
             if (work_rules[ter].irrigate == -2) {
-                strcat(msgtext, " Build Irrigation");
+                strcat(msgtext, " \x8C\xA5\xAB\xA8\xAE\xE0\xA0\xE6\xA8\xEF \xA7\xA5\xAC\xAB\xA8"); /* reciv-ru */
                 if (!build_ok(ox, oy))
                     dialog_dim |= 1 << pos;
             } else {
                 if (work_rules[ter].irrigate >= 0) {
-                    strcat(msgtext, " Change to ");
+                    strcat(msgtext, " \x88\xA7\xAC\xA5\xAD\xA8\xE2\xEC"); /* reciv-ru */
                     strcat(msgtext, terrains[terrain_map[work_rules[ter].irrigate]].name);
                 }
             }
@@ -185,10 +185,10 @@ void unit_orders_menu(int p, int u)
         }
         if (!(tileflags & 4)) {
             if (work_rules[ter].mine <= -2)
-                strcat(msgtext, " Build Mines");
+                strcat(msgtext, " \x98\xA0\xE5\xE2\xEB "); /* reciv-ru */
             else {
                 if (work_rules[ter].mine >= 0) {
-                    strcat(msgtext, " Change to ");
+                    strcat(msgtext, " \x88\xA7\xAC\xA5\xAD\xA8\xE2\xEC"); /* reciv-ru */
                     strcat(msgtext, terrains[terrain_map[work_rules[ter].mine]].name);
                 }
             }
@@ -198,42 +198,42 @@ void unit_orders_menu(int p, int u)
             }
         }
         if (tileflags & 0x40) {
-            strcat(msgtext, " Clean up Pollution \217p\n");
+            strcat(msgtext, " \x93\xA1\xE0\xA0\xE2\xEC \xA7\xA0\xA3\xE0\xEF\xA7\xAD\xA5\xAD\xA8\xA5  p\n"); /* reciv-ru */
             keybuf[pos++] = 'p';
         }
     }
     if (unit_tab[p][u].type == 0) {
-        strcat(msgtext, " Build Fortress \217f\n");
+        strcat(msgtext, " \x91\xE2\xE0\xAE\xA8\xE2\xEC \x94\xAE\xE0\xE2  f\n"); /* reciv-ru */
         if (!has_tech(p, 0x2d))
             dialog_dim |= 1 << pos;
     } else if (utypes[unit_tab[p][u].type].domain == 0) {
-        strcat(msgtext, " Fortify \217f\n");
+        strcat(msgtext, " \x8E\xAA\xAE\xAF\xA0\xE2\xEC  f\n"); /* reciv-ru */
     }
     if (utypes[unit_tab[p][u].type].domain == 0)
         keybuf[pos++] = 'f';
-    strcat(msgtext, " Wait \217w\n Sentry \217s\n GoTo\n");
+    strcat(msgtext, " \x86\xA4\xA0\xE2\xEC w\n \x91\xE2\xE0\xA0\xA6   s\n \x88\xA4\xE2\xA8\n"); /* reciv-ru */
     keybuf[pos++] = 'w';
     keybuf[pos++] = 's';
     keybuf[pos++] = 'g';
     if (tileflags & 0x1e) {
         ty = unit_tab[p][u].type;
         if (ty < 0x1a && ty != 0xe) {
-            strcat(msgtext, " Pillage \217P\n");
+            strcat(msgtext, " \x90\xA0\xA7\xA1\xAE\xA9 P\n"); /* reciv-ru */
             keybuf[pos++] = 'P';
         }
     }
     if (tileflags & 1) {
-        strcat(msgtext, " Home City \217h\n");
+        strcat(msgtext, " \x8F\xE0\xAE\xAF\xA8\xE1\xA0\xE2\xEC h\n"); /* reciv-ru */
         keybuf[pos++] = 'h';
     }
     ty = unit_tab[p][u].type;
     if (utypes[ty].w9 == 5 || ty == 0x17) {
         if (unit_tab[p][u].cargo != -1) {
-            strcat(msgtext, " Unload \217u\n");
+            strcat(msgtext, " \x90\xA0\xA7\xA3\xE0\xE3\xA7\xA8\xE2\xEC u\n"); /* reciv-ru */
             keybuf[pos++] = 'u';
         }
     }
-    strcat(msgtext, " \n Disband Unit \217D\n");
+    strcat(msgtext, " \n \x90\xA0\xE1\xAF\xE3\xE1\xE2\xA8\xE2\xEC  D\n"); /* reciv-ru */
     keybuf[pos++] = 0;
     keybuf[pos++] = 'D';
     ret = menu_choose(msgtext, 0x48, 8);
@@ -247,8 +247,8 @@ void advisor_menu(void)
 {
     int unused_word_c, choice_h;
 
-    strcpy(msgtext, " City Status (F1)\n Military Advisor (F2)\n Intelligence Advisor (F3)\n Attitude Advisor (F4)\n");
-    strcat(msgtext, " Trade Advisor (F5)\n Science Advisor (F6)\n");
+    strcpy(msgtext, " \x91\xAE\xE1\xE2\xAE\xEF\xAD\xA8\xA5 (F1)\n \x82\xAE\xA5\xAD\xAD\xEB\xA9 \xE1\xAE\xA2\xA5\xE2\xAD\xA8\xAA (F2)\n \x91\xAE\xA2\xA5\xE2\xAD\xA8\xAA \xAF\xAE \xA8\xAD. \xA4\xA5\xAB\xA0\xAC (F3)\n \x8E\xA1\xE9\xA5\xA5 \xAF\xAE\xAB\xAE\xA6\xA5\xAD\xA8\xA5 (F4)\n"); /* reciv-ru */
+    strcat(msgtext, " \x92\xAE\xE0\xA3.\x91\xAE\xA2\xA5\xE2\xAD\xA8\xAA (F5)\n \x93\xE7\xA5\xAD\xEB\xA9 \x91\xAE\xA2\xA5\xE2 (F6)\n"); /* reciv-ru */
     choice_h = menu_choose(msgtext, 0x70, 8);
     mouse_off();
     menu_end();
@@ -285,8 +285,8 @@ void world_menu(void)
 
     if (!(game_flags & 0xfe00))
         dialog_dim = 0x20;
-    strcpy(msgtext, " Wonders of the World (F7)\n Top 5 Cities (F8)\n Civilization Score (F9)\n");
-    strcat(msgtext, " World Map (F10)\n Demographics\n SpaceShips\n");
+    strcpy(msgtext, " \x97\xE3\xA4\xA5\xE1\xA0 \x91\xA2\xA5\xE2\xA0 (F7)\n \x8B\xE3\xE7\xE8\xA8\xA5 5 \xA3\xAE\xE0\xAE\xA4\xAE\xA2 (F8)\n \x93\xE0\xAE\xA2\xA5\xAD\xEC \xE6\xA8\xA2\xA8\xAB\xA8\xA7\xA0\xE6\xA8\xA8 (F9)\n"); /* reciv-ru */
+    strcat(msgtext, " \x8A\xA0\xE0\xE2\xA0 \x8C\xA8\xE0\xA0 (F10)\n \x84\xA5\xAC\xAE\xA3\xE0\xA0\xE4\xA8\xEF\n \x8A\xAE\xE1.\x8A\xAE\xE0\xA0\xA1\xAB\xEC\n"); /* reciv-ru */
     choice_h = menu_choose(msgtext, 0x90, 8);
     mouse_off();
     menu_end();
@@ -318,8 +318,8 @@ void civilopedia_menu(void)
 {
     int choice_h;
 
-    strcpy(msgtext, " Complete\n Civilization Advances\n City Improvements\n Military Units\n Terrain Types\n");
-    strcat(msgtext, " Miscellaneous\n");
+    strcpy(msgtext, " \x8F\xAE\xAB\xAD\xA0\xEF\n \x84\xAE\xE1\xE2\xA8\xA6\xA5\xAD\xA8\xEF \xE6\xA8\xA2\xA8\xAB\xA8\xA7\xA0\xE6\xA8\xA8\n \x90\xA0\xA7\xA2\xA8\xE2\xA8\xA5 \xA3\xAE\xE0\xAE\xA4\xAE\xA2\n \x82\xAE\xA9\xE1\xAA\xA0\n \x92\xA8\xAF\xEB \xE2\xA5\xE0\xE0\xA8\xE2\xAE\xE0\xA8\xA9\n"); /* reciv-ru */
+    strcat(msgtext, " \x8F\xE0\xAE\xE7\xA5\xA5\n"); /* reciv-ru */
     choice_h = menu_choose(msgtext, 0xb6, 8);
     if (choice_h != -1) {
         civilopedia(0, choice_h - 1);

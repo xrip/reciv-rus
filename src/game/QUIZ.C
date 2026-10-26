@@ -72,17 +72,17 @@ int a;
     colour = vga_modes ? 0xfd : 0x0f;
     rect_fill(scrbuf, 0, 0, 320, 200, colour);
     restore_palette("iconpg1.pal");
-    draw_text("CIVILIZATION QUIZ", 160, 8, 0);
+    draw_text("\x8A\xE3\xAF\xA8\xAB\xA8 \xAB\xA8 \xA2\xEB \xA8\xA3\xE0\xE3", 160, 8, 0); /* reciv-ru */
     msgtext[0] = 0;
     named_msg(a ? "*QUIZ" : "*QUIZ2");
     ypos = news_effect(99, 48, 24, 12) + 8;
-    draw_string("Which civilization advances are required to learn", 24, ypos, 0);
+    draw_string("\x8A\xA0\xAA\xAE\xA5 \xA4\xAE\xE1\xE2\xA8\xA6\xA5\xAD\xA8\xA5 \xE6\xA8\xA2\xA8\xAB\xA8\xA7\xA0\xE6\xA8\xA8 \xAD\xE3\xA6\xAD\xAE \xA4\xAB\xEF:", 24, ypos, 0); /* reciv-ru */
     ypos += 8;
-    draw_string("the advance pictured below.", 24, ypos, 0);
+    draw_string("\xAF\xAE\xAA\xA0\xA7\xA0\xAD\xAD\xAE\xA3\xAE \xAD\xA8\xA6\xA5.", 24, ypos, 0); /* reciv-ru */
     ypos += 8;
     blit_centred(tile % 3 * 111 + 1, tile % 9 / 3 * 69 + 1, 110, 68, 58, ypos + 48);
     adv1 = (advance_pages[topic] - 1) / 10;
-    strcpy(msgtext, "Pages ");
+    strcpy(msgtext, "\xAF\xAE\xAA\xA0\xA7\xA0\xAD\xAD\xAE\xA3\xAE \xAD\xA8\xA6\xA5."); /* reciv-ru */
     strcat(msgtext, itoa(10 * adv1 + 1, nstr, 10));
     strcat(msgtext, "-");
     strcat(msgtext, itoa(10 * adv1 + 10, nstr, 10));
@@ -93,7 +93,7 @@ int a;
     n = 0;
     strcpy(msgtext, " ");
     do {
-        strcpy(least, "zzz");
+        strcpy(least, "\x91\xE2\xE0. "); /* reciv-ru */
         next = -1;
         for (k = 0; k < 0x48; k++) {
             if (((char) (k + topic) & 15) && !(req1 == advances[k].prereq1 || req2 == advances[k].prereq1 || topic == advances[k].prereq1) && !(req1 == advances[k].prereq2 || req2 == advances[k].prereq2 || topic == advances[k].prereq2))

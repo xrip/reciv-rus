@@ -53,28 +53,28 @@ void news_box(int city)
     switch (rand_scaled(4)) {
     case 0:
         append_place_name(city);
-        strcat(msgtext, " Weekly");
+        strcat(msgtext, "\xB0\x91\xA2\xA5\xE0\xE5\xE3"); /* reciv-ru */
         break;
     case 1:
         append_place_name(city);
-        strcat(msgtext, " Today");
+        strcat(msgtext, "\xB0\x82\xE7\xA5\xE0\xA0"); /* reciv-ru */
         break;
     case 2:
-        strcpy(msgtext, "The ");
+        strcpy(msgtext, "    "); /* reciv-ru */
         append_place_name(city);
-        strcat(msgtext, " Times");
+        strcat(msgtext, "\xB0\x91\xA1\xAE\xAA\xE3"); /* reciv-ru */
         break;
     case 3:
-        strcpy(msgtext, "The ");
+        strcpy(msgtext, "    "); /* reciv-ru */
         append_place_name(city);
-        strcat(msgtext, " Tribune");
+        strcat(msgtext, "\xB0\x82\xA5\xE7\xA5\xE0\xAE\xAC"); /* reciv-ru */
         break;
     }
     n = string_width(msgtext);
     if (n > 300) {
         msgtext[0] = 0;
         append_place_name(city);
-        strcat(msgtext, " News");
+        strcat(msgtext, "\xB0\x84\xAD\xA5\xAC"); /* reciv-ru */
         n = string_width(msgtext);
     }
     if (n < 200) {
@@ -82,15 +82,15 @@ void news_box(int city)
         draw_string_dim(",-.", 268, 11, 0);
     }
     draw_text(msgtext, 160, 11, 0);
-    strcpy(msgtext, rand_scaled(2) ? "EXTRA!" : "FLASH");
+    strcpy(msgtext, rand_scaled(2) ? "\xBD\xBE\xBF" : ""); /* reciv-ru */
     scrbuf->font = 3;
     draw_string_dim(msgtext, 6, 3, 0);
     draw_string_dim(msgtext, 272, 3, 0);
     scrbuf->font = 1;
     msgtext[0] = 0;
-    strcat(msgtext, "10 cents");
+    strcat(msgtext, "10 \xE0\xE3\xA1."); /* reciv-ru */
     draw_string(msgtext, 272, 28, 0);
-    strcpy(msgtext, "January 1, ");
+    strcpy(msgtext, "1 \xEF\xAD\xA2\xA0\xE0\xEF, "); /* reciv-ru */
     format_year();
     draw_string(msgtext, 8, 28, 0);
     scrbuf->font = 2;
@@ -101,7 +101,7 @@ void news_box(int city)
     draw_text(msgtext, 160, 3, 0);
     scrbuf->font = 1;
     if (first != -2) {
-        menu_dialog("Press any key to continue.\n", 80, 128);
+        menu_dialog("\x8D\xA0\xA6\xAC\xA8\xE2\xA5 \xAB\xEE\xA1\xE3\xEE \xAA\xAB\xA0\xA2\xA8\xE8\xE3.\n", 80, 128); /* reciv-ru */
         blit(back_page, 0, 0, 320, 200, scrbuf, 0, 0);
     }
     mouse_on();

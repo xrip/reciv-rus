@@ -110,7 +110,7 @@ void notice_a(char *topic)
         rect_fill(scrbuf, 0x38, 0x10, 0xd0, n * 6 + 10, 2);
         draw_box(0x38, 0x10, 0xd0, n * 6 + 10, 10);
         scrbuf->font = 2;
-        draw_text("--- Civilization Note ---", 0xa0, 0x13, 0);
+        draw_text("- \x8F\xAE\xA4\xE1\xAA\xA0\xA7\xAA\xA0 \x96\xA8\xA2\xA8\xAB\xA8\xA7\xA0\xE6\xA8\xA8 -", 0xa0, 0x13, 0); /* reciv-ru */
         news_effect(0x20, 0x40, 0x19, 0xf);
         scrbuf->font = 1;
         ad_wait();
@@ -135,7 +135,7 @@ void notice_b(char *topic)
         rect_fill(scrbuf, 0x38, 0x10, 0xd0, n * 6 + 10, 4);
         draw_box(0x38, 0x10, 0xd0, n * 6 + 10, 12);
         scrbuf->font = 2;
-        draw_text("--- Civilization Note ---", 0xa0, 0x13, 0);
+        draw_text("A)\x91\xAE\xA2\xA5\xE2\xAD\xA8\xAA\xA8", 0xa0, 0x13, 0); /* reciv-ru */
         news_effect(0x20, 0x40, 0x19, 0xf);
         scrbuf->font = 1;
         ad_wait();

@@ -228,7 +228,7 @@ test_turn:
         }
     }
 
-    draw_shadowed("CIVILIZATION POWERGraph", 100, 2, 15);
+    draw_shadowed("\x93\xE0\xAE\xA2\xA5\xAD\xEC \xE6\xA8\xA2\xA8\xAB\xA8\xA7\xA0\xE6\xA8\xA8", 100, 2, 15); /* reciv-ru */
 
     for (p = 1; p < 8; p++) {
         if (!(players & (1 << p)) && p > civ_total + 1)
@@ -279,24 +279,24 @@ void wonders(void)
                 ad_wait();
             }
             rect_fill(scrbuf, 0, 0, 320, 200, 3);
-            draw_shadowed("The Wonders of the World", 100, 12, 15);
+            draw_shadowed("\x97\xE3\xA4\xA5\xE1\xA0 \x91\xA2\xA5\xE2\xA0", 100, 12, 15); /* reciv-ru */
             y = 32;
         }
         c = marvel_site[i];
         owner = townbuf[c].owner;
         msgtext[0] = 0;
         if (i <= 7) {
-            strcat(msgtext, "The ");
+            strcat(msgtext, "    "); /* reciv-ru */
         }
         strcat(msgtext, achievement_names[i].name);
         if (marvel_site[i] != 128) {
-            strcat(msgtext, i <= 7 ? " of " : " in ");
+            strcat(msgtext, i <= 7 ? "    " : " \xA2: "); /* reciv-ru */
             append_place_name(c);
             strcat(msgtext, ". (");
             strcat(msgtext, civ_adjectives[owner]);
             strcat(msgtext, ")");
         } else {
-            strcat(msgtext, " (Destroyed)");
+            strcat(msgtext, " (\x90\xA0\xA7\xE0\xE3\xE8\xA5\xAD\xAE)"); /* reciv-ru */
             owner = 0;
         }
         draw_box(8, y, 303, 15, civ_colours[owner]);
@@ -312,28 +312,28 @@ void wonders(void)
 }
 
 char *historians[] = {
-    "Herodotus",
-    "Pliny",
-    "Toynbee",
-    "Gibbon"
+    "\x83\xA5\xE0\xAE\xA4\xAE\xE2", /* reciv-ru */
+    "\x8B\xA5\xAD\xA8\xAD", /* reciv-ru */
+    "\x92\xAE\xA9\xAD\xA1\xA8", /* reciv-ru */
+    "\x83\xA8\xA1\xA1\xAE\xAD" /* reciv-ru */
 };
 
 char *ratings[] = {
     "Glorious",
-    "Great",
-    "Fine",
-    "Mediocre",
-    "Puny",
-    "Pathetic",
+    "\x91\xE2\xAE\xA9\xAA\xA8\xA5", /* reciv-ru */
+    "\x8A\xE0\xA0\xE1\xA8\xA2\xEB\xA5", /* reciv-ru */
+    "\x8F\xAE\xE1\xE0\xA5\xA4\xE1\xE2\xA2\xA5\xAD\xAD\xEB\xA5", /* reciv-ru */
+    "\x81\xA5\xA4\xAD\xEB\xA5", /* reciv-ru */
+    "\x8D\xA5\xE1\xE7\xA0\xE1\xE2\xAD\xEB\xA5", /* reciv-ru */
     "Hopeless"
 };
 
 char *categories[] = {
-    "WEALTHIEST",
-    "MOST POWERFUL",
-    "MOST ADVANCED",
-    "HAPPIEST",
-    "LARGEST"
+    "\x81\x8E\x83\x80\x92\x85\x89\x98\x88\x85", /* reciv-ru */
+    "\x91\x88\x8B\x9C\x8D\x85\x89\x98\x88\x85", /* reciv-ru */
+    "\x91\x80\x8C\x9B\x85 \x90\x80\x87\x82\x88\x92\x9B\x85", /* reciv-ru */
+    "\x91\x97\x80\x91\x92\x8B\x88\x82\x9B\x85", /* reciv-ru */
+    "\x81\x8E\x8B\x9C\x98\x88\x85" /* reciv-ru */
 };
 
 /* Function 6: [09B9, 0D6D) - Historian Epic History Ranking Report */
@@ -346,11 +346,11 @@ void historian_report(void)
     cat = rand_scaled(5);
     rect_fill(scrbuf, 0, 0, 320, 200, 3);
     strcpy(msgtext, historians[rand_scaled(4)]);
-    strcat(msgtext, " completes his epic history:");
+    strcat(msgtext, " \xA7\xA0\xA2\xA5\xE0\xE8\xA8\xAB \xE1\xA2\xAE\xA9 \xAC\xA0\xAD\xE3\xE1\xAA\xE0\xA8\xAF\xE2:"); /* reciv-ru */
     draw_text(msgtext, 160, 4, 15);
     strcpy(msgtext, "'The ");
     strcat(msgtext, categories[cat]);
-    strcat(msgtext, " Civilizations in the World'");
+    strcat(msgtext, " \xE6\xA8\xA2\xA8\xAB\xA8\xA7\xA0\xE6\xA8\xA8 \xA2 \xAC\xA8\xE0\xA5'"); /* reciv-ru */
     draw_text(msgtext, 160, 12, 15);
 
     for (i = 1; i < 8; i++)
@@ -410,9 +410,9 @@ test_p:
 
     msgtext[0] = 0;
     strcat(msgtext, itoa(n + 1, nstr, 10));
-    strcat(msgtext, ". The ");
+    strcat(msgtext, "\x82\xA5\xAB\xA8\xAA\xA8\xA5"); /* reciv-ru */
     strcat(msgtext, ratings[n]);
-    strcat(msgtext, " Civilization of the ");
+    strcat(msgtext, " \x96\xA8\xA2\xA8\xAB\xA8\xA7\xA0\xE6\xA8\xA8: "); /* reciv-ru */
     strcat(msgtext, civ_names[who]);
     strcat(msgtext, ".");
     if ((treaties[civnow][who] & 0x40) || civnow == who || cur_tier == 0) {
@@ -524,7 +524,7 @@ test_city:
     }
 
     y = 24;
-    draw_shadowed("Approval Rating:", 8, y, 15);
+    draw_shadowed("\x8F\xAE\xA4\xA4\xA5\xE0\xA6\xA8\xA2\xA0\xEE\xE2:", 8, y, 15); /* reciv-ru */
     for (i = 1; i < 8; i++) {
         rank[i] = (50 * app[i]) / population[i];
         if (i == player) {
@@ -537,7 +537,7 @@ test_city:
     demographic_rank(rank, y, "%");
     y += 12;
 
-    draw_shadowed("Population:", 8, y, 15);
+    draw_shadowed("\x8D\xA0\xE1\xA5\xAB\xA5\xAD\xA8\xA5:", 8, y, 15); /* reciv-ru */
     for (i = 1; i < 8; i++) {
         msgtext[0] = 0;
         rank[i] = count_weighted_units(i);
@@ -548,13 +548,13 @@ test_city:
     demographic_rank(rank, y, "0000");
     y += 12;
 
-    draw_shadowed("GNP:", 8, y, 15);
+    draw_shadowed("\x82\x8D\x8F:", 8, y, 15); /* reciv-ru */
     for (i = 1; i < 8; i++) {
         msgtext[0] = 0;
         rank[i] = income[i];
         msgtext[0] = 0;
         strcat(msgtext, itoa(rank[i], nstr, 10));
-        strcat(msgtext, " million $");
+        strcat(msgtext, " \xAC\xAB\xAD. $"); /* reciv-ru */
         if (i == player) {
             draw_string(msgtext, 104, y, 15);
         }
@@ -562,26 +562,26 @@ test_city:
     demographic_rank(rank, y, "M$");
     y += 12;
 
-    draw_shadowed("Mfg. Goods:", 8, y, 15);
+    draw_shadowed("\x92\xAE\xA2\xA0\xE0\xEB:", 8, y, 15); /* reciv-ru */
     for (i = 1; i < 8; i++) {
         rank[i] = mfg[i];
         if (i == player) {
             msgtext[0] = 0;
             strcat(msgtext, itoa(rank[i], nstr, 10));
-            strcat(msgtext, " Mtons");
+            strcat(msgtext, " M\xE2\xAE\xAD\xAD"); /* reciv-ru */
             draw_string(msgtext, 104, y, 15);
         }
     }
-    demographic_rank(rank, y, " Mtons");
+    demographic_rank(rank, y, " M\xE2\xAE\xAD\xAD"); /* reciv-ru */
     y += 12;
 
-    draw_shadowed("Land Area:", 8, y, 15);
+    draw_shadowed("\x8F\xAB\xAE\xE9\xA0\xA4\xEC:", 8, y, 15); /* reciv-ru */
     for (i = 1; i < 8; i++) {
         msgtext[0] = 0;
         rank[i] = areas[i];
         msgtext[0] = 0;
         strcat(msgtext, itoa(rank[i], nstr, 10));
-        strcat(msgtext, ",000 sq.miles");
+        strcat(msgtext, ",000 \xAA\xA2.\xAC\xA8\xAB\xEC"); /* reciv-ru */
         if (i == player) {
             draw_string(msgtext, 104, y, 15);
         }
@@ -589,7 +589,7 @@ test_city:
     demographic_rank(rank, y, ",000");
     y += 12;
 
-    draw_shadowed("Literacy:", 8, y, 15);
+    draw_shadowed("\x8A\xE3\xAB\xEC\xE2\xE3\xE0\xA0:", 8, y, 15); /* reciv-ru */
     for (i = 1; i < 8; i++) {
         rank[i] = ((population[i] * 2 + lib[i]) * 2) / population[i];
         if (has_tech(i, 0)) {
@@ -615,7 +615,7 @@ test_city:
     demographic_rank(rank, y, "%");
     y += 12;
 
-    draw_shadowed("Disease:", 8, y, 15);
+    draw_shadowed("\x81\xA5\xA4\xE1\xE2\xA2\xA8\xEF", 8, y, 15); /* reciv-ru */
     for (i = 1; i < 8; i++) {
         rank[i] = (50 * population[i]) / (population[i] + life[i]);
         if (has_tech(i, 10)) {
@@ -632,34 +632,34 @@ test_city:
     demographic_rank(rank, -y, "%");
     y += 12;
 
-    draw_shadowed("Pollution:", 8, y, 15);
+    draw_shadowed("\x82\xEB\xA1\xE0\xAE\xE1\xEB:", 8, y, 15); /* reciv-ru */
     for (i = 1; i < 8; i++) {
         rank[i] = pol[i];
         life[i] -= (10 * pol[i]) / population[i];
         if (i == player) {
             msgtext[0] = 0;
             strcat(msgtext, itoa(rank[i], nstr, 10));
-            strcat(msgtext, "0 tons/year");
+            strcat(msgtext, "0 \xE2\xAE\xAD\xAD/\xA3\xAE\xA4"); /* reciv-ru */
             draw_string(msgtext, 104, y, 15);
         }
     }
-    demographic_rank(rank, -y, "0 tons");
+    demographic_rank(rank, -y, "0 \xE2\xAE\xAD\xAD"); /* reciv-ru */
     y += 12;
 
-    draw_shadowed("Life Expectancy:", 8, y, 15);
+    draw_shadowed("\x91\xE0\xAE\xAA \xA6\xA8\xA7\xAD\xA8 (\xE1\xE0):", 8, y, 15); /* reciv-ru */
     for (i = 1; i < 8; i++) {
         rank[i] = clamp(life[i], 20, 99);
         if (i == player) {
             msgtext[0] = 0;
             strcat(msgtext, itoa(rank[i], nstr, 10));
-            strcat(msgtext, " years");
+            strcat(msgtext, " \xAB\xA5\xE2"); /* reciv-ru */
             draw_string(msgtext, 104, y, 15);
         }
     }
-    demographic_rank(rank, y, " yrs");
+    demographic_rank(rank, y, " \xAB\xA5\xE2"); /* reciv-ru */
     y += 12;
 
-    draw_shadowed("Family Size:", 8, y, 15);
+    draw_shadowed("\x91\xA5\xAC\xEC\xA8 (\xE1\xE0):", 8, y, 15); /* reciv-ru */
     for (i = 1; i < 8; i++) {
         rank[i] = (40 * arms[i]) / population[i] + 20;
         if (i == player) {
@@ -667,7 +667,7 @@ test_city:
             strcat(msgtext, itoa(rank[i] / 10, nstr, 10));
             strcat(msgtext, ".");
             strcat(msgtext, itoa(rank[i] % 10, nstr, 10));
-            strcat(msgtext, " children");
+            strcat(msgtext, " \xA4\xA5\xE2\xA5\xA9"); /* reciv-ru */
             draw_string(msgtext, 104, y, 15);
         }
         rank[i] /= 10;
@@ -675,20 +675,20 @@ test_city:
     demographic_rank(rank, y, "");
     y += 12;
 
-    draw_shadowed("Military Service:", 8, y, 15);
+    draw_shadowed("\x91\xAB\xE3\xA6\xA1\xA0 \xA2 \xA0\xE0\xAC\xA8\xA8:", 8, y, 15); /* reciv-ru */
     for (i = 1; i < 8; i++) {
         rank[i] = (10 * troops_total[i]) / population[i];
         if (i == player) {
             msgtext[0] = 0;
             strcat(msgtext, itoa(rank[i], nstr, 10));
-            strcat(msgtext, " years");
+            strcat(msgtext, " \xAB\xA5\xE2"); /* reciv-ru */
             draw_string(msgtext, 104, y, 15);
         }
     }
-    demographic_rank(rank, y, " yrs");
+    demographic_rank(rank, y, " \xAB\xA5\xE2"); /* reciv-ru */
     y += 12;
 
-    draw_shadowed("Annual Income:", 8, y, 15);
+    draw_shadowed("\x83\xAE\xA4\xAE\xA2\xAE\xA9 \xA4\xAE\xE5\xAE\xA4:", 8, y, 15); /* reciv-ru */
     for (i = 1; i < 8; i++) {
         if (30000 / (tech_count[i] + 1) > income[i]) {
             rank[i] = (income[i] * tech_count[i]) / population[i];
@@ -698,14 +698,14 @@ test_city:
         if (i == player) {
             msgtext[0] = 0;
             strcat(msgtext, itoa(rank[i], nstr, 10));
-            strcat(msgtext, "$ per capita");
+            strcat(msgtext, "$ \xAD\xA0 \xE1\xE2\xAE\xAB\xA8\xE6\xE3"); /* reciv-ru */
             draw_string(msgtext, 104, y, 15);
         }
     }
     demographic_rank(rank, y, "$");
     y += 12;
 
-    draw_shadowed("Productivity:", 8, y, 15);
+    draw_shadowed("\x8F\xE0\xAE\xA8\xA7\xA2\xAE\xA4\xE1\xE2\xA2\xAE:", 8, y, 15); /* reciv-ru */
     for (i = 1; i < 8; i++) {
         rank[i] = (10 * val[i]) / population[i];
         if (i == player) {

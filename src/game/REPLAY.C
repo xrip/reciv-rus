@@ -67,7 +67,7 @@ void replay(void)
 
     do {
         if (replay_auto == 0)
-            replay_mode = show_msg("See Replay?\n No replay\n Quick Replay\n Complete Replay\n Write Replay to Disk\n", 100, 80);
+            replay_mode = show_msg("\x8F\xAE\xA2\xE2\xAE\xE0\xA8\xE2\xEC?\n \x8D\xA5 \xAD\xA0\xA4\xAE\n \x8A\xE0\xA0\xE2\xAA\xA8\xA9 \xAF\xAE\xA2\xE2\xAE\xE0\n \x8F\xAE\xAB\xAD\xEB\xA9 \xAF\xAE\xA2\xE2\xAE\xE0\n \x87\xA0\xAF\xA8\xE1\xA0\xE2\xEC \xAF\xAE\xA2\xE2\xAE\xE0 \xAD\xA0 \xA4\xA8\xE1\xAA\n", 100, 80); /* reciv-ru */
         else
             replay_mode = 4;
         if (replay_mode <= 0)
@@ -107,7 +107,7 @@ void replay(void)
             replay_civ = -1;
             msgtext[0] = 0;
             strcat(msgtext, itoa(abs(year), nstr, 10));
-            strcat(msgtext, year < 0 ? " BC" : " AD");
+            strcat(msgtext, year < 0 ? "\xB0\xA4\xED" : "\xB0\xAD\xED"); /* reciv-ru */
             strcat(msgtext, ": ");
             switch (type) {
             case 1:
@@ -119,17 +119,17 @@ void replay(void)
                 if (replay_civ != 255) {
                     strcat(msgtext, civ_names[replay_civ]);
                     if (type == 1) {
-                        strcat(msgtext, " found the city of ");
+                        strcat(msgtext, "\xB0\xAE\xE1\xAD\xAE\xA2\xA0\xAB\xA8\xB0\xA3\xAE\xE0\xAE\xA4\xB0"); /* reciv-ru */
                         replay_found(replay_civ, x, y);
                     } else {
-                        strcat(msgtext, " capture ");
+                        strcat(msgtext, "\xB0\xA2\xA7\xEF\xAB\xA8\xB0"); /* reciv-ru */
                         replay_owner(replay_civ, x, y);
                     }
                     copy_from_far(place_name[what], msgtext + strlen(msgtext), 13);
                     replay_line();
                 } else {
                     copy_from_far(place_name[what], msgtext + strlen(msgtext), 13);
-                    strcat(msgtext, " destroyed");
+                    strcat(msgtext, "\xB0\xE3\xAD\xA8\xE7\xE2\xAE\xA6\xA5\xAD"); /* reciv-ru */
                     replay_line();
                     replay_owner(-1, x, y);
                 }
@@ -141,7 +141,7 @@ void replay(void)
                 x = replay_log[p] >> 4;
                 y = replay_log[p++] & 0x0f;
                 strcat(msgtext, civ_names[x]);
-                strcat(msgtext, " declare war on ");
+                strcat(msgtext, "\xB0\xAE\xA1\xEA\xEF\xA2\xA8\xAB\xA8\xB0\xA2\xAE\xA9\xAD\xE3\xC5"); /* reciv-ru */
                 strcat(msgtext, civ_names[y]);
                 replay_line();
                 break;
@@ -149,7 +149,7 @@ void replay(void)
                 x = replay_log[p] >> 4;
                 y = replay_log[p++] & 0x0f;
                 strcat(msgtext, civ_names[x]);
-                strcat(msgtext, " make peace with ");
+                strcat(msgtext, "\xB0\xA7\xA0\xAA\xAB\xEE\xE7\xA8\xAB\xA8\xB0\xAC\xA8\xE0\xB0\xE1\xC5"); /* reciv-ru */
                 strcat(msgtext, civ_names[y]);
                 replay_line();
                 break;
@@ -157,7 +157,7 @@ void replay(void)
                 replay_civ = replay_log[p++];
                 y = replay_log[p++];
                 strcat(msgtext, civ_names[replay_civ]);
-                strcat(msgtext, " discover ");
+                strcat(msgtext, "\xB0\xAE\xE2\xAA\xE0\xEB\xAB\xA8\xB0"); /* reciv-ru */
                 strcat(msgtext, advances[y].name);
                 replay_line();
                 break;
@@ -165,7 +165,7 @@ void replay(void)
                 replay_civ = replay_log[p++];
                 y = replay_log[p++];
                 strcat(msgtext, civ_names[replay_civ]);
-                strcat(msgtext, " produce first ");
+                strcat(msgtext, "\xB0\xE1\xA4\xA5\xAB\xA0\xAB\xA8\xB0\xAF\xA5\xE0\xA2\xC0\xB0"); /* reciv-ru */
                 strcat(msgtext, utypes[y].name);
                 replay_line();
                 break;
@@ -181,9 +181,9 @@ void replay(void)
                 replay_civ = replay_log[p++];
                 y = replay_log[p++];
                 strcat(msgtext, civ_names[replay_civ]);
-                strcat(msgtext, " build ");
+                strcat(msgtext, "\xB0\xE1\xA4\xA5\xAB\xB0"); /* reciv-ru */
                 if (y <= 7)
-                    strcat(msgtext, "the ");
+                    strcat(msgtext, "\xB0\xAF\xAE\xE1\xE2\xE0\xB0"); /* reciv-ru */
                 strcat(msgtext, improvements[y + 24].name);
                 replay_line();
                 break;
@@ -195,9 +195,9 @@ void replay(void)
                 strcat(msgtext, civ_names[civnow]);
                 strcat(msgtext, ": ");
                 strcat(msgtext, itoa(x, nstr, 10));
-                strcat(msgtext, " cities; ");
+                strcat(msgtext, "\xB0\xA3\xAE\xE0\xAE\xA4\xA0\xC1\xB0"); /* reciv-ru */
                 format_total((y << 8) + z);
-                strcat(msgtext, " population");
+                strcat(msgtext, "\xB0\xAD\xA0\xE1\xA5\xAB\xA5\xAD\xA8\xA5"); /* reciv-ru */
                 replay_line();
                 break;
             case 12:
@@ -224,7 +224,7 @@ void replay(void)
                 replay_civ = replay_log[p++];
                 x = replay_log[p++];
                 strcat(msgtext, civ_adjectives[replay_civ]);
-                strcat(msgtext, " civilization destroyed by ");
+                strcat(msgtext, "\xB0\xE6\xA8\xA2\xA8\xAB\xA8\xA7\xA0\xE6\xA8\xEF \xE3\xAD\xA8\xE7\xE2\xAE\xA6\xA5\xAD\xA0: "); /* reciv-ru */
                 strcat(msgtext, civ_names[x]);
                 if (replay_mode == 4 && x == civnow)
                     conquest_scene(replay_civ, year);
@@ -432,11 +432,11 @@ void conquest_replay(void)
     replay();
     sound(civt[civ_tribe_of[civnow]].f4, 3);
     rect_fill(scrbuf, 18, 150, 284, 32, vga_modes ? 34 : 7);
-    strcpy(msgtext, "The entire world hails");
+    strcpy(msgtext, "\x8E\xAD\xB0\xA7\xA0\xE5\xA2\xA0\xE2\xA8\xAB\xB0\xA2\xA5\xE1\xEC\xB0\xAC\xA8\xE0\xC5\xB0"); /* reciv-ru */
     draw_text(msgtext, 160, 152, 20);
     draw_text(msgtext, 160, 151, vga_modes ? 23 : 15);
     strcpy(msgtext, leader_names[civnow]);
-    strcat(msgtext, " the CONQUEROR!");
+    strcat(msgtext, "\xB0\xA7\xA0\xA2\xAE\xA5\xA2\xA0\xE2\xA5\xAB\xEC\xC3"); /* reciv-ru */
     draw_text(msgtext, 160, 168, 20);
     draw_text(msgtext, 160, 167, vga_modes ? 23 : 15);
     repaint();
@@ -533,15 +533,15 @@ void conquest_scene(int civ, int year)
     while (timer_read() < 240)
         msgtext[0] = 0;
     strcat(msgtext, itoa(abs(year), nstr, 10));
-    strcat(msgtext, year < 0 ? " BC" : " AD");
+    strcat(msgtext, year < 0 ? "\xB0\xA4\xED" : "\xB0\xAD\xED"); /* reciv-ru */
     strcat(msgtext, ": ");
     strcat(msgtext, civ_names[civnow]);
-    strcat(msgtext, " destroy");
+    strcat(msgtext, "\xB0\xE3\xAD\xA8\xE7\xE2\xC0\xC5"); /* reciv-ru */
     draw_text(msgtext, 160, 152, 20);
     draw_text(msgtext, 160, 151, vga_modes ? 23 : 15);
-    strcpy(msgtext, "the ");
+    strcpy(msgtext, "\xB0\xAF\xAE\xE1\xE2\xE0\xB0"); /* reciv-ru */
     strcpy(msgtext, civ_adjectives[civ]);
-    strcat(msgtext, " civilization!");
+    strcat(msgtext, "\xB0\xAA\xA0\xAA\xB0\xAD\xA0\xE6\xA8\xEE\xC0"); /* reciv-ru */
     draw_text(msgtext, 160, 168, 20);
     draw_text(msgtext, 160, 167, vga_modes ? 23 : 15);
     blit(scrbuf, 0, 133, 320, 67, back_page, 0, 133);

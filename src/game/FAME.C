@@ -101,43 +101,43 @@ int show_fame(int who)
         copy_from_far(fame_ranks[i + 1].leader, msgtext + strlen(msgtext), 16);
         strcat(msgtext, ", ");
         strcat(msgtext, rank_title[fame_ranks[i + 1].level]);
-        strcat(msgtext, " of the ");
+        strcat(msgtext, ": "); /* reciv-ru */
         copy_from_far(fame_ranks[i + 1].name, msgtext + strlen(msgtext), 16);
         tail = strlen(msgtext);
         strcat(msgtext, " to ");
         strcat(msgtext, itoa(abs(fame_ranks[i + 1].year), nstr, 10));
         if (fame_ranks[i + 1].year < 0)
-            strcat(msgtext, " BC.");
+            strcat(msgtext, "\xB0\xA4\xED\xC0"); /* reciv-ru */
         else
-            strcat(msgtext, " AD.");
+            strcat(msgtext, "\xB0\xAD\xED\xC0"); /* reciv-ru */
         if (string_width(msgtext) + x >= 320)
             msgtext[tail] = 0;
         draw_string(msgtext, x, y, 0);
         y += 8;
-        strcpy(msgtext, "Population: ");
+        strcpy(msgtext, "\x8D\xA0\xE1\xA5\xAB\xA5\xAD\xA8\xA5: "); /* reciv-ru */
         format_total(fame_ranks[i + 1].f12);
-        strcat(msgtext, ", Score: ");
+        strcat(msgtext, ", \x8E\xE7\xAA\xA8: "); /* reciv-ru */
         strcat(msgtext, itoa(fame_ranks[i + 1].score, nstr, 10));
         switch (fame_ranks[i + 1].level) {
         case 0:
-            strcat(msgtext, " (Chieftan)");
+            strcat(msgtext, " (\x82\xAE\xA6\xA4\xEC)"); /* reciv-ru */
             break;
         case 1:
-            strcat(msgtext, " (Warlord)");
+            strcat(msgtext, " (\x90\xEB\xE6\xA0\xE0\xEC)"); /* reciv-ru */
             break;
         case 2:
-            strcat(msgtext, " (Prince)");
+            strcat(msgtext, " (\x8F\xE0\xA8\xAD\xE6)"); /* reciv-ru */
             break;
         case 3:
-            strcat(msgtext, " (King)");
+            strcat(msgtext, " (\x96\xA0\xE0\xEC)"); /* reciv-ru */
             break;
         case 4:
-            strcat(msgtext, " (Emperor)");
+            strcat(msgtext, " (\x82\xAB\xA0\xA4\xEB\xAA\xA0)"); /* reciv-ru */
             break;
         }
         draw_string(msgtext, x + 12, y, 7);
         y += 8;
-        strcpy(msgtext, "    --- CIVILIZATION RATING: ");
+        strcpy(msgtext, "    --- \x90\xA5\xA9\xE2\xA8\xAD\xA3 \x96\x88\x82\x88\x8B\x88\x87\x80\x96\x88\x88: "); /* reciv-ru */
         strcat(msgtext, itoa((fame_ranks[i + 1].level + 1) * fame_ranks[i + 1].score / 50, nstr, 10));
         strcat(msgtext, "% ---");
         draw_string(msgtext, x + 12, y, 12);
@@ -147,7 +147,7 @@ int show_fame(int who)
             recolour_rect(scrbuf, x - 4, y - 28, 296, 26, 15, 14);
     }
     if (who != -1) {
-        draw_string("C\203lear", 252, 189, 0);
+        draw_string(")\x8D\xAE\xA2.!", 252, 189, 0); /* reciv-ru */
         draw_box(236, 187, 60, 10, 11);
     }
     code = ad_wait();
@@ -235,7 +235,7 @@ void fame_header(int rank, int h)
         draw_text(msgtext, 160, 6, 15);
         copy_from_far(hall_text[23], msgtext, 32);
         strcat(msgtext, itoa(t, nstr, 10));
-        strcat(msgtext, "% exceeds even");
+        strcat(msgtext, "%, \xA1\xAE\xAB\xEC\xE8\xA5, \xE7\xA5\xAC"); /* reciv-ru */
         draw_text(msgtext, 160, 14, 15);
         copy_from_far(hall_text[19 - rank], msgtext, 32);
         strcat(msgtext, "!");
@@ -288,7 +288,7 @@ void top_five(void)
     mouse_off();
     menu_begin();
     rect_fill(scrbuf, 0, 0, 320, 200, 3);
-    draw_shadowed("The Top Five Cities in the World", 80, 12, 15);
+    draw_shadowed("\x8F\xEF\xE2\xA5\xE0\xAA\xA0 \xAB\xE3\xE7\xE8\xA8\xE5 \xA2 \xAC\xA8\xE0\xA5 \xA3\xAE\xE0\xAE\xA4\xAE\xA2", 80, 12, 15); /* reciv-ru */
     top = 32;
     for (i = 0; i < 5; i++) {
         if (top_score[i] == -1)
@@ -323,28 +323,28 @@ void top_five(void)
 
 /* Hall of Fame leaders and messages; original far-data block. */
 char far hall_text[24][25] = {
-    "Solomon the Wise",
-    "Emperor Augustus",
-    "King Charlemagne",
-    "Thomas Jefferson",
-    "Shogun Tokugawa",
-    "Franklin Roosevelt",
-    "Sulayman the Magnificent",
-    "Winston Churchill",
-    "Cleopatra",
-    "Charles De Gaulle",
-    "Vladimir Lenin",
-    "Simon Bolivar",
-    "Otto von Bismarck",
-    "Eric the Red",
-    "Kaiser Wilhelm",
-    "Louis the XVI",
-    "Neville Chamberlain",
-    "Ferdinand Marcos",
-    "Emperor Nero",
-    "Dan Quayle",
-    "Sire, your fame now",
-    "exceeds even that of",
-    "Sire, your Civilization",
-    "Rating of "
+    "\x8C\xE3\xA4\xE0\xA5\xE6 \x91\xAE\xAB\xAE\xAC\xAE\xAD", /* reciv-ru */
+    "\x88\xAC\xAF\xA5\xE0\xA0\xE2\xAE\xE0 \x80\xA2\xA3\xE3\xE1\xE2", /* reciv-ru */
+    "\x96\xA0\xE0\xEC \x98\xA0\xE0\xAB\xA5\xAC\xA0\xA3", /* reciv-ru */
+    "\x92\xAE\xAC\xA0\xE1 \x84\xA6\xA5\xE4\xE4\xA5\xE0\xE1\xAE\xAD", /* reciv-ru */
+    "\x98\xAE\xA3\xE3\xAD \x92\xAE\xAA\xE3\xA3\xA0\xA2\xA0", /* reciv-ru */
+    "\x94\xE0\xA0\xAD\xAA\xAB\xA8\xAD \x90\xE3\xA7\xA2\xA5\xAB\xEC\xE2", /* reciv-ru */
+    "\x82\xAE\xAB\xE8\xA5\xA1\xAD\xA8\xAA \x91\xE3\xAB\xA5\xA9\xAC\xA0\xAD", /* reciv-ru */
+    "\x93\xA8\xAD\xE1\xE2\xAE\xAD \x97\xA5\xE0\xE7\xA8\xAB\xEC", /* reciv-ru */
+    "\x8A\xAB\xA5\xAE\xAF\xA0\xE2\xE0\xA0", /* reciv-ru */
+    "\x98\xA0\xE0\xAB\xEC \xA4\xA5 \x83\xAE\xAB\xAB\xEC", /* reciv-ru */
+    "\x82\xAB\xA0\xA4\xA8\xAC\xA8\xE0 \x8B\xA5\xAD\xA8\xAD", /* reciv-ru */
+    "\x88\xA3\xAE\xE0\xEC \x82\xA5\xAB\xA8\xAA\xA8\xA9", /* reciv-ru */
+    "\x8E\xE2\xE2\xAE \xE4\xAE\xAD \x81\xA8\xE1\xAC\xA0\xE0\xAA", /* reciv-ru */
+    "\x9D\xE0\xA8\xAA \x8A\xE0\xA0\xE1\xA8\xA2\xEB\xA9", /* reciv-ru */
+    "\x8A\xA0\xA9\xA7\xA5\xE0 \x82\xA8\xAB\xEC\xA3\xA5\xAB\xEC\xAC", /* reciv-ru */
+    "\x8B\xE3\xA8 16", /* reciv-ru */
+    "\x8D\xA5\xA2\xA8\xAB\xAB\xEC \x97\xA0\xAC\xA1\xA5\xE0\xAB\xA5\xAD", /* reciv-ru */
+    "\x94\xA5\xE0\xA4\xA8\xAD\xA0\xAD\xA4 \x8C\xA0\xE0\xAA\xAE\xE1", /* reciv-ru */
+    "\x88\xAC\xAF\xA5\xE0\xA0\xE2\xAE\xE0 \x8D\xA5\xE0\xAE", /* reciv-ru */
+    "\x88\xAD\xA4\xA8\xA0\xAD\xA0 \x84\xA6\xAE\xAD\xE1", /* reciv-ru */
+    "\x88\xE2\xA0\xAA, \x82\xA0\xE8\xA0 \xA8\xA7\xA2\xA5\xE1\xE2\xAD\xAE\xE1\xE2\xEC", /* reciv-ru */
+    "\xE1\xE2\xA0\xAB\xA0 \xA1\xAE\xAB\xEC\xE8\xA5, \xE7\xA5\xAC:", /* reciv-ru */
+    "\x83-\xAD, \x82\xA0\xE8 \xE6\xA8\xA2\xA8\xAB\xA8\xA7\xA0\xE6\xA8\xAE\xAD\xAD\xEB\xA9", /* reciv-ru */
+    "\xE0\xA5\xA9\xE2\xA8\xAD\xA3: " /* reciv-ru */
 };

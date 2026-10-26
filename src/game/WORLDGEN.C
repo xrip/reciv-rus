@@ -727,7 +727,7 @@ int story_step(void)
                 rect_fill(scrbuf, 40, 160, 240, 8, 0);
         } else {
             story_clock = timer_read() / 60;
-            draw_text("BUILDING NEW WORLD...", 160, 160, (story_clock & 1) ? 15 : 3);
+            draw_text("\x91\xAE\xA7\xA4\xA0\xA5\xE2\xE1\xEF \xAD\xAE\xA2\xEB\xA9 \xAC\xA8\xE0..", 160, 160, (story_clock & 1) ? 15 : 3); /* reciv-ru */
         }
         scrbuf->number = 1;
         return 0;
@@ -823,7 +823,7 @@ void global_warming(int severity)
 {
     char far *seen_f;
     int sea_h, terrain_l, y_h, dir_b, x_i;
-    strcpy(msgtext, "Global temperature\nrises! Icecaps melt.\nSevere Drought.\n");
+    strcpy(msgtext, "\x83\xAB\xAE\xA1\xA0\xAB\xEC\xAD\xAE\xA5\xB0\xAF\xAE\xE2\xA5\xAF\xAB\xA5\xAD\xA8\xA5\xC0\n\x80\xA9\xE1\xA1\xA5\xE0\xA3\xA8\xB0\xE2\xA0\xEE\xE2\xC0\xC0\xC0\n\x91\xA8\xAB\xEC\xAD\xA0\xEF\xB0\xA7\xA0\xE1\xE3\xE5\xA0\xC0\n"); /* reciv-ru */
     news_box(-1);
     for (x_i = 0; x_i < 80; x_i++)
         for (y_h = 0; y_h < 50; y_h++) {

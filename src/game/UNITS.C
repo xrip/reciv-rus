@@ -269,7 +269,7 @@ void blink_unit(int owner, int index, int x, int y)
             if (b >= 0 && b < 50)
                 plot_pixel(a, b + 8, 15);
         } else
-            draw_string("End of Turn", 4, 124, 7);
+            draw_string("\x8A\xAE\xAD\xA5\xE6 \xE5\xAE\xA4\xA0", 4, 124, 7); /* reciv-ru */
         if (c != -1)
             draw_box(c, d, 15, 15, 15);
         mouse_on();
@@ -280,7 +280,7 @@ void blink_unit(int owner, int index, int x, int y)
             if (b >= 0 && b < 50)
                 plot_pixel(a, b + 8, terrain_at(armydata[owner][index].x, armydata[owner][index].y) == 10 ? 1 : 2);
         } else
-            draw_string("End of Turn", 4, 124, 0);
+            draw_string("\x8A\xAE\xAD\xA5\xE6 \xE5\xAE\xA4\xA0", 4, 124, 0); /* reciv-ru */
         if (c != -1)
             draw_box(c, d, 15, 15, 0);
         mouse_on();
@@ -718,7 +718,7 @@ void enter_hut(int owner, int index)
             goto mercenaries;
         if (g <= 4)
             goto gold;
-        strcpy(msgtext, "You have discovered\nan advanced tribe.\n");
+        strcpy(msgtext, "\x82\xEB \xAD\xA0\xE8\xAB\xA8 \xE1\xA2\xAE\xA1\xAE\xA4\xAD\xAE\xA5\n\xAF\xAB\xA5\xAC\xEF \xA8 \xAE\xE1\xAD\xAE\xA2\xA0\xAB\xA8\xE1\xEC.\n"); /* reciv-ru */
         if (owner == civnow)
             show_msg(msgtext, 100, 80);
         city_create(owner, 0, armydata[owner][index].x, armydata[owner][index].y, 1);
@@ -728,7 +728,7 @@ void enter_hut(int owner, int index)
     case 1:
         if (!turn_tick || year > 1000)
             goto gold;
-        strcpy(msgtext, "You have discovered\nscrolls of ancient wisdom.\n");
+        strcpy(msgtext, "\x82\xEB \xAD\xA0\xE8\xAB\xA8 \xA4\xE0\xA5\xA2\xAD\xA8\xA5\n\xE1\xA2\xA8\xE2\xAA\xA8 \xE1 \xAD\xAE\xA2\xEB\xAC\xA8 \xA7\xAD\xA0\xAD\xA8\xEF\xAC\xA8.\n"); /* reciv-ru */
         if (owner == civnow)
             show_msg(msgtext, 100, 80);
         a = 0;
@@ -746,7 +746,7 @@ void enter_hut(int owner, int index)
         break;
     case 2:
 gold:
-        strcpy(msgtext, "You have discovered\nvaluable metal deposits\nworth 50$\n");
+        strcpy(msgtext, "\x82\xEB \xAD\xA0\xE8\xAB\xA8 \xA7\xAE\xAB\xAE\xE2\xAE\n\xAE\xA1\xE9\xA5\xA9 \xE1\xE2\xAE\xA8\xAC\xAE\xE1\xE2\xEC\xEE 50$\n"); /* reciv-ru */
         if (owner == civnow)
             show_msg(msgtext, 100, 80);
         money[owner] += 50;
@@ -754,7 +754,7 @@ gold:
     case 3:
         if (d < 4 || city_count[owner] == 0)
             goto mercenaries;
-        strcpy(msgtext, "You have unleashed\na horde of barbarians!\n");
+        strcpy(msgtext, "\x8D\xA0 \xA2\xA0\xE8 \xAE\xE2\xE0\xEF\xA4 \xAD\xA0\xAF\xA0\xAB\xA8\n\xAE\xE0\xA4\xEB \xA4\xA8\xAA\xA0\xE0\xA5\xA9!\n"); /* reciv-ru */
         if (owner == civnow)
             show_msg(msgtext, 100, 80);
         for (h = 1; h <= 8; h += clamp(4 - city_count[owner], 1, 4)) {
@@ -770,7 +770,7 @@ gold:
         break;
     case 4:
 mercenaries:
-        strcpy(msgtext, "You have discovered\na friendly tribe of\nskilled mercenaries.\n");
+        strcpy(msgtext, "\x82\xEB \xA2\xE1\xE2\xE0\xA5\xE2\xA8\xAB\xA8 \xAF\xAE\xE1\xA5\xAB\xAE\xAA\n\xE1 \xA4\xE0\xE3\xA6\xA5\xAB\xEE\xA1\xAD\xEB\xAC\xA8\n\xA6\xA8\xE2\xA5\xAB\xEF\xAC\xA8.\n"); /* reciv-ru */
         if (owner == civnow)
             show_msg(msgtext, 100, 80);
         create_unit(owner, rand_scaled(2) ? 3 : 6, armydata[owner][index].x, armydata[owner][index].y);   /* reciv: a fifth argument, unused, was passed */

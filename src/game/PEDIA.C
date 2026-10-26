@@ -49,10 +49,10 @@ extern char *strupr(char *);
 
 int no_pictures = 0;            /* pedia picture disk absent: text only */
 char *concepts[] = {
-    "Veteran Units", "Fortify", "Irrigation", "Mining", "Roads",
-    "RailRoads", "Anarchy", "Despotism", "Monarchy", "Communism",
-    "Republic", "Democracy", "Fortress", "Pillage", "Disband",
-    "Pollution", "Sentry", "Luxuries", "Taxes", "Science", "Trade Routes"
+    "\x82\xA5\xE2\xA5\xE0\xA0\xAD\xEB", "\x93\xAA\xE0\xA5\xAF\xAB\xC0", "\x8C\xA5\xAB\xA8\xAE\xE0\xA0\xE6\xA8\xEF", "\x98\xA0\xE5\xE2\xEB", "\x8F\xE3\xE2\xA8", /* reciv-ru */
+    "\x86\xA5\xAB\xC0\xB0\x84\xAE\xE0\xC0", "\x80\xAD\xA0\xE0\xE5\xA8\xEF", "\x84\xA5\xE1\xAF\xAE\xE2\xA8\xA7\xAC", "\x8C\xAE\xAD\xA0\xE0\xE5\xA8\xEF", "\x8A\xAE\xAC\xAC\xE3\xAD\xA8\xA7\xAC", /* reciv-ru */
+    "\x90\xA5\xE1\xAF\xE3\xA1\xAB.", "\x84\xA5\xAC\xAE\xAA\xE0\xA0\xE2\xA8\xEF", "\x94\xAE\xE0\xE2", "\x90\xA0\xA7\xA1\xAE\xA9", "\x90\xAE\xE1\xAF\xE3\xE1\xAA", /* reciv-ru */
+    "\x82\xEB\xA1\xE0\xAE\xE1\xEB", "\x91\xE2\xE0\xA0\xA6\xA8", "\x90\xAE\xE1\xAA\xAE\xE8\xEC", "\x8D\xA0\xAB\xAE\xA3", "\x8D\xA0\xE3\xAA\xA0", "\x92\xAE\xE0\xA3\xAE\xA2\xEB\xA5\xB0\x8F\xE3\xE2\xA8" /* reciv-ru */
 };
 
 /* Non-prototype ABI calls below; NOLINTBEGIN(clang-diagnostic-deprecated-non-prototype) */
@@ -92,18 +92,18 @@ int pedia_list(int start, int category)
     rect_fill(scrbuf, 0, 0, 320, 200, 14);
     strcpy(last, "a");
     rect_fill(scrbuf, 60, 2, 200, 9, 15);
-    draw_text("ENCYCLOPAEDIA of CIVILIZATION", 161, 4, 0);
-    draw_text("ENCYCLOPAEDIA of CIVILIZATION", 160, 3, 10);
+    draw_text("\x9D\x8D\x96\x88\x8A\x8B\x8E\x8F\x85\x84\x88\x9F \x96\x88\x82\x88\x8B\x88\x87\x80\x96\x88\x88", 161, 4, 0); /* reciv-ru */
+    draw_text("\x9D\x8D\x96\x88\x8A\x8B\x8E\x8F\x85\x84\x88\x9F \x96\x88\x82\x88\x8B\x88\x87\x80\x96\x88\x88", 160, 3, 10); /* reciv-ru */
     draw_string("EXIT", 286, 4, 12);
     if (category == -1)
-        draw_string("MORE", 8, 4, 12);
+        draw_string("M\xA5\xE9\xA5", 8, 4, 12); /* reciv-ru */
     rect_fill(scrbuf, 2, 14, 316, 184, 15);
     width = category <= 0 ? 100 : 150;
     x = 10;
     y = 16;
     count = 0;
     do {
-        strcpy(low, "zzz");
+        strcpy(low, "\x91\xE2\xE0. "); /* reciv-ru */
         best_n = -1;
         best_kind = -1;
         if (category == 0 || category == -1) {
@@ -307,7 +307,7 @@ void pedia_show(int index, int kind)
             free_block(sprite);
         }
         strcpy(msgtext, improvements[index].name);
-        draw_text(index <= 24 ? "City Improvement" : "Wonder of the World", title_x, 36, 7);
+        draw_text(index <= 24 ? "City Improvement" : "\x90\xA0\xA7\xA2\xA8\xE2\xA8\xA5 \xE6\xA8\xA2\xA8\xAB\xA8\xA7\xA0\xE6\xA8\xA8", title_x, 36, 7); /* reciv-ru */
         break;
     case 2:
         if (!no_pictures) {
@@ -319,7 +319,7 @@ void pedia_show(int index, int kind)
             blit_centred((pic & 1) * 160 + 1, pic % 6 / 2 * 61, 158, 61, 88, 42);
         }
         strcpy(msgtext, utypes[index].name);
-        draw_text("Military Unit", title_x, 36, 7);
+        draw_text("\x90\xA0\xA7\xA2\xA8\xE2\xA8\xA5 \xA3\xAE\xE0\xAE\xA4\xAE\xA2", title_x, 36, 7); /* reciv-ru */
         sprite_draw(scrbuf, 216, 48, colour_unit_glyph[32 + index]);    /* civ colour 1 */
         break;
     case 3:
@@ -336,11 +336,11 @@ void pedia_show(int index, int kind)
             blit_centred(pic % 3 * 107 + 1, pic % 6 / 3 * 87 + 5, 106, 77, 76, 46);
         }
         strcat(msgtext, terrains[index].name);
-        draw_text("Terrain Type", title_x, 36, 7);
+        draw_text("\x92\xA5\xE0\xE0\xA8\xE2\xAE\xE0\xA8\xA8", title_x, 36, 7); /* reciv-ru */
         break;
     case 4:
         strcat(msgtext, concepts[index]);
-        draw_text("Game Concept", title_x, 36, 7);
+        draw_text("\x8F\xE0\xA8\xAD\xE6\xA8\xAF \xA8\xA3\xE0\xEB", title_x, 36, 7); /* reciv-ru */
         break;
     }
     scrbuf->font = 6;
@@ -368,7 +368,7 @@ void pedia_show(int index, int kind)
         y += 8;
         msgtext[0] = 0;
         if (advances[index].prereq1 != -1) {
-            strcpy(msgtext, "Requires ");
+            strcpy(msgtext, "\x92\xE0\xA5\xA1\xE3\xA5\xE2: "); /* reciv-ru */
             strcat(msgtext, advances[advances[index].prereq1].name);
         }
         if (advances[index].prereq2 != -1) {
@@ -377,14 +377,14 @@ void pedia_show(int index, int kind)
         }
         draw_string(msgtext, 32, y, 1);
         y += 16;
-        draw_string("Allows: ", 32, y, 1);
+        draw_string("\x84\xA0\xA5\xE2: ", 32, y, 1); /* reciv-ru */
         y += 8;
         y0 = y;
         for (i = 0; i < 72; i++) {
             if (advances[i].prereq1 == index) {
                 strcpy(msgtext, advances[i].name);
                 if (advances[i].prereq2 != -1) {
-                    strcat(msgtext, " (with ");
+                    strcat(msgtext, " (\xAD\xA0\xA4\xAE\xB0"); /* reciv-ru */
                     strcat(msgtext, advances[advances[i].prereq2].name);
                     strcat(msgtext, ")");
                 }
@@ -394,7 +394,7 @@ void pedia_show(int index, int kind)
             if (advances[i].prereq2 == index) {
                 strcpy(msgtext, advances[i].name);
                 if (advances[i].prereq1 != -1) {
-                    strcat(msgtext, " (with ");
+                    strcat(msgtext, " (\xAD\xA0\xA4\xAE\xB0"); /* reciv-ru */
                     strcat(msgtext, advances[advances[i].prereq1].name);
                     strcat(msgtext, ")");
                 }
@@ -416,25 +416,25 @@ void pedia_show(int index, int kind)
             if (improvements[i].prereq == index) {
                 draw_icon(i, 40, y - 2);
                 strcpy(msgtext, improvements[i].name);
-                strcat(msgtext, i <= 24 ? " improvement" : " Wonder");
+                strcat(msgtext, i <= 24 ? " (\xE1\xE2\xE0\xAE\xA5\xAD\xA8\xA5)" : " (\x97\xE3\xA4\xAE)"); /* reciv-ru */
                 draw_string(msgtext, 60, y, 2);
                 y += 12;
             }
         }
         if (y0 + 4 == y)
-            draw_string("Allows: ", 32, y - 12, back);
+            draw_string("\x84\xA0\xA5\xE2: ", 32, y - 12, back); /* reciv-ru */
         switch (adv_source[civnow][index]) {
         case -2:
-            strcpy(msgtext, "(from Great Library)");
+            strcpy(msgtext, "(\xA8\xA7 \x82\xA5\xAB. \x81\xA8\xA1\xAB\xA8\xAE\xE2\xA5\xAA\xA8)"); /* reciv-ru */
             break;
         case -1:
             msgtext[0] = 0;
             break;
         case 0:
-            strcpy(msgtext, "(Discovered)");
+            strcpy(msgtext, "(\x8E\xE2\xAA\xE0\xEB\xE2\xAE)"); /* reciv-ru */
             break;
         default:
-            strcpy(msgtext, "(Taken from ");
+            strcpy(msgtext, "(\x8F\xAE\xE1\xE2\xA0\xE0\xA0\xAB\xA8\xE1\xEC"); /* reciv-ru */
             strcat(msgtext, civ_names[adv_source[civnow][index]]);
             strcat(msgtext, ")");
             break;
@@ -442,41 +442,41 @@ void pedia_show(int index, int kind)
         draw_text(msgtext, title_x, 48, 7);
         break;
     case 1:
-        strcpy(msgtext, "Requires ");
+        strcpy(msgtext, "\x92\xE0\xA5\xA1\xE3\xA5\xE2: "); /* reciv-ru */
         strcat(msgtext, advances[improvements[index].prereq].name);
         draw_string(msgtext, 12, y, 9);
         y += 8;
-        strcpy(msgtext, "Cost: ");
+        strcpy(msgtext, "\x96\xA5\xAD\xA0: "); /* reciv-ru */
         strcat(msgtext, itoa(improvements[index].cost * 10, nstr, 10));
-        strcat(msgtext, " shields.");
+        strcat(msgtext, " \xE9\xA8\xE2\xAE\xA2."); /* reciv-ru */
         draw_string(msgtext, 12, y, 9);
         y += 8;
-        strcpy(msgtext, "Maintenance: $");
+        strcpy(msgtext, "\x91\xAE\xA4\xA5\xE0\xA6\xA0\xAD\xA8\xA5: $"); /* reciv-ru */
         strcat(msgtext, itoa(improvements[index].maintenance, nstr, 10));
         draw_string(msgtext, 12, y, 12);
         y += 8;
         break;
     case 2:
-        strcpy(msgtext, "Requires ");
+        strcpy(msgtext, "\x92\xE0\xA5\xA1\xE3\xA5\xE2: "); /* reciv-ru */
         strcat(msgtext, advances[utypes[index].prereq].name);
         if (index == 25)
-            strcat(msgtext, " and Nuclear Fission");
+            strcat(msgtext, " \xA8 \x90\xA0\xE1\xAF\xA0\xA4 \xA0\xE2\xAE\xAC\xA0"); /* reciv-ru */
         draw_string(msgtext, 100, y, 9);
         y += 8;
-        strcpy(msgtext, "Cost: ");
+        strcpy(msgtext, "\x96\xA5\xAD\xA0: "); /* reciv-ru */
         strcat(msgtext, itoa(utypes[index].cost * 10, nstr, 10));
-        strcat(msgtext, " resources.");
+        strcat(msgtext, " \xE0\xA5\xE1\xE3\xE0\xE1\xAE\xA2."); /* reciv-ru */
         draw_string(msgtext, 100, y, 9);
         y += 8;
-        strcpy(msgtext, "Attack Strength: ");
+        strcpy(msgtext, "\x93\xA4\xA0\xE0\xAD\xA0\xEF \xE1\xA8\xAB\xA0: "); /* reciv-ru */
         strcat(msgtext, itoa(utypes[index].attack, nstr, 10));
         draw_string(msgtext, 100, y, 12);
         y += 8;
-        strcpy(msgtext, "Defense Strength: ");
+        strcpy(msgtext, "\x91\xA8\xAB\xA0 \xA7\xA0\xE9\xA8\xE2\xEB: "); /* reciv-ru */
         strcat(msgtext, itoa(utypes[index].defense, nstr, 10));
         draw_string(msgtext, 100, y, 12);
         y += 8;
-        strcpy(msgtext, "Movement Rate: ");
+        strcpy(msgtext, "\x8F\xA5\xE0\xA5\xAC\xA5\xE9\xA5\xAD\xA8\xA5: "); /* reciv-ru */
         strcat(msgtext, itoa(utypes[index].moves, nstr, 10));
         draw_string(msgtext, 100, y, 0);
         y += 8;
@@ -488,7 +488,7 @@ void pedia_show(int index, int kind)
             draw_string(terrains[t].name, 12, y, 1);
             y += 8;
             if (terrains[t].food || work_rules[index].irrigate < -1) {
-                strcpy(msgtext, "Food: ");
+                strcpy(msgtext, "\x8F\xA8\xE9\xA0: "); /* reciv-ru */
                 strcat(msgtext, itoa(terrains[t].food, nstr, 10));
                 if (terrains[t].food >= 3)
                     strcat(msgtext, "*");
@@ -497,14 +497,14 @@ void pedia_show(int index, int kind)
                     strcat(msgtext, itoa(terrains[t].food - work_rules[index].irrigate - 1, nstr, 10));
                     if (terrains[t].food >= 2)
                         strcat(msgtext, "*");
-                    strcat(msgtext, " with Irrigation)");
+                    strcat(msgtext, " \xE1 \xAC\xA5\xAB\xA8\xAE\xE0\xA0\xE6\xA8\xA5\xA9)"); /* reciv-ru */
                 }
-                strcat(msgtext, " units.");
+                strcat(msgtext, " \xA5\xA4."); /* reciv-ru */
                 draw_string(msgtext, 16, y, 9);
                 y += 8;
             }
             if (terrains[t].shields || work_rules[index].mine < -1) {
-                strcpy(msgtext, "Production: ");
+                strcpy(msgtext, "\x8F\xE0\xAE\xA4\xE3\xAA\xE6\xA8\xEF: "); /* reciv-ru */
                 if (index == 2 || index == 11)
                     strcat(msgtext, "0/");
                 strcat(msgtext, itoa(terrains[t].shields, nstr, 10));
@@ -513,14 +513,14 @@ void pedia_show(int index, int kind)
                     strcat(msgtext, itoa(terrains[t].shields - work_rules[index].mine - 1, nstr, 10));
                     if (terrains[t].shields - work_rules[index].mine - 1 >= 3)
                         strcat(msgtext, "*");
-                    strcat(msgtext, " with Mining)");
+                    strcat(msgtext, " \xE1 \xE8\xA0\xE5\xE2\xA0\xAC\xA8)"); /* reciv-ru */
                 }
-                strcat(msgtext, " units.");
+                strcat(msgtext, " \xA5\xA4."); /* reciv-ru */
                 draw_string(msgtext, 16, y, 9);
                 y += 8;
             }
             if (terrains[t].trade || index <= 2) {
-                strcpy(msgtext, "Trade: ");
+                strcpy(msgtext, "\x92\xAE\xE0\xA3\xA8: "); /* reciv-ru */
                 strcat(msgtext, itoa(terrains[t].trade, nstr, 10));
                 if (terrains[t].trade)
                     strcat(msgtext, "%");
@@ -529,27 +529,27 @@ void pedia_show(int index, int kind)
                 if (index <= 2) {
                     strcat(msgtext, " (");
                     strcat(msgtext, itoa(terrains[t].trade + 1, nstr, 10));
-                    strcat(msgtext, "% with Roads)");
+                    strcat(msgtext, "% \xE1 \xA4\xAE\xE0\xAE\xA3\xA0\xAC\xA8)"); /* reciv-ru */
                 }
                 draw_string(msgtext, 16, y, 9);
                 y += 8;
             }
             if (t == 7) {
-                draw_string("nothing", 16, y, 9);
+                draw_string("\xAF\xE3\xE1\xE2\xAE", 16, y, 9); /* reciv-ru */
                 y += 8;
             }
             y += 4;
         }
         draw_string("*  -1 if government is Despotism/Anarchy.", 16, y, 9);
         y += 8;
-        draw_string("%  +1 if government is Republic/Democracy.", 16, y, 9);
+        draw_string("%  +1 \xAF\xE0\xA8 \xE0\xA5\xE1\xAF\xE3\xA1\xAB\xA8\xAA\xA5/\xA4\xA5\xAC\xAE\xAA\xE0\xA0\xE2\xA8\xA8.", 16, y, 9); /* reciv-ru */
         y += 12;
-        strcpy(msgtext, "Movement cost: ");
+        strcpy(msgtext, "\x8F\xA5\xE0\xA5\xA4\xA2\xA8\xA6\xA5\xAD\xA8\xA5: "); /* reciv-ru */
         strcat(msgtext, itoa(terrains[index].move_cost, nstr, 10));
-        strcat(msgtext, " MP");
+        strcat(msgtext, " \xA5\xA4"); /* reciv-ru */
         draw_string(msgtext, 12, y, 12);
         y += 8;
-        strcpy(msgtext, "Defense bonus: +");
+        strcpy(msgtext, "\x91\xA8\xAB\xA0 \xA7\xA0\xE9\xA8\xE2\xEB: +"); /* reciv-ru */
         strcat(msgtext, itoa(terrains[index].defense * 50 - 100, nstr, 10));
         strcat(msgtext, "%");
         draw_string(msgtext, 12, y, 12);

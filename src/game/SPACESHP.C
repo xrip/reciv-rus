@@ -44,16 +44,16 @@ extern int kbhit(void);
 int spaceship_view();           /* NOLINT(clang-diagnostic-deprecated-non-prototype) */
 
 struct ship_part ship_parts[10] = {
-    { "Structure1", 1, 0, 16, 16, 16 },
-    { "Structure2", 1, 16, 16, 16, 16 },
-    { "Structure3", 1, 32, 16, 16, 16 },
-    { "Propulsion", 4, 256, 48, 32, 16 },
-    { "Fuel", 4, 0, 80, 16, 16 },
-    { "NONE", 4, 192, 96, 32, 32 },
-    { "Habitation", 16, 224, 96, 32, 32 },
-    { "Life Support", 16, 288, 96, 32, 32 },
-    { "Solar Panel", 4, 0, 96, 32, 32 },
-    { "Support", 16, 256, 96, 32, 32 }
+    { "\x91\xE2\xE0\xE3\xAA\xE2\xE3\xE0\xA0" "1", 1, 0, 16, 16, 16 }, /* reciv-ru */
+    { "\x91\xE2\xE0\xE3\xAA\xE2\xE3\xE0\xA0" "2", 1, 16, 16, 16, 16 }, /* reciv-ru */
+    { "\x91\xE2\xE0\xE3\xAA\xE2\xE3\xE0\xA0" "3", 1, 32, 16, 16, 16 }, /* reciv-ru */
+    { "\x84\xA2\xA8\xA3\xA0\xE2\xA5\xAB\xEC", 4, 256, 48, 32, 16 }, /* reciv-ru */
+    { "\x83\xAE\xE0\xEE\xE7\xA5\xA5", 4, 0, 80, 16, 16 }, /* reciv-ru */
+    { "\x8F\xE3\xE1\xE2\xAE", 4, 192, 96, 32, 32 }, /* reciv-ru */
+    { "\x8A\xA0\xEE\xE2\xEB", 16, 224, 96, 32, 32 }, /* reciv-ru */
+    { "\x86\xA8\xA7\xAD\xA5\xAE\xA1\xA5\xE1\xAF\xA5\xE7\xC0", 16, 288, 96, 32, 32 }, /* reciv-ru */
+    { "\x91\xAE\xAB\xAD. \xA1\xA0\xE2\xA0\xE0\xA5\xA8", 4, 0, 96, 32, 32 }, /* reciv-ru */
+    { "\x8F\xAE\xA4\xA4\xA5\xE0\xA6\xAA\xA0", 16, 256, 96, 32, 32 } /* reciv-ru */
 };
 
 int ship_success = 0;           /* human spaceship success chance, percent */
@@ -144,7 +144,7 @@ int civ, wait, ask;
         rect_fill(scrbuf, 0, 0, 320, 200, 0);
         rect_fill(scrbuf, 0, 0, 320, 8, civ_colours[civ]);
         strcpy(msgtext, civ_adjectives[civ]);
-        strcat(msgtext, " SpaceShip: X.S.S. ");
+        strcat(msgtext, " \x8A\xAE\xE0\xA0\xA1\xAB\xEC:   X.S.S. "); /* reciv-ru */
         count = strlen(msgtext);
         strcat(msgtext, leader_names[civ]);
         msgtext[count - 7] = *civ_adjectives[civ];
@@ -189,7 +189,7 @@ int civ, wait, ask;
     }
     success = 100;
     y = 16;
-    draw_string("Population:", 242, y, 0);
+    draw_string("\x8D\xA0\xE1\xA5\xAB\xA5\xAD\xA8\xA5:", 242, y, 0); /* reciv-ru */
     y += 8;
     msgtext[0] = 0;
     strcat(msgtext, itoa(rocket_module[6], nstr, 10));
@@ -198,7 +198,7 @@ int civ, wait, ask;
         draw_string(msgtext, 242, y, 0);
     y += 8;
     count = 100 * rocket_module[7] / clamp(rocket_module[6], 1, 99);
-    strcpy(msgtext, "Support: ");
+    strcpy(msgtext, "\x8F\xAE\xA4\xA4\xA5\xE0\xA6: "); /* reciv-ru */
     strcat(msgtext, itoa(count, nstr, 10));
     strcat(msgtext, "%");
     draw_string(msgtext, 242, y, count < 100 ? 4 : 0);
@@ -206,7 +206,7 @@ int civ, wait, ask;
     if (show)
         success = clamp(count, 0, 100) * success / 100;
     count = 200 * rocket_module[8] / clamp(rocket_module[6] + rocket_module[7], 1, 99);
-    strcpy(msgtext, "Energy: ");
+    strcpy(msgtext, "\x8F\xA8\xE2\xA0\xAD\xA8\xA5 "); /* reciv-ru */
     strcat(msgtext, itoa(count, nstr, 10));
     strcat(msgtext, "%");
     success = clamp(count, 0, 100) * success / 100;
@@ -214,25 +214,25 @@ int civ, wait, ask;
         draw_string(msgtext, 242, y, count < 100 ? 4 : 0);
     y += 16;
     if (show)
-        draw_string("Mass:", 242, y, 0);
+        draw_string("\x82\xA5\xE1:", 242, y, 0); /* reciv-ru */
     y += 8;
     msgtext[0] = 0;
     strcat(msgtext, itoa(mass / 10, nstr, 10));
     strcat(msgtext, ",");
     strcat(msgtext, itoa(mass % 10, nstr, 10));
-    strcat(msgtext, "00 tons");
+    strcat(msgtext, "00 \xE2\xAE\xAD\xAD"); /* reciv-ru */
     if (show)
         draw_string(msgtext, 242, y, 0);
     y += 8;
     count = 100 * rocket_module[4] / clamp(rocket_module[3], 1, 99);
-    strcpy(msgtext, "Fuel: ");
+    strcpy(msgtext, "\x92\xAE\xAF\xAB: "); /* reciv-ru */
     strcat(msgtext, itoa(count, nstr, 10));
     strcat(msgtext, "%");
     if (show)
         draw_string(msgtext, 242, y, count < 100 ? 4 : 0);
     y += 8;
     if (show)
-        draw_string("Flight Time:", 242, y, 0);
+        draw_string("\x82\xE0\xA5\xAC\xEF \xAF\xAE\xAB\xA5\xE2\xA0", 242, y, 0); /* reciv-ru */
     y += 8;
     count = 50 * mass / (clamp(10 * rocket_module[3], 0, 10 * rocket_module[4]) + 1);
     if (count > 150)
@@ -241,13 +241,13 @@ int civ, wait, ask;
     strcat(msgtext, itoa(count / 10, nstr, 10));
     strcat(msgtext, ".");
     strcat(msgtext, itoa(count % 10, nstr, 10));
-    strcat(msgtext, " Years");
+    strcat(msgtext, " \xAB\xA5\xE2"); /* reciv-ru */
     if (show)
         draw_string(msgtext, 242, y, 0);
     y += 16;
     success = clamp(success, 0, 100);
     if (show)
-        draw_string("Prob. of Success", 242, y, 0);
+        draw_string("\x82\xA5\xE0\xAE\xEF\xE2\xAD. \xE3\xE1\xAF\xA5\xE5\xA0", 242, y, 0); /* reciv-ru */
     y += 8;
     strcpy(msgtext, "--- ");
     strcat(msgtext, itoa(success, nstr, 10));
@@ -259,13 +259,13 @@ int civ, wait, ask;
         ask = 0;
     if (game_flags & (1 << civ)) {
         if (show) {
-            draw_string(spaceship_arrive_dates[civ] < year ? "Landed!" : "Launched!", 242, y, 0);
+            draw_string(spaceship_arrive_dates[civ] < year ? "\x8F\xE0\xA8\xA1\xEB\xAB!" : "\x87\xA0\xAF\xE3\xE9\xA5\xAD!", 242, y, 0); /* reciv-ru */
             y += 16;
         }
     } else {
         spaceship_arrive_dates[civ] = count / 10 + year;
         if (civ == civnow && wait < 0 && ask) {
-            draw_string("LAUNCH", 256, 190, 0);
+            draw_string("\x87\xA0\xAF\xE3\xE1\xAA", 256, 190, 0); /* reciv-ru */
             draw_box(242, 188, 76, 9, 0);
         }
     }
@@ -284,9 +284,9 @@ int civ, wait, ask;
             key = key_cmd();
         if (civ == civnow && ask && wait < 0 && ((mse_held && ptr_x > 242 && ptr_y >= 190) || key == 'l')
             && !(game_flags & (1 << civnow))) {
-            strcpy(msgtext, "Confirm spaceship launch.\n(");
+            strcpy(msgtext, "\x8F\xAE\xA4\xE2\xA2\xA5\xE0\xA4\xA8\xE2\xA5 \xAF\xE3\xE1\xAA \xAA\xAE\xE0\xA0\xA1\xAB\xEF.\n("); /* reciv-ru */
             strcat(msgtext, itoa(success, nstr, 10));
-            strcat(msgtext, "% chance of success)\n No Launch\n Launch CONFIRMED!\n");
+            strcat(msgtext, "% \xE8\xA0\xAD\xE1\xEB \xAD\xA0 \xE3\xE1\xAF\xA5\xE5)\n \x8E\xE2\xAC\xA5\xAD\xA8\xE2\xEC\n \x8F\xE3\xE1\xAA \x8F\x8E\x84\x92\x82\x85\x90\x86\x84\x85\x8D!\n"); /* reciv-ru */
             if (show_msg(msgtext, 80, 100) == 1)
                 spaceship_launch(civnow);
         }
@@ -381,7 +381,7 @@ int spaceship_ai_build(int civ, int type)
         return 1;
     rect_fill(scrbuf, 0, 0, 320, 200, 0);
     strcpy(msgtext, civ_names[civ]);
-    strcat(msgtext, " build space ship.\n");
+    strcat(msgtext, " \xA4\xA5\xAB\xA0\xEE\xE2 \xE0\xA0\xAA\xA5\xE2\xE3.\n"); /* reciv-ru */
     draw_text(msgtext, 160, 96, 15);
     ad_wait();
     spaceship_open();
@@ -421,13 +421,13 @@ retry:
     if (type == 1) {
         if ((dialog_dim = ship_state[1]) == 3)
             goto done;
-        if ((item = show_msg("Type?\n Propulsion\n Fuel\n", 100, 80) + 3) == 2)
+        if ((item = show_msg("\x92\xA8\xAF?\n \x84\xA2\xA8\xA3\xA0\xE2\xA5\xAB\xEC\n \x83\xAE\xE0\xEE\xE7.\n", 100, 80) + 3) == 2) /* reciv-ru */
             goto cancel;
     }
     if (type == 2) {
         if ((dialog_dim = ship_state[2]) == 7)
             goto done;
-        if ((item = show_msg("Type?\n Habitation\n Life Support\n Solar Panel\n", 100, 80) + 6) == 5)
+        if ((item = show_msg("\x92\xA8\xAF?\n \x8A\xA0\xEE\xE2\xEB\n \x86\xA8\xA7\xAD\xA5\xAE\xA1\xA5\xE1\xAF\xA5\xE7\xA5\xAD\xA8\xA5\n \x91\xAE\xAB\xAD. \xA1\xA0\xE2\xA0\xE0\xA5\xA8\n", 100, 80) + 6) == 5) /* reciv-ru */
             goto cancel;
     }
     mouse_off();
@@ -470,7 +470,7 @@ retry:
         ship_state[type] |= 1 << item;
         strcpy(msgtext, "No further ");
         strcat(msgtext, ship_parts[type * 3 + item].name);
-        strcat(msgtext, " required.\n");
+        strcat(msgtext, " \xAD\xA5 \xAD\xA0\xA4\xAE.\n"); /* reciv-ru */
         show_msg(msgtext, 120, 80);
         goto retry;
     }
@@ -551,7 +551,7 @@ void spaceship_inspect(void)
     int civ;
 
     if (game_flags & 0xfe00) {
-        strcpy(msgtext, "Which nation?\n ");
+        strcpy(msgtext, "\x8A\xA0\xAA\xA0\xEF \xAD\xA0\xE6\xA8\xEF ?\n "); /* reciv-ru */
         for (i = 1; i < 8; i++) {
             strcat(msgtext, civ_adjectives[i]);
             strcat(msgtext, "\n ");
@@ -573,9 +573,9 @@ void spaceship_launch(int civ)
     rect_fill(scrbuf, 0, 0, 320, 200, 0);
     repaint();
     strcpy(msgtext, civ_names[civ]);
-    strcat(msgtext, " LAUNCH space ship!");
+    strcat(msgtext, " \x8A\xAE\xE0\xA0\xA1\xAB\xEC\xB0\xE1\xE2\xA0\xE0\xE2\xAE\xA2\xA0\xAB\xC3"); /* reciv-ru */
     draw_text(msgtext, 160, 92, 15);
-    strcpy(msgtext, "Estimate arrival in ");
+    strcpy(msgtext, " \x8A\xAE\xE0\xA0\xA1\xAB\xEC\xB0\xE1\xE2\xA0\xE0\xE2\xAE\xA2\xA0\xAB\xC3"); /* reciv-ru */
     strcat(msgtext, itoa(spaceship_arrive_dates[civ], nstr, 10));
     strcat(msgtext, ".\n");
     draw_text(msgtext, 160, 100, 15);

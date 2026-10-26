@@ -96,8 +96,8 @@ int mode;
     map_note(x0, y0);
     n = last_met_turn[civ];
     if (civ_tribe_of[civ] == 14) {
-        strcpy(leader_titles[1], "Empress");
-        strcpy(leader_titles[2], "Queen");
+        strcpy(leader_titles[1], "\x82\xAB\xA0\xA4\xEB\xAA\xA0"); /* reciv-ru */
+        strcpy(leader_titles[2], "\x8C\xA8\xE1\xE1"); /* reciv-ru */
     }
     if (mode == 0) {
         last_met_turn[civ] = turn_tick;
@@ -312,7 +312,7 @@ int mode;
     if (l != -1 && audience_open(civ, x0, y0) != -1 && c != 0) {
         msgtext[0] = 0;
         strcpy(message_slot_a, civ_names[l]);
-        strcpy(message_slot, y != 0 ? "demand" : "request");
+        strcpy(message_slot, y != 0 ? "demand" : "\xE1\xAF\xE0\xA0\xE8\xA8\xA2\xA0\xEE\xE2"); /* reciv-ru */
         named_msg("*CANCEL");
         style = (y != 0 ? 2 : 1);
         setting_value = 12;
@@ -430,7 +430,7 @@ int mode;
         last_met_turn[civ] = turn_tick + 16;
         goto closing;
     } else if (civ_gov[civnow] >= 4) {
-        strcpy(msgtext, "You are overruled by the Senate.\nTreaty signed.\n");
+        strcpy(msgtext, "\x91\xA5\xAD\xA0\xE2 \xAD\xA5 \xE3\xE2\xA2\xA5\xE0\xA4\xA8\xAB \xED\xE2\xAE\xE2 \xAF\xE0\xAE\xA5\xAA\xE2.\n\x8C\xA8\xE0 \xAF\xAE\xA4\xE2\xA2\xA5\xE0\xA6\xA4\xA5\xAD.\n"); /* reciv-ru */
         leader_menu(msgtext, 20, 139);
         make_peace(civ);
         goto closing;
@@ -541,9 +541,9 @@ closing:
         } else {
             style = 0;
             setting_value = 12;
-            strcpy(msgtext, "We welcome the friendship of the\n");
+            strcpy(msgtext, "\x8C\xEB \xE0\xA0\xA4\xEB \xA4\xE0\xE3\xA6\xA1\xA5 \xE1 \xA2\xA0\xAC\xA8,\n"); /* reciv-ru */
             strcat(msgtext, civ_adjectives[civnow]);
-            strcat(msgtext, " people and their most\nwise and munificent leader:\n");
+            strcat(msgtext, ". \x8D\xA5\xE2 \xE0\xE3\xAA\xAE\xA2\xAE\xA4\xA8\xE2\xA5\xAB\xEF\n\xAC\xE3\xA4\xE0\xA5\xA5 \xA8 \xE7\xA5\xE1\xE2\xAD\xA5\xA5, \xE7\xA5\xAC \xA2\xA0\xE8\n"); /* reciv-ru */
             strcat(msgtext, leader_titles[civ_gov[civnow]]);
             strcat(msgtext, " ");
             strcat(msgtext, leader_names[civnow]);
@@ -588,14 +588,14 @@ closing:
                     setting_value = 12;
                     leader_menu(msgtext, 20, 139);
                 } else {
-                    strcpy(msgtext, "We ignore your feeble threats.\n");
+                    strcpy(msgtext, "\x8D\xA0\xAC \xAD\xA0\xAF\xAB\xA5\xA2\xA0\xE2\xEC \xAD\xA0 \xA2\xA0\xE8\xA8 \xE3\xA3\xE0\xAE\xA7\xEB.\n"); /* reciv-ru */
                     style = 1;
                     setting_value = 4;
                     leader_menu(msgtext, 20, 139);
                 }
             }
             if (i == 1) {
-                strcpy(msgtext, "You must attack the evil:\n ");
+                strcpy(msgtext, "\x8D\xA0\xA4\xAE \xA0\xE2\xA0\xAA\xAE\xA2\xA0\xE2\xEC \xA2\xE0\xA0\xA3\xA0:\n "); /* reciv-ru */
                 num = 0;
                 for (x = 1; x < 8; x++) {
                     if (x == civnow || x == civ || !(players & (1 << x)))
@@ -631,7 +631,7 @@ closing:
                                 money[civ] += h;
                                 money[civnow] -= h;
                                 strcpy(msgtext, civ_names[civ]);
-                                strcat(msgtext, " declare war\non the ");
+                                strcat(msgtext, " \xAE\xA1\xEA\xEF\xA2\xA8\xAB\xA8 \xA2\xAE\xA9\xAD\xE3\n\xE1: "); /* reciv-ru */
                                 strcat(msgtext, civ_names[x]);
                                 strcat(msgtext, ".\n");
                             } else {
@@ -699,10 +699,10 @@ int audience_open(int civ, int x, int y)
 reload_text:
         strcpy(msgtext, "An emissary from the\n");
         strcat(msgtext, civ_names[civ]);
-        strcat(msgtext, " wishes to\nspeak with you.\n");
-        strcat(msgtext, "Will you receive him?\n Yes.\n No.\n");
+        strcat(msgtext, " \xA6\xA5\xAB\xA0\xEE\xE2 \xAF\xAE\xA3\xAE\xA2\xAE\xE0\xA8\xE2\xEC\xE1 \xA2\xA0\xAC\xA8\xC0\n"); /* reciv-ru */
+        strcat(msgtext, "\x8F\xE0\xA8\xAC\xA8\xE2\xA5 \xAB\xA8 \xA2\xEB \xA8\xE5 ?\n \x84\xA0\xC0\n \x8D\xA5\xE2\xC0\n"); /* reciv-ru */
         if (treaties[civnow][civ] & 0x40) {
-            strcat(msgtext, " Check Intelligence\n");
+            strcat(msgtext, " \x8F\xE0\xAE\xA2\xA5\xE0\xA8\xE2\xEC \xA5\xA3\xAE \xE3\xE0\xAE\xA2\xA5\xAD\xEC\n"); /* reciv-ru */
         }
         sound(civt[civ_tribe_of[civ]].f3, 3);
         mouse_force_on();
@@ -741,14 +741,14 @@ void leader_greeting(int civ)
     int dummy;
 
     if (treaties[civ][civnow] & 8) {
-        strcpy(msgtext, "O most untrustworthy leader of the\ninfidels, hear now ");
+        strcpy(msgtext, "\x8E \xAC\xE3\xA4\xE0\xA5\xA9\xE8\xA8\xA9 \xA8\xA7 \xAC\xE3\xA4\xE0\xA5\xA9\xE8\xA8\xE5, \xA6\xA8\xA2\xE8\xA8\xE5\n\xAD\xA0 \xE1\xA2\xA5\xE2\xA5, \xA2\xA5\xAB\xA8\xAA\xA8\xA9 "); /* reciv-ru */
     } else {
-        strcpy(msgtext, "Greetings from ");
+        strcpy(msgtext, "\x8F\xE0\xA8\xA2\xA5\xE2\xE1\xE2\xE3\xEE\xE2 "); /* reciv-ru */
     }
 
     switch (rand_scaled(4)) {
     case 0:
-        strcat(msgtext, "the most exalted\n");
+        strcat(msgtext, ", \xAD\xA0\xE8 \xE6\xA0\xE0\xEC\n\xA8  "); /* reciv-ru */
         strcat(msgtext, leader_titles[civ_gov[civ]]);
         strcat(msgtext, ": ");
         strcat(msgtext, leader_names[civ]);
@@ -756,7 +756,7 @@ void leader_greeting(int civ)
         break;
     case 1:
         strcat(msgtext, leader_names[civ]);
-        strcat(msgtext, ", ruler\nand ");
+        strcat(msgtext, "\xAC\xE3\xA4\xE0\xA5\xA9\xE8\xA8\xA5\n"); /* reciv-ru */
         strcat(msgtext, leader_titles[civ_gov[civ]]);
         strcat(msgtext, " ");
         break;
@@ -768,7 +768,7 @@ void leader_greeting(int civ)
         strcat(msgtext, " ");
         break;
     case 3:
-        strcat(msgtext, "he who makes mortals\ntremble: ");
+        strcat(msgtext, "\xA4\xA0\xA2\xE8\xA8\xA9 \xE1\xAC\xA5\xE0\xE2\xAD\xEB\xAC\n\xE1\xE7\xA0\xE1\xE2\xEC\xA5: "); /* reciv-ru */
         strcat(msgtext, leader_names[civ]);
         strcat(msgtext, " ");
         break;
@@ -778,7 +778,7 @@ void leader_greeting(int civ)
     strcat(msgtext, civ_names[civ]);
     strcat(msgtext, "...\n");
     if (forces_present[civ][25] != 0) {
-        strcat(msgtext, "Our words are backed\nwith NUCLEAR WEAPONS!\n");
+        strcat(msgtext, "\x8D\xA0\xE8\xA8 \xE1\xAB\xAE\xA2\xA0 \xAF\xAE\xA4\xAA\xE0\xA5\xAF\xAB\xA5\xAD\xEB\n\x9F\x84\x85\x90\x8D\x9B\x8C \x8E\x90\x93\x86\x88\x85\x8C!\n"); /* reciv-ru */
     }
 }
 

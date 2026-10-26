@@ -831,12 +831,14 @@ static uint8_t *font_metrics(int16_t font)
     return DRV(FONTS + peek16(DRV(FONTS + font * 2)));
 }
 
-/* Slot 4 */
+/* Slot 4.  File 135Dh tests the character range only after the RU patch;
+ * the js at 136Dh it NOPs out was redundant for the original fonts, whose
+ * last character is below 80h.  See the text_render comment. */
 int16_t char_width(int16_t font, int16_t c)
 {
     uint8_t al = 0, ah = 0, *g;
     reciv_require_slot(4);
-    if ((int8_t) c >= 0 && (g = font_metrics(font)) != NULL && (uint8_t) c >= g[-8] && (uint8_t) c <= g[-7]) {
+    if ((g = font_metrics(font)) != NULL && (uint8_t) c >= g[-8] && (uint8_t) c <= g[-7]) {
         ah = g[-3];
         al = g[-5];
         if (!al)
@@ -898,10 +900,12 @@ static int text_prepare(const struct page16 *pg, int16_t x, int16_t y, const cha
     return 1;
 }
 
-/* Advance of character c, or -1 if the font has no glyph for it. */
+/* Advance of character c, or -1 if the font has no glyph for it.  The
+ * text-measure loops skip high bytes with the js the RU driver NOPs; the
+ * range test below covers them (see the text_render comment). */
 static int advance(uint8_t c)
 {
-    if (c & 0x80 || c > text.last || c < text.first)
+    if (c > text.last || c < text.first)
         return -1;
     return text.fixed ? text.fixed : (uint8_t) (text.widths[c - text.first] + text.spacing);
 }
@@ -979,9 +983,18 @@ static int text_cut_bottom(const struct page16 *pg)
     return 1;
 }
 
-/* text_render: draw from text.x, text.y. A byte of 80h or more sets the
- * colour to its low seven bits; the last colour is written back to the
- * page record's colour byte. */
+/* text_render: draw from text.x, text.y. The last colour is written back
+ * to the page record's colour byte (file 11A4h).
+ *
+ * The original routine at 11E3h tests the sign first: a byte of 80h or
+ * more sets the colour to its low seven bits (js 119Ch: and al,7Fh;
+ * mov [60Ch],al) and is never looked up as a glyph.  The Russian
+ * MGRAPHIC.EXE of the 1991 pack NOPs out that js (11EBh), the matching
+ * one in the text-measure loop (1477h) and the one in char_width (136Dh),
+ * so with its FONTS.CV range of 20h..EFh high bytes are drawn as glyphs
+ * and the colour handler is never reached.  reciv follows the loaded
+ * font: a last character of 80h or more means the patched driver's
+ * behaviour, a byte outside the font range is then simply skipped. */
 static void text_render(struct page16 *pg, const char *s)
 {
     uint16_t page_number = (uint16_t) pg->number & 7;
@@ -1005,7 +1018,7 @@ static void text_render(struct page16 *pg, const char *s)
         /* The driver loads the next byte before testing for the end; it is
          * never used then, so reciv reads it only within the string. */
         next = s == text.cut_at ? 0 : (uint8_t) *s;
-        if (c & 0x80) {
+        if ((c & 0x80) && text.last < 0x80) {
             text.colour = c & 0x7F;
             continue;
         }

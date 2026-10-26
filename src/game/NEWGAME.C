@@ -68,7 +68,7 @@ void new_game(void)
     blit(back_page, 0, 0, 320, 200, scrbuf, 0, 0);
     mouse_on();
     scrbuf->font = 7;
-    strcpy(msgtext, "Difficulty Level...\n Chieftain (easiest)\n Warlord\n Prince\n King\n Emperor (toughest)\n");
+    strcpy(msgtext, "\x91\xAB\xAE\xA6\xAD\xAE\xE1\xE2\xEC \xA8\xA3\xE0\xEB...\n \x82\xAE\xA6\xA4\xEC (\xAF\xE0\xAE\xE1\xE2\xAE\xA9)      \n \x90\xEB\xE6\xA0\xE0\xEC \n \x8F\xE0\xA8\xAD\xE6 \n \x96\xA0\xE0\xEC\n \x82\xAB\xA0\xA4\xEB\xAA\xA0 (\xE1\xAB\xAE\xA6\xAD\xEB\xA9)\n"); /* reciv-ru */
     cur_tier = show_menu(msgtext, 160, 35);
     if (has_mouse && used_flag) {
         poll_mouse();
@@ -82,10 +82,10 @@ void new_game(void)
     blit(back_page, (cur_tier & 1) ? 80 : 21, cur_tier * 35 + 6, 53, 47, scrbuf, 20, 100);
     blit(back_page, 150, 0, 160, 200, scrbuf, 150, 0);
     mouse_on();
-    strcpy(msgtext, "Level of Competition...\n ");
+    strcpy(msgtext, "\x93\xE0\xAE\xA2\xA5\xAD\xEC \xE1\xAB\xAE\xA6\xAD\xAE\xE1\xE2\xA8...\n "); /* reciv-ru */
     for (i = 7; i > 2; i--) {
         strcat(msgtext, itoa(i, nstr, 10));
-        strcat(msgtext, " Civilizations\n ");
+        strcat(msgtext, " \xE6\xA8\xA2\xA8\xAB\xA8\xA7\xA0\xE6\xA8\xA8\n "); /* reciv-ru */
     }
     do
         civ_total = show_menu(msgtext, 160, 35);
@@ -115,7 +115,7 @@ void new_game(void)
     debug = 0xfa;
     if (*sound_driver == 'N')
         debug &= ~0x10;
-    strcpy(msgtext, "Pick your tribe...\n ");
+    strcpy(msgtext, "\x8D\xA0\xE6\xA8\xAE\xAD\xA0\xAB\xEC\xAD\xAE\xE1\xE2\xEC...\n "); /* reciv-ru */
     flag = strlen(msgtext);
     for (i = 1; i < civ_total + 2; i++) {
         strcat(msgtext, civt[i].adjective);
@@ -199,7 +199,7 @@ void new_game(void)
                 strcat(msgtext, "\n");
         }
     }
-    strcat(msgtext, "and Roads.\n");
+    strcat(msgtext, "\xA8 \xA4\xAE\xE0\xAE\xA3\xA8..\n"); /* reciv-ru */
     sound(civt[civ_tribe_of[civnow]].f4, 3);
     mouse_off();
     rect_fill(scrbuf, 0, 0, 320, 200, 15);
@@ -346,7 +346,7 @@ void kill_civ(int civ, int by)
             return;
     }
     strcpy(msgtext, civ_adjectives[civ]);
-    strcat(msgtext, "\ncivilization\ndestroyed\nby ");
+    strcat(msgtext, "\n\xE6\xA8\xA2\xA8\xAB\xA8\xA7\xA0\xE6\xA8\xEF\n\xE3\xAD\xA8\xE7\xE2\xAE\xA6\xA5\xAD\xA0:\n "); /* reciv-ru */
     strcat(msgtext, civ_names[by]);
     strcat(msgtext, "!\n");
     message_mode = (treaties[civnow][civ] & 0x40) ? 5 : 2;
@@ -396,17 +396,17 @@ int rate_starts(void)
         }
         if (dist >= 10 && dist != 999)
             isolated |= 1 << p;
-        strcpy(msgtext, "Nearest civilization: ");
+        strcpy(msgtext, "\x81\xAB\xA8\xA6\xA0\xA9\xE8\xA8\xA5 \xE1\xE2\xE0\xA0\xAD\xEB: "); /* reciv-ru */
         if (dist < 10)
-            strcat(msgtext, "close");
+            strcat(msgtext, "\xAF\xAE\xE7\xE2\xA8 \xE0\xEF\xA4\xAE\xAC"); /* reciv-ru */
         else if (dist < 20) {
-            strcat(msgtext, "moderate");
+            strcat(msgtext, "\xA8\xA7\xAE\xAB\xA8\xE0\xAE\xA2\xA0\xAD\xA0"); /* reciv-ru */
             val++;
         } else if (dist != 999) {
-            strcat(msgtext, "far away");
+            strcat(msgtext, "\x93 \xAC\xAE\xE0\xEF "); /* reciv-ru */
             val += 2;
         } else {
-            strcat(msgtext, "isolated");
+            strcat(msgtext, "\x82\xAD\xE3\xE2\xE0. "); /* reciv-ru */
             val += 4;
         }
         river = grass = oceans = 0;
@@ -419,7 +419,7 @@ int rate_starts(void)
             if (ter == 11)
                 river++;
         }
-        strcpy(msgtext, oceans ? "Coastal " : "Inland ");
+        strcpy(msgtext, oceans ? "\xA4\xAE\xAB\xA8\xAD\xA0 \xE0\xA5\xAA\xA8 \xA8 " : "\xAB\xE3\xA3\xA0 \xAD\xA0 "); /* reciv-ru */
         if (river > 1) {
             strcat(msgtext, "river valley on a ");
             val += 2;
@@ -427,24 +427,24 @@ int rate_starts(void)
             strcat(msgtext, "grasslands on a ");
             val++;
         } else
-            strcat(msgtext, "plains on a ");
+            strcat(msgtext, "\xE0\xA0\xA2\xAD\xA8\xAD\xEB \xAD\xA0 "); /* reciv-ru */
         switch (map_region(armydata[p][i].x, armydata[p][i].y) / 50) {
         case 0:
-            strcat(msgtext, "small island.");
+            strcat(msgtext, "\xAE\xE1\xE2\xE0\xAE\xA2\xAA\xA5."); /* reciv-ru */
             break;
         case 1:
-            strcat(msgtext, "large island.");
+            strcat(msgtext, "\xAE\xE1\xE2\xE0\xAE\xA2\xA5."); /* reciv-ru */
             break;
         case 2:
-            strcat(msgtext, "small continent.");
+            strcat(msgtext, "\xAC\xA0\xAB\xAE\xAC \xAC\xA0\xE2\xA5\xE0\xA8\xAA\xA5."); /* reciv-ru */
             val++;
             break;
         case 3:
-            strcat(msgtext, "medium continent.");
+            strcat(msgtext, "\xE1\xE0\xA5\xA4\xAD\xA5\xAC \xAC\xA0\xE2\xA5\xE0\xA8\xAA\xA5."); /* reciv-ru */
             val++;
             break;
         default:
-            strcat(msgtext, "large continent.");
+            strcat(msgtext, "\xA1\xAE\xAB\xEC\xE8\xAE\xAC \xAC\xA0\xE2\xA5\xE0\xA8\xAA\xA5"); /* reciv-ru */
             val += 2;
             break;
         }
@@ -456,11 +456,11 @@ int rate_starts(void)
     for (p = 1; p < 8; p++) {
         if (armydata[p][i].type != -1) {
             y = p * 28 - 8;
-            strcpy(msgtext, "Skills: ");
+            strcpy(msgtext, "\x93\xAC\xA5\xAD\xA8\xA5: "); /* reciv-ru */
             if (best_score - pts[p] > 3) {
                 pts[p] += 3;
                 create_unit(p, 0, armydata[p][0].x, armydata[p][0].y);
-                strcat(msgtext, "Settlers+");
+                strcat(msgtext, "\x8A\xAE\xAB\xAE\xAD\xA8\xE1\xE2\xEB\xB0+"); /* reciv-ru */
             }
             for (j = 0; j < best_score - pts[p]; j++) {
                 if (j)
@@ -468,7 +468,7 @@ int rate_starts(void)
                 strcat(msgtext, advances[reduce_attitude(p, 0)].name);
             }
             if (pts[p] == best_score) {
-                strcat(msgtext, "NONE");
+                strcat(msgtext, "\x8D\x85\x92"); /* reciv-ru */
                 if (ret == -1 || (isolated & (1 << p)))
                     ret = p;
             }
@@ -592,14 +592,14 @@ void new_government(void)
         return;
     backdrop_save();
     strcpy(msgtext, civ_adjectives[civnow]);
-    strcat(msgtext, " government\nchanged to ");
+    strcat(msgtext, "\xB0\xAE\xA1\xE9\xC0\xB0\xE1\xE2\xE0\xAE\xA9\n\xA8\xA7\xAC\xA5\xAD\xA5\xAD\xB0\xAD\xA0\xC5"); /* reciv-ru */
     strcat(msgtext, government_names[civ_gov[civnow]]);
     strcat(msgtext, "!\n");
     news_box(-2);
     mouse_off();
     rect_fill(scrbuf, 0, 100, 320, 100, 15);
     scrbuf->font = 6;
-    draw_text("New Cabinet:", 160, 102, 0);
+    draw_text("\x8F\xE0\xA0\xA2\xA8\xE2\xA5\xAB\xEC\xE1\xE2\xA2\xAE", 160, 102, 0); /* reciv-ru */
     scrbuf->font = 2;
     for (i = 0; i < 4; i++) {
         blit(tile_page, i * 40 + 160, 140, 40, 60, scrbuf, i * 80 + 20, 118);

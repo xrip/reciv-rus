@@ -75,7 +75,7 @@ void palace_view(int count)
     blit(back_page, 20, 16, 280, 44, scrbuf, 20, 16);
     blit(scrbuf, 0, 0, 320, 200, back_page, 0, 0);
     abort_flag = 1;
-    menu_dialog("Which section shall we improve?\n", 40, 16);
+    menu_dialog("\x8A\xA0\xAA\xE3\xEE \xE7\xA0\xE1\xE2\xEC \xA1\xE3\xA4\xA5\xAC \xE3\xAB\xE3\xE7\xE8\xA0\xE2\xEC?\n", 40, 16); /* reciv-ru */
     has_choice_l = 0;
     for (section_index_i = 1; section_index_i < 8; section_index_i++) {
         if (floors_palace[section_index_i] < 4 && (floors_palace[section_index_i - 1] > 0 || floors_palace[section_index_i + 1] > 0 || floors_palace[section_index_i] >= 0)) {
@@ -148,7 +148,7 @@ void palace_view(int count)
         sprite_arena_release();
         preview_height_j = 92;
         rect_fill(scrbuf, 16, 2, 288, 102, 9);
-        draw_text("Select new section.", 160, 3, 15);
+        draw_text("\x82\xEB\xA1\xA5\xE0\xA8\xE2\xA5 \xE7\xA0\xE1\xE2\xEC.", 160, 3, 15); /* reciv-ru */
         for (section_index_i = 1; section_index_i <= 3; section_index_i++) {
             draw_x_n = 100 * section_index_i - 80;
             rect_fill(scrbuf, draw_x_n, 10, 80, preview_height_j, !vga_modes ? 3 : 1);

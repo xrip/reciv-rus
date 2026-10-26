@@ -56,7 +56,7 @@ int load_game(int slot)
     drive = choose_drive();
     if (drive != -1) {
         if (slot == -1) {
-            strcpy(msgtext, "\214Select Load File...\n");
+            strcpy(msgtext, "\x82\xEB\xA1\xA5\xE0\xA8\xE2\xA5 \xA8\xAC\xEF \xA8\xA3\xE0\xEB..\n"); /* reciv-ru */
             saved_found = 0;
             for (i = 0; (unsigned int) i < 10; i++) {
                 filename[7] = i + '0';
@@ -113,9 +113,9 @@ int preview;
             strcat(msgtext, leader);
             strcat(msgtext, "/");
             strcat(msgtext, itoa(abs(save_year), nstr, 10));
-            strcat(msgtext, save_year < 0 ? " BC\n" : " AD\n");
+            strcat(msgtext, save_year < 0 ? " \xA4\xED\n" : " \xAD\xED\n"); /* reciv-ru */
         } else
-            strcat(msgtext, " (EMPTY)\n");
+            strcat(msgtext, " (\x8F\x93\x91\x92\x8E)\n"); /* reciv-ru */
         close(save_fd);
         return save_fd != -1 ? 1 : 0;
     }
@@ -142,7 +142,7 @@ void save_game(int slot)
     menu_begin();
     drive = choose_drive();
     if (drive != -1) {
-        strcpy(msgtext, "\214Select Save File...\n");
+        strcpy(msgtext, "\x82\xEB\xA1\xA5\xE0\xA8\xE2\xA5 \xA8\xAC\xEF \xA8\xA3\xE0\xEB..\n"); /* reciv-ru */
         for (i = 0; i < 4; i++) {
             filename[7] = i + '0';
             read_save_header(filename, 1L);
@@ -158,16 +158,16 @@ void save_game(int slot)
             filename[7] = slot + '0';
             if (write_save(filename)) {
                 if ((long) save_error == 0L)
-                    strcpy(msgtext, " Game has been saved.\n");
+                    strcpy(msgtext, " \x88\xA3\xE0\xA0 \xE1\xAE\xE5\xE0\xA0\xAD\xA5\xAD\xA0\n"); /* reciv-ru */
                 else {
-                    strcpy(msgtext, " Game NOT saved.\n");
+                    strcpy(msgtext, " \x91\xAE\xE5\xE0\xA0\xAD\xA5\xAD\xA8\xEF \x8D\x85\x92.\n"); /* reciv-ru */
                     rect_fill(scrbuf, 64, 127, 192, 34, 12);
                 }
                 if (save_error == 13)
-                    strcat(msgtext, " Write access denied.\n");
+                    strcat(msgtext, " \x8E\xE8\xA8\xA1\xAA\xA0 \xA7\xA0\xAF\xA8\xE1\xA8.\n"); /* reciv-ru */
                 if (save_error == 28)
-                    strcat(msgtext, " Disk Full.\n");
-                strcat(msgtext, " Press key to continue.\n");
+                    strcat(msgtext, " \x8D\xA5\xE2 \xAC\xA5\xE1\xE2\xA0.\n"); /* reciv-ru */
+                strcat(msgtext, " \x8D\xA0\xA6\xAC\xA8\xE2\xA5 \xAB\xEE\xA1\xE3\xEE \xAA\xAB\xA0\xA2\xA8\xE8\xE3.\n"); /* reciv-ru */
                 box_info_flags = 1;
                 show_menu(msgtext, 64, 127);
             }
@@ -194,7 +194,7 @@ int write_save(char *file)
     strcat(msgtext, civ_names[civnow]);
     strcat(msgtext, "/");
     format_year();
-    strcat(msgtext, "\n ... save in progress.\n");
+    strcat(msgtext, "\n ... \xA8\xA4\xA5\xE2 \xE1\xAE\xE5\xE0\xA0\xAD\xA5\xAD\xA8\xA5..\n"); /* reciv-ru */
     box_info_flags = 1;
     show_menu(msgtext, 64, 86);
     read_save(file);
@@ -216,7 +216,7 @@ unsigned int drive_choice = -1;
 int choose_drive(void)
 {
     int input, unused, spare;
-    if (drive_choice == -1) {
+    if (drive_choice == (unsigned short)-1) { /* reciv: MSC 16-bit compare: 0xFFFF sentinel equals -1 */
         _dos_getdrive(&drive_choice);
         drive_choice--;
     }
@@ -224,10 +224,10 @@ int choose_drive(void)
     if (!save_mode)
         menu_clear();
     do {
-        strcpy(msgtext, save_mode ? "  Which drive contains your\n    saved game files?\n\n            " : "  Which drive contains your\n     Save Game disk?\n\n            ");
+        strcpy(msgtext, save_mode ? "  \x8D\xA0 \xAA\xA0\xAA\xAE\xAC \xA4\xA8\xE1\xAA\xE3 \xAD\xA0\xE5\xAE\xA4\xEF\xE2\xE1\xEF\n\xA2\xA0\xE8\xA8 \xE1\xAE\xE5\xE0\xA0\xAD\xA5\xAD\xAD\xEB\xA9 \xA8\xA3\xE0\xEB?\n\n            " : "  \x8D\xA0 \xAA\xA0\xAA\xAE\xAC \xA4\xA8\xE1\xAA\xA5 \xAD\xA0\xE5\xAE\xA4\xEF\xE2\xE1\xEF\n \xE1\xAE\xE5\xE0\xA0\xAD\xA5\xAD\xAD\xEB\xA5 \xA8\xA3\xE0\xEB?\n\n            "); /* reciv-ru */
         msgtext[strlen(msgtext) - 1] = drive_choice + 'A';
-        strcat(msgtext, ":\n\n    Press drive letter and\nReturn when disk is inserted.\n");
-        strcat(msgtext, "    Press Escape to cancel.\n");
+        strcat(msgtext, ":\n\n    \x93\xAA\xA0\xA6\xA8\xE2\xA5 \xA8\xAC\xEF \xA4\xA8\xE1\xAA\xAE\xA2\xAE\xA4\xA0\n\xA8 \xA7\xA0\xE2\xA5\xAC \xAD\xA0\xA6\xAC\xA8\xE2\xA5 Enter.\n"); /* reciv-ru */
+        strcat(msgtext, "    Esc - \xAF\xE0\xA5\xE0\xA2\xA0\xE2\xEC\xE1\xEF.\n"); /* reciv-ru */
         news_effect(99, 80, 72, 0);
         input = key_cmd();
         if (input == 'A' || input == 'a')
@@ -247,8 +247,8 @@ int choose_drive(void)
         rect_fill(scrbuf, 80, 88, 160, 24, 15);
     } while (input != 13 && input != 27);
     rect_fill(scrbuf, 8, 8, 304, 184, 15);
-    if (drive_choice != -1 && !disk_ready(drive_choice)) {
-        strcpy(msgtext, "No Disk in Drive A.\n");
+    if (drive_choice != (unsigned short)-1 && !disk_ready(drive_choice)) { /* reciv: same 16-bit sentinel */
+        strcpy(msgtext, "\x8D\xA5\xE2 \xA4\xA8\xE1\xAA\xA0: Drive A.\n"); /* reciv-ru */
         msgtext[strlen(msgtext) - 3] = drive_choice + 'A';
         show_menu(msgtext, 100, 80);
         return -1;
@@ -308,7 +308,7 @@ int read_save(char *file)
 {
     strcpy(file + 9, "map");
     if (image_screen(2, file)) {
-        strcpy(msgtext, "Error writing map file.\n");
+        strcpy(msgtext, "\x8D\xA5\xE2 \xA4\xA8\xE1\xAA\xA0: Drive A.\n"); /* reciv-ru */
         show_menu(msgtext, 4, 64);
         save_error = 1;
         return 0;
