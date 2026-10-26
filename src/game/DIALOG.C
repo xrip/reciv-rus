@@ -60,7 +60,10 @@ int menu_core(char *text, int x, int y, int mode)
     edit_mode = used_flag = 0;
     if (!has_mouse && selected_e == -1 && !need_ok_key && !box_info_flags)
         selected_e = 0;
-    selected_e = 0;
+    /* reciv-ru: keep item 0 unselected when it is dimmed, so the
+     * un-highlight repaint (11->7, 3->22) never touches its text */
+    if (!(dialog_dim & 1))
+        selected_e = 0;
     if (editing != -1)
         selected_e = editing;
     entry_first = -1;

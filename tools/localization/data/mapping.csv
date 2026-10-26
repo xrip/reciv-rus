@@ -118,25 +118,25 @@ BATTLE.C,296, use\nnuclear weapons!\n," исп
 ядерное оружие└
 ",gap,exact,20a8e1af0aefa4a5e0adaea5b0aee0e3a6a8a5c00a
 BATTLE.C,307,SDI protects ,СОИ защитила,gap,exact,918e88b0a7a0e9a8e2a8aba020
-CAPTURE.C,141, capture\n," к.корабль
-",gap,exact,20aa2eaaaee0a0a1abec0a
-CAPTURE.C,145, gold\npieces plundered.\n,"вернулся назад.
-",gap,exact,a2a5e0ade3abe1ef20ada0a7a0a42e0a
-CAPTURE.C,162,Spies report:\n,"строительство прервано.
-",gap,exact,e1e2e0aea8e2a5abece1e2a2ae20afe0a5e0a2a0adae2e0a
-CAPTURE.C,164, capture\nthe ," взяли
-",gap,exact,b0a2a7efaba80a
-CAPTURE.C,164, destroy\nthe ," кг└
-золота украдено └
-",gap,exact,b0aaa3c00aa7aeabaee2a0b0e3aae0a0a4a5adaeb0c00a
-CAPTURE.C,166, city\nof ,"Сообщ└ шпион┼
-",gap,exact,91aeaea1e9c0b0e8afa8aeadc50a
-CAPTURE.C,202, spaceship\n," взяли
-гор└ ",gap,exact,b0a2a7efaba80aa3aee0c0b0
-CAPTURE.C,204,returns to Earth.\n," уничтожили
- ",gap,exact,b0e3ada8e7e2aea6a8aba80ab0
-CAPTURE.C,204,construction cancelled.\n," город
- ",gap,exact,b0a3aee0aea40ab0
+CAPTURE.C,141, capture\n,"░взяли
+",table,exact,b0a2a7efaba80a
+CAPTURE.C,145, gold\npieces plundered.\n,"░кг└
+золота░украдено░└
+",table,exact,b0aaa3c00aa7aeabaee2a0b0e3aae0a0a4a5adaeb0c00a
+CAPTURE.C,162,Spies report:\n,"Сообщ└░шпион┼
+",table,exact,91aeaea1e9c0b0e8afa8aeadc50a
+CAPTURE.C,164, capture\nthe ,"░взяли
+гор└░",table,exact,b0a2a7efaba80aa3aee0c0b0
+CAPTURE.C,164, destroy\nthe ,"░уничтожили
+░",table,exact,b0e3ada8e7e2aea6a8aba80ab0
+CAPTURE.C,166, city\nof ,"░город
+░",table,exact,b0a3aee0aea40ab0
+CAPTURE.C,202, spaceship\n," к.корабль
+",table,exact,20aa2eaaaee0a0a1abec0a
+CAPTURE.C,204,returns to Earth.\n,"вернулся назад.
+",table,exact,a2a5e0ade3abe1ef20ada0a7a0a42e0a
+CAPTURE.C,204,construction cancelled.\n,"строительство прервано.
+",table,exact,e1e2e0aea8e2a5abece1e2a2ae20afe0a5e0a2a0adae2e0a
 CAPTURE.C,232,Select one...\n ,"Выберите└└└
 ",gap,exact,82eba1a5e0a8e2a5c0c0c00a20
 CAPTURE.C,260, take\n," узн└
@@ -458,8 +458,7 @@ CITYMGT.C,791, builds\n," созд└┼
 ",gap,exact,b0e1aea7a4c0c50a
 CITYMGT.C,835,Diplomats report:\n,"Дипломаты сообщ└┼
 ",gap,exact,84a8afabaeaca0e2ebb0e1aeaea1e9c0c50a
-CITYMGT.C,839, capital\nmoved to ," столица
-в городе:",gap,exact,b0e1e2aeaba8e6a00aa220a3aee0aea4a53a
+CITYMGT.C,839, capital\nmoved to , столица\nв городе: ,table,exact,20e1e2aeaba8e6a05c6ea220a3aee0aea4a53a20
 CITYMGT.C,914,INFO,Инфо,gap,exact,88ade4ae
 CITYMGT.C,915,HAPPY,Жизнь,gap,exact,86a8a7adec
 CITYMGT.C,916,MAP,Крт,gap,exact,8ae0e2
@@ -585,8 +584,7 @@ DIALOG.C,237, report:,,table,exact,
 DIALOG.C,254,(HELP AVAILABLE),Министр Обороны:,interp,exact,8ca8ada8e1e2e0208ea1aee0aeadeb3a
 DIPLOMAC.C,74,The war between\nthe ,"Война народов
 ",table,exact,82aea9ada020ada0e0aea4aea20a
-DIPLOMAC.C,76, and the\n,"Война народов
-",gap,exact,82aea9ada020ada0e0aea4aea20a
+DIPLOMAC.C,76, and the\n, и\n,table,exact,20a85c6e
 DIPLOMAC.C,78, has ended.\n,"
 закончена.
 ",gap,exact,0aa7a0aaaeade7a5ada02e0a
@@ -958,30 +956,30 @@ GAME.C,412,Silk,Шелк,table,exact,98a5abaa
 GAME.C,413,Silver,Алмазы,table,exact,80abaca0a7eb
 GAME.C,414,Wine,Вино,table,exact,82a8adae
 GAME.C,415,Copper,Медь,table,exact,8ca5a4ec
-GAME.C,416,Gems,Алмазы,table,exact,80abaca0a7eb
+GAME.C,416,Gems,Агат,table,exact,80a3a0e2
 GAME.C,417,Dye,Чай,table,exact,97a0a9
 GAME.C,418,Salt,Соль,table,exact,91aeabec
 GAME.C,419,Spice,Перец,table,exact,8fa5e0a5e6
-GAME.C,425,Barbarian ,tXЛv▒╙цЛ^,table,exact,74588b7606b105d3e68b5e
-GAME.C,426,Roman     ,Римляне,table,exact,90a8acabefada5000000000000000000
-GAME.C,427,Zulu      ,Негры,table,exact,8da5a3e0eb0000000000000000000000
-GAME.C,428,Mongol    ,Монголы,table,exact,8caeada3aeabeb000000000000000000
-GAME.C,429,Aztec     ,Ацтеки,table,exact,80e6e2a5aaa800000000000000000000
-GAME.C,430,Persian   ,Ё╕,table,exact,f0b80c00f76eac03f080bc
-GAME.C,431,Muslim    ,ўР t▄ЎДЇРu,table,exact,f790ff74dcf684f4901075
-GAME.C,432,Hittite   ,╒А╝ўРtщ╕■,table,exact,d580bcf790197403e9b8fe
-GAME.C,449,Barbarians ,Римляне,gap,exact,90a8acabefada520202020
-GAME.C,450,Romans     ,Вавилоняне,gap,exact,82a0a2a8abaeadefada520
-GAME.C,451,Babylonians,Немцы,gap,exact,8da5ace6eb202020202020
+GAME.C,425,Barbarian ,Варвар    ,table,exact,82a0e0a2a0e020202020
+GAME.C,426,Roman     ,Римлянин  ,table,exact,90a8acabefada8ad2020
+GAME.C,427,Zulu      ,Негр      ,table,exact,8da5a3e0202020202020
+GAME.C,428,Mongol    ,Монгол    ,table,exact,8caeada3aeab20202020
+GAME.C,429,Aztec     ,Ацтек     ,table,exact,80e6e2a5aa2020202020
+GAME.C,430,Persian   ,Перс      ,table,exact,8fa5e0e1202020202020
+GAME.C,431,Muslim    ,Муслим    ,table,exact,8ce3e1aba8ac20202020
+GAME.C,432,Hittite   ,Гиттит    ,table,exact,83a8e2e2a8e220202020
+GAME.C,449,Barbarians ,Варвары    ,table,exact,82a0e0a2a0e0eb20202020
+GAME.C,450,Romans     ,Римляне    ,table,exact,90a8acabefada520202020
+GAME.C,451,Babylonians,Вавилоняне ,table,exact,82a0a2a8abaeadefada520
 GAME.C,452,Germans    ,Немцы,table,exact,8da5ace6eb0000000000000000000000
-GAME.C,453,Egyptians  ,Американцы,gap,exact,80aca5e0a8aaa0ade6eb20
-GAME.C,454,Americans  ,Греки,gap,exact,83e0a5aaa8202020202020
-GAME.C,455,Greeks     ,Монголы,gap,exact,8caeada3aeabeb20202020
-GAME.C,456,Mongols    ,Атилла,gap,exact,80e2a8ababa020202020202020
-GAME.C,473,Attila       ,Цезарь,gap,exact,96a5a7a0e0ec20202020202020
+GAME.C,453,Egyptians  ,Египтяне   ,table,exact,85a3a8afe2efada5202020
+GAME.C,454,Americans  ,Американцы ,table,exact,80aca5e0a8aaa0ade6eb20
+GAME.C,455,Greeks     ,Греки      ,table,exact,83e0a5aaa8202020202020
+GAME.C,456,Mongols    ,Монголы    ,table,exact,8caeada3aeabeb20202020
+GAME.C,473,Attila       ,Атилла       ,table,exact,80e2a8ababa020202020202020
 GAME.C,474,Caesar       ,Цезарь,table,exact,96a5a7a0e0ec00000000000000000000
 GAME.C,475,Shaka        ,Лумумба,table,exact,8be3ace3aca1a0000000000000000000
-GAME.C,476,Genghis Khan ,Чингиз  Хан,table,exact,97a8ada3a8a7202095a0ad0000000000
+GAME.C,476,Genghis Khan ,Чингиз Хан   ,table,exact,97a8ada3a8a72095a0ad202020
 GAME.C,477,Montezuma    ,Монтезума,table,exact,8caeade2a5a7e3aca000000000000000
 GAME.C,478,Xerxes       ,Ксеркс,gap,exact,8ae1a5e0aae120202020202020
 GAME.C,479,Saladin      ,Саладин,gap,exact,91a0aba0a4a8ad202020202020
@@ -1211,7 +1209,6 @@ PEDIA.C,95,ENCYCLOPAEDIA of CIVILIZATION,ЭНЦИКЛОПЕДИЯ ЦИВИЛИЗ
 PEDIA.C,96,ENCYCLOPAEDIA of CIVILIZATION,ЭНЦИКЛОПЕДИЯ ЦИВИЛИЗАЦИИ,gap,exact,9d8d96888a8b8e8f8584889f20968882888b888780968888
 PEDIA.C,97,EXIT,Конц,interp,exact,8aaeade6
 PEDIA.C,99,MORE,Еще,table,exact,85e9a5
-PEDIA.C,106,zzz,Стр.,gap,exact,91e2e02e20
 PEDIA.C,295,Civilization Advance,Развитие цивилизации,table,exact,90a0a7a2a8e2a8a520e6a8a2a8aba8a7a0e6a8a8
 PEDIA.C,310,City Improvement,Развитие городов,table,exact,90a0a7a2a8e2a8a520a3aee0aea4aea2
 PEDIA.C,310,Wonder of the World,Чудеса Света,table,exact,97e3a4a5e1a02091a2a5e2a0
@@ -1229,7 +1226,7 @@ PEDIA.C,419, Wonder, (Чудо),gap,exact,202897e3a4ae29
 PEDIA.C,425,Allows: ,Дает:,gap,exact,84a0a5e23a20
 PEDIA.C,428,(from Great Library),(из Вел. Библиотеки),gap,exact,28a8a72082a5ab2e2081a8a1aba8aee2a5aaa829
 PEDIA.C,434,(Discovered),(Открыто),gap,exact,288ee2aae0ebe2ae29
-PEDIA.C,437,(Taken from ,(Постарались,gap,exact,288faee1e2a0e0a0aba8e1ec
+PEDIA.C,437,(Taken from ,(Постарались ,table,exact,288faee1e2a0e0a0aba8e1ec20
 PEDIA.C,445,Requires ,Требует:,gap,exact,92e0a5a1e3a5e23a20
 PEDIA.C,449,Cost: ,Цена:,gap,exact,96a5ada03a20
 PEDIA.C,451, shields., щитов.,gap,exact,20e9a8e2aea22e
@@ -1257,8 +1254,7 @@ PEDIA.C,552,Defense bonus: +,Сила защиты: +,gap,exact,91a8aba020a7a0e9
 QUIZ.C,75,CIVILIZATION QUIZ,Купили ли вы игру,gap,exact,8ae3afa8aba820aba820a2eb20a8a3e0e3
 QUIZ.C,79,Which civilization advances are required to learn,Какое достижение цивилизации нужно для:,gap,exact,8aa0aaaea520a4aee1e2a8a6a5ada8a520e6a8a2a8aba8a7a0e6a8a820ade3a6adae20a4abef3a
 QUIZ.C,81,the advance pictured below.,показанного ниже.,table,exact,afaeaaa0a7a0adadaea3ae20ada8a6a52e
-QUIZ.C,85,Pages ,показанного ниже.,gap,exact,afaeaaa0a7a0adadaea3ae20ada8a6a52e
-QUIZ.C,96,zzz,Стр.,gap,exact,91e2e02e20
+QUIZ.C,85,Pages ,Стр. ,table,exact,91e2e02e20
 QUIZ.C,116, and , и ,table,exact,20a820
 REPLAY.C,70,See Replay?\n No replay\n Quick Replay\n Complete Replay\n Write Replay to Disk\n,"Повторить?
  Не надо
@@ -1308,8 +1304,8 @@ REPORTS.C,336,LARGEST,БОЛЬШИЕ,table,exact,818e8b9c988885
 REPORTS.C,349, completes his epic history:, завершил свой манускрипт:,gap,exact,20a7a0a2a5e0e8a8ab20e1a2aea920aca0ade3e1aae0a8afe23a
 REPORTS.C,351,'The ,',table,exact,27
 REPORTS.C,353, Civilizations in the World', цивилизации в мире',gap,exact,20e6a8a2a8aba8a7a0e6a8a820a220aca8e0a527
-REPORTS.C,413,. The ,Великие,gap,exact,82a5aba8aaa8a5
-REPORTS.C,415, Civilization of the , Цивилизации:,gap,exact,2096a8a2a8aba8a7a0e6a8a83a20
+REPORTS.C,413,. The , Великие ,table,exact,2082a5aba8aaa8a520
+REPORTS.C,415, Civilization of the , Цивилизации: ,table,exact,2096a8a2a8aba8a7a0e6a8a83a20
 REPORTS.C,471, Demographics," Прочее
 ",interp,exact-anywhere,208fe0aee7a5a50a
 REPORTS.C,527,Approval Rating:,Поддерживают:,gap,exact,8faea4a4a5e0a6a8a2a0eee23a
@@ -1424,7 +1420,7 @@ SPACESHP.C,473, required.\n," не надо.
 SPACESHP.C,554,Which nation?\n ,"Какая нация ?
 ",gap,exact,8aa0aaa0ef20ada0e6a8ef203f0a20
 SPACESHP.C,576, LAUNCH space ship!, Корабль стартовал├,table,exact,208aaee0a0a1abecb0e1e2a0e0e2aea2a0abc3
-SPACESHP.C,578,Estimate arrival in , Корабль стартовал├,gap,exact,208aaee0a0a1abecb0e1e2a0e0e2aea2a0abc3
+SPACESHP.C,578,Estimate arrival in ,Срок░прибытия ,table,exact,91e0aeaab0afe0a8a1ebe2a8ef20
 STATUS.C,37,Government: ,Правители:,gap,exact,8fe0a0a2a8e2a5aba83a20
 STATUS.C,40,Population: ,Население:,gap,exact,8da0e1a5aba5ada8a53a20
 STATUS.C,43,Treasury: $,Капитал: $,gap,exact,8aa0afa8e2a0ab3a2024
@@ -1508,6 +1504,9 @@ WORLDGEN.C,826,Global temperature\nrises! Icecaps melt.\nSevere Drought.\n,"Гл
 Айсберги тают└└└
 Сильная засуха└
 ",gap,exact,83abaea1a0abecadaea5b0afaee2a5afaba5ada8a5c00a80a9e1a1a5e0a3a8b0e2a0eee2c0c0c00a91a8abecada0efb0a7a0e1e3e5a0c00a
+CAPTURE.C,143,. ,└░,table,exact,c0b0
+CAPTURE.C,168,.\n,"└
+",table,exact,c00a
 DIPLOMAT.C,181,in ,г. ,table,exact,a32e20
 ADVISORS.C,661,\x87 (, (,table,exact,2028
 ADVISORS.C,670,\x87 (, (,table,exact,2028

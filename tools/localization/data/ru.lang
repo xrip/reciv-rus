@@ -1,7 +1,7 @@
 # reciv RU language file - the russian column is editable text.
 # key: FILE.C <TAB> line <TAB> english literal body <TAB> russian text
-# apply-translation.py rewrites this file but keeps manual russian
-# edits while their key exists; interp estimates are deliberately absent.
+# apply-translation.py rewrites this file; a russian column that differs
+# from ru.lang.prev (the machine values) is a manual edit and is kept.
 # line numbers refer to src/game AFTER wrapping and code fixes.
 ADVISORS.C	38	Empire	Гос-во
 ADVISORS.C	41	Kingdom	Царство
@@ -88,15 +88,17 @@ BATTLE.C	273	!\n Cancel action.\n Break treaty.\n	!\n Отказаться.\n П
 BATTLE.C	278	Overruled by\nthe Senate.\nAction canceled.\n	Не одобрено\nСенатом.\nПоход отменен.\n
 BATTLE.C	296	 use\nnuclear weapons!\n	 исп\nядерное░оружие└\n
 BATTLE.C	307	SDI protects 	СОИ░защитила 
-CAPTURE.C	141	 capture\n	 к.корабль\n
-CAPTURE.C	145	 gold\npieces plundered.\n	вернулся назад.\n
-CAPTURE.C	162	Spies report:\n	строительство прервано.\n
-CAPTURE.C	164	 capture\nthe 	░взяли\n
-CAPTURE.C	164	 destroy\nthe 	░кг└\nзолота░украдено░└\n
-CAPTURE.C	166	 city\nof 	Сообщ└░шпион┼\n
-CAPTURE.C	202	 spaceship\n	░взяли\nгор└░
-CAPTURE.C	204	returns to Earth.\n	░уничтожили\n░
-CAPTURE.C	204	construction cancelled.\n	░город\n░
+CAPTURE.C	141	 capture\n	░взяли\n
+CAPTURE.C	143	. 	└░
+CAPTURE.C	145	 gold\npieces plundered.\n	░кг└\nзолота░украдено░└\n
+CAPTURE.C	162	Spies report:\n	Сообщ└░шпион┼\n
+CAPTURE.C	164	 capture\nthe 	░взяли\nгор└░
+CAPTURE.C	164	 destroy\nthe 	░уничтожили\n░
+CAPTURE.C	166	 city\nof 	░город\n░
+CAPTURE.C	168	.\n	└\n
+CAPTURE.C	202	 spaceship\n	 к.корабль\n
+CAPTURE.C	204	returns to Earth.\n	вернулся назад.\n
+CAPTURE.C	204	construction cancelled.\n	строительство прервано.\n
 CAPTURE.C	232	Select one...\n 	Выберите└└└\n 
 CAPTURE.C	260	 take\n	░узн└\n
 CAPTURE.C	276	NONE	Нет
@@ -393,7 +395,7 @@ CITYMGT.C	750	 builds 	░созд└┼░
 CITYMGT.C	774	Sensors report a\nNUCLEAR WEAPONS test\nnear 	Сейсмологи┼\nиспытания░ядерного░оружия\nв░г└░
 CITYMGT.C	791	 builds\n	░созд└┼\n
 CITYMGT.C	835	Diplomats report:\n	Дипломаты░сообщ└┼\n
-CITYMGT.C	839	 capital\nmoved to 	░столица\nв городе:
+CITYMGT.C	839	 capital\nmoved to 	 столица\\nв городе: 
 CITYMGT.C	914	INFO	Инфо
 CITYMGT.C	915	HAPPY	Жизнь
 CITYMGT.C	916	MAP	Крт
@@ -461,9 +463,9 @@ DIALOG.C	37	Defense Minister:	Министр Обороны:
 DIALOG.C	38	Domestic Advisor:	Городской Совет:
 DIALOG.C	38	Foreign Minister:	Министр Обороны:
 DIALOG.C	38	Science Advisor:	Ученый Совет:
-DIALOG.C	237	 report:	
+DIALOG.C	240	 report:	
 DIPLOMAC.C	74	The war between\nthe 	Война народов\n
-DIPLOMAC.C	76	 and the\n	Война народов\n
+DIPLOMAC.C	76	 and the\n	 и\\n
 DIPLOMAC.C	78	 has ended.\n	\nзакончена.\n
 DIPLOMAC.C	120	agree to a	Мы согласны на:
 DIPLOMAC.C	148	Select type of\nGovernment...\n 	Выберите тип\nправительства..\n 
@@ -776,30 +778,30 @@ GAME.C	412	Silk	Шелк
 GAME.C	413	Silver	Алмазы
 GAME.C	414	Wine	Вино
 GAME.C	415	Copper	Медь
-GAME.C	416	Gems	Алмазы
+GAME.C	416	Gems	Агат
 GAME.C	417	Dye	Чай
 GAME.C	418	Salt	Соль
 GAME.C	419	Spice	Перец
-GAME.C	425	Barbarian 	tXЛv\x06▒\x05╙цЛ^
-GAME.C	426	Roman     	Римляне
-GAME.C	427	Zulu      	Негры
-GAME.C	428	Mongol    	Монголы
-GAME.C	429	Aztec     	Ацтеки
-GAME.C	430	Persian   	Ё╕\x0C\x00ўnм\x03ЁА╝
-GAME.C	431	Muslim    	ўР t▄ЎДЇР\x10u
-GAME.C	432	Hittite   	╒А╝ўР\x19t\x03щ╕■
-GAME.C	449	Barbarians 	Римляне    
-GAME.C	450	Romans     	Вавилоняне 
-GAME.C	451	Babylonians	Немцы      
+GAME.C	425	Barbarian 	Варвар    
+GAME.C	426	Roman     	Римлянин  
+GAME.C	427	Zulu      	Негр      
+GAME.C	428	Mongol    	Монгол    
+GAME.C	429	Aztec     	Ацтек     
+GAME.C	430	Persian   	Перс      
+GAME.C	431	Muslim    	Муслим    
+GAME.C	432	Hittite   	Гиттит    
+GAME.C	449	Barbarians 	Варвары    
+GAME.C	450	Romans     	Римляне    
+GAME.C	451	Babylonians	Вавилоняне
 GAME.C	452	Germans    	Немцы
-GAME.C	453	Egyptians  	Американцы 
-GAME.C	454	Americans  	Греки      
-GAME.C	455	Greeks     	Монголы    
-GAME.C	456	Mongols    	Атилла       
-GAME.C	473	Attila       	Цезарь       
+GAME.C	453	Egyptians  	Египтяне   
+GAME.C	454	Americans  	Американцы 
+GAME.C	455	Greeks     	Греки      
+GAME.C	456	Mongols    	Монголы    
+GAME.C	473	Attila       	Атилла       
 GAME.C	474	Caesar       	Цезарь
 GAME.C	475	Shaka        	Лумумба
-GAME.C	476	Genghis Khan 	Чингиз  Хан
+GAME.C	476	Genghis Khan 	Чингиз Хан   
 GAME.C	477	Montezuma    	Монтезума
 GAME.C	478	Xerxes       	Ксеркс       
 GAME.C	479	Saladin      	Саладин      
@@ -925,7 +927,6 @@ PEDIA.C	55	Trade Routes	Торговые░Пути
 PEDIA.C	95	ENCYCLOPAEDIA of CIVILIZATION	ЭНЦИКЛОПЕДИЯ ЦИВИЛИЗАЦИИ
 PEDIA.C	96	ENCYCLOPAEDIA of CIVILIZATION	ЭНЦИКЛОПЕДИЯ ЦИВИЛИЗАЦИИ
 PEDIA.C	99	MORE	Еще
-PEDIA.C	106	zzz	Стр. 
 PEDIA.C	295	Civilization Advance	Развитие цивилизации
 PEDIA.C	310	City Improvement	Развитие городов
 PEDIA.C	310	Wonder of the World	Чудеса Света
@@ -942,7 +943,7 @@ PEDIA.C	419	 Wonder	 (Чудо)
 PEDIA.C	425	Allows: 	Дает: 
 PEDIA.C	428	(from Great Library)	(из Вел. Библиотеки)
 PEDIA.C	434	(Discovered)	(Открыто)
-PEDIA.C	437	(Taken from 	(Постарались
+PEDIA.C	437	(Taken from 	(Постарались 
 PEDIA.C	445	Requires 	Требует: 
 PEDIA.C	449	Cost: 	Цена: 
 PEDIA.C	451	 shields.	 щитов.
@@ -970,8 +971,7 @@ PEDIA.C	552	Defense bonus: +	Сила защиты: +
 QUIZ.C	75	CIVILIZATION QUIZ	Купили ли вы игру
 QUIZ.C	79	Which civilization advances are required to learn	Какое достижение цивилизации нужно для:
 QUIZ.C	81	the advance pictured below.	показанного ниже.
-QUIZ.C	85	Pages 	показанного ниже.
-QUIZ.C	96	zzz	Стр. 
+QUIZ.C	85	Pages 	Стр. 
 QUIZ.C	116	 and 	 и 
 REPLAY.C	70	See Replay?\n No replay\n Quick Replay\n Complete Replay\n Write Replay to Disk\n	Повторить?\n Не надо\n Краткий повтор\n Полный повтор\n Записать повтор на диск\n
 REPLAY.C	110	 BC	░дэ
@@ -1018,7 +1018,7 @@ REPORTS.C	336	LARGEST	БОЛЬШИЕ
 REPORTS.C	349	 completes his epic history:	 завершил свой манускрипт:
 REPORTS.C	351	'The 	'
 REPORTS.C	353	 Civilizations in the World'	 цивилизации в мире'
-REPORTS.C	413	. The 	Великие
+REPORTS.C	413	. The 	 Великие 
 REPORTS.C	415	 Civilization of the 	 Цивилизации: 
 REPORTS.C	527	Approval Rating:	Поддерживают:
 REPORTS.C	540	Population:	Население:
@@ -1094,7 +1094,7 @@ SPACESHP.C	471	No further
 SPACESHP.C	473	 required.\n	 не надо.\n
 SPACESHP.C	554	Which nation?\n 	Какая нация ?\n 
 SPACESHP.C	576	 LAUNCH space ship!	 Корабль░стартовал├
-SPACESHP.C	578	Estimate arrival in 	 Корабль░стартовал├
+SPACESHP.C	578	Estimate arrival in 	Срок░прибытия 
 STATUS.C	37	Government: 	Правители: 
 STATUS.C	40	Population: 	Население: 
 STATUS.C	43	Treasury: $	Капитал: $

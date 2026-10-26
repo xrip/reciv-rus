@@ -140,7 +140,7 @@ int a, b, c;
         strcpy(msgtext, civ_names[a]);
         strcat(msgtext, TRANSLATE(" capture\n", "RU")); /* reciv-ru */
         append_place_name(b);
-        strcat(msgtext, ". ");
+        strcat(msgtext, TRANSLATE(". ", "RU")); /* reciv-ru */
         strcat(msgtext, itoa(val, nstr, 10));
         strcat(msgtext, TRANSLATE(" gold\npieces plundered.\n", "RU")); /* reciv-ru */
         sound(civt[civ_tribe_of[a]].f3);
@@ -165,7 +165,7 @@ int a, b, c;
         strcat(msgtext, civ_adjectives[old]);
         strcat(msgtext, TRANSLATE(" city\nof ", "RU")); /* reciv-ru */
         append_place_name(b);
-        strcat(msgtext, ".\n");
+        strcat(msgtext, TRANSLATE(".\n", "RU")); /* reciv-ru */
         show_msg(msgtext, 100, 80);
     }
     steal_advance(a, old);

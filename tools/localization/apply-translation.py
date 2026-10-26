@@ -134,6 +134,22 @@ CODE_FIXES = [
      b"    draw_string(TRANSLATE(\"W\\207ORLD\", \"RU\"), 182, 1, 15); /* reciv-ru */\r\n"
      b"    draw_string(TRANSLATE(\"C\\207IVILOPEDIA\", \"RU\"), 222, 1, 15); /* reciv-ru */"),
 
+    # DIALOG.C menu_core(): the menu pre-selects item 0.  With the wonders
+    # row dimmed (MENUS.C CODE_FIX below), the first selection change runs
+    # the un-highlight recolour on its rectangle, and that pass repaints the
+    # dimmed colour-3 text to 22 - the row goes blank.  Pre-select item 0
+    # only when it is not dimmed.
+    ("DIALOG.C",
+     b"    if (!has_mouse && selected_e == -1 && !need_ok_key && !box_info_flags)\r\n"
+     b"        selected_e = 0;\r\n"
+     b"    selected_e = 0;\r\n",
+     b"    if (!has_mouse && selected_e == -1 && !need_ok_key && !box_info_flags)\r\n"
+     b"        selected_e = 0;\r\n"
+     b"    /* reciv-ru: keep item 0 unselected when it is dimmed, so the\r\n"
+     b"     * un-highlight repaint (11->7, 3->22) never touches its text */\r\n"
+     b"    if (!(dialog_dim & 1))\r\n"
+     b"        selected_e = 0;\r\n"),
+
     # MENUS.C world_menu(): gray out "Wonders of the World" (menu item 0)
     # until the first wonder exists - the menu_core() dialog_dim bits draw the
     # row dimmed AND refuse selection, exactly how the game already dims the
@@ -288,7 +304,13 @@ def main():
     # it (both walks are in document order; the english body must match), and
     # write ru.lang with the FINAL physical line numbers - the ones langgen.c
     # will look up.
-    manual = load_lang(Path(args.lang))
+    # Manual edits are recognized against ru.lang.prev - the previous run's
+    # machine (auto) values.  A ru.lang line that differs from ru.lang.prev
+    # is a user edit and gets kept; everything else is regenerated from the
+    # mapping, so mapping fixes always win.
+    old_lang = load_lang(Path(args.lang))
+    prev_auto = load_lang(Path(str(args.lang) + ".prev"))
+    auto_fields = {}
     lang_entries = []
     errors = []
     used_keys = set()
@@ -321,23 +343,33 @@ def main():
             consumed.append(row)
             key = (fname, str(line), en.replace("\t", "\\t"))
             ru = strip_slot(row)
-            field = manual[key] if key in manual else lang_field(ru)
+            auto = lang_field(ru)
+            auto_fields[key] = auto
+            field = old_lang[key] if (key in prev_auto and
+                                      key in old_lang and
+                                      old_lang[key] != prev_auto[key]) else auto
             used_keys.add(key)
             lang_entries.append(key + (field,))
         for r in remaining:
             errors.append(f"{fname}: mapping row {r['line']} ({r['english']!r}) "
                           "left no TRANSLATE in the tree")
-    stale = [k for k in manual if k not in used_keys]
+    stale = [k for k in old_lang if k not in used_keys]
 
     if not args.dry_run:
+        header = ("# reciv RU language file - the russian column is editable text.\n"
+                  "# key: FILE.C <TAB> line <TAB> english literal body <TAB> russian text\n"
+                  "# apply-translation.py rewrites this file; a russian column that differs\n"
+                  "# from ru.lang.prev (the machine values) is a manual edit and is kept.\n"
+                  "# line numbers refer to src/game AFTER wrapping and code fixes.\n")
         with open(args.lang, "w", encoding="utf-8", newline="\n") as f:
-            f.write("# reciv RU language file - the russian column is editable text.\n"
-                    "# key: FILE.C <TAB> line <TAB> english literal body <TAB> russian text\n"
-                    "# apply-translation.py rewrites this file but keeps manual russian\n"
-                    "# edits while their key exists; interp estimates are deliberately absent.\n"
-                    "# line numbers refer to src/game AFTER wrapping and code fixes.\n")
+            f.write(header)
             for k in lang_entries:
                 f.write("\t".join(k) + "\n")
+        with open(Path(str(args.lang) + ".prev"), "w", encoding="utf-8", newline="\n") as f:
+            f.write("# machine values from the last run - diff ru.lang against this to\n"
+                    "# see the manual edits; apply-translation.py regenerates this file.\n")
+            for k in lang_entries:
+                f.write("\t".join((k[0], k[1], k[2], auto_fields[k[:3]])) + "\n")
 
     out = [f"applied={applied} moved={moved} skipped={len(skipped)} "
            f"warnings={len(warnings)} codefixes={fixed} lang={len(lang_entries)}"]

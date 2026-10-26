@@ -93,7 +93,7 @@ int a;
     n = 0;
     strcpy(msgtext, " ");
     do {
-        strcpy(least, TRANSLATE("zzz", "RU")); /* reciv-ru */
+        strcpy(least, "zzz");
         next = -1;
         for (k = 0; k < 0x48; k++) {
             if (((char) (k + topic) & 15) && !(req1 == advances[k].prereq1 || req2 == advances[k].prereq1 || topic == advances[k].prereq1) && !(req1 == advances[k].prereq2 || req2 == advances[k].prereq2 || topic == advances[k].prereq2))

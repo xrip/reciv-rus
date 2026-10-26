@@ -103,7 +103,7 @@ int pedia_list(int start, int category)
     y = 16;
     count = 0;
     do {
-        strcpy(low, TRANSLATE("zzz", "RU")); /* reciv-ru */
+        strcpy(low, "zzz");
         best_n = -1;
         best_kind = -1;
         if (category == 0 || category == -1) {

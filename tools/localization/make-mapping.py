@@ -873,6 +873,26 @@ def main():
             ":\n\n    Укажите имя дисковода\nи затем нажмите Enter.\n",
         ("SAVE.C", 230, "    Press Escape to cancel.\\n"): "    Esc - прерваться.\n",
         ("SAVE.C", 251, "No Disk in Drive A.\\n"): "Нет диска: Drive A.\n",
+        # CAPTURE.C capture banner / spy news / spaceship news: the pack put
+        # the spaceship trio BEFORE the capture strings, so the offset chain
+        # (gap method) shifted this block by three slots and rendered
+        # «Рим. 6вернулся назад.» Pack slots read from civ/CIV.EXE
+        # 0x2f1be..0x2f255 (trailing spaces are the pack's ░): ' capture\n'
+        # -> '░взяли\n'@2f1f6, ' gold\n...' -> '░кг└\nзолота░украдено░└\n'@2f203,
+        # 'Spies report:\n' -> 'Сообщ└░шпион┼\n'@2f21c, ' capture\nthe ' ->
+        # '░взяли\nгор└░'@2f22b, ' destroy\nthe ' -> '░уничтожили\n░'@2f239,
+        # ' city\nof ' -> '░город\n░'@2f247, ' spaceship\n' -> ' к.корабль\n'@2f1be,
+        # 'returns to Earth.\n' -> 'вернулся назад.\n'@2f1ca, 'construction
+        # cancelled.\n' -> 'строительство прервано.\n'@2f1dd.
+        ("CAPTURE.C", 141, " capture\\n"): "░взяли\n",
+        ("CAPTURE.C", 145, " gold\\npieces plundered.\\n"): "░кг└\nзолота░украдено░└\n",
+        ("CAPTURE.C", 162, "Spies report:\\n"): "Сообщ└░шпион┼\n",
+        ("CAPTURE.C", 164, " capture\\nthe "): "░взяли\nгор└░",
+        ("CAPTURE.C", 164, " destroy\\nthe "): "░уничтожили\n░",
+        ("CAPTURE.C", 166, " city\\nof "): "░город\n░",
+        ("CAPTURE.C", 202, " spaceship\\n"): " к.корабль\n",
+        ("CAPTURE.C", 204, "returns to Earth.\\n"): "вернулся назад.\n",
+        ("CAPTURE.C", 204, "construction cancelled.\\n"): "строительство прервано.\n",
         # wonders() "The " (REPORTS.C 289): the DP chain paired it with an
         # unrelated battle string; the pack slot is four blanks - the pack
         # drops "The " (civ/CIV.EXE 0x30d69, slot order verified against the
@@ -952,6 +972,56 @@ def main():
         # ('Требуется: ' @371 is pack wording).
         ("PEDIA.C", 375, " and "): " и ",
         ("QUIZ.C", 116, " and "): " и ",
+        # 80) the civ tables (GAME.C civ_adjective_text[8][11], civ_name_text
+        # [8][12], leader_name_text[8][14]): the pairing chain slid the plural
+        # block and the leader block by one slot and landed four adjectives on
+        # garbage.  Hex-verified pack slots, civ/CIV.EXE 0x2cac1..0x2cb95:
+        # Варвар/Римлянин/Негр/Монгол/Ацтек/Перс/Муслим/Гиттит, Варвары/
+        # Римляне/Вавилоняне/Немцы/Египтяне/Американцы/Греки/Монголы, Атилла.
+        # Trailing pads are the pack's own spaces; the [8][11]/[8][12] records
+        # are byte-critical (the save file moves them whole).
+        ("GAME.C", 425, "Barbarian "): "Варвар    ",
+        ("GAME.C", 426, "Roman     "): "Римлянин  ",
+        ("GAME.C", 427, "Zulu      "): "Негр      ",
+        ("GAME.C", 428, "Mongol    "): "Монгол    ",
+        ("GAME.C", 429, "Aztec     "): "Ацтек     ",
+        ("GAME.C", 430, "Persian   "): "Перс      ",
+        ("GAME.C", 431, "Muslim    "): "Муслим    ",
+        ("GAME.C", 432, "Hittite   "): "Гиттит    ",
+        ("GAME.C", 449, "Barbarians "): "Варвары    ",
+        ("GAME.C", 450, "Romans     "): "Римляне    ",
+        ("GAME.C", 451, "Babylonians"): "Вавилоняне ",
+        ("GAME.C", 453, "Egyptians  "): "Египтяне   ",
+        ("GAME.C", 454, "Americans  "): "Американцы ",
+        ("GAME.C", 455, "Greeks     "): "Греки      ",
+        ("GAME.C", 456, "Mongols    "): "Монголы    ",
+        ("GAME.C", 473, "Attila       "): "Атилла       ",
+        # 81) quiz page line: pack 'Стр. ' @0x31410 sits under the 'Pages '
+        # slot; the chain dumped 'Pages ' onto the 'показанного ниже.' tail.
+        ("QUIZ.C", 85, "Pages "): "Стр. ",
+        # 82) spaceship launch: pack ' Корабль░стартовал├' @0x317cb belongs to
+        # ' LAUNCH space ship!', 'Срок░прибытия ' @0x317df to 'Estimate arrival
+        # in '; the gap chain shifted this pair by one slot.
+        ("SPACESHP.C", 578, "Estimate arrival in "): "Срок░прибытия ",
+        # 83) war-ends message: ' and the\n' rode the same 'Война народов' slot
+        # as 74, printing the head twice.  Pack slot 'и ' @0x2f2d1.
+        ("DIPLOMAC.C", 76, " and the\\n"): " и\\n",
+        # 84) separator spaces the pack's own slots glued to the next word
+        # (policy 2026-10-26: fix rendering errors, like «поговоритьс»):
+        # «в городе:Рим», «1Великие ... Цивилизации:Римляне».
+        ("CITYMGT.C", 839, " capital\\nmoved to "): " столица\\nв городе: ",
+        ("REPORTS.C", 413, ". The "): " Великие ",
+        ("REPORTS.C", 415, " Civilization of the "): " Цивилизации: ",
+        # '(Постарались' @0x30770 glued the civ name: «(ПостаралисьАмериканцы)».
+        ("PEDIA.C", 437, "(Taken from "): "(Постарались ",
+        # the table copy carried 'Чингиз  Хан' (two spaces from the civt data
+        # table); the pack's own literal slot is 'Чингиз Хан   ' @0x2cba3.
+        ("GAME.C", 476, "Genghis Khan "): "Чингиз Хан   ",
+        # trade goods table (GAME.C 412-419) slot-for-slot against the pack's
+        # literal block 0x2ca95..0x2cabb: Шелк/Алмазы/Вино/Медь/Агат/Чай/Соль/
+        # Перец.  'Gems' rode the 'Алмазы' slot of the terrain-resource block
+        # (GAME.C 85 -> 'Алмазы' @0x2cdc1 is correct there); here it is 'Агат'.
+        ("GAME.C", 416, "Gems"): "Агат",
     }
     # 77) rows the pack has no counterpart for: drop them so apply-translation
     # leaves the English literal (user decision 2026-10).  Entries may be
@@ -964,7 +1034,11 @@ def main():
             ("GAME.C", 779), ("GAME.C", 793), ("NEWS.C", 85, "FLASH"),
             # show_help keys stay English: the pack help.txt keys are Latin
             # (*LAND/*TEMPERATURE/*CLIMATE/*AGE), a RU key finds no section.
-            ("GAME.C", 804)}
+            ("GAME.C", 804),
+            # 'zzz' is the sentinel of the alphabetical pick loop (stricmp
+            # name < "zzz"); the pack 'Стр.' slots belong to the 'Pages '
+            # texts, not to it.  A RU sentinel would skip advances after 'С'.
+            ("QUIZ.C", 96, "zzz"), ("PEDIA.C", 106, "zzz")}
     rows = [r for r in rows if (r[0], r[1]) not in drop
             and (r[0], r[1], r[2]) not in drop]
     seen = {(r[0], r[1], r[2]) for r in rows}
@@ -1009,7 +1083,12 @@ def main():
     # требуем...' without $RPLC1, so the slot value is never shown.
     # no row for the "." period marker on DIPLOMAT.C 455: the city-founded
     # CODE_FIX in apply-translation.py deletes that whole strcat line.
-    for row in [("DIPLOMAT.C", 181, "in ", "г. ")] + \
+    # the capture banner's separator slots: the pack translated ". " to
+    # '└░' (0x2f200) and the spy news' trailing ".\n" to '└\n' (0x2f250);
+    # too short for src_literals, so add them as explicit rows.
+    for row in [("CAPTURE.C", 143, ". ", "└░"),
+                ("CAPTURE.C", 168, ".\\n", "└\n")] + \
+               [("DIPLOMAT.C", 181, "in ", "г. ")] + \
                [("ADVISORS.C", ln, r"\x87 (", " (") for ln in (661, 670)] + \
                [("REPORTS.C", 323, "Great", "Стойкие"),
                 ("REPORTS.C", 324, "Fine", "Красивые"),
